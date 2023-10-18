@@ -1,0 +1,525 @@
+/* Styles du titre de la section des compétences */
+.skills h2 {
+    text-align: center;
+    font-size: 55px;
+    letter-spacing: 6px;
+    margin-bottom: 4%;
+    transition: .3s;
+}
+
+.skills h2:nth-child(1) {
+    color: transparent;
+    -webkit-text-stroke: 2px #03a9f4;
+    animation: animate 4s ease-in-out;
+}
+
+h2>span {
+    animation: pain 2s ease-in-out infinite;
+}
+
+@keyframes pain {
+    0%, 100% {
+        color: #ffffff;
+        text-shadow: 0 0 12px rgb(0, 166, 255), 0 0 50px rgb(0, 166, 255), 0 0 100px rgb(0, 166, 255);
+    }
+    100%, 90% {
+        color: #000000;
+        text-shadow: none;
+    }
+}
+
+h2>span:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+h2>span:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+h2>span:nth-child(4) {
+    animation-delay: 0.75s;
+}
+
+h2>span:nth-child(5) {
+    animation-delay: 1s;
+}
+
+h2>span:nth-child(6) {
+    animation-delay: 1.25s;
+}
+
+/* Styles du sous-titre de la section des compétences */
+.skills h3 {
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+/* Styles pour les éléments de compétence */
+.skills #pret {
+    width: 170px;
+    position: relative;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 16px 14px 20px #000000;
+    display: flex;
+    margin: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles du texte dans les éléments de compétence */
+#pret p {
+    color: #ffffff;
+    position: absolute;
+    margin-bottom: 56%;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 23px;
+}
+
+/* Styles des icônes dans les éléments de compétence */
+#pret i {
+    margin-top: 9%;
+    z-index: 100;
+    color: #ffffff;
+    font-size: 40px;
+}
+
+/* Styles du dégradé de fond des éléments de compétence */
+.skills #pret::before {
+    content: '';
+    background-image: conic-gradient(#00eeff 20deg, transparent 120deg);
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    transition-duration: 0.5s;
+    animation: rotate 2s linear infinite;
+}
+
+/* Styles de l'arrière-plan des éléments de compétence */
+.skills #pret::after {
+    position: absolute;
+    content: '';
+    width: 150px;
+    height: 158px;
+    display: flex;
+    background: #101010;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: larger;
+    letter-spacing: 3px;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Styles pour la section Front-End */
+.frontend {
+    border: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.end {
+    margin-top: 3%;
+}
+
+/* Styles pour les éléments de compétence Front-End */
+.frontend div {
+    display: flex;
+    border-radius: 24px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5%;
+    margin-right: 3%;
+    margin-bottom: 6%;
+}
+
+.skills .frontend #pret p {
+    font-size: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-box-reflect: below 1px linear;
+    line-height: 3px;
+    outline: none;
+    animation: itachi 5s linear infinite;
+}
+
+@keyframes itachi {
+    0%, 18%, 20%, 50.1%, 60%, 65.1%, 80%, 90.1%, 92% {
+        color: #03a9f4;
+        text-shadow: none;
+    }
+    18.1%, 20.1%, 30%, 50%, 60.1%, 65%, 80.1%, 90%, 92.1%, 100% {
+        color: #0c638b;
+        text-shadow: 0 0 10px #00eeff, 0 0 20px #00eeff, 0 0 40px #00eeff, 0 0 80px #00eeff, 0 0 160px #00eeff;
+    }
+}
+
+/* Styles pour la section Back-End */
+.backend {
+    display: flex;
+    align-items: center;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    margin-top: 3%;
+    border-radius: 5px;
+    margin-bottom: 4%;
+}
+
+.ndabloque {
+    margin-left: 2%;
+}
+
+/* Styles pour les éléments de compétence Back-End */
+.backend div {
+    position: relative;
+    overflow: hidden;
+    transform: skewY(-5deg);
+    margin-top: 7%;
+    margin-bottom: 3%;
+    letter-spacing: 1px;
+    transition: all 0.4s;
+    animation: backreverse 2s ease-in;
+    display: flex;
+    border-radius: 24px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 6%;
+}
+
+.backend div:hover {
+    transform: translateY(-10px);
+    border: 4px solid rgba(0, 0, 0, 0.1);
+}
+
+.skills .backend #pret::after {
+    position: absolute;
+    content: '';
+    width: 95%;
+    height: 156px;
+    display: flex;
+    background: #101010;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: larger;
+    letter-spacing: 3px;
+}
+
+.skills .backend #pret i {
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-box-reflect: below 1px linear;
+    line-height: 3px;
+    outline: none;
+    animation: itachi 5s linear infinite;
+}
+
+/* Styles pour la section CMS */
+.cms {
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.cms div {
+    overflow: hidden;
+    display: flex;
+    border-radius: 24px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8%;
+    width: 85%;
+    margin-right: 3%;
+    margin-bottom: 6%;
+}
+
+#konan {
+    width: 170px;
+    position: relative;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 16px 14px 20px #000000;
+    display: flex;
+    margin: 15px;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.cms #konan:hover {
+    transition: .3s;
+    background: #00eeff;
+    color: #000000;
+    box-shadow: -30px 30px 50px rgba(0, 0, 0, .4);
+    transform: rotate(-30deg) skew(25deg);
+    text-shadow: -30px 30px 50px rgba(0, 0, 0, .4);
+    margin-top: 8%;
+    margin-bottom: 4%;
+    margin: auto;
+}
+
+.cms #konan::after {
+    position: absolute;
+    content: '';
+    width: 130px;
+    height: 152px;
+    display: flex;
+    background: #101010;
+    justify-content: center;
+}
+
+#konan p {
+    color: #ffffff;
+    position: absolute;
+    margin-bottom: 56%;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 23px;
+    transition: .3s;
+}
+
+#konan i {
+    margin-top: 9%;
+    z-index: 100;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    transition: .3s;
+}
+
+#konan p,
+i:hover {
+    text-shadow: -30px 30px 50px rgba(0, 0, 0, .4);
+}
+
+.cms #konan::before {
+    position: absolute;
+    animation: rotate 2s linear infinite;
+}
+
+.cms #konan::before,
+.cms #konan::after {
+    pointer-events: none;
+    transition-property: width, opacity, tranqform, box-shadow;
+    transition-duration: .5s;
+}
+
+.cms #konan:hover::before {
+    width: 100%;
+    opacity: 0.1;
+    transform: translate(5px, -5px);
+    box-shadow: +2px 2px 2px rgba(0, 0, 0, .1);
+    transition-delay: 0s, 0.5s, 1s, 1.5s;
+}
+
+.cms #konan:hover::after {
+    width: 100%;
+    opacity: 0.1;
+    transform: translate(10px, -10px);
+    box-shadow: +2px 2px 2px rgba(0, 0, 0, .1);
+    transition-delay: 0s, 0.5s, 1s, 1.5s;
+    width: 130px;
+    background: #00eeff;
+    transition: .3s;
+    height: 152px;
+}
+
+.cms #konan::after {
+    width: 150px;
+    height: 158px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: larger;
+    letter-spacing: 3px;
+}
+
+@keyframes backreverse {
+    from {
+        transform: translateX(-300px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes back {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.back {
+    animation-name: back;
+    animation-duration: infinit;
+    animation-timing-function: linear;
+}
+
+@keyframes effect {
+    0% {
+        left: 110%;
+    }
+    100% {
+        left: -20%;
+    }
+}
+
+/* Media queries pour les écrans de différentes tailles */
+@media screen and (max-width: 1100px) {
+    .backend {
+        display: block;
+    }
+
+    .ndabloque {
+        margin-left: 0;
+        margin-top: 2%;
+    }
+
+    .skills .backend #pret::after {
+        width: 92%;
+    }
+
+    .cms #konan::after {
+        position: absolute;
+        content: '';
+        width: 95%;
+        height: 155px;
+        display: flex;
+        background: #101010;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .skills h2 {
+        margin-top: -23%;
+    }
+
+    .frontend,
+    .backend,
+    .cms {
+        border-radius: 8px;
+    }
+
+    .skills #pret::after {
+        width: 92.5%;
+    }
+
+    .frontend div {
+        display: block;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .skills .frontend div #pret {
+        margin: auto;
+        margin-top: 4%;
+        margin-bottom: 4%;
+    }
+
+    .skills .frontend #pret p {
+        letter-spacing: 0px;
+    }
+
+    .backend {
+        display: block;
+    }
+
+    .backend div {
+        display: block;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .backend div #pret {
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .ndabloque {
+        margin-left: 0;
+        margin-top: 2%;
+    }
+
+    .backend div #pret p {
+        margin-bottom: 60%;
+        font-size: 20px;
+    }
+
+    .backend div #pret i {
+        margin-top: 20%;
+        font-size: 40px;
+    }
+
+    .cms div {
+        display: block;
+        margin: auto;
+        margin-bottom: 5%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .cms div #konan {
+        margin: auto;
+        margin-bottom: 6%;
+        margin-top: 6%;
+    }
+
+    .cms #konan::after {
+        position: absolute;
+        content: '';
+        width: 155px;
+        height: 155px;
+        display: flex;
+        background: #101010;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .cms #konan:hover {
+        margin-bottom: 7%;
+        padding-top: 4%;
+        margin-top: 12%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .cms div #konan {
+        margin: auto;
+        margin-top: 9%;
+        margin-bottom: 8%;
+    }
+
+    .cms #konan:hover {
+        margin-top: 15%;
+        margin-bottom: 15%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,166 @@
+/* Style pour la section du pied de page */
+footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour la section principale du pied de page */
+.fc {
+    padding: 32px 0 96px;
+    text-align: center;
+    margin: auto;
+}
+
+/* Style pour la liste des liens du pied de page */
+.footer__list {
+    display: flex;
+    text-transform: lowercase;
+    justify-content: center;
+    column-gap: 25px;
+    margin-bottom: 32px;
+    font-size: 22px;
+}
+
+/* Style pour les liens du pied de page au survol */
+.footer__l:hover {
+    color: rgb(255, 234, 0);
+    transition: 0.3s;
+}
+
+/* Style pour les liens visités du pied de page au survol */
+.footer__li:hover {
+    transition: 0.3s;
+    color: #ff0037;
+}
+
+/* Style pour les liens non visités du pied de page au survol */
+.footer__lin:hover {
+    transition: 0.3s;
+    color: #0033ff;
+}
+
+/* Style pour les liens des services du pied de page au survol */
+.footer__lk:hover {
+    transition: 0.3s;
+    color: #ff00e1fe;
+}
+
+/* Style pour les liens du portfolio du pied de page au survol */
+.footer__lnk:hover {
+    transition: 0.3s;
+    color: #ff0037;
+}
+
+/* Style pour les liens de contact du pied de page au survol */
+.footer__lik:hover {
+    color: rgb(23, 220, 20);
+    transition: 0.3s;
+}
+
+/* Style pour les icônes sociales du pied de page */
+.footer__social {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.footer__social i{
+    font-size: 20px;
+    display: flex;
+    width: 40px;
+    margin: 30px 15px 30px 0;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease;
+
+}
+/* Style pour les icônes sociales du pied de page au survol */
+footer .footer__social i:hover {
+    color: #00eeff;
+    transition: 0.3s;
+}
+
+/* Style pour le texte de copyright du pied de page */
+.footer__copy {
+    text-align: center;
+    display: block;
+    font-size: 25px;
+    margin-top: 65px;
+}
+
+/* Style pour le bouton de retour en haut */
+#progress {
+    margin-left: 92%;
+    margin-top: -10%;
+    height: 70px;
+    width: 70px;
+    display: grid;
+    border-radius: 50%;
+    place-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Style pour l'icône de retour en haut */
+#progress-value {
+    display: block;
+    border-radius: 50%;
+    height: 80%;
+    width: 80%;
+    display: grid;
+    background-color: #ffffff;
+    place-items: center;
+    font-size: 50px;
+}
+
+/* Media queries pour les écrans de différentes tailles */
+@media screen and (max-width: 991px) {
+    .footer__list {
+        flex-direction: column-reverse;
+        gap: 24px;
+    }
+
+    .footer__social {
+        margin: 0 auto; /* Centre horizontalement */
+    }
+    
+    .footer__social i{
+        font-size: 20px;
+        display: flex;
+        width: 40px;
+        margin: 30px 15px 30px 0;
+        height: 40px;
+        border-radius: 50%;
+        background: transparent;
+        border: 2px solid;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s ease;
+    }
+    
+    .footer__copy {
+        text-align: center;
+        padding: 2%;
+        margin-top: 0%;
+    }
+
+    #progress {
+        margin: auto;
+        margin-top: -11%;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    #progress {
+        margin-top: -14%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #progress {
+        margin-top: -21%;
+    }
+}

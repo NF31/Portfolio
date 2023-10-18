@@ -1,0 +1,15 @@
+/* Réinitialisation des marges et définition de la police de caractères de base pour le corps */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased; /* Améliore le rendu des polices sous Chrome, Safari, etc. */
+  -moz-osx-font-smoothing: grayscale; /* Améliore le rendu des polices sous Firefox sur macOS */
+}
+
+/* Styles pour les éléments de code (utilisés pour les polices monospaces) */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

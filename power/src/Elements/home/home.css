@@ -1,0 +1,161 @@
+/* home section */
+.home {
+  gap: 5%;
+  align-items: center;
+  display: flex;
+}
+
+/* Icônes sociales */
+.home .social i {
+  font-size: 20px;
+  display: flex;
+  width: 40px;
+  margin: 30px 15px 30px 0;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease;
+}
+
+/* Styles de survol pour les icônes sociales */
+.home .social i:hover {
+  color: #00eeff;
+  transition: 0.3s;
+}
+
+/* Container principal */
+.home .me {
+  width: 61%;
+}
+
+/* Titre principal */
+.home-titre {
+  margin-bottom: 3%;
+}
+
+/* Titre principal h1 */
+.me h1 {
+  text-align: center;
+  margin-bottom: 4%;
+}
+
+/* Paragraphe d'introduction */
+.p1 {
+  margin-bottom: 6%;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+/* Bouton de contact */
+.contactme {
+  margin: auto;
+}
+
+#pbtn {
+  height: 60px;
+  width: 200px;
+  position: relative;
+  z-index: 0;
+  transition: 2s linear;
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 1px solid #111111;
+  overflow: hidden;
+}
+
+#pbtn:hover {
+  color: #ffffff;
+  border-color: 2px solid white;
+  transition: 0.5s;
+  box-shadow: 0 4px 4px 0 rgb(215 77 62 / 20%),
+    0 4px 20px 0 rgb(215 77 62 / 19%) !important;
+  background-color: black;
+}
+
+#pbtn::before {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00eeff;
+  border-radius: 50% 50% 0 0;
+  transition: all 0.5s;
+  z-index: -1;
+}
+
+#pbtn:hover::before {
+  top: 0;
+  border-radius: 0;
+}
+
+/* Icône de message */
+.uil-message {
+  margin-left: 5px;
+}
+
+/* Photo de profil */
+.home .pdp {
+  background-image: url(../../assets/img/NF.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 250px;
+  height: 250px;
+  box-shadow: 0 10px 40px rgba(159, 162, 177, 0.8);
+  border-radius: 25px;
+}
+
+/* Animation d'entrée pour la section d'accueil */
+@keyframes slideProto {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Styles pour les écrans de taille moyenne (max-width: 991px) */
+@media screen and (max-width: 991px) {
+  /* Ajustements pour les écrans de taille moyenne */
+  .home {
+    margin-bottom: 5%;
+  }
+
+  .home .me {
+    width: 100%;
+  }
+
+  .home-titre {
+    margin-bottom: 7%;
+  }
+
+  .me h1 {
+    text-align: left;
+    margin-bottom: 6%;
+  }
+
+  /* Masquer la photo de profil */
+  .home .pdp {
+    display: none;
+  }
+
+  /* Ajustements pour le bouton de contact */
+  .contactme {
+    margin: 0;
+    margin-top: 13%;
+  }
+}

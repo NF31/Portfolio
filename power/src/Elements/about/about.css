@@ -1,0 +1,192 @@
+/* Style pour le titre de la section */
+.about h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 4%;
+}
+
+/* Style pour la section principale "acc" */
+.acc {
+  display: flex;
+  gap: 24px;
+  animation-duration: 5s;
+  animation-name: glissement;
+  animation-direction: alternate;
+}
+
+/* Animation "glissement" pour ".acc" */
+@keyframes glissement {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+/* Style pour la partie gauche de ".acc" */
+.acc .left {
+  border-radius: 28px;
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #00eeff;
+  margin: auto;
+  font-weight: bolder;
+}
+
+/* Style pour le paragraphe dans ".left" */
+.left p {
+  padding: 3%;
+  line-height: 1.3;
+  font-size: 20px;
+}
+
+/* Style pour la partie droite de ".acc" */
+.acc .right {
+  width: 100%;
+}
+
+/* Style pour l'image de droite */
+.right img {
+  border-radius: 28px;
+}
+
+/* Style pour l'image "Internet" */
+.it {
+  border-radius: 20px;
+  width: 100%;
+}
+
+/* Style pour la section du CV */
+.cv {
+  margin-top: 4%;
+  margin-left: 37%;
+}
+
+/* Style pour la section "nagato" contenant les compétences */
+.nagato {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6%;
+}
+
+/* Style pour chaque compétence dans ".cars" */
+.nagato .cars {
+  position: relative;
+  max-width: 300px;
+  height: 215px;
+  background: #00eeff;
+  margin: 30px 12px;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transition: .3s ease-in-out;
+}
+
+/* Animation sur hover pour agrandir ".cars" */
+.nagato .cars:hover {
+  height: 500px;
+}
+
+/* Style pour l'image dans ".imgBx" */
+.nagato .cars .imgBx {
+  width: 260px;
+  position: relative;
+  top: -60px;
+  z-index: 1;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Style pour l'image à l'intérieur de ".imgBx" */
+.nagato .cars .imgBx img {
+  max-width: 100%;
+  border-radius: 9px;
+}
+
+/* Style pour le texte des compétences dans ".goku" */
+.nagato .cars .goku {
+  position: relative;
+  margin-top: -140px;
+  padding: 10px 15px;
+  text-align: center;
+  color: #000000;
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s ease-in-out;
+}
+
+/* Animation sur hover pour afficher ".goku" */
+.nagato .cars:hover .goku {
+  visibility: visible;
+  opacity: 1;
+  margin-top: -40px;
+}
+
+/* Style pour le titre de chaque compétence */
+.nagato .cars .goku h4 {
+  margin-bottom: 8%;
+}
+
+/* Style pour l'image "Determination" */
+.dt {
+  height: 124px;
+  margin-left: 24%;
+}
+
+/* Style pour l'image "Innovation" */
+.ino {
+  width: 260px;
+  height: 120px;
+}
+
+/* Media queries pour les écrans de largeur maximale de 991px */
+@media screen and (max-width: 991px) {
+  .about h2 {
+    margin-top: -15%;
+    margin-bottom: -11%;
+  }
+
+  /* Réajustement des styles pour les écrans de largeur maximale de 991px */
+  .acc {
+    display: block;
+  }
+
+  .acc .left {
+    padding: 15px;
+    width: 134%;
+    margin-bottom: -7%;
+    margin-left: -14%;
+  }
+
+  .cv {
+    margin-top: 7%;
+    margin-left: 0%;
+  }
+
+  .nagato {
+    margin: auto;
+    flex-direction: column-reverse;
+  }
+
+  .nagato .cars {
+    margin-bottom: 15%;
+  }
+
+  .nagato .cars .goku p {
+    font-size: 20px;
+  }
+}
+
+/* Media queries pour les écrans de largeur maximale de 480px */
+@media screen and (max-width: 480px) {
+  /* Réajustement du style pour ".left" */
+  .left {
+    transform: scale(0.8);
+    left: -48px;
+  }
+}

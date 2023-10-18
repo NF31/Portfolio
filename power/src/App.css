@@ -1,0 +1,60 @@
+/* Importation de la police Google Fonts Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Réinitialisation des marges, du padding et de la boîte de modèle */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Transition douce pour tout le corps (utilisée pour le changement de thème) */
+body {
+  transition: all .2s linear;
+}
+
+/* Styles de base pour les sections */
+section {
+  padding: 48px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Suppression de la décoration du lien */
+a {
+  text-decoration: none;
+}
+
+/* Styles pour le bouton de changement de thème (lune) */
+.change-theme {
+  font-size: 30px;
+  top: 12%;
+  position: absolute;
+  margin-left: 93%;
+  cursor: pointer;
+}
+
+/* Style de survol pour le bouton de changement de thème */
+.change-theme:hover {
+  color: #00eeff transparent;
+  cursor: pointer;
+  transition: .2s;
+}
+
+/* Styles responsifs pour les sections sur les écrans de petite taille */
+@media screen and (max-width: 991px) {
+  section {
+    padding: 32px;
+  }
+}
+
+/* Styles encore plus responsifs pour les écrans très petits */
+@media screen and (max-width: 480px) {
+  .App {
+    padding: 8px 16px;
+  }
+
+  body {
+    font-size: 80%;
+  }
+}

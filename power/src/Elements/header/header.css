@@ -1,0 +1,223 @@
+/* header section */
+/* Animation d'entrée pour l'en-tête */
+.header {
+  align-items: center;
+    display: flex;
+    animation: SlideT 0.5s ease forwards;
+    padding-bottom: 0;
+}
+
+/* Logo de l'en-tête */
+#logo {
+  position: absolute;
+  font-size: 21px;
+  font-weight: 600;
+  animation: slideReverse 2s ease forwards;
+}
+
+#logo:hover {
+  transition: 3s;
+  color: #00eeff;
+}
+
+/* Barre de navigation */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 2%;
+  width: 85%;
+  margin-left: 9%;
+  background-color: #fff;
+  box-shadow: 0 10px 40px rgba(159, 162, 177, 0.8);
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Liens de navigation */
+nav a {
+  margin: 20px 25px;
+}
+
+nav a:hover {
+  color: #00eeff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Styles de survol pour les liens de navigation */
+nav .ab:hover {
+  color: #ff00fb;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+nav .sk:hover {
+  color: #ff0000;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+nav .se:hover {
+  color: #fbff00;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+nav .po:hover {
+  color: #ff0095;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+nav .co:hover {
+  color: #1100ff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Styles de base pour les éléments de navigation */
+.nav-item {
+  font-family: arial, sans-serif;
+  padding: 20px;
+  margin: 0 6px;
+  cursor: pointer;
+}
+
+
+/* Bouton de menu de navigation mobile */
+.header .nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  outline: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Animation de sortie pour le logo */
+@keyframes slideReverse {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation d'entrée pour l'en-tête */
+@keyframes SlideT {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Styles pour les écrans de taille moyenne (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  #logo {
+    margin-right: 75%;
+  }
+}
+
+/* Styles pour les écrans de taille moyenne (max-width: 991px) */
+@media screen and (max-width: 991px) {
+  #logo {
+    margin-right: 67%;
+  }
+}
+
+/* Styles pour les écrans de taille plus petite (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  /* Affichage du bouton de menu de navigation mobile */
+  #menu-btn {
+    display: initial;
+    margin-top: 14%;
+  }
+
+  /* Styles pour la navigation mobile */
+  .header nav {
+    top: 100%;
+    left: 0;
+    right: 0;
+    position: sticky;
+    display: none;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0%;
+    width: 100%;
+    padding: 16px 32px;
+    transition: 2s;
+    transform: translateY(-100vh);
+  }
+
+  .header nav a {
+    font-size: 24px;
+  }
+
+  /* Styles pour le bouton de fermeture de la navigation mobile */
+  nav .nav-close-btn {
+    display: block;
+    padding-bottom: 3%;
+    margin-left: 75%;
+  }
+
+  /* Styles pour afficher le bouton de menu de navigation mobile */
+  .header .nav-btn {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Styles pour afficher la navigation mobile */
+  .header .mobile-menu {
+    transform: none;
+    display: flex;
+  }
+
+  /* Suppression de la couleur de fond pour les liens de navigation en survol */
+  .nav-item:before {
+    background-color: transparent;
+  }
+
+  /* Styles pour le bouton de changement de thème (le cas échéant) */
+  .change-theme {
+    display: block;
+    top: 20%;
+    margin-left: 88%;
+  }
+}
+
+/* Styles pour les écrans de taille encore plus petite (max-width: 600px) */
+@media screen and (max-width: 600px) {
+  /* Ajustement du style du bouton de changement de thème */
+  .change-theme {
+    top: 14%;
+  }
+}
+
+/* Styles pour les écrans de taille très petite (max-width: 500px) */
+@media screen and (max-width: 500px) {
+  /* Ajustement du style du bouton de menu de navigation mobile */
+  #menu-btn {
+    margin-top: 16%;
+  }
+
+  /* Ajustement du style du bouton de changement de thème (le cas échéant) */
+  .change-theme {
+    top: 10%;
+  }
+}

@@ -1,0 +1,288 @@
+.gallery {
+    text-align: center;
+    margin-bottom: 4%;
+}
+
+.portfoliob {
+    width: 600px;
+}
+
+.portfolio_picolo {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 11%;
+    padding: 24px 32px;
+    border-radius: 24px;
+}
+
+.portfolio_picolo:hover {
+    background: transparent;
+    transition: 3s;
+}
+
+.ici {
+    margin: auto;
+    box-shadow: 0 0 20px #0ef;
+    width: 100%;
+    border-radius: 48px;
+    margin-top: 2%;
+    margin-bottom: 16px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-self: center;
+    transition: transform .5s;
+}
+
+.ici:hover {
+    transform: scale(0.7);
+    transition: 3s;
+}
+
+.p__name {
+    margin-top: 2%;
+    font-weight: 500;
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+.p__name:hover {
+    animation: flash 3s linear infinite;
+}
+
+.p___description {
+    margin-top: 2%;
+    font-size: 15px;
+    margin-bottom: 8%;
+    font-weight: normal;
+}
+
+.p___description:hover {
+    font-size: 25px;
+    position: relative;
+    color: #00eeff;
+    transition: 3s;
+    -webkit-text-stroke: 0.3vw #383d52;
+    text-transform: uppercase;
+}
+
+.p___description:hover::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #00eeff;
+    -webkit-text-stroke: 0vw #383d52;
+    overflow: hidden;
+    animation: animate 6s linear infinite;
+    margin-bottom: 3%;
+}
+
+.portfolio_picolo a {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 34%;
+}
+
+.portfolio_picolo a i {
+    font-size: 25px;
+    margin-left: 4%;
+}
+
+@keyframes animate {
+    0%,
+    10%,
+    100% {
+        width: 0;
+    }
+
+    70%,
+    90% {
+        width: 100%;
+    }
+}
+
+#ronisia {
+    width: 200px;
+    height: 50px;
+    background: #111111;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #0ef;
+    font-size: 20px;
+}
+
+#ronisia::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 2px solid #00eeff;
+    border-right: 2px solid #00eeff;
+    animation: border-top-right 3s infinite alternate;
+}
+
+#ronisia::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 2px solid #0ef;
+    border-left: 2px solid #0ef;
+    animation: border-bottom-left 3s infinite alternate;
+}
+
+@keyframes border-top-right {
+    0% {
+        width: 0px;
+        height: 0px;
+    }
+
+    25% {
+        width: 200px;
+        height: 0px;
+    }
+
+    50% {
+        width: 200px;
+        height: 48px;
+    }
+
+    100% {
+        width: 200px;
+        height: 48px;
+    }
+}
+
+
+@keyframes border-bottom-left {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+
+    50% {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+
+    50.1% {
+        width: 0px;
+        height: 0px;
+        opacity: 1;
+    }
+
+    75% {
+        width: 200px;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        width: 200px;
+        height: 48px;
+        opacity: 1;
+    }
+}
+
+
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.apprenti {
+    width: 50%;
+    padding: 15px;
+    margin: auto;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+
+.apprenti p {
+    margin-bottom: 20px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.svg {
+    width: 150px;
+    height: 50px;
+    background: transparent;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    padding-bottom: 15px;
+    margin: auto;
+}
+
+.svg i {
+    margin-left: 2%;
+}
+
+@media screen and (max-width:991px) {
+
+    .gallery {
+        margin-bottom: 10%;
+    }
+
+    .portfoliob {
+        width: 100%;
+    }
+
+    .portfolio_picolo {
+        margin: auto;
+    margin-top: -5%;
+    }
+
+    .trunks {
+        margin: auto;
+    }
+
+    .portfolio_picolo a {
+        margin: auto;
+    }
+
+    .swiper-pagination {
+        margin-bottom: -7%;
+        padding-bottom: 34px;
+    }
+
+    .apprenti {
+        margin-top: 10%;
+        width: 100%;
+        margin-bottom: 5%;
+    }
+}
+
+
+
+@media screen and (max-width:750px) {
+    .swiper-pagination {
+        margin-bottom: -13%;
+    }
+}

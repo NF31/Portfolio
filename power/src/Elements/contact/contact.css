@@ -1,0 +1,154 @@
+/* Style pour le titre de la section */
+.eltiulo {
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Style pour la section principale "gohan" */
+.gohan {
+    justify-content: center;
+    padding-bottom: 48px;
+    column-gap: 96px;
+    display: flex;
+    margin-top: 3%;
+    align-items: center;
+}
+
+/* Style pour chaque élément de la section "pli" */
+.pli {
+    display: grid;
+    row-gap: 16px;
+    margin-bottom: 32px;
+    grid-template-columns: 300px;
+    border: 2px solid rgba(0, 0, 0, 0.9);
+    text-align: center;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+/* Style pour les icônes de contact */
+.contact__icon {
+    font-size: 32px;
+    margin-right: 12px;
+    margin-bottom: 4px;
+}
+
+/* Style pour le texte des contacts */
+.dln {
+    font-size: 20px;
+}
+
+/* Style pour les titres des contacts */
+.contact h3 {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* Style pour la section "ozaru" */
+.ozaru {
+    border-radius: 8px;
+    padding: 12px 16px 4px;
+}
+
+/* Style pour le titre de la section du formulaire */
+.pmdt {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+/* Style pour le formulaire de contact */
+.cform {
+    width: 360px;
+}
+
+/* Style pour chaque champ du formulaire */
+.cfd {
+    position: relative;
+    margin-bottom: 32px;
+    height: 64px;
+}
+
+/* Style pour les étiquettes des champs du formulaire */
+.lab {
+    left: 11px;
+    position: absolute;
+    margin-bottom: 4px;
+    font-size: 16px;
+    top: -25px;
+    padding: 4px;
+    z-index: 10;
+}
+
+/* Style pour les champs du formulaire */
+.contact__form-input {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.9);
+    background: none;
+    outline: none;
+    border-radius: 12px;
+    padding: 24px;
+    z-index: 1;
+}
+
+/* Style pour la zone de texte du formulaire */
+.contact__form-area {
+    height: 176px;
+}
+
+/* Style pour le bouton du formulaire */
+.form-btn {
+    margin: auto;
+    width: 175px;
+    height: 60px;
+    background: #111111;
+    display: flex;
+    border-radius: 5px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #0ef;
+    font-size: 20px;
+    transition: all .3s;
+}
+
+/* Style pour le bouton du formulaire au survol */
+.form-btn:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+/* Media queries pour les écrans de largeur maximale de 991px */
+@media screen and (max-width: 991px) {
+    /* Réajustement des styles pour les écrans de largeur maximale de 991px */
+    .gohan {
+        flex-direction: column-reverse;
+        padding-bottom: 0;
+    }
+
+    .eltiulo {
+        margin-top: -7%;
+        margin-bottom: 8%;
+    }
+
+    .cform {
+        padding: 10px;
+    }
+
+    .cfd {
+        margin-bottom: 12%;
+    }
+
+    .form-btn {
+        width: 100%;
+        margin-bottom: 8%;
+    }
+}
