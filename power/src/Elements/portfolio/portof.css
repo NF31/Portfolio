@@ -1,3 +1,8 @@
+.portfolio h2{
+  text-align: center;
+    margin-bottom: 3%;
+}
+
 .fillter-buttons {
   margin: 32px;
   text-align: center;
@@ -10,7 +15,6 @@
   cursor: pointer;
   font-weight: 600;
   letter-spacing: 0.4px;
-  font-size: 10px;
   margin-left: 1.3rem;
   transition: 0.3s;
   color: #333333;
@@ -23,7 +27,8 @@
 .portfolio-gallery {
   display: grid;
   gap: 32px;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Trois colonnes égales */
+  grid-template-rows: repeat(2, 1fr); /* Deux lignes égales */
 }
 
 .port-box {
@@ -41,19 +46,21 @@
 .port-image {
   display: flex;
   justify-content: center;
-  background-size: cover;
   align-items: center;
   height: 100%;
   width: 100%;
+  overflow: hidden; /* Assurez-vous que les images ne dépassent pas la taille du conteneur */
 }
 
 .port-image img {
-  opacity: 0.5s;
   height: 100%;
   width: 100%;
   transition: 0.5s;
 }
 
+.ici{
+  width: 200px;
+}
 .port-content {
   position: absolute;
   bottom: 0;
@@ -61,7 +68,7 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  color: #ffffff;
+  color: #00eeff;
   background: linear-gradient(rgba(0, 0, O, 0.2), #12f7ff);
   display: flex;
   align-items: center;
@@ -161,8 +168,14 @@
   width: 50px;
   border-radius: 50%;
   background: #ffffff;
-  border: 1px solid;
-  outline: 2px solid;
+  border: 1px solid #0ef;
+  outline: 2px solid #0ef;
+  box-shadow: 0 0 20px #0ef;
+  transition: 0.3s;
+}
+
+.port-content a:hover {
+transform: scale(1.1) rotate(-360deg);
 }
 
 .port-content a i {

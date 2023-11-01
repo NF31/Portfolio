@@ -1,6 +1,6 @@
 import React from "react"; // Importation de la bibliothèque React
 import "./about.css"; // Importation du fichier CSS pour le style
-import CV from "../../assets/CV_développeur_Woto.pdf"; // Lien vers le CV PDF
+import CV from "../../assets/CV_developpeur_Woto.pdf"; // Lien vers le CV PDF
 import Internet from "../../assets/img/internet.jpg"; // Image représentant Internet
 import Instruit from "../../assets/img/livre.jpg"; // Image représentant la compétence "Instruit"
 import Determination from "../../assets/img/mission.png"; // Image représentant la compétence "Détermination"
