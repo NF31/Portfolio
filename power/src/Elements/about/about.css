@@ -146,9 +146,12 @@
 
 /* Media queries pour les écrans de largeur maximale de 991px */
 @media screen and (max-width: 991px) {
+
+  .about{
+    margin-top: 21%;
+  }
   .about h2 {
     margin-top: -15%;
-    margin-bottom: -11%;
   }
 
   /* Réajustement des styles pour les écrans de largeur maximale de 991px */
@@ -158,15 +161,14 @@
 
   .acc .left {
     padding: 15px;
-    width: 134%;
-    margin-bottom: -7%;
-    margin-left: -14%;
+    margin-bottom: 3%;
   }
 
   .cv {
     margin-top: 7%;
+    margin-bottom: 10%;
     margin-left: 0%;
-  }
+}
 
   .nagato {
     margin: auto;
@@ -177,6 +179,10 @@
     margin-bottom: 15%;
   }
 
+  .nagato .innovation:hover {
+    height: 600px;
+  }
+  
   .nagato .cars .goku p {
     font-size: 20px;
   }

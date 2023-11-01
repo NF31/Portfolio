@@ -1,9 +1,10 @@
-.gallery {
+/*.gallery {
     text-align: center;
     margin-bottom: 4%;
 }
 
 .portfoliob {
+    margin-top: -22%;
     width: 600px;
 }
 
@@ -15,6 +16,13 @@
     border-radius: 24px;
 }
 
+.planete{
+    margin-top: 0%;
+}
+
+.boxe{
+    margin-top: 0;
+}
 .portfolio_picolo:hover {
     background: transparent;
     transition: 3s;
@@ -33,6 +41,9 @@
     transition: transform .5s;
 }
 
+.labas{
+    width: 80%;
+}
 .ici:hover {
     transform: scale(0.7);
     transition: 3s;
@@ -245,7 +256,9 @@
 }
 
 @media screen and (max-width:991px) {
-
+.portfolio{
+    margin-top: 5%;
+}
     .gallery {
         margin-bottom: 10%;
     }
@@ -274,7 +287,7 @@
 
     .apprenti {
         margin-top: 10%;
-        width: 100%;
+        width: 80%;
         margin-bottom: 5%;
     }
 }
@@ -285,4 +298,4 @@
     .swiper-pagination {
         margin-bottom: -13%;
     }
-}
+}*/

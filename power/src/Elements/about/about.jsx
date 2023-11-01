@@ -101,7 +101,7 @@ const about = () => {
             </p>
           </div>
         </div>
-        <div className="cars">
+        <div className="cars innovation">
           <div className="imgBx">
             <img src={Innovation} alt="" className="ino" />
           </div>

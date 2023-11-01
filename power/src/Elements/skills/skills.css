@@ -416,7 +416,7 @@ i:hover {
 
 @media screen and (max-width: 991px) {
     .skills h2 {
-        margin-top: -23%;
+        margin-top: -10%;
     }
 
     .frontend,

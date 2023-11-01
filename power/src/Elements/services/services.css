@@ -153,8 +153,10 @@
     /* Inverser l'ordre des éléments pour les affichages mobiles */
     .wkf {
         flex-direction: column-reverse;
+         display: block;
+        gap: 32px;
     }
-
+    
     /* Ajustements pour les cartes en affichage mobile */
     .card {
         margin: auto;

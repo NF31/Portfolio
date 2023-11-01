@@ -40,8 +40,8 @@ const skills = () => {
           </span>
           {/* Compétence jQuery */}
           <span id="pret">
-            <p>Jquery</p>
-            <i className="bx bxl-jquery"></i>
+            <p>Sass</p>
+            <i className="fa-brands fa-sass"></i>
           </span>
         </div>
       </article>
@@ -49,7 +49,12 @@ const skills = () => {
       {/* Section Back-End */}
       <article className="backend back">
         <h3 className="ndabloque">Back-End</h3>
-        <div>
+        <div> 
+            {/* Compétence php */}
+          <span id="pret">
+            <p>Php</p>
+            <i className="fa-brands fa-php"></i>
+          </span>
          {/* Compétence Laravel */}
           <span id="pret">
             <p>Laravel</p>
@@ -70,11 +75,7 @@ const skills = () => {
             <p>MongoDB</p>
             <i className="bx bxl-mongodb"></i>
           </span>
-          {/* Compétence C++ */}
-          <span id="pret">
-            <p>C++</p>
-            <i className="bx bxl-c-plus-plus"></i>
-          </span>
+       
          
         </div>
       </article>

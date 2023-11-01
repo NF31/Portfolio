@@ -1,0 +1,170 @@
+.fillter-buttons {
+  margin: 32px;
+  text-align: center;
+}
+
+.fillter-buttons .btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  font-size: 10px;
+  margin-left: 1.3rem;
+  transition: 0.3s;
+  color: #333333;
+}
+
+.fillter-buttons .btn:hover {
+  color: rgb(0, 229, 255);
+}
+
+.portfolio-gallery {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.port-box {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  background: #292e33;
+  border: 2px solid rgb(0, 166, 255);
+  box-shadow: 0 0 20px #0ef;
+}
+
+.port-image {
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.port-image img {
+  opacity: 0.5s;
+  height: 100%;
+  width: 100%;
+  transition: 0.5s;
+}
+
+.port-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  color: #ffffff;
+  background: linear-gradient(rgba(0, 0, O, 0.2), #12f7ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  transition: 0.5s;
+  padding: 0 32px;
+}
+
+.port-box:hover .port-content {
+  opacity: 1;
+}
+
+.port-box:hover .port-image img {
+    transform: scale(1.1) ;
+  }
+.port-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.p__name {
+  margin-top: 2%;
+  margin-bottom: 16px;
+}
+
+.p__name:hover {
+  animation: flash 3s linear infinite;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.port-content p {
+  font-size: 20px;
+  margin: 5px 0 15px 0;
+}
+
+.p___description {
+  margin-top: 2%;
+  margin-bottom: 8%;
+  font-weight: normal;
+}
+
+.p___description:hover {
+  font-size: 25px;
+  position: relative;
+  color: #00eeff;
+  transition: 3s;
+  -webkit-text-stroke: 0.3vw #383d52;
+  text-transform: uppercase;
+}
+
+.p___description:hover::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 100%;
+  color: #00eeff;
+  -webkit-text-stroke: 0vw #383d52;
+  overflow: hidden;
+  animation: animate 6s linear infinite;
+  margin-bottom: 3%;
+}
+
+@keyframes animate {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+
+  70%,
+  90% {
+    width: 100%;
+  }
+}
+
+.port-content a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid;
+  outline: 2px solid;
+}
+
+.port-content a i {
+  font-size: 19px;
+}

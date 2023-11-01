@@ -8,7 +8,7 @@ import Home from "./Elements/home/home";
 import About from "./Elements/about/about";
 import Skills from "./Elements/skills/skills";
 import Services from "./Elements/services/services";
-import Portfolio from "./Elements/portfolio/portfolio";
+import Portfolio from "./Elements/portfolio/portof";
 import Contact from "./Elements/contact/contact";
 import Footer from "./Elements/footer/footer";
 
