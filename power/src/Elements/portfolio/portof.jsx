@@ -29,7 +29,7 @@ const portof = () => {
               <img src={Pic4} alt="" className="ici" />
               
             </div>
-            <div className="port-content">
+            <div className="port-content port">
               <h3 className="p__name">Site d'électricicen</h3>
               <p
                 className="p___description"
@@ -38,7 +38,7 @@ const portof = () => {
                 Site d'électricien réalisé en ExpressJS et NodeJS.{" "}
               </p>
               <a href="https://ellec-appli.onrender.com/"  target="_blank"
-                    rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
+              className="link"      rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
             </div>
           </div>
 
@@ -56,7 +56,7 @@ const portof = () => {
                     Site d'hotel réalisé en HTML, CSS et JS.{" "}
                   </p>
               <a href=""  target="_blank"
-                    rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
+                 className="link"   rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
             </div>
           </div>
 
@@ -75,7 +75,7 @@ const portof = () => {
                     Réalisé en HTML, CSS et JS.
                   </p>
               <a href="https://luxury-hotel-website.netlify.app"   target="_blank"
-                    rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
+                 className="link"   rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
             </div>
           </div>
 
@@ -94,7 +94,7 @@ const portof = () => {
                     Réalisé en HTML, CSS et JS.
                   </p>
               <a href="https://planetev.netlify.app/"   target="_blank"
-                    rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
+                className="link"    rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ const portof = () => {
                     Réalisé en HTML et CSS.
                   </p>
               <a href="https://training-box.netlify.app/"  target="_blank"
-                    rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
+                 className="link"   rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
             </div>
           </div>
 
@@ -133,7 +133,7 @@ const portof = () => {
                     Réalisé en HTML et CSS.
                   </p>
               <a href="https://afpasite.netlify.app/"  target="_blank"
-                    rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
+                  className="link"  rel="noopener noreferrer"> <i className='bx bx-link-external'></i></a>
             </div>
           </div>
 

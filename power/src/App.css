@@ -28,7 +28,7 @@ a {
 /* Styles pour le bouton de changement de thème (lune) */
 .change-theme {
   font-size: 30px;
-  top: 12%;
+  top: 10%;
   position: absolute;
   margin-left: 93%;
   cursor: pointer;
