@@ -196,9 +196,27 @@
 }
 /* Media queries pour les écrans de largeur maximale de 480px */
 @media screen and (max-width: 480px) {
+ 
+  .about {
+     margin-top: 0%; 
+}
+
+.acc {
+  width: 130%;
+  margin-left: -14%;
+  margin-top: -13%;
+}
+.acc .left {
+   margin-bottom: 0%; 
+}
+.acc .right {
+  margin-left: 8%;
+  width: 82%;
+}
+  }
   /* Réajustement du style pour ".left" */
   .left {
     transform: scale(0.8);
     left: -48px;
   }
-}
+

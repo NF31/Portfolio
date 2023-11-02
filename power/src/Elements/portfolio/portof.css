@@ -206,3 +206,8 @@ transform: scale(1.1) rotate(-360deg);
 }
 }
 
+@media screen and (max-width: 480px) {
+.port-box {
+
+  width: 100%;
+}}

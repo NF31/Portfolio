@@ -173,10 +173,13 @@ nav .co:hover {
 
   /* Styles pour le bouton de fermeture de la navigation mobile */
   nav .nav-close-btn {
+    top: 4%;
+    right: 4%;
+    position: absolute;
     display: block;
     padding-bottom: 3%;
     margin-left: 75%;
-  }
+}
 
   /* Styles pour afficher le bouton de menu de navigation mobile */
   .header .nav-btn {
