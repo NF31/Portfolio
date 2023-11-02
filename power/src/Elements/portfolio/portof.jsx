@@ -24,9 +24,9 @@ const portof = () => {
        
 
         <div className="portfolio-gallery">
-          <div className="port-box">
+          <div className="port-box ici">
             <div className="port-image">
-              <img src={Pic4} alt="" className="ici" />
+              <img src={Pic4} alt=""  />
               
             </div>
             <div className="port-content port">
@@ -42,9 +42,9 @@ const portof = () => {
             </div>
           </div>
 
-          <div className="port-box">
+          <div className="port-box ici">
             <div className="port-image">
-              <img src={Pic1} alt="" className="ici" />
+              <img src={Pic1} alt="" />
               
             </div>
             <div className="port-content">
@@ -60,9 +60,9 @@ const portof = () => {
             </div>
           </div>
 
-          <div className="port-box">
+          <div className="port-box ici holberton">
             <div className="port-image">
-              <img src={Pic2} alt="" className="ici" />
+              <img src={Pic2} alt=""  />
               
             </div>
             <div className="port-content">
@@ -79,9 +79,9 @@ const portof = () => {
             </div>
           </div>
 
-          <div className="port-box">
+          <div className="port-box ici">
             <div className="port-image">
-              <img src={Pic5} alt="" className="ici" />
+              <img src={Pic5} alt=""  />
               
             </div>
             <div className="port-content">
@@ -98,9 +98,9 @@ const portof = () => {
             </div>
           </div>
 
-          <div className="port-box">
+          <div className="port-box ici">
             <div className="port-image">
-              <img src={Pic3} alt="" className="ici" />
+              <img src={Pic3} alt="" />
               
             </div>
             <div className="port-content">
@@ -118,13 +118,13 @@ const portof = () => {
           </div>
 
 
-          <div className="port-box">
+          <div className="port-box ici">
             <div className="port-image">
-              <img src={Logo} alt="" className="ici" />
+              <img src={Logo} alt="" />
               
             </div>
             <div className="port-content">
-            <h3 className="p__name">Afa</h3>
+            <h3 className="p__name">Afpa</h3>
             <p
                     className="p___description"
                     data-text="Réalisé en HTML et CSS."

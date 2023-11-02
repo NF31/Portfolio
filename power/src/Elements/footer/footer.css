@@ -142,8 +142,10 @@ footer .footer__social i:hover {
     }
     
     .footer__copy {
+        margin: auto;
         text-align: center;
         padding: 2%;
+        width: 48%;
         margin-top: 0%;
     }
 

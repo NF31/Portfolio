@@ -136,8 +136,10 @@ nav .co:hover {
 /* Styles pour les écrans de taille moyenne (max-width: 991px) */
 @media screen and (max-width: 991px) {
   #logo {
+    
+    margin-top: -14%;
     margin-right: 67%;
-  }
+}
 }
 
 /* Styles pour les écrans de taille plus petite (max-width: 768px) */
@@ -193,12 +195,7 @@ nav .co:hover {
     background-color: transparent;
   }
 
-  /* Styles pour le bouton de changement de thème (le cas échéant) */
-  .change-theme {
-    display: block;
-    top: 20%;
-    margin-left: 88%;
-  }
+  
 }
 
 /* Styles pour les écrans de taille encore plus petite (max-width: 600px) */

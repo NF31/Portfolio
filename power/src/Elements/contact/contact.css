@@ -132,10 +132,10 @@
     .gohan {
         flex-direction: column-reverse;
         padding-bottom: 0;
+        margin-top: -6%;
     }
 
     .eltiulo {
-        margin-top: -7%;
         margin-bottom: 8%;
     }
 

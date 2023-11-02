@@ -132,8 +132,9 @@
 @media screen and (max-width: 991px) {
   /* Ajustements pour les écrans de taille moyenne */
   .home {
+    margin-top: 3%;
     margin-bottom: 5%;
-  }
+}
 
   .home .me {
     width: 100%;

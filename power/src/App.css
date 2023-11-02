@@ -41,13 +41,46 @@ a {
   transition: .2s;
 }
 
+
+
+@media screen and (max-width: 1000px) {
+.change-theme {
+    top: 9%;
+}
+}
+
 /* Styles responsifs pour les sections sur les écrans de petite taille */
 @media screen and (max-width: 991px) {
   section {
     padding: 32px;
   }
+
+  
+.change-theme {
+    top: 7%;
+     margin-left: 95%;
 }
 
+
+}
+
+@media screen and (max-width: 770px) {
+  .change-theme {
+    top: 14%;
+  }
+  }
+
+@media screen and (max-width: 750px) {
+.change-theme {
+  top: 14%;
+}
+}
+
+@media screen and (max-width: 675px) {
+  .change-theme {
+   margin-left: 90%;
+  }
+  }
 /* Styles encore plus responsifs pour les écrans très petits */
 @media screen and (max-width: 480px) {
   .App {

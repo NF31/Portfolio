@@ -43,6 +43,7 @@
   box-shadow: 0 0 20px #0ef;
 }
 
+
 .port-image {
   display: flex;
   justify-content: center;
@@ -58,9 +59,7 @@
   transition: 0.5s;
 }
 
-.ici{
-  width: 200px;
-}
+
 .port-content {
   position: absolute;
   bottom: 0;
@@ -80,6 +79,7 @@
 }
 
 .port-box:hover .port-content {
+  backdrop-filter:blur(5px) ;
   opacity: 1;
 }
 
@@ -181,3 +181,28 @@ transform: scale(1.1) rotate(-360deg);
 .port-content a i {
   font-size: 19px;
 }
+
+
+@media screen and (max-width:991px) {
+  .portfolio-gallery {
+    flex-direction: column-reverse;
+    display: flex;
+    margin-top: 5%;
+  }
+
+  .port-box {
+    margin-bottom: 3%;
+    margin: auto;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+.portfolio-gallery {
+    
+    margin-top: 13%;}
+    .ici{
+ height: 340px;
+}
+}
+

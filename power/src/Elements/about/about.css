@@ -148,7 +148,7 @@
 @media screen and (max-width: 991px) {
 
   .about{
-    margin-top: 21%;
+    margin-top: 12%;
   }
   .about h2 {
     margin-top: -15%;
@@ -188,6 +188,12 @@
   }
 }
 
+@media screen and (max-width: 680px) {
+.left p {
+  line-height: 1.7;
+  font-size: 17px;
+}
+}
 /* Media queries pour les écrans de largeur maximale de 480px */
 @media screen and (max-width: 480px) {
   /* Réajustement du style pour ".left" */
