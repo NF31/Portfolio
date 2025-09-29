@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio de NFDev21 
 
-## Getting Started
+Bienvenue sur mon **portfolio**, développé pour présenter mes projets, compétences et réalisations en tant que développeur Web & Mobile. 
 
-First, run the development server:
+--- ## Sommaire 
+- [Portfolio de NFDev21](#portfolio-de-nfdev21) 
+- [Sommaire](#sommaire) 
+- [À propos](#à-propos)
+ - [Stack technique](#stack-technique) 
+ - [Installation et utilisation](#installation-et-utilisation) - 
+ [Cloner le dépôt](#cloner-le-dépôt) 
+ - [Aller dans le dossier du projet](#aller-dans-le-dossier-du-projet) 
+ - [Installer les dépendances](#installer-les-dépendances) 
+ - [Lancer le serveur de développement](#lancer-le-serveur-de-développement) 
+ 
+ --- ## À propos Je suis **NFDev21**, étudiant en L2 Double Licence Numérique & Management et passionné par le développement web full-stack. Ce portfolio a été créé pour mettre en valeur mes compétences techniques, mes projets personnels et professionnels, ainsi que mon expérience pratique acquise lors de stages et travaux individuels. 
+ 
+ --- ## Stack technique Ce projet est construit avec les technologies suivantes : 
+ - **Front-end & Back-end :** Next.js (Fullstack)
+  - **Base de données :** MongoDB -
+   **Styling :** Tailwind CSS - 
+   **Gestion des médias :** Cloudinary - 
+   **Outils :** Git, GitHub - 
+   **Déploiement :** Vercel Cette stack permet de créer un portfolio moderne, responsive et performant, capable de gérer les contenus dynamiques et les médias de manière efficace. --- ## Installation et utilisation Pour installer et lancer le projet en local :
+bash
+# Cloner le dépôt
+git clone https://github.com/NFDev21/portfolio.git
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Aller dans le dossier du projet
+cd portfolio
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Installer les dépendances
+npm install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Lancer le serveur de développement
+npm run dev  ok ben deja celui la il est bon on le touche plu
