@@ -7,7 +7,7 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
-  type: string;
+  types: string | string[];
   link?: string;
   images: string[];
   createdAt: string;
@@ -63,17 +63,17 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
 
   return (
     <>
-      {/* En-tête du tableau */}
-      <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
-        <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-700">
-          <div className="col-span-3">Projet</div>
-          <div className="col-span-2">Type</div>
-          <div className="col-span-2">Technologies</div>
-          <div className="col-span-2">Créé le</div>
-          <div className="col-span-1">Statut</div>
-          <div className="col-span-2 text-right">Actions</div>
-        </div>
-      </div>
+              {/* En-tête du tableau */}
+              <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+                <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-700">
+                  <div className="col-span-3">Projet</div>
+                  <div className="col-span-2">Types</div>
+                  <div className="col-span-2">Technologies</div>
+                  <div className="col-span-2">Créé le</div>
+                  <div className="col-span-1">Statut</div>
+                  <div className="col-span-2 text-right">Actions</div>
+                </div>
+              </div>
 
       {/* Corps du tableau */}
       <div className="divide-y divide-gray-200">
@@ -114,11 +114,18 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                 </div>
               </div>
 
-              {/* Type */}
+              {/* Types */}
               <div className="col-span-2">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                  {project.type}
-                </span>
+                <div className="flex flex-wrap gap-1">
+                  {(Array.isArray(project.types) ? project.types : [project.types]).map((type, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                    >
+                      {type}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               {/* Technologies */}
