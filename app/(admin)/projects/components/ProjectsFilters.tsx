@@ -46,18 +46,19 @@ const ProjectsFilters: React.FC<ProjectsFiltersProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Type
           </label>
-          <select
-            value={filterType}
-            onChange={(e) => onTypeChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="all">Tous les types</option>
-            <option value="web">Web</option>
-            <option value="mobile">Mobile</option>
-            <option value="fullstack">Fullstack</option>
-            <option value="data">Data</option>
-            <option value="autre">Autre</option>
-          </select>
+              <select
+                value={filterType}
+                onChange={(e) => onTypeChange(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              >
+                <option value="all">Tous les types</option>
+                <option value="web">Web</option>
+                <option value="mobile">Mobile</option>
+                <option value="fullstack">Fullstack</option>
+                <option value="data">Data</option>
+                <option value="design">Design</option>
+                <option value="autre">Autre</option>
+              </select>
         </div>
 
         {/* Filtre par statut */}
