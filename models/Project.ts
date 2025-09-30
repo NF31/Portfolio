@@ -6,7 +6,7 @@ export interface IProject extends Document {
   images: string[]; // URLs des images
   technologies: string[];
   link?: string;
-  type: string; // web, mobile, fullstack, data, autre
+  types: string | string[]; // Types (peut être un string ou un array)
   createdBy: mongoose.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
@@ -62,12 +62,25 @@ const ProjectSchema = new Schema<IProject>({
     },
     trim: true
   },
-  type: {
-    type: String,
+  types: {
+    type: Schema.Types.Mixed,
     required: [true, 'Le type de projet est requis'],
-    enum: {
-      values: ['web', 'mobile', 'fullstack', 'data', 'autre'],
-      message: 'Le type doit être: web, mobile, fullstack, data, ou autre'
+    validate: {
+      validator: function(v: any) {
+        // Peut être un string ou un array de strings
+        const validTypes = ['web', 'mobile', 'fullstack', 'data', 'design', 'autre'];
+        if (typeof v === 'string') {
+          return validTypes.includes(v);
+        }
+        if (Array.isArray(v)) {
+          return v.length > 0 && v.every(type => 
+            typeof type === 'string' && 
+            validTypes.includes(type)
+          );
+        }
+        return false;
+      },
+      message: 'Le type doit être un string ou un array de strings valides: web, mobile, fullstack, data, design, ou autre'
     }
   },
   createdBy: {
@@ -86,7 +99,12 @@ ProjectSchema.index({ createdBy: 1 });
 ProjectSchema.index({ createdAt: -1 });
 
 // S'assurer que le modèle utilise la bonne base de données
-const ProjectModel = mongoose.models.Project || mongoose.model<IProject>('Project', ProjectSchema);
+// Supprimer le modèle du cache pour forcer la recompilation
+if (mongoose.models.Project) {
+  delete mongoose.models.Project;
+}
+
+const ProjectModel = mongoose.model<IProject>('Project', ProjectSchema);
 
 // Forcer l'utilisation de la base de données portfolio_db
 if (mongoose.connection.db && mongoose.connection.db.databaseName !== 'portfolio_db') {
