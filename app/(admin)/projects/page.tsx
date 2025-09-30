@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 import ProjectsFilters from './components/ProjectsFilters';
 import ProjectsTable from './components/ProjectsTable';
 import Pagination from './components/Pagination';
@@ -10,7 +11,7 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
-  type: string;
+  types: string | string[];
   link?: string;
   images: string[];
   createdAt: string;
@@ -67,34 +68,54 @@ const ProjectsPage = () => {
 
   // Actions
   const handleEdit = (projectId: string) => {
-    console.log('Edit project:', projectId);
-    // TODO: Implémenter la navigation vers la page d'édition
+    // Navigation vers la page d'édition
+    window.location.href = `/projects/edit/${projectId}`;
   };
 
-  const handleDelete = async (projectId: string) => {
-    if (window.confirm('Êtes-vous sûr de vouloir supprimer ce projet ?')) {
-      try {
-        // TODO: Implémenter l'API de suppression
-        console.log('Delete project:', projectId);
-        // await fetch(`/api/projects/${projectId}`, { method: 'DELETE' });
-        // fetchProjects(); // Recharger la liste
-      } catch (error) {
-        console.error('Erreur lors de la suppression:', error);
-      }
-    }
+  const handleDelete = (projectId: string) => {
+    // Navigation vers la page de suppression
+    window.location.href = `/projects/delete/${projectId}`;
   };
 
   const handleArchive = async (projectId: string, isArchived: boolean) => {
+    const project = projects.find(p => p.id === projectId);
+    const projectTitle = project?.title || 'Projet';
+    
     try {
-      // TODO: Implémenter l'API d'archivage
-      console.log('Archive project:', projectId, isArchived);
-      // await fetch(`/api/projects/${projectId}`, { 
-      //   method: 'PATCH', 
-      //   body: JSON.stringify({ isArchived }) 
-      // });
-      // fetchProjects(); // Recharger la liste
+      const response = await fetch(`/api/projects/${projectId}`, { 
+        method: 'PUT', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          isArchived,
+          // Conserver les autres données existantes
+          ...projects.find(p => p.id === projectId)
+        })
+      });
+      
+      if (response.ok) {
+        // Toast de succès
+        toast.success(isArchived ? 'Projet archivé !' : 'Projet désarchivé !', {
+          description: `"${projectTitle}" ${isArchived ? 'archivé' : 'restauré'}`,
+          duration: 3000,
+        });
+        
+        // Recharger la liste des projets
+        await fetchProjects();
+      } else {
+        const errorData = await response.json();
+        toast.error('Erreur lors de l\'archivage', {
+          description: errorData.error,
+          duration: 4000,
+        });
+      }
     } catch (error) {
       console.error('Erreur lors de l\'archivage:', error);
+      toast.error('Erreur lors de l\'archivage', {
+        description: 'Une erreur est survenue',
+        duration: 4000,
+      });
     }
   };
 
