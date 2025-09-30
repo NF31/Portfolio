@@ -45,6 +45,7 @@ const EditProjectPage = () => {
     { value: 'mobile', label: 'Mobile' },
     { value: 'fullstack', label: 'Fullstack' },
     { value: 'data', label: 'Data' },
+    { value: 'design', label: 'Design' },
     { value: 'autre', label: 'Autre' }
   ];
 
@@ -101,12 +102,15 @@ const EditProjectPage = () => {
   };
 
   const handleTypeChange = (typeValue: string) => {
-    setFormData(prev => ({
-      ...prev,
-      types: prev.types.includes(typeValue)
-        ? prev.types.filter(t => t !== typeValue)
-        : [...prev.types, typeValue]
-    }));
+    setFormData(prev => {
+      const currentTypes = Array.isArray(prev.types) ? prev.types : [prev.types];
+      return {
+        ...prev,
+        types: currentTypes.includes(typeValue)
+          ? currentTypes.filter(t => t !== typeValue)
+          : [...currentTypes, typeValue]
+      };
+    });
   };
 
   const addTechnology = () => {
@@ -306,14 +310,14 @@ const EditProjectPage = () => {
                   <label
                     key={type.value}
                     className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition-all ${
-                      formData.types.includes(type.value)
+                      (Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)
                         ? 'border-blue-500 bg-blue-50 text-blue-700'
                         : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
                     }`}
                   >
                     <input
                       type="checkbox"
-                      checked={formData.types.includes(type.value)}
+                      checked={(Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)}
                       onChange={() => handleTypeChange(type.value)}
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-3"
                     />
