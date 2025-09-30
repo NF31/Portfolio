@@ -44,15 +44,25 @@ export async function POST(request: NextRequest) {
 
     // Création du projet en base
     console.log('📝 Création du document Project...');
-    const project = new Project({
+    const projectData: any = {
       title,
       description,
       technologies,
-      type: types[0], // Pour l'instant, on prend le premier type
       link: link || undefined,
       createdBy: tempUserId,
       images: [] // Les images seront ajoutées séparément
-    });
+    };
+
+    // Gérer les types
+    if (types && types.length > 0) {
+      projectData.types = types; // Types multiples
+    } else {
+      projectData.types = 'web'; // Type par défaut
+    }
+
+    console.log('📊 Données du projet:', projectData);
+    
+    const project = new Project(projectData);
 
     console.log('💾 Sauvegarde dans MongoDB...');
     console.log('📍 Base de données actuelle:', mongoose.connection.db.databaseName);
@@ -127,12 +137,13 @@ export async function GET() {
         title: project.title,
         description: project.description,
         technologies: project.technologies,
-        type: project.type,
+        types: project.types || 'web', // Types (string ou array)
         link: project.link,
         images: project.images,
         createdBy: project.createdBy,
         createdAt: project.createdAt,
-        updatedAt: project.updatedAt
+        updatedAt: project.updatedAt,
+        isArchived: project.isArchived || false
       }))
     });
 
