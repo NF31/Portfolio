@@ -28,7 +28,7 @@ export async function GET(
 
     return NextResponse.json({
       success: true,
-      data: service
+      service: service
     });
 
   } catch (error) {
@@ -74,16 +74,16 @@ export async function PUT(
 
     return NextResponse.json({
       success: true,
-      data: updatedService,
+      service: updatedService,
       message: 'Service mis à jour avec succès'
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Erreur lors de la mise à jour du service:', error);
     
     // Gérer les erreurs de validation Mongoose
-    if (error.name === 'ValidationError') {
-      const validationErrors = Object.values(error.errors).map((err: any) => err.message);
+    if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError') {
+      const validationErrors = Object.values((error as any).errors).map((err: any) => (err as any).message);
       return NextResponse.json(
         { 
           success: false, 
