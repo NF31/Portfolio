@@ -4,9 +4,11 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Plus, Search, Filter } from 'lucide-react';
+import { toast } from 'sonner';
 import ServicesTable from './components/ServicesTable';
 import ServicesFilters from './components/ServicesFilters';
 import Pagination from './components/Pagination';
+import DeleteConfirmModal from './components/DeleteConfirmModal';
 
 interface Service {
   _id: string;
@@ -55,6 +57,11 @@ const ServicesPage = () => {
   const [filterStatus, setFilterStatus] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   
+  // États pour la popup de suppression
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [serviceToDelete, setServiceToDelete] = useState<Service | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
   const router = useRouter();
 
   // Fonction pour récupérer les services
@@ -93,7 +100,55 @@ const ServicesPage = () => {
 
   // Fonction pour gérer la suppression
   const handleDelete = (id: string) => {
-    router.push(`/services/delete/${id}`);
+    const service = services.find(s => s._id === id);
+    if (service) {
+      setServiceToDelete(service);
+      setDeleteModalOpen(true);
+    }
+  };
+
+  // Fonction pour confirmer la suppression
+  const handleConfirmDelete = async () => {
+    if (!serviceToDelete) return;
+    
+    setIsDeleting(true);
+    try {
+      const response = await fetch(`/api/services/${serviceToDelete._id}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+        toast.success('Service supprimé !', {
+          description: `"${serviceToDelete.title}" supprimé définitivement`,
+          duration: 3000,
+        });
+        
+        // Fermer la popup et recharger la liste
+        setDeleteModalOpen(false);
+        setServiceToDelete(null);
+        await fetchServices();
+      } else {
+        const errorData = await response.json();
+        toast.error('Erreur lors de la suppression', {
+          description: errorData.error || 'Une erreur est survenue',
+          duration: 4000,
+        });
+      }
+    } catch (error) {
+      console.error('Erreur lors de la suppression:', error);
+      toast.error('Erreur lors de la suppression', {
+        description: 'Une erreur est survenue',
+        duration: 4000,
+      });
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  // Fonction pour annuler la suppression
+  const handleCancelDelete = () => {
+    setDeleteModalOpen(false);
+    setServiceToDelete(null);
   };
 
   // Fonction pour gérer l'archivage (toggle isActive)
@@ -210,6 +265,15 @@ const ServicesPage = () => {
           </>
         )}
       </div>
+
+      {/* Popup de confirmation de suppression */}
+      <DeleteConfirmModal
+        isOpen={deleteModalOpen}
+        onClose={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        service={serviceToDelete}
+        isDeleting={isDeleting}
+      />
     </div>
   );
 };
