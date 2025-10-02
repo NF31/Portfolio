@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function DeleteProjectLayout({children}: { children: React.ReactNode; }) {
   return (
-    <div className="admin-layout">
+    <div className="p-6">
       {children}
     </div>
   );
