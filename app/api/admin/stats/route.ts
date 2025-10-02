@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Project from '@/models/Project';
+import Service from '@/models/Service';
 // TODO: Importer les autres modèles quand ils seront créés
-// import Service from '@/models/Service';
 // import Skill from '@/models/Skill';
 // import Message from '@/models/Message';
 
@@ -32,10 +32,14 @@ export async function GET() {
       }
     });
 
+    // Récupérer les statistiques des services
+    const totalServices = await Service.countDocuments();
+    const activeServices = await Service.countDocuments({ isActive: true });
+    const featuredServices = await Service.countDocuments({ isFeatured: true });
+
     // TODO: Récupérer les vraies statistiques quand les modèles seront créés
     const totalMessages = 0; // await Message.countDocuments();
     const unreadMessages = 0; // await Message.countDocuments({ isRead: false });
-    const totalServices = 0; // await Service.countDocuments();
     const totalSkills = 0; // await Skill.countDocuments();
     const totalBlogPosts = 0; // await BlogPost.countDocuments();
     const totalImages = 0; // await Image.countDocuments();
@@ -53,7 +57,9 @@ export async function GET() {
         unread: unreadMessages
       },
       services: {
-        total: totalServices
+        total: totalServices,
+        active: activeServices,
+        featured: featuredServices
       },
       skills: {
         total: totalSkills
@@ -81,7 +87,7 @@ export async function GET() {
         stats: {
           projects: { total: 0, published: 0, archived: 0, recent: 0, byType: [] },
           messages: { total: 0, unread: 0 },
-          services: { total: 0 },
+          services: { total: 0, active: 0, featured: 0 },
           skills: { total: 0 },
           blog: { total: 0 },
           images: { total: 0 }
