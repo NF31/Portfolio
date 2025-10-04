@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import ProjectForm from '../../../components/forms/ProjectForm';
+import { useStatsActions } from '../../hooks/useStatsActions';
 
 interface ProjectFormData {
   title: string;
@@ -16,6 +17,7 @@ interface ProjectFormData {
 const AddProjectPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { refreshAfterAction } = useStatsActions();
 
   const handleSubmit = async (data: ProjectFormData) => {
     setIsLoading(true);
@@ -28,6 +30,9 @@ const AddProjectPage = () => {
         description: `"${data.title}" sauvegardé dans MongoDB`,
         duration: 3000,
       });
+      
+      // Rafraîchir les statistiques
+      await refreshAfterAction('création du projet');
       
       // Redirection après 2 secondes
       setTimeout(() => {

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import CloudinaryUpload from '@/app/components/CloudinaryUpload';
 import { toast } from 'sonner';
+import { useStatsActions } from '../../hooks/useStatsActions';
 
 interface Project {
   _id: string;
@@ -16,6 +17,7 @@ export default function AddImagePage() {
   const [selectedProjectId, setSelectedProjectId] = useState<string>('');
   const [selectedProjectTitle, setSelectedProjectTitle] = useState<string>('');
   const [loading, setLoading] = useState(true);
+  const { refreshAfterAction } = useStatsActions();
 
   useEffect(() => {
     fetchProjects();
@@ -62,9 +64,11 @@ export default function AddImagePage() {
     }
   };
 
-  const handleUploadSuccess = (imageData: any) => {
+  const handleUploadSuccess = async (imageData: any) => {
     console.log('Image uploadée avec succès:', imageData);
     toast.success('Image ajoutée avec succès !');
+    // Rafraîchir les statistiques
+    await refreshAfterAction('ajout d\'image');
     router.push('/images');
   };
 
@@ -74,7 +78,7 @@ export default function AddImagePage() {
   };
 
   if (loading) {
-    return (
+  return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
       </div>
@@ -88,15 +92,15 @@ export default function AddImagePage() {
             Ajouter une nouvelle image
           </h1>
 
-          {/* Sélection du projet */}
+      {/* Sélection du projet */}
           <div className="mb-6">
             <label htmlFor="project" className="block text-sm font-medium text-gray-700 mb-2">
               Associer à un projet *
-            </label>
-            <select
-              id="project"
+          </label>
+          <select
+            id="project"
               value={selectedProjectId}
-              onChange={(e) => {
+            onChange={(e) => {
                 const projectId = e.target.value;
                 const selectedProject = projects.find(p => (p._id || p.id) === projectId);
                 console.log('🔄 Projet sélectionné ID:', projectId);
@@ -110,10 +114,10 @@ export default function AddImagePage() {
               <option value="">Sélectionnez un projet</option>
               {projects.map((project) => (
                 <option key={project._id || project.id} value={project._id || project.id}>
-                  {project.title}
-                </option>
+                    {project.title}
+                  </option>
               ))}
-            </select>
+          </select>
           </div>
 
           {/* Upload Cloudinary */}
@@ -124,10 +128,10 @@ export default function AddImagePage() {
             {selectedProjectId ? (
               <div>
                 <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-md">
-                  <p className="text-sm text-blue-800">
+              <p className="text-sm text-blue-800">
                     <strong>Projet sélectionné :</strong> {selectedProjectTitle}
-                  </p>
-                </div>
+              </p>
+            </div>
                 <CloudinaryUpload
                   onUploadSuccess={handleUploadSuccess}
                   onUploadError={handleUploadError}
@@ -140,7 +144,7 @@ export default function AddImagePage() {
                 <p className="text-gray-500">Veuillez sélectionner un projet pour uploader une image</p>
               </div>
             )}
-          </div>
+      </div>
 
           {/* Informations */}
           <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
@@ -155,17 +159,17 @@ export default function AddImagePage() {
               <li>• Cette image sera associée au projet sélectionné</li>
             </ul>
           </div>
-
+          
           {/* Bouton retour */}
           <div className="mt-6 flex justify-end">
-            <button
+          <button
               onClick={() => router.push('/images')}
               className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
-            >
+          >
               Retour à la liste des images
-            </button>
-          </div>
+          </button>
         </div>
       </div>
+    </div>
   );
 }
