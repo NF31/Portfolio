@@ -3,6 +3,8 @@ import mongoose, { Document, Schema } from 'mongoose';
 export interface IImage extends Document {
   url: string;
   alt?: string;
+  description?: string;
+  publicId: string;
   projectId: mongoose.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
@@ -16,6 +18,14 @@ const ImageSchema: Schema = new Schema({
   alt: {
     type: String,
     default: ''
+  },
+  description: {
+    type: String,
+    default: ''
+  },
+  publicId: {
+    type: String,
+    required: true
   },
   projectId: {
     type: Schema.Types.ObjectId,
