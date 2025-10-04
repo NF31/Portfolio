@@ -18,12 +18,14 @@ interface StatsData {
   };
   skills: {
     total: number;
+    active: number;
   };
   blog: {
     total: number;
   };
   images: {
     total: number;
+    recent: number;
   };
 }
 
@@ -53,9 +55,9 @@ export const StatsProvider: React.FC<StatsProviderProps> = ({ children }) => {
     projects: { total: 0, published: 0, archived: 0, recent: 0 },
     messages: { total: 0, unread: 0 },
     services: { total: 0 },
-    skills: { total: 0 },
+    skills: { total: 0, active: 0 },
     blog: { total: 0 },
-    images: { total: 0 }
+    images: { total: 0, recent: 0 }
   });
   const [isLoading, setIsLoading] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
@@ -78,6 +80,11 @@ export const StatsProvider: React.FC<StatsProviderProps> = ({ children }) => {
 
   useEffect(() => {
     refreshStats();
+    
+    // Rafraîchissement automatique toutes les 30 secondes
+    const interval = setInterval(refreshStats, 30000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   const value: StatsContextType = {

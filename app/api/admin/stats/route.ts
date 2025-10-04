@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Project from '@/models/Project';
 import Service from '@/models/Service';
-// TODO: Importer les autres modèles quand ils seront créés
-// import Skill from '@/models/Skill';
+import Skill from '@/models/Skill';
+import Image from '@/models/Image';
+// TODO: Importer le modèle Message quand il sera créé
 // import Message from '@/models/Message';
 
 export async function GET() {
@@ -37,12 +38,22 @@ export async function GET() {
     const activeServices = await Service.countDocuments({ isActive: true });
     const featuredServices = await Service.countDocuments({ isFeatured: true });
 
-    // TODO: Récupérer les vraies statistiques quand les modèles seront créés
+    // Récupérer les statistiques des compétences
+    const totalSkills = await Skill.countDocuments();
+    const activeSkills = await Skill.countDocuments({ isActive: true });
+
+    // Récupérer les statistiques des images
+    const totalImages = await Image.countDocuments();
+    const recentImages = await Image.countDocuments({
+      createdAt: {
+        $gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+      }
+    });
+
+    // TODO: Récupérer les vraies statistiques quand le modèle Message sera créé
     const totalMessages = 0; // await Message.countDocuments();
     const unreadMessages = 0; // await Message.countDocuments({ isRead: false });
-    const totalSkills = 0; // await Skill.countDocuments();
     const totalBlogPosts = 0; // await BlogPost.countDocuments();
-    const totalImages = 0; // await Image.countDocuments();
 
     const stats = {
       projects: {
@@ -62,13 +73,15 @@ export async function GET() {
         featured: featuredServices
       },
       skills: {
-        total: totalSkills
+        total: totalSkills,
+        active: activeSkills
       },
       blog: {
         total: totalBlogPosts
       },
       images: {
-        total: totalImages
+        total: totalImages,
+        recent: recentImages
       }
     };
 
@@ -88,9 +101,9 @@ export async function GET() {
           projects: { total: 0, published: 0, archived: 0, recent: 0, byType: [] },
           messages: { total: 0, unread: 0 },
           services: { total: 0, active: 0, featured: 0 },
-          skills: { total: 0 },
+          skills: { total: 0, active: 0 },
           blog: { total: 0 },
-          images: { total: 0 }
+          images: { total: 0, recent: 0 }
         }
       },
       { status: 500 }

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
+import { useStatsActions } from '../../hooks/useStatsActions';
 
 interface SkillFormData {
   name: string;
@@ -21,6 +22,7 @@ const AddSkillPage = () => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
+  const { refreshAfterAction } = useStatsActions();
 
   const [formData, setFormData] = useState<SkillFormData>({
     name: '',
@@ -119,6 +121,8 @@ const AddSkillPage = () => {
 
       if (response.ok) {
         toast.success('Compétence créée avec succès !');
+        // Rafraîchir les statistiques
+        await refreshAfterAction('création de la compétence');
         router.push('/skills');
       } else {
         const errorData = await response.json();
