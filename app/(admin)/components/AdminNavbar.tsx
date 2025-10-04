@@ -64,7 +64,7 @@ const AdminNavbar = () => {
   const pathname = usePathname();
 
   const navigation = [
-    { name: 'Dashboard', href: '/', icon: BarChart3 },
+    { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
     { name: 'Projets', href: '/projects', icon: Briefcase },
     { name: 'Services', href: '/services', icon: Settings },
     { name: 'Compétences', href: '/skills', icon: Target },
@@ -75,8 +75,8 @@ const AdminNavbar = () => {
   ];
 
   const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/';
+    if (href === '/dashboard') {
+      return pathname === '/dashboard';
     }
     return pathname.startsWith(href);
   };
@@ -125,7 +125,7 @@ const AdminNavbar = () => {
           <div className="flex items-center space-x-4">
             {/* Bouton retour au site */}
             <Link
-              href="/"
+              href="/portfolio"
               className="hidden sm:flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:border-blue-300 hover:text-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-md"
             >
               <Home className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
@@ -176,7 +176,7 @@ const AdminNavbar = () => {
               ))}
               <div className="pt-4 border-t border-gray-200">
                 <Link
-                  href="/"
+                  href="/portfolio"
                   onClick={() => setIsMenuOpen(false)}
                   className="group flex items-center px-4 py-3 text-sm font-medium text-gray-700 bg-gray-50 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-700 transition-all duration-300 hover:scale-105"
                 >

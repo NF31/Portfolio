@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Save, Eye, Code, Database, Palette, Wrench, Zap } from 'lucide-react';
 import { toast } from 'sonner';
+import { useStatsActions } from '../../../hooks/useStatsActions';
 
 interface Skill {
   _id: string;
@@ -22,6 +23,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
   const [skill, setSkill] = useState<Skill | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const { refreshAfterAction } = useStatsActions();
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -111,6 +113,8 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
 
       if (data.success) {
         toast.success('Compétence mise à jour avec succès !');
+        // Rafraîchir les statistiques
+        await refreshAfterAction('modification de compétence');
         router.push('/skills');
       } else {
         toast.error(data.error || 'Erreur lors de la mise à jour');

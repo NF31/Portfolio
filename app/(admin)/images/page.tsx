@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { toast } from 'sonner';
+import { useStatsActions } from '../hooks/useStatsActions';
 import ImagesFilters from './components/ImagesFilters';
 import ImagesTable from './components/ImagesTable';
 import Pagination from './components/Pagination';
@@ -50,6 +51,7 @@ const ImagesPage = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [imageToDelete, setImageToDelete] = useState<Image | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const { refreshAfterAction } = useStatsActions();
 
   // Fonction pour récupérer les images
   const fetchImages = async () => {
@@ -117,6 +119,8 @@ const ImagesPage = () => {
         setDeleteModalOpen(false);
         setImageToDelete(null);
         await fetchImages();
+        // Rafraîchir les statistiques
+        await refreshAfterAction('suppression d\'image');
       } else {
         const errorData = await response.json();
         toast.error('Erreur lors de la suppression', {
