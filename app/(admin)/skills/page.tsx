@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
 import { toast } from 'sonner';
+import { useStatsActions } from '../hooks/useStatsActions';
 import SkillsFilters from './components/SkillsFilters';
 import SkillsTable from './components/SkillsTable';
 import Pagination from './components/Pagination';
@@ -51,6 +52,7 @@ const SkillsPage = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [skillToDelete, setSkillToDelete] = useState<Skill | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const { refreshAfterAction } = useStatsActions();
 
   // Fonction pour récupérer les compétences
   const fetchSkills = async () => {
@@ -117,6 +119,8 @@ const SkillsPage = () => {
         setDeleteModalOpen(false);
         setSkillToDelete(null);
         await fetchSkills();
+        // Rafraîchir les statistiques
+        await refreshAfterAction('suppression de compétence');
       } else {
         const errorData = await response.json();
         toast.error('Erreur lors de la suppression', {
