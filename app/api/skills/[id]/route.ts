@@ -42,7 +42,10 @@ export async function PUT(
 
     const skillId = params.id;
     const body = await request.json();
-    const { name, description, icon, category, level, isActive, order } = body;
+    const { name, description, icon, iconType, category, level, isActive, order } = body;
+
+    console.log('📝 Mise à jour de la compétence:', skillId);
+    console.log('📋 Données reçues:', { name, description, icon, iconType, category, level, isActive, order });
 
     // Validation
     if (!name?.trim()) {
@@ -82,6 +85,7 @@ export async function PUT(
         name: name.trim(),
         description: description.trim(),
         icon: icon.trim(),
+        iconType: iconType || 'lucide',
         category: category || 'other',
         level: level || 'intermediate',
         isActive: isActive !== undefined ? isActive : true,
@@ -96,6 +100,8 @@ export async function PUT(
         { status: 500 }
       );
     }
+
+    console.log('✅ Compétence mise à jour avec succès:', updatedSkill._id);
 
     return NextResponse.json({
       success: true,
