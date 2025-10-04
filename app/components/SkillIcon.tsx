@@ -12,18 +12,41 @@ interface SkillIconProps {
 
 const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className = 'w-8 h-8' }) => {
   
+  // Debug pour voir les valeurs reçues
+  console.log('🎨 SkillIcon - iconType:', iconType);
+  console.log('🎨 SkillIcon - icon:', icon);
+  console.log('🎨 SkillIcon - name:', name);
+  
   // Générer l'URL CDN pour Simple Icons
   const getSimpleIconUrl = (iconName: string) => {
     return `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/${iconName}.svg`;
   };
 
   const renderIcon = () => {
+    console.log('🎨 RenderIcon - Traitement iconType:', iconType);
+    
+    // Détection automatique : si iconType est "lucide" mais que icon contient un SVG complet
+    const isSvgContent = icon && icon.trim().startsWith('<svg');
+    
     switch (iconType) {
       case 'lucide':
+        // Si c'est un SVG complet, on le traite comme custom-svg
+        if (isSvgContent) {
+          console.log('🎨 SVG détecté dans lucide, conversion vers custom-svg');
+          return (
+            <div 
+              className={`${className} flex items-center justify-center`}
+              dangerouslySetInnerHTML={{ __html: icon }}
+            />
+          );
+        }
+        
+        // Sinon, on cherche l'icône Lucide
         const IconComponent = (LucideIcons as any)[icon];
         if (IconComponent) {
           return <IconComponent className={className} />;
         }
+        console.log('❌ Lucide icon not found:', icon);
         break;
 
       case 'simple-icons':
@@ -41,6 +64,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
         );
 
       case 'custom-svg':
+        console.log('🎨 Rendering custom SVG:', icon);
         return (
           <div 
             className={`${className} flex items-center justify-center`}
@@ -63,6 +87,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
         );
 
       default:
+        console.log('❌ Unknown iconType:', iconType);
         break;
     }
 
@@ -70,7 +95,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
     return (
       <div className={`${className} bg-gray-200 rounded flex items-center justify-center`}>
         <span className="text-xs font-bold text-gray-600">
-          {name.charAt(0).toUpperCase()}
+          {name && name.length > 0 ? name.charAt(0).toUpperCase() : '?'}
         </span>
       </div>
     );
@@ -82,7 +107,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
       {/* Icône de fallback cachée */}
       <div className={`${className} bg-gray-200 rounded flex items-center justify-center hidden`}>
         <span className="text-xs font-bold text-gray-600">
-          {name.charAt(0).toUpperCase()}
+          {name && name.length > 0 ? name.charAt(0).toUpperCase() : '?'}
         </span>
       </div>
     </>
