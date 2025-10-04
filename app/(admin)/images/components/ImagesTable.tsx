@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Eye, Copy, Edit, Trash2 } from 'lucide-react';
 
 interface Image {
@@ -143,16 +144,13 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
                 >
                   <Copy className="w-4 h-4" />
                 </button>
-                <button
-                  onClick={() => {
-                    // TODO: Implémenter l'édition
-                    console.log('Éditer l\'image:', image._id);
-                  }}
-                  className="p-2 text-gray-400 hover:text-indigo-600 transition-colors"
-                  title="Modifier"
-                >
-                  <Edit className="w-4 h-4" />
-                </button>
+                      <Link
+                        href={`/images/edit/${image._id}`}
+                        className="p-2 text-gray-400 hover:text-indigo-600 transition-colors"
+                        title="Modifier"
+                      >
+                        <Edit className="w-4 h-4" />
+                      </Link>
                 <button
                   onClick={() => onDelete(image._id)}
                   className="p-2 text-gray-400 hover:text-red-600 transition-colors"
