@@ -90,7 +90,7 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
   return (
     <div className="space-y-4">
       {/* Zone d'upload */}
-      <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-500 transition-colors">
+      <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center hover:border-blue-500 transition-colors">
         <input
           type="file"
           accept="image/*"
@@ -153,7 +153,7 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
             <button
               onClick={handleCancel}
               disabled={isUploading}
-              className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
             >
               <X className="w-4 h-4 mr-2" />
               Annuler

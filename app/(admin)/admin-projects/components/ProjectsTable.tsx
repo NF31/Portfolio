@@ -42,7 +42,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
     return (
       <div className="text-center py-12">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        <p className="mt-4 text-gray-600">Chargement des projets...</p>
+        <p className="mt-4 text-gray-600 dark:text-gray-400">Chargement des projets...</p>
       </div>
     );
   }
@@ -50,13 +50,13 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
   if (projects.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 dark:bg-gray-700">
           <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
           </svg>
         </div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucun projet trouvé</h3>
-        <p className="text-gray-600 mb-6">Aucun projet ne correspond à vos critères de recherche.</p>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Aucun projet trouvé</h3>
+        <p className="text-gray-600 mb-6 dark:text-gray-400">Aucun projet ne correspond à vos critères de recherche.</p>
       </div>
     );
   }
@@ -64,8 +64,8 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
   return (
     <>
               {/* En-tête du tableau */}
-              <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
-                <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-700">
+              <div className="px-6 py-4 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800">
+                <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-700 dark:text-white">
                   <div className="col-span-3">Projet</div>
                   <div className="col-span-2">Types</div>
                   <div className="col-span-2">Technologies</div>
@@ -76,9 +76,9 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
               </div>
 
       {/* Corps du tableau */}
-      <div className="divide-y divide-gray-200">
+      <div className="divide-y divide-gray-200 dark:divide-gray-700">
         {projects.map((project) => (
-          <div key={project.id} className="px-6 py-4 hover:bg-gray-50 transition-colors">
+          <div key={project.id} className="px-6 py-4 hover:bg-gray-50 transition-colors dark:bg-gray-800 dark:hover:bg-gray-700">
             <div className="grid grid-cols-12 gap-4 items-center">
               {/* Projet */}
               <div className="col-span-3">
@@ -91,10 +91,10 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                     </div>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-sm font-semibold text-gray-900 truncate">
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white truncate">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-gray-500 truncate">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
                       {project.description}
                     </p>
                     {project.link && (
@@ -134,7 +134,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                   {project.technologies.slice(0, 2).map((tech, index) => (
                     <span
                       key={index}
-                      className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                      className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:bg-gray-700"
                     >
                       {tech}
                     </span>
@@ -149,7 +149,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
 
               {/* Date de création */}
               <div className="col-span-2">
-                <span className="text-sm text-gray-900">
+                <span className="text-sm text-gray-900 dark:text-white">
                   {formatDate(project.createdAt)}
                 </span>
               </div>

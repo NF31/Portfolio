@@ -40,7 +40,7 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
     return (
       <div className="text-center py-12">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        <p className="mt-4 text-gray-600">Chargement des images...</p>
+        <p className="mt-4 text-gray-600 dark:text-gray-400">Chargement des images...</p>
       </div>
     );
   }
@@ -48,13 +48,13 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
   if (images.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 dark:bg-gray-700">
           <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         </div>
-        <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucune image trouvée</h3>
-        <p className="text-gray-600 mb-6">Aucune image ne correspond à vos critères de recherche.</p>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Aucune image trouvée</h3>
+        <p className="text-gray-600 mb-6 dark:text-gray-400">Aucune image ne correspond à vos critères de recherche.</p>
       </div>
     );
   }
@@ -62,8 +62,8 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
   return (
     <>
       {/* En-tête du tableau */}
-      <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
-        <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-700">
+      <div className="px-6 py-4 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800">
+        <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-700 dark:text-white">
           <div className="col-span-3">Image</div>
           <div className="col-span-3">Description</div>
           <div className="col-span-2">Projet</div>
@@ -73,9 +73,9 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
       </div>
 
       {/* Corps du tableau */}
-      <div className="divide-y divide-gray-200">
+      <div className="divide-y divide-gray-200 dark:divide-gray-700">
         {images.map((image) => (
-          <div key={image._id} className="px-6 py-4 hover:bg-gray-50 transition-colors">
+          <div key={image._id} className="px-6 py-4 hover:bg-gray-50 transition-colors dark:bg-gray-800 dark:hover:bg-gray-700">
             <div className="grid grid-cols-12 gap-4 items-center">
               {/* Image */}
               <div className="col-span-3">
@@ -98,7 +98,7 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
                     </div>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm text-gray-500 truncate">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
                       {image.alt.length > 30 ? `${image.alt.substring(0, 30)}...` : image.alt}
                     </p>
                   </div>
@@ -107,7 +107,7 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
 
               {/* Description */}
               <div className="col-span-3">
-                <p className="text-sm text-gray-900 truncate">
+                <p className="text-sm text-gray-900 dark:text-white truncate">
                   {image.alt}
                 </p>
               </div>
@@ -121,7 +121,7 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
 
               {/* Date */}
               <div className="col-span-2">
-                <span className="text-sm text-gray-900">
+                <span className="text-sm text-gray-900 dark:text-white">
                   {formatDate(image.createdAt)}
                 </span>
               </div>

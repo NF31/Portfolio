@@ -76,8 +76,8 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
         <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
           <LucideIcons.Briefcase className="w-10 h-10 text-white" />
         </div>
-        <h3 className="text-xl font-medium text-gray-900 mb-2">Aucun service trouvé</h3>
-        <p className="text-gray-600 mb-6">
+        <h3 className="text-xl font-medium text-gray-900 dark:text-white mb-2">Aucun service trouvé</h3>
+        <p className="text-gray-600 mb-6 dark:text-gray-400">
           Commencez par ajouter votre premier service à votre portfolio.
         </p>
         <Link
@@ -93,32 +93,32 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
 
   return (
     <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+        <thead className="bg-gray-50 dark:bg-gray-800">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
               Service
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
               Catégorie
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
               Prix
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
               Technologies
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
               Statut
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">
               Actions
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
           {services.map((service) => (
-            <tr key={service._id} className="hover:bg-gray-50 transition-colors">
+            <tr key={service._id} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors dark:bg-gray-800">
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 h-12 w-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4 shadow-md">
@@ -128,14 +128,14 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                   </div>
                   <div>
                     <div className="flex items-center">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-gray-900 dark:text-white">
                         {service.title}
                       </div>
                       {service.isFeatured && (
                         <Star className="w-4 h-4 text-yellow-500 ml-2" />
                       )}
                     </div>
-                    <div className="text-sm text-gray-500 truncate max-w-xs">
+                    <div className="text-sm text-gray-500 dark:text-gray-400 truncate max-w-xs">
                       {service.shortDescription}
                     </div>
                   </div>
@@ -146,7 +146,7 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                   {formatCategory(service.category)}
                 </span>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                 {formatPrice(service.price)}
               </td>
               <td className="px-6 py-4">
@@ -154,13 +154,13 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                   {service.technologies.slice(0, 3).map((tech, index) => (
                     <span
                       key={index}
-                      className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800"
+                      className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:bg-gray-700"
                     >
                       {tech}
                     </span>
                   ))}
                   {service.technologies.length > 3 && (
-                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-200 text-gray-600">
+                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-200 text-gray-600 dark:text-gray-400">
                       +{service.technologies.length - 3}
                     </span>
                   )}

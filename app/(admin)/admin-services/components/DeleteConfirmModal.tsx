@@ -62,9 +62,9 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
       />
       
       {/* Modal */}
-      <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-200 max-w-2xl w-full mx-4 transform transition-all max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 max-w-2xl w-full mx-4 transform transition-all max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-gray-200">
+        <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
               <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,10 +72,10 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Supprimer le service
               </h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 Cette action est irréversible
               </p>
             </div>
@@ -84,14 +84,14 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
 
         {/* Content */}
         <div className="px-6 py-4">
-          <p className="text-gray-700 mb-6">
+          <p className="text-gray-700 mb-6 dark:text-white">
             Êtes-vous sûr de vouloir supprimer le service{' '}
-            <span className="font-semibold text-gray-900">"{service.title}"</span> ?
+            <span className="font-semibold text-gray-900 dark:text-white">"{service.title}"</span> ?
           </p>
 
           {/* Informations détaillées du service */}
           <div className="bg-gray-50 rounded-xl p-4 mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Détails du service à supprimer
             </h3>
             
@@ -101,18 +101,18 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
                 {IconComponent && <IconComponent className="w-6 h-6 text-blue-600" />}
               </div>
               <div>
-                <h4 className="text-lg font-semibold text-gray-900">{service.title}</h4>
-                <p className="text-sm text-gray-600">{service.shortDescription}</p>
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{service.title}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{service.shortDescription}</p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div>
-                <span className="text-sm font-medium text-gray-500">Catégorie :</span>
-                <p className="text-gray-900 font-medium capitalize">{service.category}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Catégorie :</span>
+                <p className="text-gray-900 font-medium capitalize dark:text-white">{service.category}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Statut :</span>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Statut :</span>
                 <div className="flex items-center gap-2">
                   <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
                     service.isActive 
@@ -131,13 +131,13 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
             </div>
 
             <div className="mb-4">
-              <span className="text-sm font-medium text-gray-500">Description :</span>
-              <p className="text-gray-700 mt-1 text-sm">{service.description}</p>
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Description :</span>
+              <p className="text-gray-700 mt-1 text-sm dark:text-white">{service.description}</p>
             </div>
 
             {service.features && service.features.length > 0 && (
               <div className="mb-4">
-                <span className="text-sm font-medium text-gray-500">Fonctionnalités :</span>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Fonctionnalités :</span>
                 <div className="flex flex-wrap gap-2 mt-1">
                   {service.features.map((feature, index) => (
                     <span
@@ -153,12 +153,12 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
 
             {service.technologies && service.technologies.length > 0 && (
               <div className="mb-4">
-                <span className="text-sm font-medium text-gray-500">Technologies :</span>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Technologies :</span>
                 <div className="flex flex-wrap gap-2 mt-1">
                   {service.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                      className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-800 dark:bg-gray-700"
                     >
                       {tech}
                     </span>
@@ -169,37 +169,37 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
 
             {/* Prix complet */}
             <div className="mb-4">
-              <span className="text-sm font-medium text-gray-500">Informations tarifaires :</span>
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Informations tarifaires :</span>
               <div className="mt-1">
                 {service.price?.type === 'project' ? (
-                  <p className="text-gray-900 font-medium">Sur devis</p>
+                  <p className="text-gray-900 font-medium dark:text-white">Sur devis</p>
                 ) : service.price?.amount ? (
-                  <p className="text-gray-900 font-medium">
+                  <p className="text-gray-900 font-medium dark:text-white">
                     {service.price.amount} {service.price.currency || 'EUR'}
                     {service.price.type === 'hourly' ? '/heure' : ''}
                   </p>
                 ) : (
-                  <p className="text-gray-500 italic">Aucun prix défini</p>
+                  <p className="text-gray-500 italic dark:text-gray-400">Aucun prix défini</p>
                 )}
               </div>
             </div>
 
             {service.deliveryTime && (
               <div className="mb-4">
-                <span className="text-sm font-medium text-gray-500">Délai de livraison :</span>
-                <p className="text-gray-900 font-medium">{service.deliveryTime}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Délai de livraison :</span>
+                <p className="text-gray-900 font-medium dark:text-white">{service.deliveryTime}</p>
               </div>
             )}
 
             {/* Informations système */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 pt-4 border-t border-gray-200">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 pt-4 border-t border-gray-200 dark:border-gray-700">
               <div>
-                <span className="text-sm font-medium text-gray-500">Ordre d'affichage :</span>
-                <p className="text-gray-900 font-medium">{service.order}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Ordre d'affichage :</span>
+                <p className="text-gray-900 font-medium dark:text-white">{service.order}</p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Type de prix :</span>
-                <p className="text-gray-900 font-medium capitalize">
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Type de prix :</span>
+                <p className="text-gray-900 font-medium capitalize dark:text-white">
                   {service.price?.type === 'project' ? 'Sur devis' : 
                    service.price?.type === 'fixed' ? 'Prix fixe' : 
                    service.price?.type === 'hourly' ? 'À l\'heure' : 'Non défini'}
@@ -210,16 +210,16 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
             {/* Devise par défaut */}
             {service.price && (
               <div className="mb-4">
-                <span className="text-sm font-medium text-gray-500">Devise :</span>
-                <p className="text-gray-900 font-medium">{service.price.currency || 'EUR'}</p>
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Devise :</span>
+                <p className="text-gray-900 font-medium dark:text-white">{service.price.currency || 'EUR'}</p>
               </div>
             )}
 
             {/* Dates */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
               <div>
-                <span className="text-sm font-medium text-gray-500">Date de création :</span>
-                <p className="text-gray-900 font-medium">
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Date de création :</span>
+                <p className="text-gray-900 font-medium dark:text-white">
                   {new Date(service.createdAt).toLocaleDateString('fr-FR', {
                     year: 'numeric',
                     month: 'long',
@@ -230,8 +230,8 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
                 </p>
               </div>
               <div>
-                <span className="text-sm font-medium text-gray-500">Dernière modification :</span>
-                <p className="text-gray-900 font-medium">
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Dernière modification :</span>
+                <p className="text-gray-900 font-medium dark:text-white">
                   {new Date(service.updatedAt).toLocaleDateString('fr-FR', {
                     year: 'numeric',
                     month: 'long',
@@ -244,9 +244,9 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
             </div>
 
             {/* ID du service */}
-            <div className="pt-4 border-t border-gray-200">
-              <span className="text-sm font-medium text-gray-500">ID du service :</span>
-              <p className="text-gray-900 font-mono text-xs bg-gray-100 px-2 py-1 rounded mt-1">
+            <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-400">ID du service :</span>
+              <p className="text-gray-900 font-mono text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded mt-1 dark:text-white dark:bg-gray-700">
                 {service._id}
               </p>
             </div>
@@ -266,11 +266,11 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="px-6 py-4 bg-gray-50 rounded-b-2xl flex justify-end gap-3">
+        <div className="px-6 py-4 bg-gray-50 dark:bg-gray-900 rounded-b-2xl flex justify-end gap-3">
           <button
             onClick={onClose}
             disabled={isDeleting}
-            className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed dark:text-white"
           >
             Annuler
           </button>

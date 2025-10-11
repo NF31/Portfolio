@@ -138,26 +138,26 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
 
       {/* Sidebar */}
       <div className={`
-        fixed top-0 left-0 h-full w-80 bg-white/90 backdrop-blur-md border-r border-white/20 shadow-xl z-50 transform transition-all duration-500 ease-out
+        fixed top-0 left-0 h-full w-80 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-r border-white/20 dark:border-gray-800/20 shadow-xl z-50 transform transition-all duration-500 ease-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0 lg:static lg:z-auto
         ${isOpen ? 'animate-slideInFromLeft' : ''}
       `}>
         {/* Header */}
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-800">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3 group">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 group-hover:animate-pulseGlow">
                 <span className="text-white font-bold text-lg group-hover:animate-wiggle">NF</span>
               </div>
               <div>
-                <h2 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">NFDev21</h2>
-                <p className="text-sm text-gray-600 group-hover:text-blue-500 transition-colors duration-300">Administration</p>
+                <h2 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">NFDev21</h2>
+                <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300">Administration</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 transition-all duration-300 hover:scale-110 hover:rotate-90"
+              className="lg:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-800 dark:hover:to-gray-700 transition-all duration-300 hover:scale-110 hover:rotate-90"
             >
               <X className="w-5 h-5 transition-transform duration-300" />
             </button>
@@ -175,7 +175,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
                 group flex items-center justify-between p-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg
                 ${isActive(item.href)
                   ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg hover:shadow-xl animate-pulseGlow'
-                  : 'text-gray-700 hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 hover:text-gray-900'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-800 dark:hover:to-gray-700 hover:text-gray-900 dark:hover:text-white'
                 }
               `}
               style={{
@@ -187,7 +187,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
                 <item.icon className="w-5 h-5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                 <div>
                   <div className="font-medium group-hover:translate-x-1 transition-transform duration-300">{item.name}</div>
-                  <div className={`text-xs transition-colors duration-300 ${isActive(item.href) ? 'text-blue-100' : 'text-gray-500 group-hover:text-gray-700'}`}>
+                  <div className={`text-xs transition-colors duration-300 ${isActive(item.href) ? 'text-blue-100' : 'text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300'}`}>
                     {item.description}
                   </div>
                 </div>
@@ -223,15 +223,15 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
         </nav>
 
         {/* Footer de la sidebar */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
+        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-800">
           <Link
             href="/"
-            className="group flex items-center space-x-3 p-3 text-gray-700 bg-gray-50 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-md"
+            className="group flex items-center space-x-3 p-3 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:text-blue-700 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-md"
           >
             <Home className="w-5 h-5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
             <div>
               <div className="font-medium group-hover:translate-x-1 transition-transform duration-300">Retour au site</div>
-              <div className="text-xs text-gray-500 group-hover:text-blue-500 transition-colors duration-300">Voir le portfolio public</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300">Voir le portfolio public</div>
             </div>
           </Link>
         </div>
