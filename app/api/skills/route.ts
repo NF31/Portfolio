@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
     await connectDB();
 
     const body = await request.json();
-    const { name, description, icon, category, level, isActive, order } = body;
+    const { name, description, icon, iconType, category, level, isActive, order } = body;
 
     // Validation
     if (!name?.trim()) {
@@ -90,11 +90,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Pour les SVG personnalisés, on ne doit pas trim car cela peut casser le SVG
+    const iconValue = iconType === 'custom-svg' ? icon : icon.trim();
+
     // Création de la compétence
     const skill = await Skill.create({
       name: name.trim(),
       description: description.trim(),
-      icon: icon.trim(),
+      icon: iconValue,
+      iconType: iconType || 'lucide',
       category: category || 'other',
       level: level || 'intermediate',
       isActive: isActive !== undefined ? isActive : true,

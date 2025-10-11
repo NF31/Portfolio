@@ -29,13 +29,6 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
   isLoading,
   onDelete
 }) => {
-  // Debug pour voir les données reçues
-  console.log('📊 SkillsTable - skills reçues:', skills);
-  if (skills && skills.length > 0) {
-    console.log('📊 SkillsTable - première compétence:', skills[0]);
-    console.log('📊 SkillsTable - iconType de la première:', skills[0].iconType);
-    console.log('📊 SkillsTable - icon de la première:', skills[0].icon);
-  }
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('fr-FR', {
       year: 'numeric',
