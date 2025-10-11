@@ -64,19 +64,19 @@ const AdminNavbar = () => {
   const pathname = usePathname();
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
-    { name: 'Projets', href: '/projects', icon: Briefcase },
-    { name: 'Services', href: '/services', icon: Settings },
-    { name: 'Compétences', href: '/skills', icon: Target },
-    { name: 'Formation', href: '/education', icon: GraduationCap },
+    { name: 'Dashboard', href: '/admin-dashboard', icon: BarChart3 },
+    { name: 'Projets', href: '/admin-projects', icon: Briefcase },
+    { name: 'Services', href: '/admin-services', icon: Settings },
+    { name: 'Compétences', href: '/admin-skills', icon: Target },
+    { name: 'Formation', href: '/admin-education', icon: GraduationCap },
     { name: 'Blog', href: '/blog', icon: FileText },
     { name: 'Messages', href: '/messages', icon: MessageSquare },
-    { name: 'Images', href: '/images', icon: ImageIcon },
+    { name: 'Images', href: '/admin-images', icon: ImageIcon },
   ];
 
   const isActive = (href: string) => {
-    if (href === '/dashboard') {
-      return pathname === '/dashboard';
+    if (href === '/admin-dashboard') {
+      return pathname === '/admin-dashboard';
     }
     return pathname.startsWith(href);
   };
