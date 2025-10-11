@@ -4,8 +4,7 @@ import Project from '@/models/Project';
 import Service from '@/models/Service';
 import Skill from '@/models/Skill';
 import Image from '@/models/Image';
-// TODO: Importer le modèle Message quand il sera créé
-// import Message from '@/models/Message';
+import Message from '@/models/Message';
 
 export async function GET() {
   try {
@@ -50,9 +49,11 @@ export async function GET() {
       }
     });
 
-    // TODO: Récupérer les vraies statistiques quand le modèle Message sera créé
-    const totalMessages = 0; // await Message.countDocuments();
-    const unreadMessages = 0; // await Message.countDocuments({ isRead: false });
+    // Récupérer les statistiques des messages
+    const totalMessages = await Message.countDocuments();
+    const unreadMessages = await Message.countDocuments({ status: 'unread' });
+    
+    // TODO: Récupérer les vraies statistiques quand le modèle Blog sera créé
     const totalBlogPosts = 0; // await BlogPost.countDocuments();
 
     const stats = {
