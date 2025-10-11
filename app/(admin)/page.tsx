@@ -140,7 +140,7 @@ const AdminDashboard = () => {
           </div>
           <div className="mt-4">
             <Link 
-              href="/projects"
+              href="/admin-projects"
               className="text-blue-600 hover:text-blue-700 text-sm font-medium group-hover:translate-x-1 transition-transform duration-300 inline-block"
             >
               Voir tous les projets →
@@ -180,7 +180,7 @@ const AdminDashboard = () => {
           </div>
           <div className="mt-4">
             <Link 
-              href="/services"
+              href="/admin-services"
               className="text-purple-600 hover:text-purple-700 text-sm font-medium group-hover:translate-x-1 transition-transform duration-300 inline-block"
             >
               Gérer les services →
@@ -202,7 +202,7 @@ const AdminDashboard = () => {
           </div>
           <div className="mt-4">
             <Link 
-              href="/projects"
+              href="/admin-projects"
               className="text-orange-600 hover:text-orange-700 text-sm font-medium group-hover:translate-x-1 transition-transform duration-300 inline-block"
             >
               Voir tous les projets →
