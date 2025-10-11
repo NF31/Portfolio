@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '../../../lib/mongodb';
 import Project from '../../../models/Project';
+import Image from '../../../models/Image';
 import mongoose from 'mongoose';
 
 // POST /api/projects - Créer un nouveau projet
@@ -114,7 +115,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET /api/projects - Récupérer tous les projets
+// GET /api/projects - Récupérer tous les projets avec leurs images
 export async function GET() {
   try {
     console.log('🔗 Connexion à MongoDB pour récupérer les projets...');
@@ -124,33 +125,45 @@ export async function GET() {
     
     console.log('🔍 Recherche des projets dans la collection "projects"...');
     const projects = await Project.find()
-      // .populate('createdBy', 'name email') // TODO: Décommenter quand le modèle User sera créé
       .sort({ createdAt: -1 })
       .lean();
     
     console.log(`📋 ${projects.length} projet(s) trouvé(s)`);
-    console.log('📄 Projets:', projects);
+    
+    // Récupérer les images pour chaque projet
+    const projectsWithImages = await Promise.all(
+      projects.map(async (project) => {
+        const images = await Image.find({ projectId: project._id })
+          .select('url alt')
+          .lean();
+        
+        return {
+          _id: project._id,
+          id: project._id,
+          title: project.title,
+          description: project.description,
+          technologies: project.technologies,
+          types: project.types || 'web',
+          link: project.link,
+          images: images.map(img => img.url), // Array d'URLs
+          createdAt: project.createdAt,
+          updatedAt: project.updatedAt,
+        };
+      })
+    );
+    
+    console.log('🖼️ Projets avec images:', projectsWithImages);
 
     return NextResponse.json({ 
-      projects: projects.map(project => ({
-        id: project._id,
-        title: project.title,
-        description: project.description,
-        technologies: project.technologies,
-        types: project.types || 'web', // Types (string ou array)
-        link: project.link,
-        images: project.images,
-        createdBy: project.createdBy,
-        createdAt: project.createdAt,
-        updatedAt: project.updatedAt,
-        isArchived: project.isArchived || false
-      }))
+      success: true,
+      data: projectsWithImages,
+      projects: projectsWithImages // Pour compatibilité
     });
 
   } catch (error) {
-    console.error('Erreur lors de la récupération des projets:', error);
+    console.error('❌ Erreur lors de la récupération des projets:', error);
     return NextResponse.json(
-      { error: 'Erreur interne du serveur' },
+      { success: false, error: 'Erreur interne du serveur' },
       { status: 500 }
     );
   }
