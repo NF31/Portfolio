@@ -103,7 +103,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
     },
     {
       name: 'Messages',
-      href: '/messages',
+      href: '/admin-messages',
       icon: MessageSquare,
       description: 'Messages reçus',
       badge: stats.messages.total.toString(),
