@@ -21,16 +21,16 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
   onLevelChange
 }) => {
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6">
+    <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
       <div className="flex items-center space-x-4">
-        <Filter className="w-5 h-5 text-gray-500" />
-        <h2 className="text-lg font-semibold text-gray-900">Filtres</h2>
+        <Filter className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Filtres</h2>
       </div>
 
       <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Recherche */}
         <div>
-          <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="search" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-white">
             Rechercher
           </label>
           <div className="relative">
@@ -42,15 +42,15 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
               id="search"
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Nom ou description..."
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
+              placeholder="Nom ou description..." className="placeholder-gray-400 dark:placeholder-gray-500"
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
             />
           </div>
         </div>
 
         {/* Catégorie */}
         <div>
-          <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-white">
             Catégorie
           </label>
           <div className="relative">
@@ -61,7 +61,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
               id="category"
               value={filterCategory}
               onChange={(e) => onCategoryChange(e.target.value)}
-              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
             >
               <option value="all">Toutes les catégories</option>
               <option value="frontend">Frontend</option>
@@ -76,7 +76,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
 
         {/* Niveau */}
         <div>
-          <label htmlFor="level" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="level" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-white">
             Niveau
           </label>
           <div className="relative">
@@ -87,7 +87,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
               id="level"
               value={filterLevel}
               onChange={(e) => onLevelChange(e.target.value)}
-              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
             >
               <option value="all">Tous les niveaux</option>
               <option value="beginner">Débutant</option>
@@ -107,7 +107,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
             onCategoryChange('all');
             onLevelChange('all');
           }}
-          className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+          className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 transition-colors dark:bg-gray-700 dark:text-white"
         >
           Réinitialiser
         </button>

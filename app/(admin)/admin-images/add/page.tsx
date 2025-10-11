@@ -87,14 +87,14 @@ export default function AddImagePage() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="bg-white rounded-lg shadow-lg p-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
             Ajouter une nouvelle image
           </h1>
 
       {/* Sélection du projet */}
           <div className="mb-6">
-            <label htmlFor="project" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="project" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
               Associer à un projet *
           </label>
           <select
@@ -108,7 +108,7 @@ export default function AddImagePage() {
                 setSelectedProjectId(projectId);
                 setSelectedProjectTitle(selectedProject?.title || '');
               }}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
               required
             >
               <option value="">Sélectionnez un projet</option>
@@ -122,7 +122,7 @@ export default function AddImagePage() {
 
           {/* Upload Cloudinary */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
               Image à uploader
             </label>
             {selectedProjectId ? (
@@ -140,7 +140,7 @@ export default function AddImagePage() {
                 />
               </div>
             ) : (
-              <div className="w-full h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
+              <div className="w-full h-32 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center">
                 <p className="text-gray-500">Veuillez sélectionner un projet pour uploader une image</p>
               </div>
             )}
@@ -164,7 +164,7 @@ export default function AddImagePage() {
           <div className="mt-6 flex justify-end">
           <button
               onClick={() => router.push('/admin-images')}
-              className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+              className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:text-gray-200 transition-colors"
           >
               Retour à la liste des images
           </button>

@@ -146,13 +146,13 @@ const ImagesPage = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Gestion des Images</h1>
-            <p className="text-gray-600">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 dark:text-white">Gestion des Images</h1>
+            <p className="text-gray-600 dark:text-gray-400">
               Gérez les images de votre portfolio
             </p>
           </div>
@@ -179,7 +179,7 @@ const ImagesPage = () => {
       />
 
       {/* Table */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 dark:bg-gray-800">
         <ImagesTable
           images={images}
           isLoading={loading}
@@ -188,7 +188,7 @@ const ImagesPage = () => {
         
         {/* Pagination */}
         {pagination.pages > 1 && (
-          <div className="px-6 py-4 border-t border-gray-200">
+          <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
             <Pagination
               currentPage={currentPage}
               totalPages={pagination.pages}

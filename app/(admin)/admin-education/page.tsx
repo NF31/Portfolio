@@ -5,13 +5,13 @@ import { GraduationCap, Plus, BookOpen, Award, Calendar } from 'lucide-react';
 
 const EducationPage = () => {
   return (
-    <div className="space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Formation & Certifications</h1>
-            <p className="text-gray-600">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 dark:text-white">Formation & Certifications</h1>
+            <p className="text-gray-600 dark:text-gray-400">
               Gérez vos formations, certifications et parcours éducatif
             </p>
           </div>
@@ -23,13 +23,13 @@ const EducationPage = () => {
       </div>
 
       {/* Contenu temporaire */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
         <div className="text-center py-12">
           <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <GraduationCap className="w-8 h-8 text-blue-600" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">Section Formation en développement</h3>
-          <p className="text-gray-600 mb-6">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Section Formation en développement</h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
             Cette section permettra de gérer vos formations, certifications et parcours éducatif.
             <br />
             <span className="text-sm text-gray-500">
@@ -59,10 +59,7 @@ const EducationPage = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  );
+        </div>);
 };
 
 export default EducationPage;

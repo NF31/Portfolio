@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import AdminNavbar from './components/AdminNavbar';
 import AdminSidebar from './components/AdminSidebar';
-import AdminFooter from './components/AdminFooter';
 import { StatsProvider } from './contexts/StatsContext';
 
 // Styles CSS pour les animations globales
@@ -65,7 +64,7 @@ export default function AdminLayout({
   return (
     <StatsProvider>
       <style dangerouslySetInnerHTML={{ __html: layoutStyles }} />
-      <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 transition-all duration-1000 ${
+      <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-950 dark:via-gray-900 dark:to-indigo-950 transition-all duration-1000 ${
         isLoaded ? 'opacity-100' : 'opacity-0'
       }`}>
         {/* Navbar */}
@@ -87,11 +86,6 @@ export default function AdminLayout({
             <main className={`min-h-screen transition-all duration-700 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               {children}
             </main>
-            
-            {/* Footer */}
-            <div className={`transition-all duration-700 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              <AdminFooter />
-            </div>
           </div>
         </div>
       </div>
