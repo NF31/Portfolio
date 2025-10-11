@@ -6,6 +6,7 @@ import { ArrowLeft, Save, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { useStatsActions } from '../../hooks/useStatsActions';
+import SkillIcon from '@/app/components/SkillIcon';
 
 interface SkillFormData {
   name: string;
@@ -231,18 +232,31 @@ const AddSkillPage = () => {
           {/* Icône */}
           <div>
             <label htmlFor="icon" className="block text-sm font-medium text-gray-700 mb-2">
-              Icône *
+              {formData.iconType === 'custom-svg' ? 'Code SVG *' : 'Icône *'}
             </label>
-            <input
-              type="text"
-              id="icon"
-              name="icon"
-              value={formData.icon}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder={getIconPlaceholder()}
-              required
-            />
+            {formData.iconType === 'custom-svg' ? (
+              <textarea
+                id="icon"
+                name="icon"
+                value={formData.icon}
+                onChange={handleInputChange}
+                rows={6}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+                placeholder={getIconPlaceholder()}
+                required
+              />
+            ) : (
+              <input
+                type="text"
+                id="icon"
+                name="icon"
+                value={formData.icon}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder={getIconPlaceholder()}
+                required
+              />
+            )}
             <p className="text-sm text-gray-500 mt-1">
               {getIconHelp()}
             </p>
@@ -322,6 +336,26 @@ const AddSkillPage = () => {
               Compétence active (visible sur le portfolio)
             </label>
           </div>
+
+          {/* Aperçu de l'icône */}
+          {formData.icon && (
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+              <h3 className="text-sm font-medium text-gray-700 mb-3">Aperçu de l'icône</h3>
+              <div className="flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <SkillIcon 
+                    icon={formData.icon} 
+                    iconType={formData.iconType} 
+                    name={formData.name}
+                    className="w-10 h-10 text-white"
+                  />
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 text-center mt-3">
+                L'icône sera affichée avec un fond dégradé bleu
+              </p>
+            </div>
+          )}
 
           {/* Actions */}
           <div className="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200">
