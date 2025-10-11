@@ -69,17 +69,17 @@ const ProjectsSection = () => {
   }
 
   return (
-    <section id="projets" className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section id="projets" className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute top-10 right-10 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Mes Dernières Réalisations
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Découvrez une sélection de projets sur lesquels j'ai travaillé récemment
           </p>
         </div>
@@ -89,14 +89,14 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div
               key={project._id}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
+              className="group relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
               style={{
                 animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`,
                 opacity: 0
               }}
             >
               {/* Image du projet */}
-              <div className="relative h-80 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100">
+              <div className="relative h-80 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-blue-900/30 dark:via-indigo-900/30 dark:to-purple-900/30">
                 {project.images && project.images.length > 0 ? (
                   <>
                     <Image
@@ -127,7 +127,7 @@ const ProjectsSection = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 shadow-2xl"
+                      className="flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 shadow-2xl"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <Globe className="w-5 h-5 mr-2" />
@@ -159,7 +159,7 @@ const ProjectsSection = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-shrink-0 flex items-center justify-center w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white hover:scale-110 transition-all shadow-xl group/link"
+                        className="flex-shrink-0 flex items-center justify-center w-12 h-12 bg-white/90 dark:bg-gray-700/90 backdrop-blur-sm rounded-full hover:bg-white dark:hover:bg-gray-600 hover:scale-110 transition-all shadow-xl group/link"
                         onClick={(e) => e.stopPropagation()}
                         title="Visiter le site"
                       >
@@ -171,15 +171,15 @@ const ProjectsSection = () => {
               </div>
 
               {/* Contenu - Technologies et lien */}
-              <div className="p-6 bg-white">
+              <div className="p-6 bg-white dark:bg-gray-800">
                 {/* Technologies avec design amélioré */}
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-sm font-bold text-gray-700 uppercase tracking-wide flex items-center">
+                    <h4 className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide flex items-center">
                       <span className="w-2 h-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mr-2 animate-pulse"></span>
                       Technologies
                     </h4>
-                    <span className="text-xs text-gray-500 font-medium">
+                    <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">
                       {project.technologies.length} stack{project.technologies.length > 1 ? 's' : ''}
                     </span>
                   </div>
@@ -188,11 +188,11 @@ const ProjectsSection = () => {
                     {project.technologies.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="group/tech relative px-3 py-2 bg-gradient-to-br from-gray-50 to-blue-50 text-gray-800 text-xs font-semibold rounded-lg border border-gray-200 hover:border-blue-400 hover:shadow-lg transition-all duration-300 cursor-default overflow-hidden"
+                        className="group/tech relative px-3 py-2 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-700 dark:to-blue-900/30 text-gray-800 dark:text-gray-200 text-xs font-semibold rounded-lg border border-gray-200 dark:border-gray-600 hover:border-blue-400 hover:shadow-lg transition-all duration-300 cursor-default overflow-hidden"
                       >
                         <span className="relative z-10">{tech}</span>
                         {/* Effet de brillance */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200/30 to-transparent transform -translate-x-full group-hover/tech:translate-x-full transition-transform duration-700"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-200/30 dark:via-blue-500/20 to-transparent transform -translate-x-full group-hover/tech:translate-x-full transition-transform duration-700"></div>
                       </span>
                     ))}
                   </div>
