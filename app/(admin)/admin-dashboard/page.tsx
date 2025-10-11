@@ -143,7 +143,7 @@ const AdminDashboard = () => {
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
-          <p className="text-gray-600">Chargement du dashboard...</p>
+          <p className="text-gray-600 dark:text-gray-400">Chargement du dashboard...</p>
         </div>
       </div>
     );
@@ -152,13 +152,13 @@ const AdminDashboard = () => {
   return (
     <div className="p-6 space-y-8">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8 hover:shadow-xl transition-all duration-500 hover:scale-[1.02] group">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8 hover:shadow-xl transition-all duration-500 hover:scale-[1.02] group dark:bg-gray-800">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2 dark:text-white">
               Bienvenue dans l&apos;administration
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               Gérez votre portfolio et vos contenus en toute simplicité
             </p>
           </div>
@@ -167,7 +167,7 @@ const AdminDashboard = () => {
             <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-900 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <RefreshCw className={`w-4 h-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               {isRefreshing ? 'Actualisation...' : 'Actualiser'}
@@ -184,12 +184,12 @@ const AdminDashboard = () => {
       {/* Statistiques */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Projets */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 group">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 group dark:bg-gray-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 group-hover:text-blue-600 transition-colors duration-300">Projets totaux</p>
-              <p className="text-3xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">{stats.projects.total}</p>
-              <p className="text-xs text-gray-500 mt-1">{stats.projects.published} publiés</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-blue-600 transition-colors duration-300">Projets totaux</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-white group-hover:text-blue-700 transition-colors duration-300 dark:text-white">{stats.projects.total}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.projects.published} publiés</p>
             </div>
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-indigo-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
               <Briefcase className="w-6 h-6 text-blue-600 group-hover:text-white group-hover:animate-pulse" />
@@ -206,12 +206,12 @@ const AdminDashboard = () => {
         </div>
 
         {/* Compétences */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 group">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 group dark:bg-gray-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 group-hover:text-purple-600 transition-colors duration-300">Compétences</p>
-              <p className="text-3xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors duration-300">{stats.skills?.total || 0}</p>
-              <p className="text-xs text-gray-500 mt-1">{stats.skills?.active || 0} actives</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-purple-600 transition-colors duration-300">Compétences</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-white group-hover:text-purple-700 transition-colors duration-300 dark:text-white">{stats.skills?.total || 0}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.skills?.active || 0} actives</p>
             </div>
             <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-violet-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
               <Target className="w-6 h-6 text-purple-600 group-hover:text-white group-hover:animate-pulse" />
@@ -228,12 +228,12 @@ const AdminDashboard = () => {
         </div>
 
         {/* Images */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 group">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 group dark:bg-gray-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 group-hover:text-green-600 transition-colors duration-300">Images</p>
-              <p className="text-3xl font-bold text-gray-900 group-hover:text-green-700 transition-colors duration-300">{stats.images?.total || 0}</p>
-              <p className="text-xs text-gray-500 mt-1">{stats.images?.recent || 0} récentes</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-green-600 transition-colors duration-300">Images</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-white group-hover:text-green-700 transition-colors duration-300 dark:text-white">{stats.images?.total || 0}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.images?.recent || 0} récentes</p>
             </div>
             <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-green-500 group-hover:to-emerald-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
               <ImageIcon className="w-6 h-6 text-green-600 group-hover:text-white group-hover:animate-pulse" />
@@ -250,12 +250,12 @@ const AdminDashboard = () => {
         </div>
 
         {/* Messages */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 group">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 hover:shadow-xl hover:scale-105 transition-all duration-300 group dark:bg-gray-800">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600 group-hover:text-orange-600 transition-colors duration-300">Messages</p>
-              <p className="text-3xl font-bold text-gray-900 group-hover:text-orange-700 transition-colors duration-300">{stats.messages.total}</p>
-              <p className="text-xs text-gray-500 mt-1">{stats.messages.unread} non lus</p>
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-orange-600 transition-colors duration-300">Messages</p>
+              <p className="text-3xl font-bold text-gray-900 dark:text-white group-hover:text-orange-700 transition-colors duration-300 dark:text-white">{stats.messages.total}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.messages.unread} non lus</p>
             </div>
             <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-red-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
               <MessageSquare className="w-6 h-6 text-orange-600 group-hover:text-white group-hover:animate-pulse" />
@@ -273,8 +273,8 @@ const AdminDashboard = () => {
       </div>
 
       {/* Actions rapides */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Actions rapides</h2>
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8 dark:bg-gray-800">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Actions rapides</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {quickActions.map((action, index) => (
             <Link
@@ -287,10 +287,10 @@ const AdminDashboard = () => {
                   <action.icon className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-gray-700 dark:text-gray-300 transition-colors">
                     {action.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mt-1">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                     {action.description}
                   </p>
                 </div>
@@ -304,9 +304,9 @@ const AdminDashboard = () => {
       {/* Aperçu rapide */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Dernières compétences */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-900">Dernières compétences</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Dernières compétences</h2>
             <Link href="/admin-skills" className="text-sm text-purple-600 hover:text-purple-700 font-medium">
               Voir toutes →
             </Link>
@@ -348,8 +348,8 @@ const AdminDashboard = () => {
                       className="w-8 h-8"
                     />
                     <div className="flex-1">
-                      <p className="font-medium text-gray-900">{skill.name}</p>
-                      <p className="text-sm text-gray-600">{getCategoryLabel(skill.category)} • {getLevelLabel(skill.level)}</p>
+                      <p className="font-medium text-gray-900 dark:text-white">{skill.name}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{getCategoryLabel(skill.category)} • {getLevelLabel(skill.level)}</p>
                     </div>
                   </div>
                 );
@@ -363,9 +363,9 @@ const AdminDashboard = () => {
         </div>
 
         {/* Images récentes */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-900">Images récentes</h2>
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white">Images récentes</h2>
             <Link href="/admin-images" className="text-sm text-green-600 hover:text-green-700 font-medium">
               Voir toutes →
             </Link>
@@ -406,27 +406,24 @@ const AdminDashboard = () => {
       </div>
 
       {/* Activités récentes */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Activités récentes</h2>
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8 dark:bg-gray-800">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Activités récentes</h2>
         <div className="space-y-4">
           {recentActivities.map((activity, index) => (
-            <div key={index} className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-300 hover:scale-[1.02] group">
-              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
+            <div key={index} className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-xl hover:bg-gray-100 dark:bg-gray-800 transition-all duration-300 hover:scale-[1.02] group dark:bg-gray-700">
+              <div className="w-10 h-10 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
                 <activity.icon className={`w-5 h-5 ${activity.color} group-hover:animate-pulse`} />
               </div>
               <div className="flex-1">
-                <p className="font-medium text-gray-900 group-hover:text-gray-700 transition-colors">{activity.action}</p>
-                <p className="text-sm text-gray-600 group-hover:text-gray-500 transition-colors">{activity.item}</p>
+                <p className="font-medium text-gray-900 dark:text-white group-hover:text-gray-700 dark:text-gray-300 transition-colors">{activity.action}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-500 dark:text-gray-400 transition-colors">{activity.item}</p>
               </div>
-              <div className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">
+              <div className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-400 transition-colors">
                 {activity.time}
               </div>
             </div>
           ))}
-        </div>
-      </div>
-    </div>
-  );
+        </div>);
 };
 
 export default AdminDashboard;
