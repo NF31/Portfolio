@@ -1,4 +1,5 @@
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function ServicesLayout({
   children,
@@ -9,6 +10,7 @@ export default function ServicesLayout({
     <>
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 }
