@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +30,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-lg'
+          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -56,7 +57,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative px-4 py-2 text-gray-700 font-medium rounded-lg transition-all duration-300 hover:text-blue-600 group"
+                className="relative px-4 py-2 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 group"
               >
                 <span className="relative z-10">{item.name}</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
@@ -69,8 +70,8 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-4">
             {/* Dark Mode Toggle */}
             <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="relative p-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-all duration-300 group overflow-hidden"
+              onClick={toggleTheme}
+              className="relative p-3 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 group overflow-hidden"
               aria-label="Toggle dark mode"
             >
               <div className="relative z-10">
@@ -96,8 +97,8 @@ const Navbar = () => {
           <div className="flex lg:hidden items-center space-x-2">
             {/* Dark Mode Toggle Mobile */}
             <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="relative p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all duration-300 group"
+              onClick={toggleTheme}
+              className="relative p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 group"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? (
@@ -110,7 +111,7 @@ const Navbar = () => {
             {/* Menu Burger avec animation incroyable */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="relative p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-all duration-300 group"
+              className="relative p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 group"
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-6 flex items-center justify-center">
@@ -146,9 +147,9 @@ const Navbar = () => {
             : '-translate-y-4 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="mx-4 mt-2 mb-4 px-6 pt-4 pb-6 space-y-3 bg-white/95 backdrop-blur-xl shadow-2xl rounded-3xl border border-white/20 overflow-hidden">
+        <div className="mx-4 mt-2 mb-4 px-6 pt-4 pb-6 space-y-3 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl rounded-3xl border border-white/20 dark:border-gray-700/20 overflow-hidden">
           {/* Effet de brillance animé en arrière-plan */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-indigo-50 opacity-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-indigo-50 dark:from-blue-900/20 dark:via-transparent dark:to-indigo-900/20 opacity-50"></div>
           
           <div className="relative space-y-3">
             {navItems.map((item, index) => (
@@ -156,7 +157,7 @@ const Navbar = () => {
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="group relative block px-5 py-3 text-gray-700 font-medium rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-600 hover:pl-7 hover:shadow-md overflow-hidden"
+                className="group relative block px-5 py-3 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:text-blue-600 dark:hover:text-blue-400 hover:pl-7 hover:shadow-md overflow-hidden"
                 style={{
                   animation: isMenuOpen
                     ? `slideInBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) ${index * 0.1}s forwards`

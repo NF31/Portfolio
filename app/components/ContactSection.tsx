@@ -108,14 +108,14 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Travaillons ensemble
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Prêt à transformer vos idées en réalité ? Contactez-moi pour discuter de votre projet.
           </p>
         </div>
@@ -124,10 +124,10 @@ export default function ContactSection() {
           {/* Colonne gauche - Informations */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Parlons de votre projet
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
                 Je suis toujours intéressé par les projets ambitieux et innovants. Que vous ayez besoin 
                 d'un site web, d'une application ou d'une solution sur mesure, n'hésitez pas à me contacter 
                 pour discuter de vos besoins.
@@ -141,10 +141,10 @@ export default function ContactSection() {
                   <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Email</h4>
                   <a 
                     href="mailto:contact@nfdev21.com" 
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
+                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     contact@nfdev21.com
                   </a>
@@ -156,10 +156,10 @@ export default function ContactSection() {
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Téléphone</h4>
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Téléphone</h4>
                   <a 
                     href="tel:+33612345678" 
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
+                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
                     +33 6 12 34 56 78
                   </a>
@@ -171,17 +171,17 @@ export default function ContactSection() {
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Localisation</h4>
-                  <p className="text-gray-600">
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Localisation</h4>
+                  <p className="text-gray-600 dark:text-gray-400">
                     Paris, France<br />
-                    <span className="text-sm text-gray-500">(Disponible à distance)</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-500">(Disponible à distance)</span>
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Badge de disponibilité */}
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-700/50 rounded-xl p-4 flex items-center gap-3">
               <div className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
@@ -193,7 +193,7 @@ export default function ContactSection() {
 
             {/* Réseaux sociaux */}
             <div>
-              <h4 className="font-semibold text-gray-900 mb-4">Suivez-moi</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Suivez-moi</h4>
               <div className="flex items-center gap-3">
                 <a
                   href="https://github.com/votre-username"
@@ -227,7 +227,7 @@ export default function ContactSection() {
           </div>
 
           {/* Colonne droite - Formulaire */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Message de succès */}
               {success && (
@@ -250,7 +250,7 @@ export default function ContactSection() {
 
               {/* Nom */}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Nom complet <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -259,8 +259,8 @@ export default function ContactSection() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-white text-gray-900 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                    errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   }`}
                   placeholder="Votre nom"
                 />
@@ -274,7 +274,7 @@ export default function ContactSection() {
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -283,8 +283,8 @@ export default function ContactSection() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-3 bg-white text-gray-900 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                    errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   }`}
                   placeholder="votre@email.com"
                 />
@@ -298,7 +298,7 @@ export default function ContactSection() {
 
               {/* Téléphone */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Téléphone <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -308,8 +308,8 @@ export default function ContactSection() {
                   value={formData.phone}
                   onChange={handleChange}
                   maxLength={20}
-                  className={`w-full px-4 py-3 bg-white text-gray-900 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
-                    errors.phone ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                    errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   }`}
                   placeholder="+33 6 12 34 56 78"
                 />
@@ -323,7 +323,7 @@ export default function ContactSection() {
 
               {/* Sujet (optionnel) */}
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Sujet
                 </label>
                 <select
@@ -331,7 +331,7 @@ export default function ContactSection() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 >
                   <option value="">Sélectionnez un sujet</option>
                   <option value="Nouveau projet">Nouveau projet</option>
@@ -344,7 +344,7 @@ export default function ContactSection() {
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Message <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -354,8 +354,8 @@ export default function ContactSection() {
                   onChange={handleChange}
                   rows={5}
                   maxLength={1000}
-                  className={`w-full px-4 py-3 bg-white text-gray-900 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none ${
-                    errors.message ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none ${
+                    errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   }`}
                   placeholder="Décrivez votre projet ou posez votre question..."
                 />
@@ -366,9 +366,9 @@ export default function ContactSection() {
                       {errors.message}
                     </p>
                   ) : (
-                    <p className="text-sm text-gray-500">Minimum 20 caractères</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Minimum 20 caractères</p>
                   )}
-                  <p className="text-sm text-gray-500">{formData.message.length}/1000</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{formData.message.length}/1000</p>
                 </div>
               </div>
 
@@ -391,7 +391,7 @@ export default function ContactSection() {
                 )}
               </button>
 
-              <p className="text-xs text-gray-500 text-center">
+              <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
                 * Réponse garantie sous 24 heures
               </p>
             </form>

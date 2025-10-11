@@ -58,17 +58,17 @@ const ServicesSection = () => {
   }
 
   return (
-    <section id="services" className="py-20 bg-white relative overflow-hidden">
+    <section id="services" className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
       {/* Arrière-plan décoratif */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900"></div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* En-tête de section */}
         <div className="text-center mb-16 animate-fadeInUp">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Mes Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Des solutions digitales sur mesure pour donner vie à vos projets, de la conception à la mise en production.
           </p>
         </div>
@@ -78,17 +78,17 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service._id}
-              className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 hover:border-blue-500 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden"
+              className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden"
               style={{
                 animation: `fadeInUp 0.6s ease-out ${index * 0.1}s forwards`,
                 opacity: 0
               }}
             >
               {/* Backdrop blur au hover - Effet glassmorphism */}
-              <div className="absolute inset-0 bg-white/60 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-white/60 dark:bg-gray-700/60 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
               
               {/* Effet de brillance qui traverse */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 dark:via-blue-400/20 to-blue-500/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 rounded-2xl"></div>
               
               <div className="relative z-10">
                 {/* Icône avec animation */}
@@ -97,10 +97,10 @@ const ServicesSection = () => {
                 </div>
 
                 {/* Contenu */}
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-sm line-clamp-3">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm line-clamp-3">
                   {service.shortDescription}
                 </p>
 
