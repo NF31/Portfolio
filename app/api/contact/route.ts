@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import transporter from '@/lib/nodemailer';
 import validator from 'validator';
+import connectDB from '@/lib/mongodb';
+import Message from '@/models/Message';
 
 // Cache simple pour le rate limiting (en production, utilisez Redis)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -32,6 +34,9 @@ function sanitizeInput(input: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    // Connexion à la base de données
+    await connectDB();
+
     // Rate limiting basique
     const ip = request.headers.get('x-forwarded-for') || 'unknown';
     if (!checkRateLimit(ip)) {
@@ -158,7 +163,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Préparer le contenu de l'email
+    // 1️⃣ SAUVEGARDER LE MESSAGE EN BDD (prioritaire)
+    const newMessage = await Message.create({
+      name,
+      email,
+      phone,
+      message,
+      subject: subject || undefined,
+      budget: budget || undefined,
+      status: 'unread',
+      ip,
+      emailSent: false,
+    });
+
+    console.log('✅ Message sauvegardé en BDD:', newMessage._id);
+
+    // 2️⃣ ENVOYER L'EMAIL (secondaire)
+    let emailSuccess = false;
+    try {
+      // Préparer le contenu de l'email
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: process.env.GMAIL_USER, // Vous recevez l'email sur votre propre adresse
@@ -280,18 +303,35 @@ ${message}
       `,
     };
 
-    // Envoyer l'email
-    await transporter.sendMail(mailOptions);
+      // Envoyer l'email
+      await transporter.sendMail(mailOptions);
+      emailSuccess = true;
 
-    console.log('✅ Email envoyé avec succès à:', process.env.GMAIL_USER);
+      // Mettre à jour le message en BDD
+      await Message.findByIdAndUpdate(newMessage._id, {
+        emailSent: true,
+        emailSentAt: new Date(),
+      });
 
+      console.log('✅ Email envoyé avec succès à:', process.env.GMAIL_USER);
+
+    } catch (emailError) {
+      console.error('⚠️ Erreur lors de l\'envoi de l\'email:', emailError);
+      // L'email a échoué mais le message est en BDD
+      emailSuccess = false;
+    }
+
+    // ✅ TOUJOURS RETOURNER UN SUCCÈS (message en BDD)
     return NextResponse.json({
       success: true,
-      message: 'Message envoyé avec succès ! Je vous répondrai sous 24h.',
+      message: emailSuccess 
+        ? 'Message envoyé avec succès ! Je vous répondrai sous 24h.'
+        : 'Message reçu ! Je vous répondrai rapidement par email.',
+      emailSent: emailSuccess,
     });
 
   } catch (error) {
-    console.error('❌ Erreur lors de l\'envoi de l\'email:', error);
+    console.error('❌ Erreur lors du traitement du message:', error);
     return NextResponse.json(
       { 
         success: false, 
