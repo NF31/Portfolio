@@ -12,18 +12,24 @@ interface SkillIconProps {
 
 const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className = 'w-8 h-8' }) => {
   
-  // Debug pour voir les valeurs reçues
-  console.log('🎨 SkillIcon - iconType:', iconType);
-  console.log('🎨 SkillIcon - icon:', icon);
-  console.log('🎨 SkillIcon - name:', name);
-  
   // Générer l'URL CDN pour Simple Icons
   const getSimpleIconUrl = (iconName: string) => {
     return `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/${iconName}.svg`;
   };
 
+  // Préparer un SVG pour l'affichage en ajoutant fill="currentColor" si nécessaire
+  const prepareSvg = (svgString: string): string => {
+    const trimmedSvg = svgString.trim();
+    
+    // Si le SVG n'a pas d'attribut fill, on ajoute fill="currentColor" pour hériter de la couleur parente
+    if (!trimmedSvg.includes('fill=')) {
+      return trimmedSvg.replace('<svg', '<svg fill="currentColor"');
+    }
+    
+    return trimmedSvg;
+  };
+
   const renderIcon = () => {
-    console.log('🎨 RenderIcon - Traitement iconType:', iconType);
     
     // Détection automatique : si iconType est "lucide" mais que icon contient un SVG complet
     const isSvgContent = icon && icon.trim().startsWith('<svg');
@@ -32,11 +38,11 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
       case 'lucide':
         // Si c'est un SVG complet, on le traite comme custom-svg
         if (isSvgContent) {
-          console.log('🎨 SVG détecté dans lucide, conversion vers custom-svg');
+          const preparedSvg = prepareSvg(icon);
           return (
             <div 
-              className={`${className} flex items-center justify-center`}
-              dangerouslySetInnerHTML={{ __html: icon }}
+              className={`${className} flex items-center justify-center [&>svg]:w-full [&>svg]:h-full`}
+              dangerouslySetInnerHTML={{ __html: preparedSvg }}
             />
           );
         }
@@ -46,7 +52,6 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
         if (IconComponent) {
           return <IconComponent className={className} />;
         }
-        console.log('❌ Lucide icon not found:', icon);
         break;
 
       case 'simple-icons':
@@ -64,11 +69,12 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
         );
 
       case 'custom-svg':
-        console.log('🎨 Rendering custom SVG:', icon);
+        // Nettoyer et préparer le SVG
+        const preparedSvg = prepareSvg(icon);
         return (
           <div 
-            className={`${className} flex items-center justify-center`}
-            dangerouslySetInnerHTML={{ __html: icon }}
+            className={`${className} flex items-center justify-center [&>svg]:w-full [&>svg]:h-full`}
+            dangerouslySetInnerHTML={{ __html: preparedSvg }}
           />
         );
 
@@ -87,7 +93,6 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
         );
 
       default:
-        console.log('❌ Unknown iconType:', iconType);
         break;
     }
 

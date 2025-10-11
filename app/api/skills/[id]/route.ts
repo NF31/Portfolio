@@ -78,13 +78,16 @@ export async function PUT(
       );
     }
 
+    // Pour les SVG personnalisés, on ne doit pas trim car cela peut casser le SVG
+    const iconValue = iconType === 'custom-svg' ? icon : icon.trim();
+
     // Mettre à jour la compétence
     const updatedSkill = await Skill.findByIdAndUpdate(
       skillId,
       {
         name: name.trim(),
         description: description.trim(),
-        icon: icon.trim(),
+        icon: iconValue,
         iconType: iconType || 'lucide',
         category: category || 'other',
         level: level || 'intermediate',
