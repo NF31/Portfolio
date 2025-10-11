@@ -62,15 +62,15 @@ const AddProjectPage = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
             </svg>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Nouveau Projet
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Créez un nouveau projet pour votre portfolio avec toutes les informations nécessaires
           </p>
         </div>
         
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 overflow-hidden dark:bg-gray-800">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-6">
             <h2 className="text-2xl font-semibold text-white">Informations du projet</h2>
             <p className="text-blue-100 mt-1">Remplissez les détails de votre nouveau projet</p>

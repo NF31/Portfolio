@@ -195,20 +195,20 @@ const AddServicePage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Link
               href="/admin-services"
-              className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+              className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:text-white hover:bg-gray-100 dark:bg-gray-800 rounded-lg transition-colors dark:bg-gray-700"
             >
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Nouveau Service</h1>
-              <p className="text-gray-600 mt-1">
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Nouveau Service</h1>
+              <p className="text-gray-600 dark:text-gray-400 mt-1">
                 Créez un nouveau service pour votre portfolio
               </p>
             </div>
@@ -217,7 +217,7 @@ const AddServicePage = () => {
       </div>
 
       {/* Formulaire */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8 dark:bg-gray-800">
         {/* Affichage des erreurs */}
         {errors.length > 0 && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -238,13 +238,13 @@ const AddServicePage = () => {
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Informations de base */}
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-2">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
               Informations de base
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                   Titre du service *
                 </label>
                 <input
@@ -254,13 +254,13 @@ const AddServicePage = () => {
                   value={formData.title}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
-                  placeholder="Ex: Développement Web"
+                  className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
+                  placeholder="Ex: Développement Web" className="placeholder-gray-400 dark:placeholder-gray-500"
                 />
               </div>
 
               <div>
-                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                   Catégorie *
                 </label>
                 <select
@@ -269,7 +269,7 @@ const AddServicePage = () => {
                   value={formData.category}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                 >
                   {serviceCategories.map(category => (
                     <option key={category.value} value={category.value}>
@@ -281,7 +281,7 @@ const AddServicePage = () => {
             </div>
 
             <div>
-              <label htmlFor="shortDescription" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="shortDescription" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                 Description courte *
               </label>
               <input
@@ -292,16 +292,16 @@ const AddServicePage = () => {
                 onChange={handleInputChange}
                 required
                 maxLength={200}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
-                placeholder="Une phrase qui décrit votre service"
+                className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
+                placeholder="Une phrase qui décrit votre service" className="placeholder-gray-400 dark:placeholder-gray-500"
               />
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                 {formData.shortDescription.length}/200 caractères
               </p>
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                 Description complète *
               </label>
               <textarea
@@ -311,20 +311,20 @@ const AddServicePage = () => {
                 onChange={handleInputChange}
                 required
                 rows={4}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
-                placeholder="Description détaillée de votre service..."
+                className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
+                placeholder="Description détaillée de votre service..." className="placeholder-gray-400 dark:placeholder-gray-500"
               />
             </div>
           </div>
 
           {/* Icône et apparence */}
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-2">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
               Icône et apparence
             </h2>
             
             <div>
-              <label htmlFor="icon" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="icon" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                 Icône *
               </label>
               <div className="grid grid-cols-6 gap-2">
@@ -338,7 +338,7 @@ const AddServicePage = () => {
                       className={`p-3 border-2 rounded-lg transition-all ${
                         formData.icon === iconName
                           ? 'border-blue-500 bg-blue-50 text-blue-700'
-                          : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
+                          : 'border-gray-300 dark:border-gray-600 bg-white text-gray-700 hover:border-gray-400'
                       }`}
                       title={iconName}
                     >
@@ -347,7 +347,7 @@ const AddServicePage = () => {
                   );
                 })}
               </div>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                 Icône sélectionnée : {formData.icon}
               </p>
             </div>
@@ -355,7 +355,7 @@ const AddServicePage = () => {
 
           {/* Fonctionnalités */}
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-2">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
               Fonctionnalités
             </h2>
             
@@ -366,8 +366,8 @@ const AddServicePage = () => {
                     type="text"
                     value={feature}
                     onChange={(e) => handleFeatureChange(index, e.target.value)}
-                    placeholder="Fonctionnalité du service"
-                    className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
+                    placeholder="Fonctionnalité du service" className="placeholder-gray-400 dark:placeholder-gray-500"
+                    className="flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
                   />
                   {formData.features.length > 1 && (
                     <button
@@ -392,7 +392,7 @@ const AddServicePage = () => {
 
           {/* Technologies */}
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-2">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
               Technologies
             </h2>
             
@@ -403,8 +403,8 @@ const AddServicePage = () => {
                     type="text"
                     value={tech}
                     onChange={(e) => handleTechnologyChange(index, e.target.value)}
-                    placeholder="Technologie utilisée"
-                    className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
+                    placeholder="Technologie utilisée" className="placeholder-gray-400 dark:placeholder-gray-500"
+                    className="flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
                   />
                   {formData.technologies.length > 1 && (
                     <button
@@ -429,13 +429,13 @@ const AddServicePage = () => {
 
           {/* Prix et délais */}
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-2">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
               Prix et délais
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <label htmlFor="price.type" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="price.type" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                   Type de prix
                 </label>
                 <select
@@ -443,7 +443,7 @@ const AddServicePage = () => {
                   name="price.type"
                   value={formData.price.type}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                 >
                   <option value="project">Sur devis</option>
                   <option value="fixed">Prix fixe</option>
@@ -453,7 +453,7 @@ const AddServicePage = () => {
 
               {formData.price.type !== 'project' && (
                 <div>
-                  <label htmlFor="price.amount" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="price.amount" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                     Montant
                   </label>
                   <input
@@ -464,14 +464,14 @@ const AddServicePage = () => {
                     onChange={handleInputChange}
                     min="0"
                     step="0.01"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
-                    placeholder="0"
+                    className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
+                    placeholder="0" className="placeholder-gray-400 dark:placeholder-gray-500"
                   />
                 </div>
               )}
 
               <div>
-                <label htmlFor="deliveryTime" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="deliveryTime" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                   Délai de livraison
                 </label>
                 <input
@@ -480,8 +480,8 @@ const AddServicePage = () => {
                   name="deliveryTime"
                   value={formData.deliveryTime}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500"
-                  placeholder="Ex: 2-4 semaines"
+                  className="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
+                  placeholder="Ex: 2-4 semaines" className="placeholder-gray-400 dark:placeholder-gray-500"
                 />
               </div>
             </div>
@@ -489,7 +489,7 @@ const AddServicePage = () => {
 
           {/* Options */}
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-gray-900 border-b border-gray-200 pb-2">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
               Options
             </h2>
             
@@ -501,9 +501,9 @@ const AddServicePage = () => {
                   name="isActive"
                   checked={formData.isActive}
                   onChange={handleInputChange}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded"
                 />
-                <label htmlFor="isActive" className="ml-2 block text-sm text-gray-900">
+                <label htmlFor="isActive" className="ml-2 block text-sm text-gray-900 dark:text-white">
                   Service actif (visible sur le site)
                 </label>
               </div>
@@ -515,9 +515,9 @@ const AddServicePage = () => {
                   name="isFeatured"
                   checked={formData.isFeatured}
                   onChange={handleInputChange}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded"
                 />
-                <label htmlFor="isFeatured" className="ml-2 block text-sm text-gray-900">
+                <label htmlFor="isFeatured" className="ml-2 block text-sm text-gray-900 dark:text-white">
                   Service mis en avant (avec étoile)
                 </label>
               </div>
@@ -525,10 +525,10 @@ const AddServicePage = () => {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200">
+          <div className="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-700">
             <Link
               href="/admin-services"
-              className="px-6 py-3 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+              className="px-6 py-3 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded-lg hover:bg-gray-200 transition-colors font-medium dark:bg-gray-700"
             >
               Annuler
             </Link>

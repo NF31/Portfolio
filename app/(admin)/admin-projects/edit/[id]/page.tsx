@@ -188,10 +188,10 @@ const EditProjectPage = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-950 dark:via-gray-900 dark:to-indigo-950 flex items-center justify-center">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-          <p className="mt-4 text-gray-600">Chargement du projet...</p>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Chargement du projet...</p>
         </div>
       </div>
     );
@@ -199,15 +199,15 @@ const EditProjectPage = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-950 dark:via-gray-900 dark:to-indigo-950 flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">Projet non trouvé</h3>
-          <p className="text-gray-600 mb-6">Le projet que vous cherchez n'existe pas ou a été supprimé.</p>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Projet non trouvé</h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">Le projet que vous cherchez n'existe pas ou a été supprimé.</p>
           <button
             onClick={() => router.push('/projects')}
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
@@ -229,16 +229,16 @@ const EditProjectPage = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                 Modifier le Projet
               </h1>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 Modifiez les informations de votre projet
               </p>
             </div>
             <button
               onClick={() => router.push('/projects')}
-              className="inline-flex items-center gap-2 px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-900 transition-all duration-200"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -249,7 +249,7 @@ const EditProjectPage = () => {
         </div>
 
         {/* Formulaire */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8 dark:bg-gray-800">
           {/* Message d'erreur */}
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -265,10 +265,10 @@ const EditProjectPage = () => {
           )}
 
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
             {/* Titre */}
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                 Titre du projet *
               </label>
               <input
@@ -277,15 +277,15 @@ const EditProjectPage = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
-                placeholder="Entrez le titre du projet"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
+                placeholder="Entrez le titre du projet" className="placeholder-gray-400 dark:placeholder-gray-500"
                 required
               />
             </div>
 
             {/* Description */}
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                 Description *
               </label>
               <textarea
@@ -294,15 +294,15 @@ const EditProjectPage = () => {
                 value={formData.description}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
-                placeholder="Décrivez votre projet en détail"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
+                placeholder="Décrivez votre projet en détail" className="placeholder-gray-400 dark:placeholder-gray-500"
                 required
               />
             </div>
 
             {/* Types de projet */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                 Types de projet *
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -312,14 +312,14 @@ const EditProjectPage = () => {
                     className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition-all ${
                       (Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)
                         ? 'border-blue-500 bg-blue-50 text-blue-700'
-                        : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
+                        : 'border-gray-300 dark:border-gray-600 bg-white text-gray-700 hover:border-gray-400'
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={(Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)}
                       onChange={() => handleTypeChange(type.value)}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-3"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded mr-3"
                     />
                     <span className="text-sm font-medium">{type.label}</span>
                   </label>
@@ -329,7 +329,7 @@ const EditProjectPage = () => {
 
             {/* Technologies */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                 Technologies *
               </label>
               <div className="flex gap-2 mb-3">
@@ -338,8 +338,8 @@ const EditProjectPage = () => {
                   value={newTech}
                   onChange={(e) => setNewTech(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTechnology())}
-                  className="flex-1 px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
-                  placeholder="Ajouter une technologie"
+                  className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
+                  placeholder="Ajouter une technologie" className="placeholder-gray-400 dark:placeholder-gray-500"
                 />
                 <button
                   type="button"
@@ -372,7 +372,7 @@ const EditProjectPage = () => {
 
             {/* Lien du projet */}
             <div>
-              <label htmlFor="link" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="link" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
                 Lien du projet (optionnel)
               </label>
               <input
@@ -381,20 +381,20 @@ const EditProjectPage = () => {
                 name="link"
                 value={formData.link}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-500"
-                placeholder="https://exemple.com"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
+                placeholder="https://exemple.com" className="placeholder-gray-400 dark:placeholder-gray-500"
               />
             </div>
 
             {/* Statut d'archivage */}
-            <div className="flex items-center p-4 bg-gray-50 rounded-lg">
+            <div className="flex items-center p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
               <input
                 type="checkbox"
                 id="isArchived"
                 name="isArchived"
                 checked={formData.isArchived}
                 onChange={handleInputChange}
-                className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-2 border-gray-300 rounded"
+                className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-2 border-gray-300 dark:border-gray-600 rounded"
               />
               <label htmlFor="isArchived" className="ml-3 block text-sm font-medium text-gray-700">
                 Archiver ce projet
@@ -402,11 +402,11 @@ const EditProjectPage = () => {
             </div>
 
             {/* Boutons d'action */}
-            <div className="flex justify-end gap-4 pt-6 border-t border-gray-200">
+            <div className="flex justify-end gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
               <button
                 type="button"
                 onClick={() => router.push('/projects')}
-                className="px-6 py-3 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200"
+                className="px-6 py-3 text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-900 transition-all duration-200"
               >
                 Annuler
               </button>

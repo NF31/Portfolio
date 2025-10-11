@@ -8,13 +8,10 @@ import {
   Trash2, 
   Phone, 
   Calendar,
-  TrendingUp,
   Loader2,
-  ExternalLink,
   AlertCircle,
   Reply
 } from 'lucide-react';
-import Link from 'next/link';
 
 interface Message {
   _id: string;
@@ -44,11 +41,11 @@ export default function AdminMessagesPage() {
   const [stats, setStats] = useState<Stats>({ unread: 0, read: 0, processed: 0, total: 0 });
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<'all' | 'unread' | 'read' | 'processed'>('all');
-  const [expandedMessage, setExpandedMessage] = useState<string | null>(null);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
   useEffect(() => {
     fetchMessages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeFilter]);
 
   const fetchMessages = async () => {
@@ -153,21 +150,21 @@ export default function AdminMessagesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Messages de contact</h1>
-          <p className="text-gray-600">Gérez les messages reçus depuis votre portfolio</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Messages de contact</h1>
+          <p className="text-gray-600 dark:text-gray-400">Gérez les messages reçus depuis votre portfolio</p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">{stats.total}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{stats.total}</p>
               </div>
               <div className="bg-blue-100 p-3 rounded-lg">
                 <Mail className="w-6 h-6 text-blue-600" />
@@ -175,10 +172,10 @@ export default function AdminMessagesPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Non lus</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Non lus</p>
                 <p className="text-2xl font-bold text-blue-600 mt-1">{stats.unread}</p>
               </div>
               <div className="bg-blue-100 p-3 rounded-lg">
@@ -187,10 +184,10 @@ export default function AdminMessagesPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Lus</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Lus</p>
                 <p className="text-2xl font-bold text-yellow-600 mt-1">{stats.read}</p>
               </div>
               <div className="bg-yellow-100 p-3 rounded-lg">
@@ -199,10 +196,10 @@ export default function AdminMessagesPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Traités</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Traités</p>
                 <p className="text-2xl font-bold text-green-600 mt-1">{stats.processed}</p>
               </div>
               <div className="bg-green-100 p-3 rounded-lg">
@@ -213,7 +210,7 @@ export default function AdminMessagesPage() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-xl shadow-sm p-4 mb-6 border border-gray-200">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 mb-6 border border-gray-200 dark:border-gray-700">
           <div className="flex flex-wrap gap-2">
             {[
               { key: 'all', label: 'Tous', count: stats.total },
@@ -227,7 +224,7 @@ export default function AdminMessagesPage() {
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   activeFilter === filter.key
                     ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
                 {filter.label} ({filter.count})
@@ -242,17 +239,17 @@ export default function AdminMessagesPage() {
             <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
           </div>
         ) : messages.length === 0 ? (
-          <div className="bg-white rounded-xl shadow-sm p-12 text-center border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-12 text-center border border-gray-200 dark:border-gray-700">
             <Mail className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Aucun message</h3>
-            <p className="text-gray-600">Aucun message ne correspond à vos critères</p>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Aucun message</h3>
+            <p className="text-gray-600 dark:text-gray-400">Aucun message ne correspond à vos critères</p>
           </div>
         ) : (
           <div className="space-y-4">
             {messages.map((message) => (
               <div
                 key={message._id}
-                className={`bg-white rounded-xl shadow-sm border transition-all hover:shadow-md ${
+                className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm border dark:border-gray-700 transition-all hover:shadow-md ${
                   message.status === 'unread' 
                     ? 'border-blue-300 bg-blue-50/30' 
                     : 'border-gray-200'
@@ -263,7 +260,7 @@ export default function AdminMessagesPage() {
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900 truncate">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white truncate">
                           {message.name}
                         </h3>
                         {getStatusBadge(message.status)}
@@ -274,7 +271,7 @@ export default function AdminMessagesPage() {
                           </span>
                         )}
                       </div>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
                         <a 
                           href={`mailto:${message.email}`}
                           className="flex items-center gap-1 hover:text-blue-600 transition-colors"
@@ -340,7 +337,7 @@ export default function AdminMessagesPage() {
                   {(message.subject || message.budget) && (
                     <div className="flex flex-wrap gap-4 mb-4 text-sm">
                       {message.subject && (
-                        <div className="flex items-center gap-2 text-gray-600">
+                        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                           <span className="font-medium">Service:</span>
                           <span className="px-2 py-1 bg-indigo-100 text-indigo-800 rounded-md">
                             {message.subject}
@@ -348,7 +345,7 @@ export default function AdminMessagesPage() {
                         </div>
                       )}
                       {message.budget && (
-                        <div className="flex items-center gap-2 text-gray-600">
+                        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                           <span className="font-medium">Budget:</span>
                           <span className="px-2 py-1 bg-green-100 text-green-800 rounded-md">
                             {message.budget}
@@ -359,8 +356,8 @@ export default function AdminMessagesPage() {
                   )}
 
                   {/* Message */}
-                  <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                    <p className="text-gray-700 whitespace-pre-wrap">{message.message}</p>
+                  <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+                    <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap">{message.message}</p>
                   </div>
                 </div>
               </div>
