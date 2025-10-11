@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
@@ -68,28 +68,28 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
   const navigation = [
     {
       name: 'Dashboard',
-      href: '/',
+      href: '/admin-dashboard',
       icon: BarChart3,
       description: 'Vue d\'ensemble'
       // Pas de badge pour le dashboard
     },
     {
       name: 'Projets',
-      href: '/projects',
+      href: '/admin-projects',
       icon: Briefcase,
       description: 'Gérer les projets',
       badge: stats.projects.total.toString()
     },
     {
       name: 'Services',
-      href: '/services',
+      href: '/admin-services',
       icon: Settings,
       description: 'Services proposés',
       badge: stats.services.total.toString()
     },
     {
       name: 'Compétences',
-      href: '/skills',
+      href: '/admin-skills',
       icon: Target,
       description: 'Compétences techniques',
       badge: stats.skills.total.toString()
@@ -111,7 +111,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
     },
     {
       name: 'Images',
-      href: '/images',
+      href: '/admin-images',
       icon: ImageIcon,
       description: 'Gestion des médias',
       badge: stats.images.total.toString()
@@ -119,8 +119,8 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
   ];
 
   const isActive = (href: string) => {
-    if (href === '/') {
-      return pathname === '/';
+    if (href === '/admin-dashboard') {
+      return pathname === '/admin-dashboard';
     }
     return pathname.startsWith(href);
   };
