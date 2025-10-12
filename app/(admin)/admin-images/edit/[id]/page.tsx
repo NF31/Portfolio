@@ -155,7 +155,7 @@ const EditImagePage = () => {
           <X className="w-8 h-8 text-red-600" />
         </div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Image non trouvée</h1>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">L'image que vous cherchez à modifier n'existe pas.</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-6 mb-4 sm:mb-6">L'image que vous cherchez à modifier n'existe pas.</p>
         <Link
           href="/admin-images"
           className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -168,9 +168,9 @@ const EditImagePage = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-full sm:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 mb-6 dark:bg-gray-800">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 mb-6 dark:bg-gray-800 mb-4 sm:mb-6 p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Link
@@ -187,10 +187,10 @@ const EditImagePage = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4 sm:p-6">
         {/* Aperçu de l'image */}
         <div className="lg:col-span-1">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800 p-4 sm:p-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
               <ImageIcon className="w-5 h-5 mr-2 text-blue-600" />
               Aperçu de l'image
@@ -202,7 +202,7 @@ const EditImagePage = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">
               <p><strong>URL :</strong> <a href={image.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">{image.url}</a></p>
               <p><strong>Ajoutée le :</strong> {new Date(image.createdAt).toLocaleDateString('fr-FR')}</p>
               <p><strong>Projet actuel :</strong> {image.projectId?.title || 'Aucun projet'}</p>
@@ -210,7 +210,7 @@ const EditImagePage = () => {
 
             {/* Section de remplacement d'image */}
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">Remplacer l'image</h4>
+              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">Remplacer l'image</h4>
               <ImageReplacer
                 imageId={image._id}
                 currentImageUrl={image.url}
@@ -233,14 +233,14 @@ const EditImagePage = () => {
         </div>
 
         {/* Formulaire */}
-        <div className="lg:col-span-2">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
-            <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
+        <div className="lg:col-span-2 col-span-1 sm:col-span-2 col-span-1 sm:col-span-2">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800 p-4 sm:p-6">
+            <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8 p-4 sm:p-6 p-4 sm:p-6">
               {/* Erreurs */}
               {errors.length > 0 && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                   <h4 className="text-red-800 font-medium mb-2">Erreurs à corriger :</h4>
-                  <ul className="list-disc list-inside text-red-700 text-sm space-y-1">
+                  <ul className="list-disc list-inside text-red-700 text-sm space-y-1 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">
                     {errors.map((error, index) => (
                       <li key={index}>{error}</li>
                     ))}
@@ -250,7 +250,7 @@ const EditImagePage = () => {
 
               {/* Description de l'image */}
               <div>
-                <label htmlFor="alt" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                <label htmlFor="alt" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Description de l'image *
                 </label>
                 <input
@@ -267,7 +267,7 @@ const EditImagePage = () => {
 
               {/* Description détaillée */}
               <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                <label htmlFor="description" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Description détaillée
                 </label>
                 <textarea
@@ -283,7 +283,7 @@ const EditImagePage = () => {
 
               {/* Sélection du projet */}
               <div>
-                <label htmlFor="projectId" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                <label htmlFor="projectId" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Projet associé *
                 </label>
                 <select
@@ -291,7 +291,7 @@ const EditImagePage = () => {
                   name="projectId"
                   value={formData.projectId}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800"
+                  className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   required
                 >
                   <option value="">Sélectionnez un projet</option>
@@ -304,7 +304,7 @@ const EditImagePage = () => {
               </div>
 
               {/* Actions */}
-              <div className="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-700">
+              <div className="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row justify-end gap-2 sm:gap-0">
                 <button
                   type="button"
                   onClick={handleCancel}
