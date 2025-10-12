@@ -78,29 +78,30 @@ export default function AddImagePage() {
   };
 
   if (loading) {
-  return (
+    return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-16 w-16 sm:h-24 sm:w-24 lg:h-32 lg:w-32 border-b-2 border-blue-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
+      <div className="max-w-2xl mx-auto">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8">
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
             Ajouter une nouvelle image
           </h1>
 
-      {/* Sélection du projet */}
-          <div className="mb-6">
-            <label htmlFor="project" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+          {/* Sélection du projet */}
+          <div className="mb-4 sm:mb-6">
+            <label htmlFor="project" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Associer à un projet *
-          </label>
-          <select
-            id="project"
+            </label>
+            <select
+              id="project"
               value={selectedProjectId}
-            onChange={(e) => {
+              onChange={(e) => {
                 const projectId = e.target.value;
                 const selectedProject = projects.find(p => (p._id || p.id) === projectId);
                 console.log('🔄 Projet sélectionné ID:', projectId);
@@ -108,30 +109,30 @@ export default function AddImagePage() {
                 setSelectedProjectId(projectId);
                 setSelectedProjectTitle(selectedProject?.title || '');
               }}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               required
             >
               <option value="">Sélectionnez un projet</option>
               {projects.map((project) => (
                 <option key={project._id || project.id} value={project._id || project.id}>
-                    {project.title}
-                  </option>
+                  {project.title}
+                </option>
               ))}
-          </select>
+            </select>
           </div>
 
           {/* Upload Cloudinary */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+          <div className="mb-4 sm:mb-6">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Image à uploader
             </label>
             {selectedProjectId ? (
               <div>
-                <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-md">
-              <p className="text-sm text-blue-800">
+                <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md">
+                  <p className="text-xs sm:text-sm text-blue-800 dark:text-blue-200">
                     <strong>Projet sélectionné :</strong> {selectedProjectTitle}
-              </p>
-            </div>
+                  </p>
+                </div>
                 <CloudinaryUpload
                   onUploadSuccess={handleUploadSuccess}
                   onUploadError={handleUploadError}
@@ -140,18 +141,18 @@ export default function AddImagePage() {
                 />
               </div>
             ) : (
-              <div className="w-full h-32 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500">Veuillez sélectionner un projet pour uploader une image</p>
+              <div className="w-full h-24 sm:h-32 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center p-4">
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center">Veuillez sélectionner un projet pour uploader une image</p>
               </div>
             )}
-      </div>
+          </div>
 
           {/* Informations */}
-          <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
-            <h3 className="text-sm font-medium text-blue-800 mb-2">
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-md p-3 sm:p-4">
+            <h3 className="text-sm font-medium text-blue-800 mb-2 text-xs sm:text-sm">
               Informations importantes :
             </h3>
-            <ul className="text-sm text-blue-700 space-y-1">
+            <ul className="text-sm text-blue-700 space-y-1 text-xs sm:text-sm">
               <li>• Les images sont automatiquement optimisées par Cloudinary</li>
               <li>• Formats supportés : PNG, JPG, GIF, WebP</li>
               <li>• Taille maximale : 10MB</li>
@@ -161,7 +162,7 @@ export default function AddImagePage() {
           </div>
           
           {/* Bouton retour */}
-          <div className="mt-6 flex justify-end">
+          <div className="mt-6 flex justify-end flex flex-col sm:flex-row justify-end gap-2 sm:gap-0">
           <button
               onClick={() => router.push('/admin-images')}
               className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:text-gray-200 transition-colors"

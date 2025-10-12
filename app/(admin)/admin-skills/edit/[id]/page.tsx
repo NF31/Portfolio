@@ -165,9 +165,9 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-full sm:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 mb-6 dark:bg-gray-800">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 dark:bg-gray-800 mb-4 sm:mb-6 p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <button
@@ -210,17 +210,17 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4 sm:p-6">
         {/* Formulaire */}
-        <div className="lg:col-span-2">
-          <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
+        <div className="lg:col-span-2 col-span-1 sm:col-span-2 col-span-1 sm:col-span-2">
+          <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8 p-4 sm:p-6 p-4 sm:p-6">
             {/* Informations de base */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800 p-4 sm:p-6">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Informations de base</h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                  <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Nom de la compétence *
                   </label>
                   <input
@@ -229,13 +229,13 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                  <label htmlFor="category" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Catégorie *
                   </label>
                   <select
@@ -243,7 +243,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     name="category"
                     value={formData.category}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   >
                     <option value="frontend">Frontend</option>
                     <option value="backend">Backend</option>
@@ -256,7 +256,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
               </div>
 
               <div className="mt-4">
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                <label htmlFor="description" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Description *
                 </label>
                 <textarea
@@ -265,14 +265,14 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                   value={formData.description}
                   onChange={handleInputChange}
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none sm:resize-y"
                   required
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                 <div>
-                  <label htmlFor="level" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                  <label htmlFor="level" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Niveau *
                   </label>
                   <select
@@ -280,7 +280,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     name="level"
                     value={formData.level}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   >
                     <option value="beginner">Débutant</option>
                     <option value="intermediate">Intermédiaire</option>
@@ -290,7 +290,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                 </div>
 
                 <div>
-                  <label htmlFor="order" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                  <label htmlFor="order" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Ordre d'affichage
                   </label>
                   <input
@@ -299,7 +299,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     name="order"
                     value={formData.order}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   />
                 </div>
               </div>
@@ -313,17 +313,17 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     onChange={handleInputChange}
                     className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded"
                   />
-                  <span className="ml-2 text-sm text-gray-700">Compétence active</span>
+                  <span className="ml-2 text-sm text-gray-700 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">Compétence active</span>
                 </label>
               </div>
             </div>
 
             {/* Icône */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800 p-4 sm:p-6">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Icône</h2>
               
               <div className="mb-4">
-                <label htmlFor="iconType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                <label htmlFor="iconType" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Type d'icône *
                 </label>
                 <select
@@ -331,7 +331,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                   name="iconType"
                   value={formData.iconType}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                  className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 >
                   <option value="lucide">Lucide Icons</option>
                   <option value="simple-icons">Simple Icons</option>
@@ -342,7 +342,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
 
               {formData.iconType === 'lucide' && (
                 <div>
-                  <label htmlFor="icon" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                  <label htmlFor="icon" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Icône Lucide *
                   </label>
                   <select
@@ -350,7 +350,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     name="icon"
                     value={formData.icon}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   >
                     <option value="">Sélectionnez une icône</option>
                     {lucideIcons.map(icon => (
@@ -362,7 +362,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
 
               {formData.iconType === 'simple-icons' && (
                 <div>
-                  <label htmlFor="icon" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                  <label htmlFor="icon" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Icône Simple Icons *
                   </label>
                   <select
@@ -370,7 +370,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     name="icon"
                     value={formData.icon}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   >
                     <option value="">Sélectionnez une icône</option>
                     {simpleIcons.map(icon => (
@@ -382,7 +382,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
 
               {formData.iconType === 'custom-svg' && (
                 <div>
-                  <label htmlFor="icon" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                  <label htmlFor="icon" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Code SVG *
                   </label>
                   <textarea
@@ -391,15 +391,15 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     value={formData.icon}
                     onChange={handleInputChange}
                     rows={6}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-mono text-sm"
-                    placeholder="<svg>...</svg>" className="placeholder-gray-400 dark:placeholder-gray-500"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white font-mono text-xs sm:text-sm resize-none sm:resize-y"
+                    placeholder="<svg>...</svg>"
                   />
                 </div>
               )}
 
               {formData.iconType === 'url' && (
                 <div>
-                  <label htmlFor="icon" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+                  <label htmlFor="icon" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     URL de l'icône *
                   </label>
                   <input
@@ -408,7 +408,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     name="icon"
                     value={formData.icon}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                     placeholder="https://example.com/icon.svg" className="placeholder-gray-400 dark:placeholder-gray-500"
                   />
                 </div>
@@ -416,18 +416,18 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
             </div>
 
             {/* Actions */}
-            <div className="flex justify-end space-x-4">
+            <div className="flex justify-end space-x-4 flex flex-col sm:flex-row justify-end gap-2 sm:gap-0">
               <button
                 type="button"
                 onClick={() => router.push('/skills')}
-                className="px-6 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:text-gray-200 transition-colors"
+                className="px-6 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:text-gray-200 transition-colors px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
               >
                 Annuler
               </button>
               <button
                 type="submit"
                 disabled={saving}
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
               >
                 <Save className="w-4 h-4" />
                 <span>{saving ? 'Sauvegarde...' : 'Sauvegarder'}</span>
@@ -438,23 +438,23 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
 
         {/* Aperçu */}
         <div className="lg:col-span-1">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 sticky top-6 dark:bg-gray-800">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 sticky top-6 dark:bg-gray-800 p-4 sm:p-6">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Aperçu</h2>
             
             <div className="space-y-4">
               <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
                 <div className="flex items-center space-x-3 mb-2">
                   <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">
+                    <span className="text-white font-bold text-sm text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">
                       {formData.name.charAt(0).toUpperCase()}
                     </span>
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">{formData.name}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 capitalize">{formData.category}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 capitalize text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">{formData.category}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-700">{formData.description}</p>
+                <p className="text-sm text-gray-700 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">{formData.description}</p>
                 <div className="flex items-center justify-between mt-3">
                   <span className={`text-sm font-medium ${getLevelColor(formData.level)}`}>
                     {formData.level}
@@ -467,7 +467,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                 </div>
               </div>
 
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-sm text-gray-600 dark:text-gray-400 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">
                 <p><strong>Type d'icône :</strong> {formData.iconType}</p>
                 <p><strong>Ordre :</strong> {formData.order}</p>
               </div>
