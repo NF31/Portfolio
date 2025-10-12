@@ -50,7 +50,6 @@ export default function AdminLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   useEffect(() => {
     // Animation d'entrée au chargement

@@ -13,12 +13,14 @@ import {
   Target, 
   FileText, 
   MessageSquare, 
-  Image as ImageIcon,
+  Image as ImageIcon, 
   GraduationCap,
   Sun,
   Moon
 } from 'lucide-react';
 import { useTheme } from '@/app/contexts/ThemeContext';
+import LogoutButton from './LogoutButton';
+import UserInfo from './UserInfo';
 
 // Styles CSS personnalisés pour les animations
 const styles = `
@@ -140,14 +142,22 @@ const AdminNavbar = () => {
               )}
             </button>
 
-            {/* Bouton retour au site */}
-            <Link
-              href="/"
-              className="hidden sm:flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:border-blue-300 hover:text-blue-700 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-md"
-            >
-              <Home className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-              Retour au site
-            </Link>
+            {/* Boutons d'action */}
+            <div className="hidden sm:flex items-center gap-3">
+              {/* Informations utilisateur */}
+              <div className="flex items-center gap-3 px-3 py-2 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
+                <UserInfo />
+              </div>
+              
+              <Link
+                href="/"
+                className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:border-blue-300 hover:text-blue-700 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-md"
+              >
+                <Home className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                Retour au site
+              </Link>
+              <LogoutButton />
+            </div>
 
             {/* Menu mobile */}
             <button
@@ -191,7 +201,12 @@ const AdminNavbar = () => {
                   )}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-gray-200">
+              <div className="pt-4 border-t border-gray-200 space-y-2">
+                {/* Informations utilisateur mobile */}
+                <div className="px-4 py-3 bg-gray-50 dark:bg-gray-800 rounded-lg mx-2">
+                  <UserInfo />
+                </div>
+                
                 <Link
                   href="/portfolio"
                   onClick={() => setIsMenuOpen(false)}
@@ -200,6 +215,9 @@ const AdminNavbar = () => {
                   <Home className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
                   Retour au site
                 </Link>
+                <div className="px-4">
+                  <LogoutButton />
+                </div>
               </div>
             </div>
           </div>
