@@ -207,10 +207,10 @@ const EditProjectPage = () => {
             </svg>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Projet non trouvé</h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">Le projet que vous cherchez n'existe pas ou a été supprimé.</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 mb-4 sm:mb-6">Le projet que vous cherchez n'existe pas ou a été supprimé.</p>
           <button
             onClick={() => router.push('/projects')}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -224,7 +224,7 @@ const EditProjectPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-full sm:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
@@ -252,23 +252,23 @@ const EditProjectPage = () => {
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8 dark:bg-gray-800">
           {/* Message d'erreur */}
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg mb-4 sm:mb-6">
               <div className="flex">
                 <svg className="w-5 h-5 text-red-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
                 <div className="ml-3">
-                  <p className="text-sm text-red-800">{error}</p>
+                  <p className="text-sm text-red-800 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">{error}</p>
                 </div>
               </div>
             </div>
           )}
 
 
-          <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
+          <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8 p-4 sm:p-6 p-4 sm:p-6">
             {/* Titre */}
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+              <label htmlFor="title" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Titre du projet *
               </label>
               <input
@@ -277,7 +277,7 @@ const EditProjectPage = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
                 placeholder="Entrez le titre du projet" className="placeholder-gray-400 dark:placeholder-gray-500"
                 required
               />
@@ -285,7 +285,7 @@ const EditProjectPage = () => {
 
             {/* Description */}
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+              <label htmlFor="description" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Description *
               </label>
               <textarea
@@ -294,7 +294,7 @@ const EditProjectPage = () => {
                 value={formData.description}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
                 placeholder="Décrivez votre projet en détail" className="placeholder-gray-400 dark:placeholder-gray-500"
                 required
               />
@@ -302,7 +302,7 @@ const EditProjectPage = () => {
 
             {/* Types de projet */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Types de projet *
               </label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -321,7 +321,7 @@ const EditProjectPage = () => {
                       onChange={() => handleTypeChange(type.value)}
                       className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded mr-3"
                     />
-                    <span className="text-sm font-medium">{type.label}</span>
+                    <span className="text-sm font-medium text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">{type.label}</span>
                   </label>
                 ))}
               </div>
@@ -329,7 +329,7 @@ const EditProjectPage = () => {
 
             {/* Technologies */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+              <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Technologies *
               </label>
               <div className="flex gap-2 mb-3">
@@ -338,13 +338,13 @@ const EditProjectPage = () => {
                   value={newTech}
                   onChange={(e) => setNewTech(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTechnology())}
-                  className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
+                  className="flex-1 px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
                   placeholder="Ajouter une technologie" className="placeholder-gray-400 dark:placeholder-gray-500"
                 />
                 <button
                   type="button"
                   onClick={addTechnology}
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
                 >
                   Ajouter
                 </button>
@@ -353,7 +353,7 @@ const EditProjectPage = () => {
                 {formData.technologies.map((tech, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                    className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm"
                   >
                     {tech}
                     <button
@@ -372,7 +372,7 @@ const EditProjectPage = () => {
 
             {/* Lien du projet */}
             <div>
-              <label htmlFor="link" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+              <label htmlFor="link" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Lien du projet (optionnel)
               </label>
               <input
@@ -381,7 +381,7 @@ const EditProjectPage = () => {
                 name="link"
                 value={formData.link}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
                 placeholder="https://exemple.com" className="placeholder-gray-400 dark:placeholder-gray-500"
               />
             </div>
@@ -396,24 +396,24 @@ const EditProjectPage = () => {
                 onChange={handleInputChange}
                 className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-2 border-gray-300 dark:border-gray-600 rounded"
               />
-              <label htmlFor="isArchived" className="ml-3 block text-sm font-medium text-gray-700">
+              <label htmlFor="isArchived" className="ml-3 block text-sm font-medium text-gray-700 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">
                 Archiver ce projet
               </label>
             </div>
 
             {/* Boutons d'action */}
-            <div className="flex justify-end gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="flex justify-end gap-4 pt-6 border-t border-gray-200 dark:border-gray-700 gap-2 sm:gap-4 flex flex-col sm:flex-row justify-end gap-2 sm:gap-0 gap-2 sm:gap-4 gap-2 sm:gap-4">
               <button
                 type="button"
                 onClick={() => router.push('/projects')}
-                className="px-6 py-3 text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-900 transition-all duration-200"
+                className="px-6 py-3 text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:bg-gray-900 transition-all duration-200 px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
               >
                 Annuler
               </button>
               <button
                 type="submit"
                 disabled={isSaving}
-                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
               >
                 {isSaving ? (
                   <div className="flex items-center gap-2">

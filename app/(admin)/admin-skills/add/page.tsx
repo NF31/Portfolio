@@ -51,14 +51,14 @@ const AddSkillPage = () => {
       case 'lucide':
         return (
           <>
-            <a href="https://lucide.dev/icons" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">lucide.dev/icons</a>
+            <a href="https://lucide.dev/icons" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">lucide.dev/icons</a>
             <br />Ex: "Code", "Database", "Server"
           </>
         );
       case 'simple-icons':
         return (
           <>
-            <a href="https://simpleicons.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">simpleicons.org</a>
+            <a href="https://simpleicons.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">simpleicons.org</a>
             <br />Ex: "laravel", "react", "nodejs", "mongodb"
           </>
         );
@@ -142,33 +142,33 @@ const AddSkillPage = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 mb-6 dark:bg-gray-800">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-6 dark:bg-gray-800">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3 sm:space-x-4">
             <Link
               href="/admin-skills"
-              className="p-2 hover:bg-gray-100 dark:bg-gray-800 rounded-lg transition-colors dark:bg-gray-700"
+              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
             >
-              <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
             </Link>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Ajouter une compétence</h1>
-              <p className="text-gray-600 dark:text-gray-400">Créez une nouvelle compétence technique</p>
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Ajouter une compétence</h1>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Créez une nouvelle compétence technique</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Formulaire */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
-        <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 lg:p-8 dark:bg-gray-800">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Erreurs */}
           {errors.length > 0 && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h4 className="text-red-800 font-medium mb-2">Erreurs à corriger :</h4>
-              <ul className="list-disc list-inside text-red-700 text-sm space-y-1">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3 sm:p-4">
+              <h4 className="text-xs sm:text-sm text-red-800 dark:text-red-200 font-medium mb-2">Erreurs à corriger :</h4>
+              <ul className="list-disc list-inside text-red-700 dark:text-red-300 text-xs sm:text-sm space-y-1">
                 {errors.map((error, index) => (
                   <li key={index}>{error}</li>
                 ))}
@@ -178,7 +178,7 @@ const AddSkillPage = () => {
 
           {/* Nom de la compétence */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+            <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Nom de la compétence *
             </label>
             <input
@@ -187,15 +187,15 @@ const AddSkillPage = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Ex: React, Node.js, MongoDB..." className="placeholder-gray-400 dark:placeholder-gray-500"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+              placeholder="Ex: React, Node.js, MongoDB..."
               required
             />
           </div>
 
           {/* Description */}
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+            <label htmlFor="description" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Description *
             </label>
             <textarea
@@ -204,15 +204,15 @@ const AddSkillPage = () => {
               value={formData.description}
               onChange={handleInputChange}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Décrivez cette compétence..." className="placeholder-gray-400 dark:placeholder-gray-500"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+              placeholder="Décrivez cette compétence..."
               required
             />
           </div>
 
           {/* Type d'icône */}
           <div>
-            <label htmlFor="iconType" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+            <label htmlFor="iconType" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Type d'icône *
             </label>
             <select
@@ -220,7 +220,7 @@ const AddSkillPage = () => {
               name="iconType"
               value={formData.iconType}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value="lucide">Lucide (icônes générales)</option>
               <option value="simple-icons">Simple Icons (technologies)</option>
@@ -231,7 +231,7 @@ const AddSkillPage = () => {
 
           {/* Icône */}
           <div>
-            <label htmlFor="icon" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+            <label htmlFor="icon" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               {formData.iconType === 'custom-svg' ? 'Code SVG *' : 'Icône *'}
             </label>
             {formData.iconType === 'custom-svg' ? (
@@ -241,7 +241,7 @@ const AddSkillPage = () => {
                 value={formData.icon}
                 onChange={handleInputChange}
                 rows={6}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                 placeholder={getIconPlaceholder()}
                 required
               />
@@ -252,59 +252,61 @@ const AddSkillPage = () => {
                 name="icon"
                 value={formData.icon}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                 placeholder={getIconPlaceholder()}
                 required
               />
             )}
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
               {getIconHelp()}
             </p>
           </div>
 
-          {/* Catégorie */}
-          <div>
-            <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
-              Catégorie *
-            </label>
-            <select
-              id="category"
-              name="category"
-              value={formData.category}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="frontend">Frontend</option>
-              <option value="backend">Backend</option>
-              <option value="database">Base de données</option>
-              <option value="tools">Outils</option>
-              <option value="design">Design</option>
-              <option value="other">Autre</option>
-            </select>
-          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {/* Catégorie */}
+            <div>
+              <label htmlFor="category" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Catégorie *
+              </label>
+              <select
+                id="category"
+                name="category"
+                value={formData.category}
+                onChange={handleInputChange}
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              >
+                <option value="frontend">Frontend</option>
+                <option value="backend">Backend</option>
+                <option value="database">Base de données</option>
+                <option value="tools">Outils</option>
+                <option value="design">Design</option>
+                <option value="other">Autre</option>
+              </select>
+            </div>
 
-          {/* Niveau */}
-          <div>
-            <label htmlFor="level" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
-              Niveau *
-            </label>
-            <select
-              id="level"
-              name="level"
-              value={formData.level}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="beginner">Débutant</option>
-              <option value="intermediate">Intermédiaire</option>
-              <option value="advanced">Avancé</option>
-              <option value="expert">Expert</option>
-            </select>
+            {/* Niveau */}
+            <div>
+              <label htmlFor="level" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Niveau *
+              </label>
+              <select
+                id="level"
+                name="level"
+                value={formData.level}
+                onChange={handleInputChange}
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              >
+                <option value="beginner">Débutant</option>
+                <option value="intermediate">Intermédiaire</option>
+                <option value="advanced">Avancé</option>
+                <option value="expert">Expert</option>
+              </select>
+            </div>
           </div>
 
           {/* Ordre */}
           <div>
-            <label htmlFor="order" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 dark:text-gray-300">
+            <label htmlFor="order" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Ordre d'affichage
             </label>
             <input
@@ -313,11 +315,11 @@ const AddSkillPage = () => {
               name="order"
               value={formData.order}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="0" className="placeholder-gray-400 dark:placeholder-gray-500"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+              placeholder="0"
               min="0"
             />
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
               Plus le chiffre est petit, plus la compétence apparaîtra en premier
             </p>
           </div>
@@ -332,22 +334,22 @@ const AddSkillPage = () => {
               onChange={handleInputChange}
               className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded"
             />
-            <label htmlFor="isActive" className="ml-2 block text-sm text-gray-700">
+            <label htmlFor="isActive" className="ml-2 block text-xs sm:text-sm text-gray-700 dark:text-gray-300">
               Compétence active (visible sur le portfolio)
             </label>
           </div>
 
           {/* Aperçu de l'icône */}
           {formData.icon && (
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
-              <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 dark:text-gray-300">Aperçu de l'icône</h3>
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-4 sm:p-6 border border-blue-200 dark:border-blue-800">
+              <h3 className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Aperçu de l'icône</h3>
               <div className="flex items-center justify-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
                   <SkillIcon 
                     icon={formData.icon} 
                     iconType={formData.iconType} 
                     name={formData.name}
-                    className="w-10 h-10 text-white"
+                    className="w-8 h-8 sm:w-10 sm:h-10 text-white"
                   />
                 </div>
               </div>
@@ -358,18 +360,18 @@ const AddSkillPage = () => {
           )}
 
           {/* Actions */}
-          <div className="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-end gap-3 sm:gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
             <button
               type="button"
               onClick={handleCancel}
-              className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 rounded-lg transition-colors dark:bg-gray-700"
+              className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base text-center text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors"
             >
               Annuler
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
