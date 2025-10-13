@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { generateTypeConfig } from '@/lib/typeIcons';
 
 interface ProjectFormData {
   title: string;
@@ -31,7 +32,59 @@ const ProjectForm: React.FC<ProjectFormProps> = ({
   });
   
   const [newTech, setNewTech] = useState('');
+  const [newType, setNewType] = useState('');
+  const [projectTypes, setProjectTypes] = useState<{ value: string; label: string }[]>([]);
+  const [availableTypes, setAvailableTypes] = useState<string[]>([]);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
+
+  useEffect(() => {
+    fetchProjectTypes();
+  }, []);
+
+  const fetchProjectTypes = async () => {
+    try {
+      const response = await fetch('/api/projects/types');
+      if (response.ok) {
+        const data = await response.json();
+        setAvailableTypes(data.types);
+        
+        // Créer les options de types avec les types existants + types par défaut
+        const defaultTypes = ['web', 'mobile', 'fullstack', 'data', 'design', 'autre'];
+        const allTypes = [...new Set([...data.types, ...defaultTypes])].sort();
+        
+        const typeOptions = allTypes.map(type => ({
+          value: type,
+          label: type.charAt(0).toUpperCase() + type.slice(1)
+        }));
+        
+        setProjectTypes(typeOptions);
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des types:', error);
+      // Fallback vers les types par défaut
+      const defaultTypes = [
+        { value: 'web', label: 'Web' },
+        { value: 'mobile', label: 'Mobile' },
+        { value: 'fullstack', label: 'Fullstack' },
+        { value: 'data', label: 'Data' },
+        { value: 'design', label: 'Design' },
+        { value: 'autre', label: 'Autre' }
+      ];
+      setProjectTypes(defaultTypes);
+    }
+  };
+
+  const addNewType = () => {
+    if (newType.trim() && !availableTypes.includes(newType.trim().toLowerCase())) {
+      const typeValue = newType.trim().toLowerCase();
+      const typeLabel = newType.trim().charAt(0).toUpperCase() + newType.trim().slice(1);
+      
+      setProjectTypes(prev => [...prev, { value: typeValue, label: typeLabel }]);
+      setAvailableTypes(prev => [...prev, typeValue]);
+      setNewType('');
+    }
+  };
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -310,20 +363,41 @@ const ProjectForm: React.FC<ProjectFormProps> = ({
             <span className="text-red-500">*</span>
           </span>
         </label>
+        {/* Ajouter un nouveau type */}
+        <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">
+            Ajouter un nouveau type
+          </label>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={newType}
+              onChange={(e) => setNewType(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addNewType())}
+              className="flex-1 px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500 text-sm"
+              placeholder="Nouveau type (ex: e-commerce)"
+            />
+            <button
+              type="button"
+              onClick={addNewType}
+              className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium text-sm"
+            >
+              Ajouter
+            </button>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
-          {[
-            { value: 'web', label: 'Web', icon: '🌐', color: 'from-blue-500 to-blue-600', bgColor: 'bg-blue-50', borderColor: 'border-blue-200' },
-            { value: 'mobile', label: 'Mobile', icon: '📱', color: 'from-green-500 to-green-600', bgColor: 'bg-green-50', borderColor: 'border-green-200' },
-            { value: 'fullstack', label: 'Fullstack', icon: '⚡', color: 'from-purple-500 to-purple-600', bgColor: 'bg-purple-50', borderColor: 'border-purple-200' },
-            { value: 'data', label: 'Data', icon: '📊', color: 'from-orange-500 to-orange-600', bgColor: 'bg-orange-50', borderColor: 'border-orange-200' },
-            { value: 'design', label: 'Design', icon: '🎨', color: 'from-pink-500 to-pink-600', bgColor: 'bg-pink-50', borderColor: 'border-pink-200' },
-            { value: 'autre', label: 'Autre', icon: '🔧', color: 'from-gray-500 to-gray-600', bgColor: 'bg-gray-50', borderColor: 'border-gray-200' }
-          ].map((type) => (
+          {projectTypes.map((type) => {
+            // Générer automatiquement l'icône et les couleurs
+            const config = generateTypeConfig(type.value);
+            
+            return (
             <label 
               key={type.value} 
               className={`relative cursor-pointer transition-all duration-200 rounded-xl ${
                 formData.types.includes(type.value) 
-                  ? `${type.bgColor} dark:bg-gray-700 ${type.borderColor} dark:border-blue-600 border-2 shadow-lg` 
+                  ? `${config.bgColor} dark:bg-gray-700 ${config.borderColor} dark:border-blue-600 border-2 shadow-lg` 
                   : 'bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 hover:shadow-md'
               }`}
             >
@@ -335,8 +409,8 @@ const ProjectForm: React.FC<ProjectFormProps> = ({
               />
               <div className="p-3 sm:p-4 rounded-xl transition-all duration-200">
                 <div className="flex items-center justify-center mb-2 sm:mb-3">
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r ${type.color} flex items-center justify-center text-white text-lg sm:text-xl shadow-lg`}>
-                    {type.icon}
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r ${config.color} flex items-center justify-center text-white text-lg sm:text-xl shadow-lg`}>
+                    {config.icon}
                   </div>
                 </div>
                 <div className="text-center">
@@ -348,18 +422,33 @@ const ProjectForm: React.FC<ProjectFormProps> = ({
                     {type.label}
                   </span>
                 </div>
-                {formData.types.includes(type.value) && (
-                  <div className="absolute top-1.5 sm:top-2 right-1.5 sm:right-2">
-                    <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  </div>
-                )}
+                {/* Bouton pour supprimer définitivement le type de la liste */}
+                <div className="absolute top-1.5 sm:top-2 right-1.5 sm:right-2">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      // Supprimer le type de la liste des types disponibles
+                      setProjectTypes(prev => prev.filter(t => t.value !== type.value));
+                      setAvailableTypes(prev => prev.filter(t => t !== type.value));
+                      // Aussi le supprimer de la sélection si il était sélectionné
+                      if (formData.types.includes(type.value)) {
+                        handleTypeChange(type.value);
+                      }
+                    }}
+                    className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center hover:from-red-600 hover:to-red-700 transition-colors opacity-70 hover:opacity-100"
+                    title="Supprimer définitivement ce type de la liste"
+                  >
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </label>
-          ))}
+            );
+          })}
         </div>
         {errors.types && (
           <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-red-600 dark:text-red-400 flex items-center gap-1">

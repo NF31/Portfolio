@@ -48,7 +48,9 @@ const ProjectsPage = () => {
 
   // Filtrage des projets
   const filteredProjects = projects.filter(project => {
-    const matchesType = filterType === 'all' || project.type === filterType;
+    // Gérer les types (peuvent être un string ou un array)
+    const projectTypes = Array.isArray(project.types) ? project.types : [project.types];
+    const matchesType = filterType === 'all' || projectTypes.includes(filterType);
     const matchesStatus = filterStatus === 'all' || 
       (filterStatus === 'archived' && project.isArchived) ||
       (filterStatus === 'active' && !project.isArchived);
@@ -69,12 +71,12 @@ const ProjectsPage = () => {
   // Actions
   const handleEdit = (projectId: string) => {
     // Navigation vers la page d'édition
-    window.location.href = `/projects/edit/${projectId}`;
+    window.location.href = `/admin-projects/edit/${projectId}`;
   };
 
   const handleDelete = (projectId: string) => {
     // Navigation vers la page de suppression
-    window.location.href = `/projects/delete/${projectId}`;
+    window.location.href = `/admin-projects/delete/${projectId}`;
   };
 
   const handleArchive = async (projectId: string, isArchived: boolean) => {

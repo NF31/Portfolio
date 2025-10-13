@@ -95,7 +95,21 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                   <td className="px-4 sm:px-6 py-3 sm:py-4">
                     <div className="flex items-start space-x-3">
                       <div className="flex-shrink-0">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center">
+                        {project.images && project.images.length > 0 ? (
+                          <img 
+                            src={project.images[0]} 
+                            alt={project.title}
+                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover"
+                            onError={(e) => {
+                              // Fallback vers l'icône si l'image ne charge pas
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              const fallback = target.nextElementSibling as HTMLElement;
+                              if (fallback) fallback.style.display = 'flex';
+                            }}
+                          />
+                        ) : null}
+                        <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center ${project.images && project.images.length > 0 ? 'hidden' : ''}`}>
                           <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                           </svg>
@@ -216,7 +230,21 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
             <div key={project.id} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:shadow-md transition-shadow">
               <div className="flex items-start gap-3 mb-3">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center">
+                  {project.images && project.images.length > 0 ? (
+                    <img 
+                      src={project.images[0]} 
+                      alt={project.title}
+                      className="w-12 h-12 rounded-lg object-cover"
+                      onError={(e) => {
+                        // Fallback vers l'icône si l'image ne charge pas
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = target.nextElementSibling as HTMLElement;
+                        if (fallback) fallback.style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div className={`w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center ${project.images && project.images.length > 0 ? 'hidden' : ''}`}>
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
