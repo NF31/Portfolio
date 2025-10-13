@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useStats } from '../contexts/StatsContext';
 import SkillIcon from '@/app/components/SkillIcon';
+import { formatRelativeTime } from '@/lib/dateUtils';
 
 
 interface RecentSkill {
@@ -36,11 +37,40 @@ interface RecentImage {
   createdAt: string;
 }
 
+interface RecentActivity {
+  id: string;
+  type: 'project' | 'service' | 'skill' | 'image' | 'message';
+  action: string;
+  item: string;
+  timestamp: string;
+  icon: string;
+  color: string;
+  details?: any;
+}
+
+interface PaginationInfo {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+}
+
 const AdminDashboard = () => {
   const { stats, isLoading, refreshStats } = useStats();
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [recentSkills, setRecentSkills] = useState<RecentSkill[]>([]);
   const [recentImages, setRecentImages] = useState<RecentImage[]>([]);
+  const [recentActivities, setRecentActivities] = useState<RecentActivity[]>([]);
+  const [activitiesPagination, setActivitiesPagination] = useState<PaginationInfo>({
+    page: 1,
+    limit: 10,
+    total: 0,
+    totalPages: 0,
+    hasNextPage: false,
+    hasPrevPage: false
+  });
   const [loadingRecentData, setLoadingRecentData] = useState(true);
 
   const handleRefresh = async () => {
@@ -50,14 +80,15 @@ const AdminDashboard = () => {
     setIsRefreshing(false);
   };
 
-  const fetchRecentData = async () => {
+  const fetchRecentData = async (page: number = 1) => {
     try {
       setLoadingRecentData(true);
       
-      // Récupérer les dernières compétences et images en parallèle
-      const [skillsResponse, imagesResponse] = await Promise.all([
+      // Récupérer les dernières compétences, images et activités en parallèle
+      const [skillsResponse, imagesResponse, activitiesResponse] = await Promise.all([
         fetch('/api/admin/recent-skills'),
-        fetch('/api/admin/recent-images')
+        fetch('/api/admin/recent-images'),
+        fetch(`/api/admin/recent-activities?page=${page}&limit=10`)
       ]);
 
       if (skillsResponse.ok) {
@@ -68,6 +99,19 @@ const AdminDashboard = () => {
       if (imagesResponse.ok) {
         const imagesData = await imagesResponse.json();
         setRecentImages(imagesData.images || []);
+      }
+
+      if (activitiesResponse.ok) {
+        const activitiesData = await activitiesResponse.json();
+        setRecentActivities(activitiesData.activities || []);
+        setActivitiesPagination(activitiesData.pagination || {
+          page: 1,
+          limit: 10,
+          total: 0,
+          totalPages: 0,
+          hasNextPage: false,
+          hasPrevPage: false
+        });
       }
     } catch (error) {
       console.error('Erreur lors de la récupération des données récentes:', error);
@@ -130,13 +174,38 @@ const AdminDashboard = () => {
     }
   ];
 
-  const recentActivities = [
-    { action: 'Compétence ajoutée', item: 'React/Next.js', time: 'Il y a 2 heures', icon: Target, color: 'text-purple-600' },
-    { action: 'Image uploadée', item: 'Screenshot projet', time: 'Il y a 4 heures', icon: ImageIcon, color: 'text-green-600' },
-    { action: 'Projet créé', item: 'Portfolio E-commerce', time: 'Il y a 1 jour', icon: Briefcase, color: 'text-blue-600' },
-    { action: 'Service modifié', item: 'Développement Web', time: 'Il y a 2 jours', icon: Settings, color: 'text-orange-600' },
-    { action: 'Message reçu', item: 'Demande de devis', time: 'Il y a 3 jours', icon: MessageSquare, color: 'text-orange-600' }
-  ];
+  // Fonction pour obtenir l'icône Lucide à partir du nom
+  const getActivityIcon = (iconName: string) => {
+    const iconMap: { [key: string]: any } = {
+      'Briefcase': Briefcase,
+      'MessageSquare': MessageSquare,
+      'Settings': Settings,
+      'Target': Target,
+      'Image': ImageIcon,
+      'Rocket': Rocket,
+      'RefreshCw': RefreshCw
+    };
+    return iconMap[iconName] || Settings;
+  };
+
+  // Fonctions de pagination
+  const handlePageChange = async (newPage: number) => {
+    if (newPage >= 1 && newPage <= activitiesPagination.totalPages) {
+      await fetchRecentData(newPage);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (activitiesPagination.hasPrevPage) {
+      handlePageChange(activitiesPagination.page - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (activitiesPagination.hasNextPage) {
+      handlePageChange(activitiesPagination.page + 1);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -407,23 +476,149 @@ const AdminDashboard = () => {
 
       {/* Activités récentes */}
       <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 lg:p-8 dark:bg-gray-800">
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Activités récentes</h2>
-        <div className="space-y-3 sm:space-y-4">
-          {recentActivities.map((activity, index) => (
-            <div key={index} className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 hover:scale-[1.01] group">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
-                <activity.icon className={`w-4 h-4 sm:w-5 sm:h-5 ${activity.color} group-hover:animate-pulse`} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm sm:text-base font-medium text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">{activity.action}</p>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 transition-colors truncate">{activity.item}</p>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-400 dark:group-hover:text-gray-300 transition-colors whitespace-nowrap">
-                {activity.time}
-              </div>
-            </div>
-          ))}
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Activités récentes</h2>
+          <button
+            onClick={fetchRecentData}
+            disabled={loadingRecentData}
+            className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium flex items-center gap-1 disabled:opacity-50"
+          >
+            <RefreshCw className={`w-3 h-3 sm:w-4 sm:h-4 ${loadingRecentData ? 'animate-spin' : ''}`} />
+            Actualiser
+          </button>
         </div>
+        
+        {loadingRecentData ? (
+          <div className="flex items-center justify-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          </div>
+        ) : recentActivities.length > 0 ? (
+          <div className="space-y-3 sm:space-y-4">
+            {recentActivities.map((activity) => {
+              const IconComponent = getActivityIcon(activity.icon);
+              
+              return (
+                <div key={activity.id} className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 hover:scale-[1.01] group">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300">
+                    <IconComponent className={`w-4 h-4 sm:w-5 sm:h-5 ${activity.color} group-hover:animate-pulse`} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm sm:text-base font-medium text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
+                      {activity.action}
+                    </p>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300 transition-colors truncate">
+                      {activity.item}
+                    </p>
+                    {/* Affichage des détails supplémentaires pour certains types */}
+                    {activity.details && (
+                      <div className="mt-1">
+                        {activity.type === 'image' && activity.details.projectTitle && (
+                          <p className="text-xs text-gray-500 dark:text-gray-500">
+                            Projet: {activity.details.projectTitle}
+                          </p>
+                        )}
+                        {activity.type === 'message' && activity.details.from && (
+                          <p className="text-xs text-gray-500 dark:text-gray-500">
+                            De: {activity.details.from}
+                          </p>
+                        )}
+                        {activity.type === 'project' && activity.details.isPublished !== undefined && (
+                          <p className="text-xs text-gray-500 dark:text-gray-500">
+                            {activity.details.isPublished ? 'Publié' : 'Brouillon'}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-400 dark:group-hover:text-gray-300 transition-colors whitespace-nowrap">
+                    {formatRelativeTime(activity.timestamp)}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
+              <Settings className="w-8 h-8 text-gray-400 dark:text-gray-500" />
+            </div>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mb-2">
+              Aucune activité récente
+            </p>
+            <p className="text-xs text-gray-400 dark:text-gray-500">
+              Les activités apparaîtront ici une fois que vous aurez créé du contenu
+            </p>
+          </div>
+        )}
+
+        {/* Pagination */}
+        {recentActivities.length > 0 && activitiesPagination.totalPages > 1 && (
+          <div className="mt-6 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 pt-4">
+            <div className="flex items-center text-xs sm:text-sm text-gray-700 dark:text-gray-300">
+              <span>
+                Page {activitiesPagination.page} sur {activitiesPagination.totalPages}
+                {' '}({activitiesPagination.total} activité{activitiesPagination.total > 1 ? 's' : ''})
+              </span>
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              {/* Bouton Précédent */}
+              <button
+                onClick={handlePrevPage}
+                disabled={!activitiesPagination.hasPrevPage || loadingRecentData}
+                className="inline-flex items-center px-3 py-2 text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-gray-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Précédent
+              </button>
+
+              {/* Numéros de page */}
+              <div className="flex items-center space-x-1">
+                {Array.from({ length: Math.min(5, activitiesPagination.totalPages) }, (_, i) => {
+                  let pageNum;
+                  if (activitiesPagination.totalPages <= 5) {
+                    pageNum = i + 1;
+                  } else if (activitiesPagination.page <= 3) {
+                    pageNum = i + 1;
+                  } else if (activitiesPagination.page >= activitiesPagination.totalPages - 2) {
+                    pageNum = activitiesPagination.totalPages - 4 + i;
+                  } else {
+                    pageNum = activitiesPagination.page - 2 + i;
+                  }
+
+                  return (
+                    <button
+                      key={pageNum}
+                      onClick={() => handlePageChange(pageNum)}
+                      disabled={loadingRecentData}
+                      className={`inline-flex items-center px-3 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all duration-200 disabled:cursor-not-allowed ${
+                        pageNum === activitiesPagination.page
+                          ? 'bg-blue-600 text-white shadow-sm'
+                          : 'text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+                      }`}
+                    >
+                      {pageNum}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Bouton Suivant */}
+              <button
+                onClick={handleNextPage}
+                disabled={!activitiesPagination.hasNextPage || loadingRecentData}
+                className="inline-flex items-center px-3 py-2 text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-gray-300 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Suivant
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
