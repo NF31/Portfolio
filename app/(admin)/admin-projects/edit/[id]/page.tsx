@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { toast } from 'sonner';
+import { generateTypeConfig } from '@/lib/typeIcons';
 
 interface Project {
   id: string;
@@ -38,20 +39,16 @@ const EditProjectPage = () => {
   });
 
   const [newTech, setNewTech] = useState('');
+  const [newType, setNewType] = useState('');
 
-  // Types de projets disponibles
-  const projectTypes = [
-    { value: 'web', label: 'Web' },
-    { value: 'mobile', label: 'Mobile' },
-    { value: 'fullstack', label: 'Fullstack' },
-    { value: 'data', label: 'Data' },
-    { value: 'design', label: 'Design' },
-    { value: 'autre', label: 'Autre' }
-  ];
+  // Types de projets disponibles (chargés dynamiquement)
+  const [projectTypes, setProjectTypes] = useState<{ value: string; label: string }[]>([]);
+  const [availableTypes, setAvailableTypes] = useState<string[]>([]);
 
   useEffect(() => {
     if (projectId) {
       fetchProject();
+      fetchProjectTypes();
     }
   }, [projectId]);
 
@@ -81,6 +78,39 @@ const EditProjectPage = () => {
       setError('Erreur lors du chargement du projet');
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const fetchProjectTypes = async () => {
+    try {
+      const response = await fetch('/api/projects/types');
+      if (response.ok) {
+        const data = await response.json();
+        setAvailableTypes(data.types);
+        
+        // Créer les options de types avec les types existants + types par défaut
+        const defaultTypes = ['web', 'mobile', 'fullstack', 'data', 'design', 'autre'];
+        const allTypes = [...new Set([...data.types, ...defaultTypes])].sort();
+        
+        const typeOptions = allTypes.map(type => ({
+          value: type,
+          label: type.charAt(0).toUpperCase() + type.slice(1)
+        }));
+        
+        setProjectTypes(typeOptions);
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des types:', error);
+      // Fallback vers les types par défaut
+      const defaultTypes = [
+        { value: 'web', label: 'Web' },
+        { value: 'mobile', label: 'Mobile' },
+        { value: 'fullstack', label: 'Fullstack' },
+        { value: 'data', label: 'Data' },
+        { value: 'design', label: 'Design' },
+        { value: 'autre', label: 'Autre' }
+      ];
+      setProjectTypes(defaultTypes);
     }
   };
 
@@ -129,6 +159,18 @@ const EditProjectPage = () => {
       technologies: prev.technologies.filter(tech => tech !== techToRemove)
     }));
   };
+
+  const addNewType = () => {
+    if (newType.trim() && !availableTypes.includes(newType.trim().toLowerCase())) {
+      const typeValue = newType.trim().toLowerCase();
+      const typeLabel = newType.trim().charAt(0).toUpperCase() + newType.trim().slice(1);
+      
+      setProjectTypes(prev => [...prev, { value: typeValue, label: typeLabel }]);
+      setAvailableTypes(prev => [...prev, typeValue]);
+      setNewType('');
+    }
+  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -305,25 +347,77 @@ const EditProjectPage = () => {
               <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Types de projet *
               </label>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {projectTypes.map(type => (
-                  <label
-                    key={type.value}
-                    className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition-all ${
-                      (Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)
-                        ? 'border-blue-500 bg-blue-50 text-blue-700'
-                        : 'border-gray-300 dark:border-gray-600 bg-white text-gray-700 hover:border-gray-400'
-                    }`}
+              
+              {/* Ajouter un nouveau type */}
+              <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">
+                  Ajouter un nouveau type
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newType}
+                    onChange={(e) => setNewType(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addNewType())}
+                    className="flex-1 px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-500 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500 text-sm"
+                    placeholder="Nouveau type (ex: e-commerce)"
+                  />
+                  <button
+                    type="button"
+                    onClick={addNewType}
+                    className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium text-sm"
                   >
-                    <input
-                      type="checkbox"
-                      checked={(Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)}
-                      onChange={() => handleTypeChange(type.value)}
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded mr-3"
-                    />
-                    <span className="text-sm font-medium text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">{type.label}</span>
-                  </label>
-                ))}
+                    Ajouter
+                  </button>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {projectTypes.map(type => {
+                  const config = generateTypeConfig(type.value);
+                  return (
+                    <label
+                      key={type.value}
+                      className={`relative flex items-center p-3 border-2 rounded-lg cursor-pointer transition-all ${
+                        (Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)
+                          ? `${config.bgColor} ${config.borderColor} border-2 shadow-lg`
+                          : 'border-gray-300 dark:border-gray-600 bg-white text-gray-700 hover:border-gray-400'
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={(Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)}
+                        onChange={() => handleTypeChange(type.value)}
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded mr-3"
+                      />
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg">{config.icon}</span>
+                        <span className="text-sm font-medium">{type.label}</span>
+                      </div>
+                      {/* Bouton pour supprimer définitivement le type de la liste */}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          // Supprimer le type de la liste des types disponibles
+                          setProjectTypes(prev => prev.filter(t => t.value !== type.value));
+                          setAvailableTypes(prev => prev.filter(t => t !== type.value));
+                          // Aussi le supprimer de la sélection si il était sélectionné
+                          if ((Array.isArray(formData.types) ? formData.types : [formData.types]).includes(type.value)) {
+                            handleTypeChange(type.value);
+                          }
+                        }}
+                        className="absolute top-1 right-1 w-5 h-5 bg-red-500 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors opacity-70 hover:opacity-100"
+                        title="Supprimer définitivement ce type de la liste"
+                      >
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </button>
+                    </label>
+                  );
+                })}
               </div>
             </div>
 
