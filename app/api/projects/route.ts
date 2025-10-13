@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
           title: savedProject.title,
           description: savedProject.description,
           technologies: savedProject.technologies,
-          type: savedProject.type,
+          types: savedProject.types,
           link: savedProject.link,
           createdAt: savedProject.createdAt
         }
@@ -144,6 +144,7 @@ export async function GET() {
           description: project.description,
           technologies: project.technologies,
           types: project.types || 'web',
+          isArchived: project.isArchived || false,
           link: project.link,
           images: images.map(img => img.url), // Array d'URLs
           createdAt: project.createdAt,

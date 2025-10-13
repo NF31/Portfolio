@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ProjectsFiltersProps {
   searchTerm: string;
@@ -19,6 +19,25 @@ const ProjectsFilters: React.FC<ProjectsFiltersProps> = ({
   onTypeChange,
   onStatusChange
 }) => {
+  const [availableTypes, setAvailableTypes] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetchProjectTypes();
+  }, []);
+
+  const fetchProjectTypes = async () => {
+    try {
+      const response = await fetch('/api/projects/types');
+      if (response.ok) {
+        const data = await response.json();
+        setAvailableTypes(data.types);
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des types:', error);
+      // Fallback vers les types par défaut
+      setAvailableTypes(['web', 'mobile', 'fullstack', 'data', 'design', 'autre']);
+    }
+  };
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-6 dark:bg-gray-800">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
@@ -52,12 +71,11 @@ const ProjectsFilters: React.FC<ProjectsFiltersProps> = ({
             className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           >
             <option value="all">Tous les types</option>
-            <option value="web">Web</option>
-            <option value="mobile">Mobile</option>
-            <option value="fullstack">Fullstack</option>
-            <option value="data">Data</option>
-            <option value="design">Design</option>
-            <option value="autre">Autre</option>
+            {availableTypes.map(type => (
+              <option key={type} value={type}>
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+              </option>
+            ))}
           </select>
         </div>
 

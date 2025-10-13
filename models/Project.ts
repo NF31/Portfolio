@@ -7,6 +7,7 @@ export interface IProject extends Document {
   technologies: string[];
   link?: string;
   types: string | string[]; // Types (peut être un string ou un array)
+  isArchived?: boolean; // Statut d'archivage
   createdBy: mongoose.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
@@ -66,22 +67,24 @@ const ProjectSchema = new Schema<IProject>({
     type: Schema.Types.Mixed,
     required: [true, 'Le type de projet est requis'],
     validate: {
-      validator: function(v: any) {
-        // Peut être un string ou un array de strings
-        const validTypes = ['web', 'mobile', 'fullstack', 'data', 'design', 'autre'];
+      validator: function(v: string | string[]) {
+        // Peut être un string ou un array de strings (validation flexible)
         if (typeof v === 'string') {
-          return validTypes.includes(v);
+          return v.trim().length > 0; // Juste vérifier que ce n'est pas vide
         }
         if (Array.isArray(v)) {
           return v.length > 0 && v.every(type => 
-            typeof type === 'string' && 
-            validTypes.includes(type)
+            typeof type === 'string' && type.trim().length > 0
           );
         }
         return false;
       },
-      message: 'Le type doit être un string ou un array de strings valides: web, mobile, fullstack, data, design, ou autre'
+      message: 'Le type doit être un string non vide ou un array de strings non vides'
     }
+  },
+  isArchived: {
+    type: Boolean,
+    default: false
   },
   createdBy: {
     type: Schema.Types.ObjectId,
@@ -94,7 +97,7 @@ const ProjectSchema = new Schema<IProject>({
 
 // Index pour améliorer les performances
 ProjectSchema.index({ title: 'text', description: 'text' });
-ProjectSchema.index({ type: 1 });
+ProjectSchema.index({ types: 1 });
 ProjectSchema.index({ createdBy: 1 });
 ProjectSchema.index({ createdAt: -1 });
 
