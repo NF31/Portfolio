@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Save, X } from 'lucide-react';
 import Link from 'next/link';
@@ -30,6 +30,8 @@ const AddServicePage = () => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
+  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+  const [newCategory, setNewCategory] = useState('');
 
   const [formData, setFormData] = useState<ServiceFormData>({
     title: '',
@@ -50,22 +52,62 @@ const AddServicePage = () => {
     order: 0
   });
 
-  // Liste des icônes disponibles
+  // Liste des icônes disponibles (organisées par catégorie)
   const availableIcons = [
-    'Briefcase', 'Code', 'Palette', 'Smartphone', 'Monitor', 'Database',
-    'Cloud', 'Shield', 'Zap', 'Rocket', 'Target', 'Settings', 'Globe',
-    'Layers', 'Box', 'Wrench', 'Search', 'TrendingUp', 'Users', 'Star'
+    // Web & Développement
+    'Globe', 'Monitor', 'Laptop', 'Code', 'Code2', 'Terminal', 'Browser',
+    'Window', 'Layout', 'Layers', 'Grid', 'Box', 'Package',
+    
+    // Mobile & Design
+    'Smartphone', 'Tablet', 'Palette', 'Brush', 'Paintbrush', 'Image',
+    'Camera', 'Video', 'Film', 'Mic', 'Headphones',
+    
+    // Technologies & Outils
+    'Database', 'Server', 'Cloud', 'Shield', 'Lock', 'Key', 'Cpu',
+    'HardDrive', 'Wifi', 'Bluetooth', 'Zap', 'Bolt', 'Activity',
+    
+    // Business & Services
+    'Briefcase', 'Target', 'TrendingUp', 'BarChart', 'PieChart',
+    'Users', 'User', 'UserPlus', 'Building', 'Building2',
+    
+    // Actions & Navigation
+    'Rocket', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft',
+    'Search', 'Settings', 'Wrench', 'Tool', 'Cog',
+    
+    // Communication & Support
+    'MessageCircle', 'Mail', 'Phone', 'Calendar', 'Clock',
+    'MapPin', 'Navigation', 'Compass',
+    
+    // Divers
+    'Star', 'Heart', 'ThumbsUp', 'Award', 'Trophy', 'Medal',
+    'Gift', 'Lightbulb', 'Book', 'FileText', 'Folder'
   ];
 
-  // Catégories de services
-  const serviceCategories = [
-    { value: 'web', label: 'Développement Web' },
-    { value: 'mobile', label: 'Développement Mobile' },
-    { value: 'design', label: 'Design' },
-    { value: 'consulting', label: 'Consulting' },
-    { value: 'maintenance', label: 'Maintenance' },
-    { value: 'other', label: 'Autre' }
-  ];
+  // Charger les catégories disponibles
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/services/categories');
+      if (response.ok) {
+        const data = await response.json();
+        setAvailableCategories(data.categories);
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des catégories:', error);
+    }
+  };
+
+  const addNewCategory = () => {
+    if (newCategory.trim() && !availableCategories.includes(newCategory.trim().toLowerCase())) {
+      const categoryValue = newCategory.trim().toLowerCase();
+      setAvailableCategories(prev => [...prev, categoryValue]);
+      setFormData(prev => ({ ...prev, category: categoryValue }));
+      setNewCategory('');
+    }
+  };
 
   // Gérer les changements dans le formulaire
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -263,20 +305,41 @@ const AddServicePage = () => {
                 <label htmlFor="category" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Catégorie *
                 </label>
-                <select
-                  id="category"
-                  name="category"
-                  value={formData.category}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                >
-                  {serviceCategories.map(category => (
-                    <option key={category.value} value={category.value}>
-                      {category.label}
-                    </option>
-                  ))}
-                </select>
+                <div className="space-y-3">
+                  <select
+                    id="category"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  >
+                    <option value="">Sélectionnez une catégorie</option>
+                    {availableCategories.map(category => (
+                      <option key={category} value={category}>
+                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                      </option>
+                    ))}
+                  </select>
+                  
+                  {/* Ajouter une nouvelle catégorie */}
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={newCategory}
+                      onChange={(e) => setNewCategory(e.target.value)}
+                      placeholder="Nouvelle catégorie"
+                      className="flex-1 px-3 sm:px-4 py-2 sm:py-3 text-sm border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={addNewCategory}
+                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                    >
+                      Ajouter
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -324,32 +387,132 @@ const AddServicePage = () => {
             </h2>
             
             <div>
-              <label htmlFor="icon" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="icon" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                 Icône *
               </label>
-              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-10 gap-2">
-                {availableIcons.map(iconName => {
-                  const IconComponent = (LucideIcons as any)[iconName];
-                  return (
-                    <button
-                      key={iconName}
-                      type="button"
-                      onClick={() => setFormData(prev => ({ ...prev, icon: iconName }))}
-                      className={`p-2 sm:p-3 border-2 rounded-lg transition-all ${
-                        formData.icon === iconName
-                          ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
-                          : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-500'
-                      }`}
-                      title={iconName}
-                    >
-                      {IconComponent && <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 mx-auto" />}
-                    </button>
-                  );
-                })}
+              
+              {/* Icône sélectionnée */}
+              <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white">
+                    {(() => {
+                      const IconComponent = (LucideIcons as any)[formData.icon];
+                      return IconComponent ? <IconComponent className="w-5 h-5" /> : <LucideIcons.Sparkles className="w-5 h-5" />;
+                    })()}
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
+                      Icône sélectionnée : {formData.icon}
+                    </p>
+                    <p className="text-xs text-blue-700 dark:text-blue-300">
+                      Aperçu de l'icône dans votre service
+                    </p>
+                  </div>
+                </div>
               </div>
-              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-2">
-                Icône sélectionnée : {formData.icon}
-              </p>
+
+              {/* Grille d'icônes organisée par catégories */}
+              <div className="space-y-4">
+                {/* Web & Développement */}
+                <div>
+                  <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">🌐 Web & Développement</h4>
+                  <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
+                    {['Globe', 'Monitor', 'Laptop', 'Code', 'Code2', 'Terminal', 'Browser', 'Window', 'Layout', 'Layers', 'Grid', 'Box'].map(iconName => {
+                      const IconComponent = (LucideIcons as any)[iconName];
+                      return (
+                        <button
+                          key={iconName}
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, icon: iconName }))}
+                          className={`p-2 border-2 rounded-lg transition-all hover:scale-105 ${
+                            formData.icon === iconName
+                              ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 shadow-md'
+                              : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-400 dark:hover:border-blue-500'
+                          }`}
+                          title={iconName}
+                        >
+                          {IconComponent && <IconComponent className="w-4 h-4 mx-auto" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Mobile & Design */}
+                <div>
+                  <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">📱 Mobile & Design</h4>
+                  <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
+                    {['Smartphone', 'Tablet', 'Palette', 'Brush', 'Paintbrush', 'Image', 'Camera', 'Video', 'Film', 'Mic', 'Headphones'].map(iconName => {
+                      const IconComponent = (LucideIcons as any)[iconName];
+                      return (
+                        <button
+                          key={iconName}
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, icon: iconName }))}
+                          className={`p-2 border-2 rounded-lg transition-all hover:scale-105 ${
+                            formData.icon === iconName
+                              ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 shadow-md'
+                              : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-400 dark:hover:border-blue-500'
+                          }`}
+                          title={iconName}
+                        >
+                          {IconComponent && <IconComponent className="w-4 h-4 mx-auto" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Technologies & Outils */}
+                <div>
+                  <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">⚙️ Technologies & Outils</h4>
+                  <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
+                    {['Database', 'Server', 'Cloud', 'Shield', 'Lock', 'Key', 'Cpu', 'HardDrive', 'Wifi', 'Bluetooth', 'Zap', 'Bolt'].map(iconName => {
+                      const IconComponent = (LucideIcons as any)[iconName];
+                      return (
+                        <button
+                          key={iconName}
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, icon: iconName }))}
+                          className={`p-2 border-2 rounded-lg transition-all hover:scale-105 ${
+                            formData.icon === iconName
+                              ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 shadow-md'
+                              : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-400 dark:hover:border-blue-500'
+                          }`}
+                          title={iconName}
+                        >
+                          {IconComponent && <IconComponent className="w-4 h-4 mx-auto" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Business & Services */}
+                <div>
+                  <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">💼 Business & Services</h4>
+                  <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
+                    {['Briefcase', 'Target', 'TrendingUp', 'BarChart', 'PieChart', 'Users', 'User', 'UserPlus', 'Building', 'Building2', 'Rocket', 'Star'].map(iconName => {
+                      const IconComponent = (LucideIcons as any)[iconName];
+                      return (
+                        <button
+                          key={iconName}
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, icon: iconName }))}
+                          className={`p-2 border-2 rounded-lg transition-all hover:scale-105 ${
+                            formData.icon === iconName
+                              ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 shadow-md'
+                              : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:border-blue-400 dark:hover:border-blue-500'
+                          }`}
+                          title={iconName}
+                        >
+                          {IconComponent && <IconComponent className="w-4 h-4 mx-auto" />}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
