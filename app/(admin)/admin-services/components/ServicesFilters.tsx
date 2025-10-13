@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Filter } from 'lucide-react';
 
 interface ServicesFiltersProps {
@@ -20,6 +20,23 @@ const ServicesFilters: React.FC<ServicesFiltersProps> = ({
   filterStatus,
   onStatusChange
 }) => {
+  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await fetch('/api/services/categories');
+      if (response.ok) {
+        const data = await response.json();
+        setAvailableCategories(data.categories);
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des catégories:', error);
+    }
+  };
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-6 dark:bg-gray-800">
       <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
@@ -60,12 +77,11 @@ const ServicesFilters: React.FC<ServicesFiltersProps> = ({
             className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           >
             <option value="all">Toutes les catégories</option>
-            <option value="web">Web</option>
-            <option value="mobile">Mobile</option>
-            <option value="design">Design</option>
-            <option value="consulting">Consulting</option>
-            <option value="maintenance">Maintenance</option>
-            <option value="other">Autre</option>
+            {availableCategories.map(category => (
+              <option key={category} value={category}>
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </option>
+            ))}
           </select>
         </div>
 

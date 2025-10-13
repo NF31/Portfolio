@@ -71,8 +71,13 @@ const ServiceSchema = new Schema<IService>({
   category: {
     type: String,
     required: [true, 'La catégorie est requise'],
-    enum: ['web', 'mobile', 'design', 'consulting', 'maintenance', 'other'],
-    default: 'web'
+    trim: true,
+    validate: {
+      validator: function(v: string) {
+        return v && v.trim().length > 0;
+      },
+      message: 'La catégorie doit être un string non vide'
+    }
   },
   technologies: [{
     type: String,
