@@ -147,7 +147,7 @@ export async function PUT(
           title: updatedProject.title,
           description: updatedProject.description,
           technologies: updatedProject.technologies,
-          type: updatedProject.type,
+          types: updatedProject.types,
           link: updatedProject.link,
           images: updatedProject.images,
           createdBy: updatedProject.createdBy,
