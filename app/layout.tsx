@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import StructuredData from "./components/StructuredData";
 import CanonicalLink from "./components/CanonicalLink";
+import ScrollToTop from "./components/ScrollToTop";
 import "./globals.css";
 
 const inter = Inter({
@@ -49,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="fr" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <StructuredData />
         <CanonicalLink />
@@ -62,6 +63,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           {children}
+          <ScrollToTop />
           <Toaster 
             position="top-right"
             richColors
