@@ -5,6 +5,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import StructuredData from "./components/StructuredData";
 import CanonicalLink from "./components/CanonicalLink";
 import ScrollToTop from "./components/ScrollToTop";
+import CustomHead from "./components/Head";
 import "./globals.css";
 
 const inter = Inter({
@@ -42,6 +43,12 @@ export const metadata: Metadata = {
   verification: {
     google: "votre-code-google-search-console",
   },
+  openGraph: {
+    title: "NFDev21 - Développeur Fullstack Laravel & Next.js",
+    description: "Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes et applications performantes.",
+    url: "https://nfdev21.com",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -52,16 +59,15 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        <meta name="description" content="Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Paris, disponible en France." />
         <StructuredData />
         <CanonicalLink />
-        <meta name="theme-color" content="#3B82F6" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body
         className={`${inter.variable} font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300`}
       >
         <ThemeProvider>
+          <CustomHead />
           {children}
           <ScrollToTop />
           <Toaster 
