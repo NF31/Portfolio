@@ -19,11 +19,11 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Accueil', href: '#accueil' },
-    { name: 'Services', href: '#services' },
-    { name: 'Parcours', href: '#parcours' },
-    { name: 'Projets', href: '#projets' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Accueil', href: '/#accueil' },
+    { name: 'Services', href: '/#services' },
+    // { name: 'Parcours', href: '#parcours' }, // Commenté temporairement
+    { name: 'Projets', href: '/#projets' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -85,7 +85,7 @@ const Navbar = () => {
             </button>
 
             <Link
-              href="#contact"
+              href="/#contact"
               className="relative px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl overflow-hidden group transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:-translate-y-0.5"
             >
               <span className="relative z-10">Me Contacter</span>
@@ -182,7 +182,7 @@ const Navbar = () => {
 
             {/* Bouton CTA mobile */}
             <Link
-              href="#contact"
+              href="/#contact"
               onClick={() => setIsMenuOpen(false)}
               className="relative block px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl text-center transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-105 overflow-hidden group"
               style={{
