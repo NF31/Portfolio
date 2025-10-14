@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '../../../../lib/mongodb';
 import Project from '../../../../models/Project';
+import Image from '../../../../models/Image';
+import { cloudinary } from '../../../../lib/cloudinary';
 import mongoose from 'mongoose';
 
 // GET /api/projects/[id] - Récupérer un projet spécifique
@@ -207,14 +209,44 @@ export async function DELETE(
       );
     }
 
+    // Récupérer toutes les images associées au projet
+    console.log('🔍 Recherche des images associées au projet...');
+    const associatedImages = await Image.find({ projectId: id });
+    console.log(`📸 ${associatedImages.length} image(s) trouvée(s) pour le projet`);
+
+    // Supprimer les images de Cloudinary et de la base de données
+    if (associatedImages.length > 0) {
+      console.log('🗑️ Suppression des images associées...');
+      
+      for (const image of associatedImages) {
+        try {
+          // Supprimer de Cloudinary
+          await cloudinary.uploader.destroy(image.publicId);
+          console.log(`☁️ Image supprimée de Cloudinary: ${image.publicId}`);
+        } catch (cloudinaryError) {
+          console.warn(`⚠️ Erreur lors de la suppression de Cloudinary pour ${image.publicId}:`, cloudinaryError);
+          // On continue même si Cloudinary échoue
+        }
+        
+        // Supprimer de la base de données
+        await Image.findByIdAndDelete(image._id);
+        console.log(`💾 Image supprimée de la base de données: ${image._id}`);
+      }
+      
+      console.log(`✅ ${associatedImages.length} image(s) supprimée(s) avec succès !`);
+    }
+
     // Supprimer le projet
     console.log('🗑️ Suppression du projet:', existingProject.title);
     await Project.findByIdAndDelete(id);
 
-    console.log('✅ Projet supprimé avec succès !');
+    console.log('✅ Projet et images associées supprimés avec succès !');
 
     return NextResponse.json(
-      { message: 'Projet supprimé avec succès' },
+      { 
+        message: 'Projet et images associées supprimés avec succès',
+        deletedImagesCount: associatedImages.length
+      },
       { status: 200 }
     );
 
