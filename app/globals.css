@@ -32,3 +32,112 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ===== SCROLLBAR PERSONNALISÉE SELON LA CHARTE GRAPHIQUE ===== */
+
+/* Scrollbar pour Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Track (arrière-plan de la scrollbar) */
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+/* Thumb (la partie qu'on peut faire glisser) */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all 0.3s ease;
+}
+
+/* Thumb au hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #1e40af);
+  transform: scale(1.1);
+}
+
+/* Thumb actif (quand on clique dessus) */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #1d4ed8, #1e3a8a);
+}
+
+/* Corner (coin entre scrollbar verticale et horizontale) */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ===== VERSION DARK MODE ===== */
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #60a5fa, #3b82f6);
+  border: 2px solid rgba(15, 23, 42, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #2563eb, #1d4ed8);
+}
+
+/* ===== SCROLLBAR POUR FIREFOX ===== */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 transparent;
+}
+
+.dark html {
+  scrollbar-color: #60a5fa transparent;
+}
+
+/* ===== SCROLLBAR POUR LES CONTAINERS SPÉCIFIQUES ===== */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #f1f5f9;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #1e40af);
+}
+
+/* Version dark pour les containers */
+.dark .custom-scrollbar {
+  scrollbar-color: #60a5fa rgba(15, 23, 42, 0.5);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #60a5fa, #3b82f6);
+  border: 1px solid rgba(15, 23, 42, 0.5);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  box-shadow: 0 0 8px rgba(96, 165, 250, 0.3);
+}
