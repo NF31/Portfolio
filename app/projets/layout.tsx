@@ -5,10 +5,17 @@ import Footer from '../components/Footer';
 export const metadata: Metadata = {
   title: "Mes Projets & Réalisations",
   description: "Découvrez mes projets et réalisations : applications web, sites e-commerce, SaaS. Portfolio de développeur fullstack Laravel & Next.js avec exemples concrets de projets réussis.",
+  keywords: ["portfolio projets", "applications web", "sites e-commerce", "SaaS", "Laravel", "Next.js", "développement web", "projets réalisés"],
   openGraph: {
     title: "Portfolio - Mes Projets & Réalisations | NFDev21",
     description: "Découvrez mes projets et réalisations : applications web, e-commerce, SaaS développés avec Laravel et Next.js.",
     url: "https://nfdev21.com/projets",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio - Mes Projets & Réalisations | NFDev21",
+    description: "Découvrez mes projets et réalisations : applications web, e-commerce, SaaS développés avec Laravel et Next.js.",
   },
 };
 
