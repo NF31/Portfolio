@@ -158,6 +158,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
             <button
               onClick={onClose}
               className="lg:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-800 dark:hover:to-gray-700 transition-all duration-300 hover:scale-110 hover:rotate-90"
+              aria-label="Fermer le menu latéral"
             >
               <X className="w-5 h-5 transition-transform duration-300" />
             </button>

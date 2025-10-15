@@ -175,7 +175,7 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                         ? 'bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900 dark:text-green-200'
                         : 'bg-red-100 text-red-800 hover:bg-red-200 dark:bg-red-900 dark:text-red-200'
                     }`}
-                    title={service.isActive ? 'Désactiver' : 'Activer'}
+                    aria-label={service.isActive ? 'Désactiver le service' : 'Activer le service'}
                   >
                     {service.isActive ? (
                       <Power className="w-3 h-3 mr-1" />
@@ -191,7 +191,7 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                         ? 'text-yellow-500 hover:text-yellow-600'
                         : 'text-gray-400 hover:text-yellow-500'
                     }`}
-                    title={service.isFeatured ? 'Retirer des favoris' : 'Mettre en avant'}
+                    aria-label={service.isFeatured ? 'Retirer des favoris' : 'Mettre en avant'}
                   >
                     {service.isFeatured ? (
                       <Star className="w-4 h-4" />
