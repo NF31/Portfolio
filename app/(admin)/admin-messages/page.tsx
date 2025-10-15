@@ -299,7 +299,7 @@ export default function AdminMessagesPage() {
                           onClick={() => updateStatus(message._id, 'read')}
                           disabled={actionLoading === message._id}
                           className="p-1.5 sm:p-2 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-lg transition-colors disabled:opacity-50"
-                          title="Marquer comme lu"
+                          aria-label="Marquer comme lu"
                         >
                           <MailOpen className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
@@ -309,7 +309,7 @@ export default function AdminMessagesPage() {
                           onClick={() => updateStatus(message._id, 'processed')}
                           disabled={actionLoading === message._id}
                           className="p-1.5 sm:p-2 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-lg transition-colors disabled:opacity-50"
-                          title="Marquer comme traité"
+                          aria-label="Marquer comme traité"
                         >
                           <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
@@ -317,7 +317,7 @@ export default function AdminMessagesPage() {
                       <a
                         href={`mailto:${message.email}?subject=Re: ${encodeURIComponent(message.subject || 'Votre message')}&body=${encodeURIComponent(`Bonjour ${message.name},\n\n`)}`}
                         className="p-1.5 sm:p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
-                        title="Répondre par email"
+                        aria-label="Répondre par email"
                       >
                         <Reply className="w-4 h-4 sm:w-5 sm:h-5" />
                       </a>
@@ -325,7 +325,7 @@ export default function AdminMessagesPage() {
                         onClick={() => deleteMessage(message._id)}
                         disabled={actionLoading === message._id}
                         className="p-1.5 sm:p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors disabled:opacity-50"
-                        title="Supprimer"
+                        aria-label="Supprimer"
                       >
                         <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
