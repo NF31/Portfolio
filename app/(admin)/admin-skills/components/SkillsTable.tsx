@@ -187,21 +187,21 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
                       <button
                         onClick={() => navigator.clipboard.writeText(skill.name)}
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        title="Copier le nom"
+                        aria-label="Copier le nom"
                       >
                         <Copy className="w-4 h-4" />
                       </button>
                       <Link
                         href={`/admin-skills/edit/${skill._id}`}
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                        title="Modifier"
+                        aria-label="Modifier"
                       >
                         <Edit className="w-4 h-4" />
                       </Link>
                       <button
                         onClick={() => onDelete(skill._id)}
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-                        title="Supprimer"
+                        aria-label="Supprimer"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -260,21 +260,21 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
                 <button
                   onClick={() => navigator.clipboard.writeText(skill.name)}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  title="Copier le nom"
+                  aria-label="Copier le nom"
                 >
                   <Copy className="w-4 h-4" />
                 </button>
                 <Link
                   href={`/admin-skills/edit/${skill._id}`}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-                  title="Modifier"
+                  aria-label="Modifier"
                 >
                   <Edit className="w-4 h-4" />
                 </Link>
                 <button
                   onClick={() => onDelete(skill._id)}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-                  title="Supprimer"
+                  aria-label="Supprimer"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>

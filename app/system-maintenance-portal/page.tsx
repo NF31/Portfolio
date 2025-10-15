@@ -119,6 +119,7 @@ const LoginPage: React.FC = () => {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
                 >
                   {showPassword ? (
                     <EyeOff className="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
