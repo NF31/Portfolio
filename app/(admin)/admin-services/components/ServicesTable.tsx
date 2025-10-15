@@ -206,21 +206,21 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                   <Link
                     href={`/admin-services/${service._id}`}
                     className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-1 rounded transition-colors"
-                    title="Voir"
+                    aria-label="Voir"
                   >
                     <Eye className="w-4 h-4" />
                   </Link>
                   <Link
                     href={`/admin-services/edit/${service._id}`}
                     className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 p-1 rounded transition-colors"
-                    title="Modifier"
+                    aria-label="Modifier"
                   >
                     <Edit className="w-4 h-4" />
                   </Link>
                   <button
                     onClick={() => onDelete(service._id)}
                     className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 p-1 rounded transition-colors"
-                    title="Supprimer"
+                    aria-label="Supprimer"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>

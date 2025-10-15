@@ -188,7 +188,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                       <button
                         onClick={() => onEdit(project.id)}
                         className="p-1.5 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                        title="Modifier"
+                        aria-label="Modifier"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -201,7 +201,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                             ? 'text-yellow-400 hover:text-yellow-600' 
                             : 'text-gray-400 dark:text-gray-500 hover:text-yellow-600 dark:hover:text-yellow-400'
                         }`}
-                        title={project.isArchived ? "Désarchiver" : "Archiver"}
+                        aria-label={project.isArchived ? "Désarchiver" : "Archiver"}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8l4 4m0 0l4-4m-4 4V3" />
@@ -210,7 +210,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                       <button
                         onClick={() => onDelete(project.id)}
                         className="p-1.5 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-                        title="Supprimer"
+                        aria-label="Supprimer"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -313,7 +313,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                 <button
                   onClick={() => onEdit(project.id)}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  title="Modifier"
+                  aria-label="Modifier"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -326,7 +326,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                       ? 'text-yellow-400 hover:text-yellow-600' 
                       : 'text-gray-400 dark:text-gray-500 hover:text-yellow-600 dark:hover:text-yellow-400'
                   }`}
-                  title={project.isArchived ? "Désarchiver" : "Archiver"}
+                  aria-label={project.isArchived ? "Désarchiver" : "Archiver"}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8l4 4m0 0l4-4m-4 4V3" />
@@ -335,7 +335,7 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                 <button
                   onClick={() => onDelete(project.id)}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-                  title="Supprimer"
+                  aria-label="Supprimer"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
