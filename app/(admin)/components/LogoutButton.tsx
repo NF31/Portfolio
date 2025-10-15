@@ -24,7 +24,7 @@ const LogoutButton: React.FC = () => {
     <button
       onClick={handleLogout}
       className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
-      title="Se déconnecter"
+      aria-label="Se déconnecter"
     >
       <LogOut className="w-4 h-4" />
       <span className="hidden sm:inline">Déconnexion</span>
