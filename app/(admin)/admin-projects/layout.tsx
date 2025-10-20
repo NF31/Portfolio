@@ -3,7 +3,11 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Gestion des projets - Admin",
-  description: "Interface d'administration pour gérer les projets du portfolio"
+  description: "Interface d'administration pour gérer les projets du portfolio",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function ProjectsLayout({children}: { children: React.ReactNode; }) {

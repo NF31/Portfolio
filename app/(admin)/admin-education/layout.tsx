@@ -3,7 +3,11 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Formation - Admin",
-  description: "Interface d'administration pour gérer les formations et certifications"
+  description: "Interface d'administration pour gérer les formations et certifications",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function EducationLayout({

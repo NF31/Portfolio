@@ -3,6 +3,10 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Services - Administration | NFDev21',
   description: 'Gestion des services proposés par NFDev21',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function ServicesLayout({

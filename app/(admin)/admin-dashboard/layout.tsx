@@ -3,7 +3,11 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Dashboard Admin - Portfolio",
-  description: "Tableau de bord d'administration pour gérer le portfolio"
+  description: "Tableau de bord d'administration pour gérer le portfolio",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function DashboardLayout({
