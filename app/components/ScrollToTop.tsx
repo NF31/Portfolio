@@ -7,7 +7,6 @@ const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   
-  console.log('🔧 ScrollToTop component rendered, isVisible:', isVisible, 'scrollProgress:', scrollProgress);
 
   // Fonction pour calculer le pourcentage de scroll et la visibilité
   const handleScroll = () => {
@@ -18,25 +17,16 @@ const ScrollToTop = () => {
     const progress = Math.min(Math.max(scrollPercent, 0), 100);
     const shouldBeVisible = scrollTop > 300;
     
-    console.log(`🔄 handleScroll called: scrollTop=${scrollTop}, docHeight=${docHeight}, progress=${progress.toFixed(1)}%, shouldBeVisible=${shouldBeVisible}`);
     
     setScrollProgress(progress);
     setIsVisible(shouldBeVisible);
     
-    // Debug détaillé
-    if (scrollTop > 300) {
-      console.log(`📊 Scroll: ${scrollTop}px, Progress: ${progress.toFixed(1)}%, isVisible: ${shouldBeVisible}`);
-    }
   };
 
   // Fonction pour remonter en haut avec transition fluide
   const scrollToTop = () => {
-    console.log('🚀🚀🚀 SCROLL TO TOP CLICKED! 🚀🚀🚀');
-    console.log('Position actuelle avant scroll:', window.scrollY);
-    
     try {
       // Animation fluide personnalisée
-      console.log('🎬 Début de l\'animation de scroll fluide...');
       
       const startPosition = window.scrollY;
       const startTime = performance.now();
@@ -59,19 +49,13 @@ const ScrollToTop = () => {
           window.scrollTo(0, 0);
           document.documentElement.scrollTop = 0;
           document.body.scrollTop = 0;
-          console.log('✅ Animation terminée, position finale:', window.scrollY);
         }
       };
       
       // Démarrer l'animation
       requestAnimationFrame(animateScroll);
-      
-      console.log('🎬 Animation de scroll démarrée');
     } catch (error) {
-      console.error('❌ Erreur lors du scroll:', error);
-      
       // Fallback avec smooth scroll natif
-      console.log('🔄 Fallback: utilisation du smooth scroll natif...');
       window.scrollTo({
         top: 0,
         left: 0,
@@ -81,35 +65,24 @@ const ScrollToTop = () => {
   };
 
   useEffect(() => {
-    console.log('🔧 useEffect ScrollToTop - Initialisation...');
     // Vérifier si on est côté client
     if (typeof window !== 'undefined') {
-      console.log('🌐 Window disponible, ajout du listener scroll...');
       window.addEventListener('scroll', handleScroll, { passive: true });
       
       // Appel initial pour vérifier la position
       handleScroll();
       
       return () => {
-        console.log('🧹 Nettoyage du listener scroll...');
         window.removeEventListener('scroll', handleScroll);
       };
-    } else {
-      console.log('❌ Window non disponible (SSR)');
     }
   }, []);
 
-  console.log('🎨 Rendu du composant ScrollToTop, isVisible:', isVisible);
   
   return (
     <>
       {isVisible && (
         <div className="fixed bottom-8 right-8 z-[9999] group">
-          {console.log('🎯🎯🎯 BOUTON SCROLL TO TOP AFFICHÉ! 🎯🎯🎯')}
-          {console.log('🎯 Position: bottom-8 right-8')}
-          {console.log('🎯 Z-index: 9999')}
-          {console.log('🎯 Scroll progress:', scrollProgress)}
-          {console.log('🎯 Timestamp affichage:', new Date().toISOString())}
           {/* Container principal */}
           <div className="relative">
             {/* Jauge de progression circulaire */}
@@ -140,41 +113,8 @@ const ScrollToTop = () => {
               
               {/* Bouton central avec gradient adapté */}
               <button
-                onClick={(e) => {
-                  console.log('🖱️🖱️🖱️ CLIC SUR LE BOUTON DÉTECTÉ! 🖱️🖱️🖱️');
-                  console.log('🖱️ Event type:', e.type);
-                  console.log('🖱️ Event bubbles:', e.bubbles);
-                  console.log('🖱️ Event cancelable:', e.cancelable);
-                  console.log('🖱️ Event defaultPrevented:', e.defaultPrevented);
-                  console.log('🖱️ Event isTrusted:', e.isTrusted);
-                  console.log('🖱️ Event timeStamp:', e.timeStamp);
-                  console.log('🖱️ Target:', e.target);
-                  console.log('🖱️ CurrentTarget:', e.currentTarget);
-                  console.log('🖱️ Button clicked at:', new Date().toISOString());
-                  console.log('🖱️ Calling scrollToTop function...');
+                onClick={() => {
                   scrollToTop();
-                  console.log('🖱️ scrollToTop function called!');
-                }}
-                onMouseDown={(e) => {
-                  console.log('🖱️ Mouse down sur le bouton!');
-                  console.log('Mouse down event:', e);
-                }}
-                onMouseUp={(e) => {
-                  console.log('🖱️ Mouse up sur le bouton!');
-                  console.log('Mouse up event:', e);
-                }}
-                onMouseEnter={() => {
-                  console.log('🖱️ Mouse enter sur le bouton!');
-                  console.log('🖱️ Bouton est dans le DOM:', document.contains(e.target as Node));
-                }}
-                onMouseLeave={() => {
-                  console.log('🖱️ Mouse leave sur le bouton!');
-                }}
-                onFocus={() => {
-                  console.log('🖱️ Bouton reçoit le focus!');
-                }}
-                onBlur={() => {
-                  console.log('🖱️ Bouton perd le focus!');
                 }}
                 className="absolute inset-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-600 dark:to-indigo-700 rounded-full flex items-center justify-center shadow-2xl hover:shadow-blue-500/50 dark:hover:shadow-blue-400/50 transition-all duration-300 hover:scale-110 group-hover:rotate-3 m-auto active:scale-95 active:rotate-6 cursor-pointer"
                 style={{
