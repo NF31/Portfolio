@@ -2,15 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import {
-  Briefcase,
-  MessageSquare,
-  Settings,
-  Rocket,
-  RefreshCw,
-  Target,
-  Image as ImageIcon
-} from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 import { useStats } from '../contexts/StatsContext';
 import SkillIcon from '@/app/components/SkillIcon';
 import { formatRelativeTime } from '@/lib/dateUtils';
@@ -182,7 +175,7 @@ const AdminDashboard = () => {
       'Settings': Settings,
       'Target': Target,
       'Image': ImageIcon,
-      'Rocket': Rocket,
+      'Icons.Rocket': Icons.Rocket,
       'RefreshCw': RefreshCw
     };
     return iconMap[iconName] || Settings;
@@ -243,7 +236,7 @@ const AdminDashboard = () => {
             </button>
             <div className="hidden sm:block">
               <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                <Rocket className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white group-hover:animate-bounce" />
+                <Icons.Rocket className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white group-hover:animate-bounce" />
               </div>
             </div>
           </div>

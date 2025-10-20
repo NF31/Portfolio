@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Copy, Edit, Trash2 } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import SkillIcon from '@/app/components/SkillIcon';
 
 interface Skill {
@@ -189,21 +189,21 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         aria-label="Copier le nom"
                       >
-                        <Copy className="w-4 h-4" />
+                        <Icons.Copy="w-4 h-4" />
                       </button>
                       <Link
                         href={`/admin-skills/edit/${skill._id}`}
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                         aria-label="Modifier"
                       >
-                        <Edit className="w-4 h-4" />
+                        <Icons.Edit className="w-4 h-4" />
                       </Link>
                       <button
                         onClick={() => onDelete(skill._id)}
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                         aria-label="Supprimer"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <Icons.Trash2="w-4 h-4" />
                       </button>
                     </div>
                   </td>
@@ -262,21 +262,21 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   aria-label="Copier le nom"
                 >
-                  <Copy className="w-4 h-4" />
+                  <Icons.Copy="w-4 h-4" />
                 </button>
                 <Link
                   href={`/admin-skills/edit/${skill._id}`}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   aria-label="Modifier"
                 >
-                  <Edit className="w-4 h-4" />
+                  <Icons.Edit className="w-4 h-4" />
                 </Link>
                 <button
                   onClick={() => onDelete(skill._id)}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                   aria-label="Supprimer"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Icons.Trash2="w-4 h-4" />
                 </button>
               </div>
             </div>

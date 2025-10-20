@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Plus, Search, Filter } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import { toast } from 'sonner';
 import ServicesTable from './components/ServicesTable';
 import ServicesFilters from './components/ServicesFilters';
@@ -218,7 +218,7 @@ const ServicesPage = () => {
             href="/admin-services/add"
             className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium text-sm sm:text-base whitespace-nowrap"
           >
-            <Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+            <Icons.Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Nouveau Service
           </Link>
         </div>

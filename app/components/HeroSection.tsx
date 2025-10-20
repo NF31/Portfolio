@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Code2, Palette, Rocket } from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 
 const HeroSection = () => {
   const [currentText, setCurrentText] = useState(0);
@@ -86,7 +87,7 @@ const HeroSection = () => {
               >
                 <span className="relative z-10 flex items-center justify-center">
                   Voir mes projets
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  <Icons.ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
@@ -111,7 +112,7 @@ const HeroSection = () => {
                     {/* Effet de brillance au survol */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 dark:via-blue-500/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     <div className="relative w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/50 group-hover:scale-110 transition-all duration-300">
-                      <Code2 className="w-7 h-7 text-white group-hover:rotate-12 transition-transform duration-300" />
+                      <Icons.Code2 className="w-7 h-7 text-white group-hover:rotate-12 transition-transform duration-300" />
                     </div>
                     <div className="flex-1">
                       <p className="font-bold text-gray-900 dark:text-gray-100 text-lg">Développement</p>
@@ -125,7 +126,7 @@ const HeroSection = () => {
                   <div className="group flex items-center space-x-4 p-5 bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-900/30 dark:to-purple-900/30 rounded-2xl transform hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 dark:via-violet-500/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     <div className="relative w-14 h-14 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-violet-500/50 group-hover:scale-110 transition-all duration-300">
-                      <Palette className="w-7 h-7 text-white group-hover:rotate-12 transition-transform duration-300" />
+                      <Icons.Palette className="w-7 h-7 text-white group-hover:rotate-12 transition-transform duration-300" />
                     </div>
                     <div className="flex-1">
                       <p className="font-bold text-gray-900 dark:text-gray-100 text-lg">UI/UX Design</p>
@@ -138,7 +139,7 @@ const HeroSection = () => {
                   <div className="group flex items-center space-x-4 p-5 bg-gradient-to-r from-pink-50 to-rose-50 dark:from-pink-900/30 dark:to-rose-900/30 rounded-2xl transform hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 dark:via-pink-500/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     <div className="relative w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-pink-500/50 group-hover:scale-110 transition-all duration-300">
-                      <Rocket className="w-7 h-7 text-white group-hover:rotate-12 group-hover:-translate-y-1 transition-all duration-300" />
+                      <Icons.Rocket className="w-7 h-7 text-white group-hover:rotate-12 group-hover:-translate-y-1 transition-all duration-300" />
                     </div>
                     <div className="flex-1">
                       <p className="font-bold text-gray-900 dark:text-gray-100 text-lg">Performance</p>

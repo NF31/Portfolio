@@ -3,21 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  Home, 
-  Menu, 
-  X, 
-  BarChart3, 
-  Briefcase, 
-  Settings, 
-  Target, 
-  FileText, 
-  MessageSquare, 
-  Image as ImageIcon, 
-  GraduationCap,
-  Sun,
-  Moon
-} from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 import { useTheme } from '@/app/contexts/ThemeContext';
 import LogoutButton from './LogoutButton';
 import UserInfo from './UserInfo';
@@ -136,9 +123,9 @@ const AdminNavbar = () => {
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? (
-                <Sun className="w-5 h-5 text-yellow-500 group-hover:rotate-180 transition-transform duration-500" />
+                <Icons.Sun className="w-5 h-5 text-yellow-500 group-hover:rotate-180 transition-transform duration-500" />
               ) : (
-                <Moon className="w-5 h-5 text-indigo-600 dark:text-indigo-400 group-hover:-rotate-12 transition-transform duration-500" />
+                <Icons.Moon className="w-5 h-5 text-indigo-600 dark:text-indigo-400 group-hover:-rotate-12 transition-transform duration-500" />
               )}
             </button>
 
@@ -153,7 +140,7 @@ const AdminNavbar = () => {
                 href="/"
                 className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:border-blue-300 hover:text-blue-700 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-md"
               >
-                <Home className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                <Icons.Home className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
                 Retour au site
               </Link>
               <LogoutButton />
@@ -166,7 +153,7 @@ const AdminNavbar = () => {
               aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             >
               {isMenuOpen ? (
-                <X className="w-6 h-6 transition-transform duration-300 rotate-90" />
+                <Icons.X className="w-6 h-6 transition-transform duration-300 rotate-90" />
               ) : (
                 <Menu className="w-6 h-6 transition-transform duration-300" />
               )}
@@ -213,7 +200,7 @@ const AdminNavbar = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className="group flex items-center px-4 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:text-blue-700 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105"
                 >
-                  <Home className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                  <Icons.Home className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
                   Retour au site
                 </Link>
                 <div className="px-4">

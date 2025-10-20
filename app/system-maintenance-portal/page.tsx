@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Eye, EyeOff, Lock, User, AlertCircle } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import { useRouter } from 'next/navigation';
 
 const LoginPage: React.FC = () => {
@@ -61,7 +61,7 @@ const LoginPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600/20 rounded-2xl mb-4 backdrop-blur-sm border border-blue-500/30">
-            <Lock className="w-8 h-8 text-blue-400" />
+            <Icons.Lock="w-8 h-8 text-blue-400" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
             Système de Maintenance
@@ -81,7 +81,7 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-blue-400" />
+                  <Icons.User="h-5 w-5 text-blue-400" />
                 </div>
                 <input
                   id="email"
@@ -103,7 +103,7 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-blue-400" />
+                  <Icons.Lock="h-5 w-5 text-blue-400" />
                 </div>
                 <input
                   id="password"
@@ -122,9 +122,9 @@ const LoginPage: React.FC = () => {
                   aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
+                    <Icons.EyeOff="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
                   ) : (
-                    <Eye className="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
+                    <Icons.Eye="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
                   )}
                 </button>
               </div>
@@ -133,7 +133,7 @@ const LoginPage: React.FC = () => {
             {/* Error Message */}
             {error && (
               <div className="flex items-center gap-2 p-3 bg-red-500/20 border border-red-500/30 rounded-lg">
-                <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
+                <Icons.AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
                 <span className="text-red-200 text-sm">{error}</span>
               </div>
             )}
@@ -158,7 +158,7 @@ const LoginPage: React.FC = () => {
           {/* Security Notice */}
           <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
             <div className="flex items-start gap-2">
-              <AlertCircle className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
+              <Icons.AlertCircle className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
               <div>
                 <p className="text-yellow-200 text-xs font-medium mb-1">Accès restreint</p>
                 <p className="text-yellow-300/80 text-xs">

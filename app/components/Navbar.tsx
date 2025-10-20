@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Sun, Moon } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = () => {
@@ -76,9 +76,9 @@ const Navbar = () => {
             >
               <div className="relative z-10">
                 {isDarkMode ? (
-                  <Sun className="w-5 h-5 text-yellow-500 transition-transform duration-500 group-hover:rotate-180" />
+                  <Icons.Sun className="w-5 h-5 text-yellow-500 transition-transform duration-500 group-hover:rotate-180" />
                 ) : (
-                  <Moon className="w-5 h-5 text-indigo-600 transition-transform duration-500 group-hover:-rotate-12" />
+                  <Icons.Moon="w-5 h-5 text-indigo-600 transition-transform duration-500 group-hover:-rotate-12" />
                 )}
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-100 to-orange-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -102,9 +102,9 @@ const Navbar = () => {
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? (
-                <Sun className="w-5 h-5 text-yellow-500 transition-transform duration-500 group-hover:rotate-180" />
+                <Icons.Sun className="w-5 h-5 text-yellow-500 transition-transform duration-500 group-hover:rotate-180" />
               ) : (
-                <Moon className="w-5 h-5 text-indigo-600 transition-transform duration-500 group-hover:-rotate-12" />
+                <Icons.Moon="w-5 h-5 text-indigo-600 transition-transform duration-500 group-hover:-rotate-12" />
               )}
             </button>
 

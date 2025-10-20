@@ -6,7 +6,13 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "optimize-icons": "node scripts/optimize-icons-simple.js",
+    "fix-remaining-icons": "node scripts/fix-remaining-icons.js",
+    "fix-missing-icons": "node scripts/fix-missing-icons.js",
+    "optimize-all-icons": "npm run optimize-icons && npm run fix-remaining-icons && npm run fix-missing-icons",
+    "analyze-bundle": "ANALYZE=true npm run build",
+    "build-optimized": "npm run optimize-all-icons && npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -37,6 +43,7 @@
     "@types/validator": "^13.15.3",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
+    "glob": "^10.3.10",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

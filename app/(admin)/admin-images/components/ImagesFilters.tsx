@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Search, Filter, Calendar, Image as ImageIcon } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface ImagesFiltersProps {
   searchTerm: string;
@@ -55,7 +55,7 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-6 dark:bg-gray-800">
       <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
-        <Filter className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400" />
+        <Icons.Filter="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400" />
         <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Filtres</h2>
       </div>
       
@@ -67,7 +67,7 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 text-gray-400" />
+              <Icons.Search className="h-4 w-4 text-gray-400" />
             </div>
             <input
               type="text"
@@ -108,7 +108,7 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Calendar className="h-4 w-4 text-gray-400" />
+              <Icons.Calendar="h-4 w-4 text-gray-400" />
             </div>
             <select
               id="date"

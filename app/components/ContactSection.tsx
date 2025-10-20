@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import { SiGithub, SiSnapchat } from 'react-icons/si';
 
 export default function ContactSection() {
@@ -138,7 +138,7 @@ export default function ContactSection() {
             <div className="space-y-6">
               <div className="flex items-start gap-4 group">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-6 h-6 text-white" />
+                  <Icons.Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Email</h4>
@@ -153,7 +153,7 @@ export default function ContactSection() {
 
               <div className="flex items-start gap-4 group">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-6 h-6 text-white" />
+                  <Icons.Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Téléphone</h4>
@@ -168,7 +168,7 @@ export default function ContactSection() {
 
               <div className="flex items-start gap-4 group">
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <MapPin className="w-6 h-6 text-white" />
+                  <Icons.MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Localisation</h4>
@@ -223,7 +223,7 @@ export default function ContactSection() {
               {/* Message de succès */}
               {success && (
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <Icons.CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-sm font-medium text-green-800">Message envoyé avec succès !</p>
                     <p className="text-sm text-green-600 mt-1">Je vous répondrai sous 24h.</p>
@@ -234,7 +234,7 @@ export default function ContactSection() {
               {/* Erreur générale */}
               {errors.general && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <Icons.AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
                   <p className="text-sm text-red-600">{errors.general}</p>
                 </div>
               )}
@@ -257,7 +257,7 @@ export default function ContactSection() {
                 />
                 {errors.name && (
                   <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
+                    <Icons.AlertCircle className="w-4 h-4" />
                     {errors.name}
                   </p>
                 )}
@@ -281,7 +281,7 @@ export default function ContactSection() {
                 />
                 {errors.email && (
                   <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
+                    <Icons.AlertCircle className="w-4 h-4" />
                     {errors.email}
                   </p>
                 )}
@@ -306,7 +306,7 @@ export default function ContactSection() {
                 />
                 {errors.phone && (
                   <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
+                    <Icons.AlertCircle className="w-4 h-4" />
                     {errors.phone}
                   </p>
                 )}
@@ -353,7 +353,7 @@ export default function ContactSection() {
                 <div className="flex justify-between items-center mt-2">
                   {errors.message ? (
                     <p className="text-sm text-red-600 flex items-center gap-1">
-                      <AlertCircle className="w-4 h-4" />
+                      <Icons.AlertCircle className="w-4 h-4" />
                       {errors.message}
                     </p>
                   ) : (
@@ -371,12 +371,12 @@ export default function ContactSection() {
               >
                 {sending ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <Icons.Loader2 className="w-5 h-5 animate-spin" />
                     Envoi en cours...
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <Icons.Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     Envoyer le message
                   </>
                 )}

@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ExternalLink, Loader2, Globe } from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 
 interface Project {
   _id: string;
@@ -62,7 +63,7 @@ const ProjectsSection = () => {
     return (
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+          <Icons.Loader2 className="w-8 h-8 animate-spin text-blue-600" />
         </div>
       </section>
     );
@@ -99,7 +100,7 @@ const ProjectsSection = () => {
               <div className="relative h-80 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-blue-900/30 dark:via-indigo-900/30 dark:to-purple-900/30">
                 {project.images && project.images.length > 0 ? (
                   <>
-                    <Image
+                    <Icons.ImageIcon
                       src={project.images[0]}
                       alt={project.title}
                       fill
@@ -131,7 +132,7 @@ const ProjectsSection = () => {
                       className="flex items-center px-6 py-3 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all transform hover:scale-110 shadow-2xl"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <Globe className="w-5 h-5 mr-2" />
+                      <Icons.Globe className="w-5 h-5 mr-2" />
                       Visiter le site
                     </a>
                   )}
@@ -164,7 +165,7 @@ const ProjectsSection = () => {
                         onClick={(e) => e.stopPropagation()}
                         title="Visiter le site"
                       >
-                        <Globe className="w-6 h-6 text-blue-600 group-hover/link:scale-110 transition-transform" />
+                        <Icons.Globe className="w-6 h-6 text-blue-600 group-hover/link:scale-110 transition-transform" />
                       </a>
                     )}
                   </div>
@@ -207,9 +208,9 @@ const ProjectsSection = () => {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-0.5 group/btn"
                   >
-                    <Globe className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
+                    <Icons.Globe className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
                     Voir le projet
-                    <ExternalLink className="w-3.5 h-3.5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                    <Icons.ExternalLink className="w-3.5 h-3.5 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </a>
                 )}
               </div>
@@ -227,7 +228,7 @@ const ProjectsSection = () => {
             className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1"
           >
             <span>Voir tous les projets</span>
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <Icons.ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </div>
       </div>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Save, Loader2 } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import { useStatsActions } from '../../hooks/useStatsActions';
@@ -151,7 +151,7 @@ const AddSkillPage = () => {
               href="/admin-skills"
               className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
             >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
+              <Icons.ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
             </Link>
             <div>
               <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Ajouter une compétence</h1>
@@ -374,9 +374,9 @@ const AddSkillPage = () => {
               className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                <Icons.Loader2="w-4 h-4 mr-2 animate-spin" />
               ) : (
-                <Save className="w-4 h-4 mr-2" />
+                <Icons.Save="w-4 h-4 mr-2" />
               )}
               {isSubmitting ? 'Création...' : 'Créer la compétence'}
             </button>

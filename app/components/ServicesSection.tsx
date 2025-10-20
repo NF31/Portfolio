@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Loader2 } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
+
 
 interface Service {
   _id: string;
@@ -45,14 +46,14 @@ const ServicesSection = () => {
   const renderIcon = (iconName: string) => {
     const iconMap = LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>;
     const Icon = iconMap[iconName];
-    return Icon ? <Icon className="w-6 h-6" /> : <LucideIcons.Sparkles className="w-6 h-6" />;
+    return Icon ? <Icon className="w-6 h-6" /> : <Icons.Sparkles className="w-6 h-6" />;
   };
 
   if (loading) {
     return (
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+          <Icons.Loader2 className="w-8 h-8 animate-spin text-blue-600" />
         </div>
       </section>
     );
@@ -196,7 +197,7 @@ const ServicesSection = () => {
             className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1"
           >
             <span>Voir tous les services</span>
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <Icons.ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </div>
       </div>
