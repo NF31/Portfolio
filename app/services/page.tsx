@@ -871,7 +871,7 @@ const ServicesPage = () => {
                         ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
                         : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 focus:border-blue-500'
                     }`}
-                    placeholder="+33 6 12 34 56 78"
+                    placeholder="0781882130"
                     maxLength={20}
                   />
                   {errors.phone ? (
@@ -940,22 +940,22 @@ const ServicesPage = () => {
                   <div>
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Email</h4>
                     <a
-                      href="mailto:contact@nfdev21.com"
+                      href="mailto:nfdev21@gmail.com"
                       className="text-lg text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 font-medium flex items-center group"
                     >
                       <Mail className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                      contact@nfdev21.com
+                      nfdev21@gmail.com
                     </a>
                   </div>
 
                   <div>
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-2">Téléphone</h4>
                     <a
-                      href="tel:+33123456789"
+                      href="tel:+33781882130"
                       className="text-lg text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 font-medium flex items-center group"
                     >
                       <Phone className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                      +33 1 23 45 67 89
+                      0781882130
                     </a>
                   </div>
                 </div>

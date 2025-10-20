@@ -6,17 +6,16 @@ export default function StructuredData() {
     "jobTitle": "Développeur Fullstack",
     "description": "Développeur web fullstack spécialisé en Laravel, Next.js et React",
     "url": "https://nfdev21.com",
-    "email": "contact@nfdev21.com",
-    "telephone": "+33612345678",
+    "email": "nfdev21@gmail.com",
+    "telephone": "+33781882130",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Paris",
+      "addressLocality": "Toulouse",
       "addressCountry": "FR"
     },
     "sameAs": [
-      "https://github.com/votre-username",
-      "https://linkedin.com/in/votre-username",
-      "https://twitter.com/votre-username"
+      "https://github.com/nfdev21",
+      "https://snapchat.com/add/nfdev21"
     ],
     "knowsAbout": [
       "Laravel",
@@ -32,7 +31,7 @@ export default function StructuredData() {
       "name": "Développeur Web Fullstack",
       "occupationLocation": {
         "@type": "City",
-        "name": "Paris"
+        "name": "Toulouse"
       },
       "skills": "Laravel, Next.js, React, TypeScript, MongoDB, API Development"
     }
