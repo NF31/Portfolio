@@ -40,7 +40,7 @@ const ServicesFilters: React.FC<ServicesFiltersProps> = ({
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-6 dark:bg-gray-800">
       <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
-        <Icons.Filter="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400" />
+        <Icons.Filter className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 dark:text-gray-400" />
         <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Filtres</h2>
       </div>
       

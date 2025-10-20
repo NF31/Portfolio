@@ -61,7 +61,7 @@ const LoginPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600/20 rounded-2xl mb-4 backdrop-blur-sm border border-blue-500/30">
-            <Icons.Lock="w-8 h-8 text-blue-400" />
+            <Icons.Lock className="w-8 h-8 text-blue-400" />
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
             Système de Maintenance
@@ -81,7 +81,7 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Icons.User="h-5 w-5 text-blue-400" />
+                  <Icons.User className="h-5 w-5 text-blue-400" />
                 </div>
                 <input
                   id="email"
@@ -103,7 +103,7 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Icons.Lock="h-5 w-5 text-blue-400" />
+                  <Icons.Lock className="h-5 w-5 text-blue-400" />
                 </div>
                 <input
                   id="password"
@@ -122,9 +122,9 @@ const LoginPage: React.FC = () => {
                   aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
                 >
                   {showPassword ? (
-                    <Icons.EyeOff="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
+                    <Icons.EyeOff className="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
                   ) : (
-                    <Icons.Eye="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
+                    <Icons.Eye className="h-5 w-5 text-blue-400 hover:text-blue-300 transition-colors" />
                   )}
                 </button>
               </div>

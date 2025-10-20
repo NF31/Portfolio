@@ -189,7 +189,7 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         aria-label="Copier le nom"
                       >
-                        <Icons.Copy="w-4 h-4" />
+                        <Icons.Copy className="w-4 h-4" />
                       </button>
                       <Link
                         href={`/admin-skills/edit/${skill._id}`}
@@ -203,7 +203,7 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                         aria-label="Supprimer"
                       >
-                        <Icons.Trash2="w-4 h-4" />
+                        <Icons.Trash2 className="w-4 h-4" />
                       </button>
                     </div>
                   </td>
@@ -262,7 +262,7 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   aria-label="Copier le nom"
                 >
-                  <Icons.Copy="w-4 h-4" />
+                  <Icons.Copy className="w-4 h-4" />
                 </button>
                 <Link
                   href={`/admin-skills/edit/${skill._id}`}
@@ -276,7 +276,7 @@ const SkillsTable: React.FC<SkillsTableProps> = ({
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                   aria-label="Supprimer"
                 >
-                  <Icons.Trash2="w-4 h-4" />
+                  <Icons.Trash2 className="w-4 h-4" />
                 </button>
               </div>
             </div>

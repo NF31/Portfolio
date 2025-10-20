@@ -38,7 +38,7 @@ const UserInfo: React.FC = () => {
   if (!userInfo) {
     return (
       <div className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
-        <Icons.User="w-4 h-4" />
+        <Icons.User className="w-4 h-4" />
         <span>Utilisateur non trouvé</span>
       </div>
     );
@@ -48,7 +48,7 @@ const UserInfo: React.FC = () => {
     <div className="flex items-center gap-3">
       {/* Avatar */}
       <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
-        <Icons.User="w-4 h-4 text-white" />
+        <Icons.User className="w-4 h-4 text-white" />
       </div>
       
       {/* Informations utilisateur */}
@@ -62,7 +62,7 @@ const UserInfo: React.FC = () => {
               ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
               : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
           }`}>
-            <Icons.Shield="w-3 h-3 mr-1" />
+            <Icons.Shield className="w-3 h-3 mr-1" />
             {userInfo.role === 'superadmin' ? 'Super Admin' : 'Admin'}
           </span>
         </div>
