@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 export const metadata = {
   title: 'Conditions générales - NFDev21',
@@ -15,7 +15,7 @@ export default function ConditionsGeneralesPage() {
           href="/"
           className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 mb-8 group"
         >
-          <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+          <Icons.ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
           Retour à l&apos;accueil
         </Link>
 

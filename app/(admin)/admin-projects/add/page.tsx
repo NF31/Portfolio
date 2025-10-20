@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 import ProjectForm from '../../../components/forms/ProjectForm';
 import { useStatsActions } from '../../hooks/useStatsActions';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface ProjectFormData {
   title: string;
@@ -64,7 +64,7 @@ const AddProjectPage = () => {
               href="/admin-projects"
               className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
             >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <Icons.ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
             <div>
               <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Nouveau Projet</h1>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -124,7 +124,7 @@ const ScrollToTop = () => {
                 aria-label="Remonter en haut de la page"
                 type="button"
               >
-                <ArrowUp className="w-5 h-5 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-active:scale-110 pointer-events-none" />
+                <Icons.ArrowUp className="w-5 h-5 text-white transition-transform duration-300 group-hover:-translate-y-0.5 group-active:scale-110 pointer-events-none" />
               </button>
               
               {/* Effet de brillance qui traverse */}

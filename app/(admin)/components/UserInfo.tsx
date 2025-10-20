@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { User, Mail, Shield } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface UserData {
   id: string;
@@ -38,7 +38,7 @@ const UserInfo: React.FC = () => {
   if (!userInfo) {
     return (
       <div className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
-        <User className="w-4 h-4" />
+        <Icons.User="w-4 h-4" />
         <span>Utilisateur non trouvé</span>
       </div>
     );
@@ -48,7 +48,7 @@ const UserInfo: React.FC = () => {
     <div className="flex items-center gap-3">
       {/* Avatar */}
       <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
-        <User className="w-4 h-4 text-white" />
+        <Icons.User="w-4 h-4 text-white" />
       </div>
       
       {/* Informations utilisateur */}
@@ -62,12 +62,12 @@ const UserInfo: React.FC = () => {
               ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200'
               : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
           }`}>
-            <Shield className="w-3 h-3 mr-1" />
+            <Icons.Shield="w-3 h-3 mr-1" />
             {userInfo.role === 'superadmin' ? 'Super Admin' : 'Admin'}
           </span>
         </div>
         <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-          <Mail className="w-3 h-3" />
+          <Icons.Mail className="w-3 h-3" />
           <span className="truncate max-w-[150px]">{userInfo.email}</span>
         </div>
       </div>

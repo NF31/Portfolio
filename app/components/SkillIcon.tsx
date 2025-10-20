@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import * as LucideIcons from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface SkillIconProps {
   icon: string;

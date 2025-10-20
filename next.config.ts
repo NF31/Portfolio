@@ -16,6 +16,20 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  // Optimisations pour les icônes
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+  webpack: (config, { isServer }) => {
+    // Optimisation du tree-shaking pour lucide-react
+    if (!isServer) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'lucide-react': require.resolve('lucide-react/dist/esm/icons'),
+      };
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
