@@ -6,8 +6,8 @@ import Head from 'next/head';
 const metaData = {
   '/': {
     title: "NFDev21 - Développeur Fullstack Laravel & Next.js | Portfolio",
-    description: "Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Paris, disponible en France.",
-    keywords: "développeur fullstack, Laravel, Next.js, React, développeur web, Paris, France, portfolio, TypeScript, MongoDB, développement web, création site web"
+    description: "Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Toulouse, disponible en France.",
+    keywords: "développeur fullstack, Laravel, Next.js, React, développeur web, Toulouse, France, portfolio, TypeScript, MongoDB, développement web, création site web"
   },
   '/services': {
     title: "Services de Développement Web | NFDev21",

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
-import { SiGithub, SiLinkedin, SiX } from 'react-icons/si';
+import { SiGithub, SiSnapchat } from 'react-icons/si';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -100,7 +100,7 @@ export default function ContactSection() {
       } else {
         setErrors({ general: data.error || 'Une erreur est survenue' });
       }
-    } catch (error) {
+    } catch {
       setErrors({ general: 'Erreur de connexion. Veuillez réessayer.' });
     } finally {
       setSending(false);
@@ -129,7 +129,7 @@ export default function ContactSection() {
               </h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
                 Je suis toujours intéressé par les projets ambitieux et innovants. Que vous ayez besoin 
-                d'un site web, d'une application ou d'une solution sur mesure, n'hésitez pas à me contacter 
+                d&apos;un site web, d&apos;une application ou d&apos;une solution sur mesure, n&apos;hésitez pas à me contacter 
                 pour discuter de vos besoins.
               </p>
             </div>
@@ -143,10 +143,10 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Email</h4>
                   <a 
-                    href="mailto:contact@nfdev21.com" 
+                    href="mailto:nfdev21@gmail.com" 
                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
-                    contact@nfdev21.com
+                    nfdev21@gmail.com
                   </a>
                 </div>
               </div>
@@ -158,10 +158,10 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Téléphone</h4>
                   <a 
-                    href="tel:+33612345678" 
+                    href="tel:+33781882130" 
                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   >
-                    +33 6 12 34 56 78
+                    0781882130
                   </a>
                 </div>
               </div>
@@ -173,7 +173,7 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">Localisation</h4>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Paris, France<br />
+                    Toulouse, France<br />
                     <span className="text-sm text-gray-500 dark:text-gray-500">(Disponible à distance)</span>
                   </p>
                 </div>
@@ -196,7 +196,7 @@ export default function ContactSection() {
               <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Suivez-moi</h4>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://github.com/votre-username"
+                  href="https://github.com/nfdev21"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-center w-12 h-12 bg-gray-900 hover:bg-gray-800 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg"
@@ -205,22 +205,13 @@ export default function ContactSection() {
                   <SiGithub className="w-6 h-6 text-white" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/votre-username"
+                  href="https://snapchat.com/add/nfdev21"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 bg-[#0A66C2] hover:bg-[#084d94] rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                  title="LinkedIn"
+                  className="group flex items-center justify-center w-12 h-12 bg-[#FFFC00] hover:bg-[#E6E600] rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                  title="Snapchat"
                 >
-                  <SiLinkedin className="w-6 h-6 text-white" />
-                </a>
-                <a
-                  href="https://twitter.com/votre-username"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 bg-black hover:bg-gray-900 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                  title="X (Twitter)"
-                >
-                  <SiX className="w-6 h-6 text-white" />
+                  <SiSnapchat className="w-6 h-6 text-black" />
                 </a>
               </div>
             </div>
@@ -311,7 +302,7 @@ export default function ContactSection() {
                   className={`w-full px-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
                     errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                   }`}
-                  placeholder="+33 6 12 34 56 78"
+                  placeholder="0781882130"
                 />
                 {errors.phone && (
                   <p className="mt-2 text-sm text-red-600 flex items-center gap-1">

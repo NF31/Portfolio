@@ -31,8 +31,8 @@ export default function ConditionsGeneralesPage() {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Informations légales</h2>
             <p className="text-gray-600 dark:text-gray-400">
               <strong>Propriétaire du site :</strong> NFDev21<br />
-              <strong>Contact :</strong> contact@nfdev21.com<br />
-              <strong>Téléphone :</strong> +33 6 12 34 56 78<br />
+              <strong>Contact :</strong> nfdev21@gmail.com<br />
+              <strong>Téléphone :</strong> 0781882130<br />
               <strong>Hébergeur :</strong> Vercel Inc. - <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">vercel.com</a>
             </p>
           </section>
@@ -74,8 +74,8 @@ export default function ConditionsGeneralesPage() {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Contact</h2>
             <p className="text-gray-600 dark:text-gray-400">
               Pour toute question, n&apos;hésitez pas à me contacter :{' '}
-              <a href="mailto:contact@nfdev21.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
-                contact@nfdev21.com
+              <a href="mailto:nfdev21@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+                nfdev21@gmail.com
               </a>
             </p>
           </section>

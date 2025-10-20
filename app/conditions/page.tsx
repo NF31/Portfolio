@@ -66,8 +66,8 @@ export default function ConditionsPage() {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Contact</h2>
             <p className="text-gray-600 dark:text-gray-400">
               Pour toute question concernant ces conditions d&apos;utilisation, contactez-moi à :{' '}
-              <a href="mailto:contact@nfdev21.com" className="text-blue-600 dark:text-blue-400 hover:underline">
-                contact@nfdev21.com
+              <a href="mailto:nfdev21@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">
+                nfdev21@gmail.com
               </a>
             </p>
           </section>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { SiGithub, SiLinkedin, SiX } from 'react-icons/si';
+import { SiGithub, SiSnapchat } from 'react-icons/si';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -38,7 +38,7 @@ export default function Footer() {
             {/* Réseaux sociaux */}
             <div className="flex items-center gap-3 mt-6">
               <a
-                href="https://github.com/votre-username"
+                href="https://github.com/nfdev21"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-gray-900 dark:hover:border-gray-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 group"
@@ -48,24 +48,14 @@ export default function Footer() {
                 <SiGithub className="w-4 h-4 text-gray-700 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" />
               </a>
               <a
-                href="https://linkedin.com/in/votre-username"
+                href="https://snapchat.com/add/nfdev21"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-[#0A66C2] dark:hover:border-[#0A66C2] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 group"
-                title="LinkedIn"
-                aria-label="LinkedIn"
+                className="w-9 h-9 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-[#FFFC00] dark:hover:border-[#FFFC00] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 group"
+                title="Snapchat"
+                aria-label="Snapchat"
               >
-                <SiLinkedin className="w-4 h-4 text-gray-700 dark:text-gray-400 group-hover:text-[#0A66C2] transition-colors" />
-              </a>
-              <a
-                href="https://twitter.com/votre-username"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-gray-900 dark:hover:border-gray-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 group"
-                title="X (Twitter)"
-                aria-label="X (Twitter)"
-              >
-                <SiX className="w-4 h-4 text-gray-700 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" />
+                <SiSnapchat className="w-4 h-4 text-gray-700 dark:text-gray-400 group-hover:text-[#FFFC00] transition-colors" />
               </a>
             </div>
           </div>
@@ -101,20 +91,20 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:contact@nfdev21.com" className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
+                <a href="mailto:nfdev21@gmail.com" className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
                   <Mail className="w-4 h-4 mr-2 text-blue-500 dark:text-blue-400 group-hover:scale-110 transition-transform" />
-                  contact@nfdev21.com
+                  nfdev21@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+33612345678" className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
+                <a href="tel:+33781882130" className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
                   <Phone className="w-4 h-4 mr-2 text-green-500 dark:text-green-400 group-hover:scale-110 transition-transform" />
-                  +33 6 12 34 56 78
+                  0781882130
                 </a>
               </li>
               <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                 <MapPin className="w-4 h-4 mr-2 text-purple-500 dark:text-purple-400" />
-                Paris, France
+                Toulouse, France
               </li>
             </ul>
           </div>
