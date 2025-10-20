@@ -106,12 +106,12 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
           <div className="flex flex-col items-center space-y-2">
             {isUploading ? (
               <>
-                <Icons.Loader2="w-8 h-8 text-blue-500 animate-spin" />
+                <Icons.Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
                 <p className="text-sm text-gray-600">Remplacement en cours...</p>
               </>
             ) : (
               <>
-                <Icons.Upload="w-8 h-8 text-gray-400" />
+                <Icons.Upload className="w-8 h-8 text-gray-400" />
                 <p className="text-sm text-gray-600">
                   Cliquez pour sélectionner une nouvelle image
                 </p>
@@ -144,9 +144,9 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
               className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isUploading ? (
-                <Icons.Loader2="w-4 h-4 mr-2 animate-spin" />
+                <Icons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
               ) : (
-                <Icons.Upload="w-4 h-4 mr-2" />
+                <Icons.Upload className="w-4 h-4 mr-2" />
               )}
               {isUploading ? 'Remplacement...' : 'Remplacer l\'image'}
             </button>
@@ -165,7 +165,7 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
       {/* Avertissement */}
       <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
         <div className="flex items-start space-x-2">
-          <Icons.AlertCircle="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
+          <Icons.AlertCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
           <div className="text-sm text-orange-800">
             <p className="font-medium">Attention !</p>
             <p>L'ancienne image sera définitivement supprimée et remplacée par la nouvelle.</p>

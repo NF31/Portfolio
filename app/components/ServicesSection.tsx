@@ -44,7 +44,7 @@ const ServicesSection = () => {
   };
 
   const renderIcon = (iconName: string) => {
-    const iconMap = LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>;
+    const iconMap = Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>;
     const Icon = iconMap[iconName];
     return Icon ? <Icon className="w-6 h-6" /> : <Icons.Sparkles className="w-6 h-6" />;
   };

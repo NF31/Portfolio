@@ -43,7 +43,7 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
 }) => {
   // Fonction pour obtenir l'icône Lucide
   const getLucideIcon = (iconName: string) => {
-    const IconComponent = (LucideIcons as any)[iconName];
+    const IconComponent = (Icons as any)[iconName];
     return IconComponent ? <IconComponent className="w-5 h-5" /> : <Icons.Briefcase className="w-5 h-5" />;
   };
 

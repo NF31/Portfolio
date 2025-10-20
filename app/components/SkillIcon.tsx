@@ -48,7 +48,7 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
         }
         
         // Sinon, on cherche l'icône Lucide
-        const IconComponent = (LucideIcons as any)[icon];
+        const IconComponent = (Icons as any)[icon];
         if (IconComponent) {
           return <IconComponent className={className} />;
         }

@@ -98,7 +98,7 @@ const Pagination: React.FC<PaginationProps> = ({
           }`}
         >
           <span className="hidden sm:inline">Suivant</span>
-          <Icons.ChevronRight="w-3 h-3 sm:w-4 sm:h-4 sm:ml-1" />
+          <Icons.ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 sm:ml-1" />
         </button>
       </div>
     </div>

@@ -51,7 +51,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, className = '' }) => {
     }
     
     // Sinon, c'est probablement un nom Lucide
-    const IconComponent = (LucideIcons as any)[cleanIcon];
+    const IconComponent = (Icons as any)[cleanIcon];
     
     if (IconComponent) {
       return <IconComponent className="w-8 h-8" />;

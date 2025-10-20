@@ -44,8 +44,8 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
   // Récupérer l'icône du service
   const getIconComponent = (iconName: string) => {
     try {
-      const LucideIcons = require('lucide-react');
-      return LucideIcons[iconName] as React.ComponentType<any>;
+      const Icons = require('lucide-react');
+      return Icons[iconName] as React.ComponentType<any>;
     } catch {
       return null;
     }
