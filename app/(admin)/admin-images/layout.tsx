@@ -3,7 +3,11 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Gestion des images - Admin",
-  description: "Interface d'administration pour gérer les images du portfolio"
+  description: "Interface d'administration pour gérer les images du portfolio",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function ImagesLayout({
