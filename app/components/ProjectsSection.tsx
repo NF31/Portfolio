@@ -100,7 +100,7 @@ const ProjectsSection = () => {
               <div className="relative h-80 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-blue-900/30 dark:via-indigo-900/30 dark:to-purple-900/30">
                 {project.images && project.images.length > 0 ? (
                   <>
-                    <Icons.ImageIcon
+                    <Image
                       src={project.images[0]}
                       alt={project.title}
                       fill
