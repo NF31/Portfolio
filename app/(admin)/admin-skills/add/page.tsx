@@ -374,9 +374,9 @@ const AddSkillPage = () => {
               className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
-                <Icons.Loader2="w-4 h-4 mr-2 animate-spin" />
+                <Icons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
               ) : (
-                <Icons.Save="w-4 h-4 mr-2" />
+                <Icons.Save className="w-4 h-4 mr-2" />
               )}
               {isSubmitting ? 'Création...' : 'Créer la compétence'}
             </button>

@@ -141,7 +141,7 @@ const EditImagePage = () => {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <Icons.Loader2="h-8 w-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <Icons.Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-blue-600" />
           <p className="text-gray-600 dark:text-gray-400">Chargement de l'image...</p>
         </div>
       </div>
@@ -152,7 +152,7 @@ const EditImagePage = () => {
     return (
       <div className="text-center py-12">
         <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Icons.X="w-8 h-8 text-red-600" />
+          <Icons.X className="w-8 h-8 text-red-600" />
         </div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Image non trouvée</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-6 mb-4 sm:mb-6">L'image que vous cherchez à modifier n'existe pas.</p>
@@ -310,7 +310,7 @@ const EditImagePage = () => {
                   onClick={handleCancel}
                   className="px-4 py-2 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 rounded-lg transition-colors flex items-center dark:bg-gray-700"
                 >
-                  <Icons.X="w-4 h-4 mr-2" />
+                  <Icons.X className="w-4 h-4 mr-2" />
                   Annuler
                 </button>
                 <button
@@ -319,9 +319,9 @@ const EditImagePage = () => {
                   className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
-                    <Icons.Loader2="w-4 h-4 mr-2 animate-spin" />
+                    <Icons.Loader2 className="w-4 h-4 mr-2 animate-spin" />
                   ) : (
-                    <Icons.Save="w-4 h-4 mr-2" />
+                    <Icons.Save className="w-4 h-4 mr-2" />
                   )}
                   {isSubmitting ? 'Sauvegarde...' : 'Sauvegarder'}
                 </button>

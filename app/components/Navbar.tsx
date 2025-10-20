@@ -78,7 +78,7 @@ const Navbar = () => {
                 {isDarkMode ? (
                   <Icons.Sun className="w-5 h-5 text-yellow-500 transition-transform duration-500 group-hover:rotate-180" />
                 ) : (
-                  <Icons.Moon="w-5 h-5 text-indigo-600 transition-transform duration-500 group-hover:-rotate-12" />
+                  <Icons.Moon className="w-5 h-5 text-indigo-600 transition-transform duration-500 group-hover:-rotate-12" />
                 )}
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-100 to-orange-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -104,7 +104,7 @@ const Navbar = () => {
               {isDarkMode ? (
                 <Icons.Sun className="w-5 h-5 text-yellow-500 transition-transform duration-500 group-hover:rotate-180" />
               ) : (
-                <Icons.Moon="w-5 h-5 text-indigo-600 transition-transform duration-500 group-hover:-rotate-12" />
+                <Icons.Moon className="w-5 h-5 text-indigo-600 transition-transform duration-500 group-hover:-rotate-12" />
               )}
             </button>
 
