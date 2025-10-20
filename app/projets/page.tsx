@@ -242,9 +242,9 @@ const ProjectsPage = () => {
                     {/* Titre et lien sur l'image */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                       <div className="flex items-end justify-between gap-4">
-                        <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg flex-1">
+                        <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-lg flex-1">
                           {project.title}
-                        </h3>
+                        </h2>
                         {project.link && (
                           <a
                             href={project.link}
@@ -270,10 +270,10 @@ const ProjectsPage = () => {
 
                     {/* Technologies - Présentation améliorée */}
                     <div className="space-y-3 mb-6">
-                      <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center">
+                      <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center">
                         <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2"></span>
                         Stack Technique
-                      </h4>
+                      </h3>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, idx) => (
                           <span
