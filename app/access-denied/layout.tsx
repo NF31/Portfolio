@@ -12,10 +12,8 @@ export default function AccessDeniedLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
-      <body className="antialiased">
-        {children}
-      </body>
-    </html>
+    <div className="antialiased">
+      {children}
+    </div>
   );
 }
