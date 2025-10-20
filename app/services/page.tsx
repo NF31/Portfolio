@@ -189,7 +189,7 @@ const ServicesPage = () => {
         setCategories(uniqueCategories as string[]);
       }
     } catch (error) {
-      console.error('Erreur lors du chargement des services:', error);
+      // Erreur silencieuse lors du chargement des services
     } finally {
       setLoading(false);
     }
@@ -302,7 +302,6 @@ const ServicesPage = () => {
         toast.error(data.error || 'Erreur lors de l\'envoi du message');
       }
     } catch (error) {
-      console.error('Erreur lors de l\'envoi:', error);
       toast.error('Erreur lors de l\'envoi du message. Veuillez réessayer.');
     } finally {
       setSending(false);
