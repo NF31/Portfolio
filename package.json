@@ -10,7 +10,9 @@
     "optimize-icons": "node scripts/optimize-icons-simple.js",
     "fix-remaining-icons": "node scripts/fix-remaining-icons.js",
     "fix-missing-icons": "node scripts/fix-missing-icons.js",
-    "optimize-all-icons": "npm run optimize-icons && npm run fix-remaining-icons && npm run fix-missing-icons",
+    "fix-syntax-errors": "node scripts/fix-syntax-errors.js",
+    "fix-lucideicons-references": "node scripts/fix-lucideicons-references.js",
+    "optimize-all-icons": "npm run optimize-icons && npm run fix-remaining-icons && npm run fix-missing-icons && npm run fix-syntax-errors && npm run fix-lucideicons-references",
     "analyze-bundle": "ANALYZE=true npm run build",
     "build-optimized": "npm run optimize-all-icons && npm run build"
   },

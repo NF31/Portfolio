@@ -13,7 +13,7 @@ const AccessDeniedPage: React.FC = () => {
       <div className="relative z-10 w-full max-w-md text-center">
         {/* Icon */}
         <div className="inline-flex items-center justify-center w-20 h-20 bg-red-100 dark:bg-red-900/30 rounded-full mb-6">
-          <Icons.Shield="w-10 h-10 text-red-600 dark:text-red-400" />
+          <Icons.Shield className="w-10 h-10 text-red-600 dark:text-red-400" />
         </div>
 
         {/* Title */}
@@ -29,7 +29,7 @@ const AccessDeniedPage: React.FC = () => {
         {/* Security Notice */}
         <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-8">
           <div className="flex items-center gap-2 mb-2">
-            <Icons.Lock="w-5 h-5 text-red-600 dark:text-red-400" />
+            <Icons.Lock className="w-5 h-5 text-red-600 dark:text-red-400" />
             <span className="text-sm font-medium text-red-800 dark:text-red-200">
               Zone Sécurisée
             </span>
@@ -45,7 +45,7 @@ const AccessDeniedPage: React.FC = () => {
             href="/system-maintenance-portal"
             className="inline-flex items-center justify-center w-full px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-all font-medium"
           >
-            <Icons.Shield="w-5 h-5 mr-2" />
+            <Icons.Shield className="w-5 h-5 mr-2" />
             Se connecter
           </Link>
           
