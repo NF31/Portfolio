@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Search, Filter, Code, Star } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface SkillsFiltersProps {
   searchTerm: string;
@@ -23,7 +23,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800">
       <div className="flex items-center space-x-4">
-        <Filter className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+        <Icons.Filter="w-5 h-5 text-gray-500 dark:text-gray-400" />
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Filtres</h2>
       </div>
 
@@ -35,7 +35,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 text-gray-400" />
+              <Icons.Search className="h-4 w-4 text-gray-400" />
             </div>
             <input
               type="text"
@@ -55,7 +55,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Code className="h-4 w-4 text-gray-400" />
+              <Icons.Code="h-4 w-4 text-gray-400" />
             </div>
             <select
               id="category"
@@ -81,7 +81,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Star className="h-4 w-4 text-gray-400" />
+              <Icons.Star="h-4 w-4 text-gray-400" />
             </div>
             <select
               id="level"

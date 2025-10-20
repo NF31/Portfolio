@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { ArrowLeft, Save, X, Loader2 } from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 import Link from 'next/link';
 import { toast } from 'sonner';
-import * as LucideIcons from 'lucide-react';
+
 
 interface ServiceFormData {
   title: string;
@@ -292,7 +293,7 @@ const EditServicePage = () => {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <Loader2 className="w-8 h-8 animate-spin text-blue-600 mx-auto mb-4" />
+          <Icons.Loader2 className="w-8 h-8 animate-spin text-blue-600 mx-auto mb-4" />
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Chargement du service...</p>
         </div>
       </div>
@@ -322,7 +323,7 @@ const EditServicePage = () => {
               href="/admin-services"
               className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
             >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <Icons.ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
             <div>
               <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">Modifier le Service</h1>
@@ -473,7 +474,7 @@ const EditServicePage = () => {
                   <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white">
                     {(() => {
                       const IconComponent = (LucideIcons as any)[formData.icon];
-                      return IconComponent ? <IconComponent className="w-5 h-5" /> : <LucideIcons.Sparkles className="w-5 h-5" />;
+                      return IconComponent ? <IconComponent className="w-5 h-5" /> : <Icons.Sparkles className="w-5 h-5" />;
                     })()}
                   </div>
                   <div>
@@ -614,7 +615,7 @@ const EditServicePage = () => {
                       onClick={() => removeFeature(index)}
                       className="p-2 sm:p-3 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                     >
-                      <X className="w-4 h-4" />
+                      <Icons.X className="w-4 h-4" />
                     </button>
                   )}
                 </div>
@@ -651,7 +652,7 @@ const EditServicePage = () => {
                       onClick={() => removeTechnology(index)}
                       className="p-2 sm:p-3 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                     >
-                      <X className="w-4 h-4" />
+                      <Icons.X className="w-4 h-4" />
                     </button>
                   )}
                 </div>
@@ -776,7 +777,7 @@ const EditServicePage = () => {
               disabled={isSubmitting}
               className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Save className="w-4 h-4 mr-2" />
+              <Icons.Save className="w-4 h-4 mr-2" />
               {isSubmitting ? 'Modification...' : 'Modifier le service'}
             </button>
           </div>

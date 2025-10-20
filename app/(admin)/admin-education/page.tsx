@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { GraduationCap, Plus, BookOpen, Award, Calendar } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 const EducationPage = () => {
   return (
@@ -16,7 +16,7 @@ const EducationPage = () => {
             </p>
           </div>
           <button className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium opacity-50 cursor-not-allowed text-sm sm:text-base whitespace-nowrap">
-            <Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+            <Icons.Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Nouvelle Formation
           </button>
         </div>
@@ -26,7 +26,7 @@ const EducationPage = () => {
       <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 lg:p-8 dark:bg-gray-800">
         <div className="text-center py-8 sm:py-12">
           <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-            <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400" />
+            <Icons.GraduationCap="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400" />
           </div>
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">Section Formation en développement</h3>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-6">
@@ -42,19 +42,19 @@ const EducationPage = () => {
             <h4 className="text-xs sm:text-sm font-medium text-blue-800 dark:text-blue-200 mb-3">Idées de contenu à ajouter :</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm text-blue-700 dark:text-blue-300">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                <Icons.BookOpen="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                 <span>Formations techniques</span>
               </div>
               <div className="flex items-center gap-2">
-                <Award className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                <Icons.Award="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                 <span>Certifications</span>
               </div>
               <div className="flex items-center gap-2">
-                <Calendar className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                <Icons.Calendar="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                 <span>Parcours d'apprentissage</span>
               </div>
               <div className="flex items-center gap-2">
-                <GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                <Icons.GraduationCap="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                 <span>Projets d'étude</span>
               </div>
             </div>

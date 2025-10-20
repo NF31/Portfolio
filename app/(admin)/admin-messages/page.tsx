@@ -1,17 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Mail, 
-  MailOpen, 
-  CheckCircle2, 
-  Trash2, 
-  Phone, 
-  Calendar,
-  Loader2,
-  AlertCircle,
-  Reply
-} from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 
 interface Message {
   _id: string;
@@ -166,7 +157,7 @@ export default function AdminMessagesPage() {
               <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mt-1">{stats.total}</p>
             </div>
             <div className="bg-blue-100 dark:bg-blue-900/30 p-2 sm:p-3 rounded-lg">
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-600 dark:text-blue-400" />
+              <Icons.Mail className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
         </div>
@@ -178,7 +169,7 @@ export default function AdminMessagesPage() {
               <p className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400 mt-1">{stats.unread}</p>
             </div>
             <div className="bg-blue-100 dark:bg-blue-900/30 p-2 sm:p-3 rounded-lg">
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-600 dark:text-blue-400" />
+              <Icons.Mail className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
         </div>
@@ -202,7 +193,7 @@ export default function AdminMessagesPage() {
               <p className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400 mt-1">{stats.processed}</p>
             </div>
             <div className="bg-green-100 dark:bg-green-900/30 p-2 sm:p-3 rounded-lg">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-green-600 dark:text-green-400" />
+              <Icons.CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-green-600 dark:text-green-400" />
             </div>
           </div>
         </div>
@@ -235,11 +226,11 @@ export default function AdminMessagesPage() {
         {/* Messages List */}
         {loading ? (
           <div className="flex items-center justify-center py-12 sm:py-20">
-            <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-blue-600 dark:text-blue-400" />
+            <Icons.Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-blue-600 dark:text-blue-400" />
           </div>
         ) : messages.length === 0 ? (
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8 sm:p-12 text-center border border-gray-200 dark:border-gray-700">
-            <Mail className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-gray-400 mb-4" />
+            <Icons.Mail className="w-12 h-12 sm:w-16 sm:h-16 mx-auto text-gray-400 mb-4" />
             <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">Aucun message</h3>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Aucun message ne correspond à vos critères</p>
           </div>
@@ -265,7 +256,7 @@ export default function AdminMessagesPage() {
                         {getStatusBadge(message.status)}
                         {!message.emailSent && (
                           <span className="inline-flex items-center px-2 py-0.5 sm:py-1 rounded text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
-                            <AlertCircle className="w-3 h-3 mr-1" />
+                            <Icons.AlertCircle className="w-3 h-3 mr-1" />
                             Email non envoyé
                           </span>
                         )}
@@ -275,18 +266,18 @@ export default function AdminMessagesPage() {
                           href={`mailto:${message.email}`}
                           className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         >
-                          <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
+                          <Icons.Mail className="w-3 h-3 sm:w-4 sm:h-4" />
                           <span className="truncate max-w-[200px] sm:max-w-none">{message.email}</span>
                         </a>
                         <a 
                           href={`tel:${message.phone}`}
                           className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         >
-                          <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
+                          <Icons.Phone className="w-3 h-3 sm:w-4 sm:h-4" />
                           {message.phone}
                         </a>
                         <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+                          <Icons.Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                           {formatDate(message.createdAt)}
                         </span>
                       </div>
@@ -311,7 +302,7 @@ export default function AdminMessagesPage() {
                           className="p-1.5 sm:p-2 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/20 rounded-lg transition-colors disabled:opacity-50"
                           aria-label="Marquer comme traité"
                         >
-                          <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <Icons.CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                       )}
                       <a
@@ -327,7 +318,7 @@ export default function AdminMessagesPage() {
                         className="p-1.5 sm:p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors disabled:opacity-50"
                         aria-label="Supprimer"
                       >
-                        <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <Icons.Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                       </button>
                     </div>
                   </div>

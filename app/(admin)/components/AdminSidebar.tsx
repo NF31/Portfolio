@@ -3,17 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  Home, 
-  X, 
-  BarChart3, 
-  Briefcase, 
-  Settings, 
-  Target, 
-  FileText, 
-  MessageSquare, 
-  Image as ImageIcon 
-} from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 import { useStats } from '../contexts/StatsContext';
 
 // Styles CSS personnalisés pour les animations
@@ -160,7 +151,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
               className="lg:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-800 dark:hover:to-gray-700 transition-all duration-300 hover:scale-110 hover:rotate-90"
               aria-label="Fermer le menu latéral"
             >
-              <X className="w-5 h-5 transition-transform duration-300" />
+              <Icons.X className="w-5 h-5 transition-transform duration-300" />
             </button>
           </div>
         </div>
@@ -229,7 +220,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
             href="/"
             className="group flex items-center space-x-3 p-3 text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:text-blue-700 dark:hover:text-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-md"
           >
-            <Home className="w-5 h-5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
+            <Icons.Home className="w-5 h-5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
             <div>
               <div className="font-medium group-hover:translate-x-1 transition-transform duration-300">Retour au site</div>
               <div className="text-xs text-gray-500 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors duration-300">Voir le portfolio public</div>

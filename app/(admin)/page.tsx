@@ -2,18 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  Briefcase, 
-  MessageSquare, 
-  Settings, 
-  FileText, 
-  Plus,
-  Rocket,
-  TrendingUp,
-  Users,
-  Clock,
-  RefreshCw
-} from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 import { useStats } from '../contexts/StatsContext';
 
 interface DashboardStats {
@@ -119,7 +109,7 @@ const AdminDashboard = () => {
             </button>
             <div className="hidden md:block">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-                <Rocket className="w-8 h-8 text-white group-hover:animate-bounce" />
+                <Icons.Rocket className="w-8 h-8 text-white group-hover:animate-bounce" />
               </div>
             </div>
           </div>
@@ -197,7 +187,7 @@ const AdminDashboard = () => {
               <p className="text-xs text-gray-500 mt-1">7 derniers jours</p>
             </div>
             <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-red-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <Clock className="w-6 h-6 text-orange-600 group-hover:text-white group-hover:animate-pulse" />
+              <Icons.Clock className="w-6 h-6 text-orange-600 group-hover:text-white group-hover:animate-pulse" />
             </div>
           </div>
           <div className="mt-4">
