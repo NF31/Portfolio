@@ -176,7 +176,6 @@ export async function POST(request: NextRequest) {
       emailSent: false,
     });
 
-    console.log('✅ Message sauvegardé en BDD:', newMessage._id);
 
     // 2️⃣ ENVOYER L'EMAIL (secondaire)
     let emailSuccess = false;
@@ -313,7 +312,6 @@ ${message}
         emailSentAt: new Date(),
       });
 
-      console.log('✅ Email envoyé avec succès à:', process.env.GMAIL_USER);
 
     } catch (emailError) {
       console.error('⚠️ Erreur lors de l\'envoi de l\'email:', emailError);
