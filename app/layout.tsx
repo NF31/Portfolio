@@ -65,6 +65,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${inter.variable} font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <CustomHead />
