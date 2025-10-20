@@ -400,7 +400,7 @@ const ServicesPage = () => {
                       <Icons.Filter className="w-6 h-6 mr-4 text-gray-500" />
                       {activeCategory === 'all' ? 'Toutes les catégories' : activeCategory}
                     </span>
-                    <Icons.ChevronDown={`w-6 h-6 text-gray-500 transition-transform duration-200 ${showCategorySelect ? 'rotate-180' : ''}`} />
+                    <Icons.ChevronDown className={`w-6 h-6 text-gray-500 transition-transform duration-200 ${showCategorySelect ? 'rotate-180' : ''}`} />
                   </button>
                   
                   {/* Dropdown */}
@@ -584,7 +584,7 @@ const ServicesPage = () => {
                       <ul className="space-y-1.5 sm:space-y-2">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start">
-                            <Icons.Check={`text-green-500 mr-2 flex-shrink-0 mt-0.5 ${filteredServices.length <= 2 ? 'w-4 h-4 sm:w-5 sm:h-5' : 'w-3 h-3 sm:w-4 sm:h-4'}`} />
+                            <Icons.Check className={`text-green-500 mr-2 flex-shrink-0 mt-0.5 ${filteredServices.length <= 2 ? 'w-4 h-4 sm:w-5 sm:h-5' : 'w-3 h-3 sm:w-4 sm:h-4'}`} />
                             <span className={`text-gray-700 dark:text-gray-300 ${getResponsiveTextSizes(filteredServices.length).description}`}>{feature}</span>
                           </li>
                         ))}
@@ -595,7 +595,7 @@ const ServicesPage = () => {
                   {/* Délai de livraison */}
                   {service.deliveryTime && (
                     <div className={`flex items-center text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-700/50 px-3 py-2 sm:px-4 sm:py-2 rounded-lg ${getResponsiveTextSizes(filteredServices.length).badge}`}>
-                      <Icons.Clock={`text-blue-600 mr-2 ${filteredServices.length <= 2 ? 'w-3 h-3 sm:w-4 sm:h-4' : 'w-3 h-3'}`} />
+                      <Icons.Clock className={`text-blue-600 mr-2 ${filteredServices.length <= 2 ? 'w-3 h-3 sm:w-4 sm:h-4' : 'w-3 h-3'}`} />
                       Délai : <span className="font-semibold ml-1">{service.deliveryTime}</span>
                     </div>
                   )}
