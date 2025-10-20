@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Eye, Copy, Edit, Trash2 } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface Image {
   _id: string;
@@ -131,7 +131,7 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         aria-label="Voir l'image"
                       >
-                        <Eye className="w-4 h-4" />
+                        <Icons.Eye="w-4 h-4" />
                       </button>
                       <button
                         onClick={() => {
@@ -140,21 +140,21 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                         aria-label="Copier l'URL"
                       >
-                        <Copy className="w-4 h-4" />
+                        <Icons.Copy="w-4 h-4" />
                       </button>
                       <Link
                         href={`/admin-images/edit/${image._id}`}
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                         aria-label="Modifier"
                       >
-                        <Edit className="w-4 h-4" />
+                        <Icons.Edit className="w-4 h-4" />
                       </Link>
                       <button
                         onClick={() => onDelete(image._id)}
                         className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                         aria-label="Supprimer"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <Icons.Trash2="w-4 h-4" />
                       </button>
                     </div>
                   </td>
@@ -207,7 +207,7 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   aria-label="Voir l'image"
                 >
-                  <Eye className="w-4 h-4" />
+                  <Icons.Eye="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => {
@@ -216,21 +216,21 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors"
                   aria-label="Copier l'URL"
                 >
-                  <Copy className="w-4 h-4" />
+                  <Icons.Copy="w-4 h-4" />
                 </button>
                 <Link
                   href={`/admin-images/edit/${image._id}`}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   aria-label="Modifier"
                 >
-                  <Edit className="w-4 h-4" />
+                  <Icons.Edit className="w-4 h-4" />
                 </Link>
                 <button
                   onClick={() => onDelete(image._id)}
                   className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                   aria-label="Supprimer"
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Icons.Trash2="w-4 h-4" />
                 </button>
               </div>
             </div>

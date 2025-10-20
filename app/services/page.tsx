@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Check, Mail, Phone, Loader2, Sparkles, Send, Clock, Rocket, Zap, Shield, AlertCircle, ChevronDown, Filter, X } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import { toast } from 'sonner';
 
 interface Service {
@@ -197,12 +196,12 @@ const ServicesPage = () => {
 
   const renderIcon = (iconName: string, iconType?: string) => {
     if (iconType === 'url') {
-      return <Image src={iconName} alt="" width={32} height={32} className="w-8 h-8" />;
+      return <Icons.Image src={iconName} alt="" width={32} height={32} className="w-8 h-8" />;
     }
     
-    const iconMap = LucideIcons as unknown as Record<string, React.ComponentType<{ className?: string }>>;
+    const iconMap = Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>;
     const Icon = iconMap[iconName];
-    return Icon ? <Icon className="w-8 h-8" /> : <LucideIcons.Sparkles className="w-8 h-8" />;
+    return Icon ? <Icon className="w-8 h-8" /> : <Icons.Sparkles className="w-8 h-8" />;
   };
 
   const getCategoryLabel = (category: string) => {
@@ -311,7 +310,7 @@ const ServicesPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-12 h-12 animate-spin text-blue-600" />
+        <Icons.Loader2="w-12 h-12 animate-spin text-blue-600" />
       </div>
     );
   }
@@ -330,7 +329,7 @@ const ServicesPage = () => {
             href="/"
             className="inline-flex items-center text-white/80 hover:text-white mb-12 group transition-all"
           >
-            <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+            <Icons.ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
             Retour à l&apos;accueil
           </Link>
           
@@ -349,7 +348,7 @@ const ServicesPage = () => {
               className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-semibold rounded-xl hover:shadow-2xl hover:shadow-white/30 transition-all duration-300 hover:scale-105 group"
             >
               <span>Discuter de votre projet</span>
-              <ArrowLeft className="ml-2 w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
+              <Icons.ArrowLeft className="ml-2 w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
@@ -381,7 +380,7 @@ const ServicesPage = () => {
                 onClick={() => setActiveCategory('all')}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all duration-200"
               >
-                <X className="w-4 h-4 mr-2" />
+                <Icons.X="w-4 h-4 mr-2" />
                 Voir tous les services
               </button>
             )}
@@ -398,10 +397,10 @@ const ServicesPage = () => {
                     className="w-full flex items-center justify-between px-8 py-5 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-600 rounded-2xl hover:border-blue-300 dark:hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 shadow-lg"
                   >
                     <span className="flex items-center text-lg font-semibold">
-                      <Filter className="w-6 h-6 mr-4 text-gray-500" />
+                      <Icons.Filter="w-6 h-6 mr-4 text-gray-500" />
                       {activeCategory === 'all' ? 'Toutes les catégories' : activeCategory}
                     </span>
-                    <ChevronDown className={`w-6 h-6 text-gray-500 transition-transform duration-200 ${showCategorySelect ? 'rotate-180' : ''}`} />
+                    <Icons.ChevronDown={`w-6 h-6 text-gray-500 transition-transform duration-200 ${showCategorySelect ? 'rotate-180' : ''}`} />
                   </button>
                   
                   {/* Dropdown */}
@@ -429,7 +428,7 @@ const ServicesPage = () => {
                           }`}
                         >
                           <span className="flex items-center text-lg font-semibold">
-                            <Sparkles className="w-6 h-6 mr-4" />
+                            <Icons.Sparkles="w-6 h-6 mr-4" />
                             Toutes les catégories
                           </span>
                           <span className="text-sm text-gray-500 bg-gray-100 dark:bg-gray-700 px-3 py-2 rounded-full font-medium">({services.length})</span>
@@ -469,7 +468,7 @@ const ServicesPage = () => {
                   }`}
                 >
                   <span className="flex items-center">
-                    <Sparkles className="w-4 h-4 mr-2" />
+                    <Icons.Sparkles="w-4 h-4 mr-2" />
                     Tous ({services.length})
                   </span>
                 </button>
@@ -500,7 +499,7 @@ const ServicesPage = () => {
           {filteredServices.length === 0 && !loading ? (
             <div className="text-center py-16">
               <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
-                <Filter className="w-12 h-12 text-gray-400" />
+                <Icons.Filter="w-12 h-12 text-gray-400" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 Aucun service trouvé
@@ -512,7 +511,7 @@ const ServicesPage = () => {
                 onClick={() => setActiveCategory('all')}
                 className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
               >
-                <Sparkles className="w-4 h-4 mr-2" />
+                <Icons.Sparkles="w-4 h-4 mr-2" />
                 Voir tous les services
               </button>
             </div>
@@ -585,7 +584,7 @@ const ServicesPage = () => {
                       <ul className="space-y-1.5 sm:space-y-2">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start">
-                            <Check className={`text-green-500 mr-2 flex-shrink-0 mt-0.5 ${filteredServices.length <= 2 ? 'w-4 h-4 sm:w-5 sm:h-5' : 'w-3 h-3 sm:w-4 sm:h-4'}`} />
+                            <Icons.Check={`text-green-500 mr-2 flex-shrink-0 mt-0.5 ${filteredServices.length <= 2 ? 'w-4 h-4 sm:w-5 sm:h-5' : 'w-3 h-3 sm:w-4 sm:h-4'}`} />
                             <span className={`text-gray-700 dark:text-gray-300 ${getResponsiveTextSizes(filteredServices.length).description}`}>{feature}</span>
                           </li>
                         ))}
@@ -596,7 +595,7 @@ const ServicesPage = () => {
                   {/* Délai de livraison */}
                   {service.deliveryTime && (
                     <div className={`flex items-center text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-700/50 px-3 py-2 sm:px-4 sm:py-2 rounded-lg ${getResponsiveTextSizes(filteredServices.length).badge}`}>
-                      <Clock className={`text-blue-600 mr-2 ${filteredServices.length <= 2 ? 'w-3 h-3 sm:w-4 sm:h-4' : 'w-3 h-3'}`} />
+                      <Icons.Clock={`text-blue-600 mr-2 ${filteredServices.length <= 2 ? 'w-3 h-3 sm:w-4 sm:h-4' : 'w-3 h-3'}`} />
                       Délai : <span className="font-semibold ml-1">{service.deliveryTime}</span>
                     </div>
                   )}
@@ -625,7 +624,7 @@ const ServicesPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-4">
-                  <Rocket className="w-8 h-8" />
+                  <Icons.Rocket="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Projet Unique</h3>
                 <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
@@ -635,23 +634,23 @@ const ServicesPage = () => {
               
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Conception complète</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Design responsive moderne</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Développement Laravel & React</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Formation à l&apos;utilisation</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Support 2 mois offert</span>
                 </li>
               </ul>
@@ -675,7 +674,7 @@ const ServicesPage = () => {
 
               <div className="text-center mb-6 mt-4">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-4">
-                  <Zap className="w-8 h-8" />
+                  <Icons.Zap="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Accompagnement Mensuel</h3>
                 <div className="flex items-baseline justify-center">
@@ -689,23 +688,23 @@ const ServicesPage = () => {
               
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Développement en sprints</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Évolutions continues</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Suivi hebdomadaire</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Support technique</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Optimisations régulières</span>
                 </li>
               </ul>
@@ -722,7 +721,7 @@ const ServicesPage = () => {
             <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl border-2 border-gray-200 dark:border-gray-700 hover:border-emerald-500 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <div className="text-center mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-4">
-                  <Shield className="w-8 h-8" />
+                  <Icons.Shield="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Maintenance & Support</h3>
                 <div className="flex items-baseline justify-center">
@@ -736,23 +735,23 @@ const ServicesPage = () => {
               
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Corrections de bugs</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Mises à jour de sécurité</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Optimisations mensuelles</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Monitoring et alertes</span>
                 </li>
                 <li className="flex items-start">
-                  <Check className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <Icons.Check="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="text-gray-700 dark:text-gray-300">Disponibilité par email</span>
                 </li>
               </ul>
@@ -822,7 +821,7 @@ const ServicesPage = () => {
                 </div>
                 {errors.name && (
                   <p className="text-sm text-red-600 flex items-center mt-1">
-                    <AlertCircle className="w-4 h-4 mr-1" />
+                    <Icons.AlertCircle="w-4 h-4 mr-1" />
                     {errors.name}
                   </p>
                 )}
@@ -848,7 +847,7 @@ const ServicesPage = () => {
                   />
                   {errors.email && (
                     <p className="text-sm text-red-600 flex items-center mt-1">
-                      <AlertCircle className="w-4 h-4 mr-1" />
+                      <Icons.AlertCircle="w-4 h-4 mr-1" />
                       {errors.email}
                     </p>
                   )}
@@ -876,7 +875,7 @@ const ServicesPage = () => {
                   />
                   {errors.phone ? (
                     <p className="text-sm text-red-600 flex items-center mt-1">
-                      <AlertCircle className="w-4 h-4 mr-1" />
+                      <Icons.AlertCircle="w-4 h-4 mr-1" />
                       {errors.phone}
                     </p>
                   ) : (
@@ -905,7 +904,7 @@ const ServicesPage = () => {
                   />
                   {errors.message ? (
                     <p className="text-sm text-red-600 flex items-center mt-1">
-                      <AlertCircle className="w-4 h-4 mr-1" />
+                      <Icons.AlertCircle="w-4 h-4 mr-1" />
                       {errors.message}
                     </p>
                   ) : (
@@ -920,7 +919,7 @@ const ServicesPage = () => {
                 >
                   {sending ? (
                     <span className="flex items-center justify-center">
-                      <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                      <Icons.Loader2="w-5 h-5 animate-spin mr-2" />
                       Envoi en cours...
                     </span>
                   ) : (
@@ -943,7 +942,7 @@ const ServicesPage = () => {
                       href="mailto:nfdev21@gmail.com"
                       className="text-lg text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 font-medium flex items-center group"
                     >
-                      <Mail className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                      <Icons.Mail="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                       nfdev21@gmail.com
                     </a>
                   </div>
@@ -954,7 +953,7 @@ const ServicesPage = () => {
                       href="tel:+33781882130"
                       className="text-lg text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-500 font-medium flex items-center group"
                     >
-                      <Phone className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                      <Icons.Phone="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                       0781882130
                     </a>
                   </div>
@@ -971,7 +970,7 @@ const ServicesPage = () => {
                 
                 <div className="relative text-white text-center">
                   <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <Send className="w-10 h-10" />
+                    <Icons.Send="w-10 h-10" />
                   </div>
                   <h4 className="text-2xl font-bold mb-3">Réponse rapide garantie</h4>
                   <p className="text-blue-100 leading-relaxed">

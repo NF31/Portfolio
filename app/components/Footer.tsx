@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import { SiGithub, SiSnapchat } from 'react-icons/si';
+
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -92,18 +93,18 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a href="mailto:nfdev21@gmail.com" className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
-                  <Mail className="w-4 h-4 mr-2 text-blue-500 dark:text-blue-400 group-hover:scale-110 transition-transform" />
+                  <Icons.Mail className="w-4 h-4 mr-2 text-blue-500 dark:text-blue-400 group-hover:scale-110 transition-transform" />
                   nfdev21@gmail.com
                 </a>
               </li>
               <li>
                 <a href="tel:+33781882130" className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
-                  <Phone className="w-4 h-4 mr-2 text-green-500 dark:text-green-400 group-hover:scale-110 transition-transform" />
+                  <Icons.Phone className="w-4 h-4 mr-2 text-green-500 dark:text-green-400 group-hover:scale-110 transition-transform" />
                   0781882130
                 </a>
               </li>
               <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                <MapPin className="w-4 h-4 mr-2 text-purple-500 dark:text-purple-400" />
+                <Icons.MapPin className="w-4 h-4 mr-2 text-purple-500 dark:text-purple-400" />
                 Toulouse, France
               </li>
             </ul>

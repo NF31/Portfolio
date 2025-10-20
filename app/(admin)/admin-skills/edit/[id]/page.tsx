@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Save, Eye, Code, Database, Palette, Wrench, Zap } from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
 import { toast } from 'sonner';
 import { useStatsActions } from '../../../hooks/useStatsActions';
 
@@ -137,12 +138,12 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case 'frontend': return <Code className="w-4 h-4" />;
-      case 'backend': return <Database className="w-4 h-4" />;
-      case 'database': return <Database className="w-4 h-4" />;
-      case 'tools': return <Wrench className="w-4 h-4" />;
-      case 'design': return <Palette className="w-4 h-4" />;
-      default: return <Zap className="w-4 h-4" />;
+      case 'frontend': return <Icons.Code className="w-4 h-4" />;
+      case 'backend': return <Icons.Database className="w-4 h-4" />;
+      case 'database': return <Icons.Database className="w-4 h-4" />;
+      case 'tools': return <Icons.Wrench className="w-4 h-4" />;
+      case 'design': return <Icons.Palette className="w-4 h-4" />;
+      default: return <Icons.Zap className="w-4 h-4" />;
     }
   };
 
@@ -174,7 +175,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
               onClick={() => router.push('/skills')}
               className="p-2 hover:bg-gray-100 dark:bg-gray-800 rounded-lg transition-colors dark:bg-gray-700"
             >
-              <ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              <Icons.ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
             </button>
             <div>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Modifier la compétence</h1>
@@ -429,7 +430,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                 disabled={saving}
                 className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2 px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
               >
-                <Save className="w-4 h-4" />
+                <Icons.Save className="w-4 h-4" />
                 <span>{saving ? 'Sauvegarde...' : 'Sauvegarder'}</span>
               </button>
             </div>

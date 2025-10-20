@@ -2,8 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Edit, Trash2, Eye, Star, StarOff, Power, PowerOff } from 'lucide-react';
-import * as LucideIcons from 'lucide-react';
+import { Icons } from '@/lib/icons';
+
+
 
 interface Service {
   _id: string;
@@ -43,7 +44,7 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
   // Fonction pour obtenir l'icône Lucide
   const getLucideIcon = (iconName: string) => {
     const IconComponent = (LucideIcons as any)[iconName];
-    return IconComponent ? <IconComponent className="w-5 h-5" /> : <LucideIcons.Briefcase className="w-5 h-5" />;
+    return IconComponent ? <IconComponent className="w-5 h-5" /> : <Icons.Briefcase className="w-5 h-5" />;
   };
 
   // Fonction pour formater le prix
@@ -74,7 +75,7 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
     return (
       <div className="p-4 sm:p-8 text-center">
         <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg">
-          <LucideIcons.Briefcase className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+          <Icons.Briefcase className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
         </div>
         <h3 className="text-lg sm:text-xl font-medium text-gray-900 dark:text-white mb-2">Aucun service trouvé</h3>
         <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 dark:text-gray-400">
@@ -84,7 +85,7 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
           href="/admin-services/add"
           className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium shadow-lg hover:shadow-xl text-sm sm:text-base"
         >
-          <LucideIcons.Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+          <Icons.Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
           Ajouter un service
         </Link>
       </div>
@@ -132,7 +133,7 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                         {service.title}
                       </div>
                       {service.isFeatured && (
-                        <Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 flex-shrink-0" />
+                        <Icons.Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 flex-shrink-0" />
                       )}
                     </div>
                     <div className="text-xs text-gray-500 dark:text-gray-400 truncate max-w-[150px] sm:max-w-xs">
@@ -178,9 +179,9 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                     aria-label={service.isActive ? 'Désactiver le service' : 'Activer le service'}
                   >
                     {service.isActive ? (
-                      <Power className="w-3 h-3 mr-1" />
+                      <Icons.Power className="w-3 h-3 mr-1" />
                     ) : (
-                      <PowerOff className="w-3 h-3 mr-1" />
+                      <Icons.PowerOff className="w-3 h-3 mr-1" />
                     )}
                     {service.isActive ? 'Actif' : 'Inactif'}
                   </button>
@@ -194,9 +195,9 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                     aria-label={service.isFeatured ? 'Retirer des favoris' : 'Mettre en avant'}
                   >
                     {service.isFeatured ? (
-                      <Star className="w-4 h-4" />
+                      <Icons.Star className="w-4 h-4" />
                     ) : (
-                      <StarOff className="w-4 h-4" />
+                      <Icons.StarOff className="w-4 h-4" />
                     )}
                   </button>
                 </div>
@@ -208,21 +209,21 @@ const ServicesTable: React.FC<ServicesTableProps> = ({
                     className="text-blue-600 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 p-1 rounded transition-colors"
                     aria-label="Voir"
                   >
-                    <Eye className="w-4 h-4" />
+                    <Icons.Eye className="w-4 h-4" />
                   </Link>
                   <Link
                     href={`/admin-services/edit/${service._id}`}
                     className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-300 p-1 rounded transition-colors"
                     aria-label="Modifier"
                   >
-                    <Edit className="w-4 h-4" />
+                    <Icons.Edit className="w-4 h-4" />
                   </Link>
                   <button
                     onClick={() => onDelete(service._id)}
                     className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 p-1 rounded transition-colors"
                     aria-label="Supprimer"
                   >
-                    <Trash2 className="w-4 h-4" />
+                    <Icons.Trash2 className="w-4 h-4" />
                   </button>
                 </div>
               </td>

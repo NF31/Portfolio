@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface PaginationProps {
   currentPage: number;
@@ -66,7 +66,7 @@ const Pagination: React.FC<PaginationProps> = ({
               : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white'
           }`}
         >
-          <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
+          <Icons.ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-1" />
           <span className="hidden sm:inline">Précédent</span>
         </button>
 
@@ -98,7 +98,7 @@ const Pagination: React.FC<PaginationProps> = ({
           }`}
         >
           <span className="hidden sm:inline">Suivant</span>
-          <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 sm:ml-1" />
+          <Icons.ChevronRight="w-3 h-3 sm:w-4 sm:h-4 sm:ml-1" />
         </button>
       </div>
     </div>

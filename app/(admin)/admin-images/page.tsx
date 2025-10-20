@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Plus } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 import { toast } from 'sonner';
 import { useStatsActions } from '../hooks/useStatsActions';
 import ImagesFilters from './components/ImagesFilters';
@@ -30,7 +30,7 @@ interface PaginationInfo {
 }
 
 const ImagesPage = () => {
-  const [images, setImages] = useState<Image[]>([]);
+  const [images, setImages] = useState<Icons.Image[]>([]);
   const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState<PaginationInfo>({
     current: 1,
@@ -49,7 +49,7 @@ const ImagesPage = () => {
   
   // États pour la popup de suppression
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [imageToDelete, setImageToDelete] = useState<Image | null>(null);
+  const [imageToDelete, setImageToDelete] = useState<Icons.Image | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const { refreshAfterAction } = useStatsActions();
 
@@ -160,7 +160,7 @@ const ImagesPage = () => {
             href="/admin-images/add"
             className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium text-sm sm:text-base whitespace-nowrap"
           >
-            <Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+            <Icons.Plus className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             Nouvelle Image
           </Link>
         </div>

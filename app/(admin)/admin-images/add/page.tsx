@@ -121,7 +121,7 @@ export default function AddImagePage() {
             </select>
           </div>
 
-          {/* Upload Cloudinary */}
+          {/* Icons.Upload Cloudinary */}
           <div className="mb-4 sm:mb-6">
             <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Image à uploader
