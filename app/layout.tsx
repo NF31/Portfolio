@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     default: "NFDev21 - Développeur Fullstack Laravel & Next.js | Portfolio",
     template: "%s | NFDev21"
   },
-  description: "Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Paris, disponible en France.",
-  keywords: ["développeur fullstack", "Laravel", "Next.js", "React", "développeur web", "Paris", "France", "portfolio", "TypeScript", "MongoDB", "développement web", "création site web"],
+  description: "Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Toulouse, disponible en France.",
+  keywords: ["développeur fullstack", "Laravel", "Next.js", "React", "développeur web", "Toulouse", "France", "portfolio", "TypeScript", "MongoDB", "développement web", "création site web"],
   authors: [{ name: "NFDev21" }],
   creator: "NFDev21",
   publisher: "NFDev21",
@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <meta name="description" content="Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Paris, disponible en France." />
+        <meta name="description" content="Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Toulouse, disponible en France." />
         <StructuredData />
         <CanonicalLink />
       </head>

@@ -92,8 +92,8 @@ export default function ConfidentialitePage() {
             </ul>
             <p className="text-gray-600 dark:text-gray-400 mt-6">
               Pour exercer ces droits, envoyez simplement un email à :{' '}
-              <a href="mailto:contact@nfdev21.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
-                contact@nfdev21.com
+              <a href="mailto:nfdev21@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+                nfdev21@gmail.com
               </a>
             </p>
           </section>
