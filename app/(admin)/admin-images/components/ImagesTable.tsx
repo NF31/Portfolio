@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 
 interface Image {
@@ -92,10 +93,13 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
                     <div className="flex items-center space-x-3">
                       <div className="flex-shrink-0">
                         <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center overflow-hidden">
-                          <img
+                          <Image
                             className="w-full h-full object-cover"
                             src={image.url}
                             alt={image.alt}
+                            width={48}
+                            height={48}
+                            unoptimized
                             onError={(e) => {
                               const target = e.target as HTMLImageElement;
                               target.style.display = 'none';
@@ -172,10 +176,13 @@ const ImagesTable: React.FC<ImagesTableProps> = ({
               <div className="flex items-start gap-3 mb-3">
                 <div className="flex-shrink-0">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center overflow-hidden">
-                    <img
+                    <Image
                       className="w-full h-full object-cover"
                       src={image.url}
                       alt={image.alt}
+                      width={64}
+                      height={64}
+                      unoptimized
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.style.display = 'none';

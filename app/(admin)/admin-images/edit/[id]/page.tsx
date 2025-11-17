@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
+import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -196,10 +197,13 @@ const EditImagePage = () => {
               Aperçu de l&apos;image
             </h3>
             <div className="aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden mb-4 dark:bg-gray-700">
-              <img
+              <Image
                 src={image.url}
                 alt={image.alt}
+                width={400}
+                height={400}
                 className="w-full h-full object-cover"
+                unoptimized
               />
             </div>
             <div className="space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">

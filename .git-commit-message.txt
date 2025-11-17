@@ -1,0 +1,32 @@
+fix: correction complete des erreurs JSX et build
+
+Corrections apportees:
+
+1. Echappement des caracteres speciaux dans JSX:
+   - Tous les apostrophes (') remplaces par &apos;
+   - Tous les guillemets (") remplaces par &quot;
+   - Fichiers concernes: tous les composants admin et publics
+
+2. Correction des props dupliquees:
+   - Suppression des className dupliques
+   - Suppression des placeholder dupliques
+   - Nettoyage des classes CSS repetees
+   - Fichiers: admin-images/edit, admin-projects/edit, admin-skills/edit
+
+3. Ajout des imports d'icones Lucide React manquants:
+   - RefreshCw, Briefcase, Target, MessageSquare, Settings
+   - MailOpen, Reply, Menu
+   - Centralisation dans lib/icons.ts
+   - Mise a jour de tous les composants pour utiliser Icons.*
+
+4. Resultat:
+   - Build compile avec succes (npm run build)
+   - Plus d'erreurs de parsing JSX
+   - Code conforme aux regles ESLint pour les caracteres speciaux
+
+Fichiers modifies: 29 fichiers
+- Composants admin (services, skills, projects, images, messages)
+- Composants publics (HeroSection, ProjectsSection, CloudinaryUpload)
+- Pages publiques (projets, access-denied, system-maintenance-portal)
+- lib/icons.ts (centralisation des exports d'icones)
+
