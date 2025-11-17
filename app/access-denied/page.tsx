@@ -23,7 +23,7 @@ const AccessDeniedPage: React.FC = () => {
 
         {/* Description */}
         <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-          Vous n'avez pas les autorisations nécessaires pour accéder à cette page.
+          Vous n&apos;avez pas les autorisations nécessaires pour accéder à cette page.
         </p>
 
         {/* Security Notice */}
@@ -61,7 +61,7 @@ const AccessDeniedPage: React.FC = () => {
         {/* Footer */}
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Si vous pensez qu'il s'agit d'une erreur, contactez l'administrateur.
+            Si vous pensez qu&apos;il s&apos;agit d&apos;une erreur, contactez l&apos;administrateur.
           </p>
         </div>
       </div>

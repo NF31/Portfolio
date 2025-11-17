@@ -42,8 +42,8 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
               id="search"
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Nom ou description..." className="placeholder-gray-400 dark:placeholder-gray-500"
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500"
+              className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+              placeholder="Nom ou description..."
             />
           </div>
         </div>
@@ -113,7 +113,7 @@ const SkillsFilters: React.FC<SkillsFiltersProps> = ({
         </button>
         {searchTerm && (
           <span className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-lg text-xs sm:text-sm">
-            Recherche: "{searchTerm}"
+            Recherche: &quot;{searchTerm}&quot;
           </span>
         )}
         {filterCategory !== 'all' && (

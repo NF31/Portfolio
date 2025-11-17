@@ -51,11 +51,11 @@ const EducationPage = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Icons.Calendar className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-                <span>Parcours d'apprentissage</span>
+                <span>Parcours d&apos;apprentissage</span>
               </div>
               <div className="flex items-center gap-2">
                 <Icons.GraduationCap className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-                <span>Projets d'étude</span>
+                <span>Projets d&apos;étude</span>
               </div>
             </div>
           </div>

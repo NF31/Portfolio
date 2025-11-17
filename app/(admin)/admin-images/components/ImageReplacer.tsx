@@ -116,7 +116,7 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
                   Cliquez pour sélectionner une nouvelle image
                 </p>
                 <p className="text-xs text-gray-400">
-                  PNG, JPG, GIF, WebP jusqu'à 10MB
+                  PNG, JPG, GIF, WebP jusqu&apos;à 10MB
                 </p>
               </>
             )}
@@ -148,7 +148,7 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
               ) : (
                 <Icons.Upload className="w-4 h-4 mr-2" />
               )}
-              {isUploading ? 'Remplacement...' : 'Remplacer l\'image'}
+              {isUploading ? 'Remplacement...' : 'Remplacer l&apos;image'}
             </button>
             <button
               onClick={handleCancel}
@@ -168,7 +168,7 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
           <Icons.AlertCircle className="w-4 h-4 text-orange-600 mt-0.5 flex-shrink-0" />
           <div className="text-sm text-orange-800">
             <p className="font-medium">Attention !</p>
-            <p>L'ancienne image sera définitivement supprimée et remplacée par la nouvelle.</p>
+            <p>L&apos;ancienne image sera définitivement supprimée et remplacée par la nouvelle.</p>
           </div>
         </div>
       </div>

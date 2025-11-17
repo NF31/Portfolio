@@ -155,7 +155,7 @@ const AdminNavbar = () => {
               {isMenuOpen ? (
                 <Icons.X className="w-6 h-6 transition-transform duration-300 rotate-90" />
               ) : (
-                <Menu className="w-6 h-6 transition-transform duration-300" />
+                <Icons.Menu className="w-6 h-6 transition-transform duration-300" />
               )}
             </button>
           </div>

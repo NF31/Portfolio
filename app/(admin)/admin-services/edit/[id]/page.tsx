@@ -482,7 +482,7 @@ const EditServicePage = () => {
                       Icône sélectionnée : {formData.icon}
                     </p>
                     <p className="text-xs text-blue-700 dark:text-blue-300">
-                      Aperçu de l'icône dans votre service
+                      Aperçu de l&apos;icône dans votre service
                     </p>
                   </div>
                 </div>
@@ -687,7 +687,7 @@ const EditServicePage = () => {
                 >
                   <option value="project">Sur devis</option>
                   <option value="fixed">Prix fixe</option>
-                  <option value="hourly">À l'heure</option>
+                  <option value="hourly">À l&apos;heure</option>
                 </select>
               </div>
 

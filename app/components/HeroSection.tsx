@@ -76,7 +76,7 @@ const HeroSection = () => {
 
             {/* Description */}
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
-              Je conçois des solutions web innovantes et performantes qui transforment vos idées en réalité digitale. Spécialisé dans le développement d'applications web modernes et scalables.
+              Je conçois des solutions web innovantes et performantes qui transforment vos idées en réalité digitale. Spécialisé dans le développement d&apos;applications web modernes et scalables.
             </p>
 
             {/* Boutons CTA */}
