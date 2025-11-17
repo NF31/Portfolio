@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 
 interface SkillCardProps {
@@ -37,10 +38,13 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, className = '' }) => {
     // Si c'est une URL (commence par http)
     if (cleanIcon.startsWith('http')) {
       return (
-        <img 
+        <Image 
           src={cleanIcon} 
           alt={skill.name}
+          width={32}
+          height={32}
           className="w-8 h-8 object-contain"
+          unoptimized
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.style.display = 'none';

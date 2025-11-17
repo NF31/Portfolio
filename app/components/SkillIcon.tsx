@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 
 interface SkillIconProps {
@@ -56,10 +57,13 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
 
       case 'simple-icons':
         return (
-          <img 
+          <Image 
             src={getSimpleIconUrl(icon)} 
             alt={name}
+            width={32}
+            height={32}
             className={`${className} object-contain`}
+            unoptimized
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.style.display = 'none';
@@ -80,10 +84,13 @@ const SkillIcon: React.FC<SkillIconProps> = ({ icon, iconType, name, className =
 
       case 'url':
         return (
-          <img 
+          <Image 
             src={icon} 
             alt={name}
+            width={32}
+            height={32}
             className={`${className} object-contain`}
+            unoptimized
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.style.display = 'none';

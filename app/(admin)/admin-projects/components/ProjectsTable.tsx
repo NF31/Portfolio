@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 interface Project {
   id: string;
@@ -96,10 +97,13 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
                     <div className="flex items-start space-x-3">
                       <div className="flex-shrink-0">
                         {project.images && project.images.length > 0 ? (
-                          <img 
+                          <Image 
                             src={project.images[0]} 
                             alt={project.title}
+                            width={48}
+                            height={48}
                             className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover"
+                            unoptimized
                             onError={(e) => {
                               // Fallback vers l'icône si l'image ne charge pas
                               const target = e.target as HTMLImageElement;
@@ -231,10 +235,13 @@ const ProjectsTable: React.FC<ProjectsTableProps> = ({
               <div className="flex items-start gap-3 mb-3">
                 <div className="flex-shrink-0">
                   {project.images && project.images.length > 0 ? (
-                    <img 
+                    <Image 
                       src={project.images[0]} 
                       alt={project.title}
+                      width={48}
+                      height={48}
                       className="w-12 h-12 rounded-lg object-cover"
+                      unoptimized
                       onError={(e) => {
                         // Fallback vers l'icône si l'image ne charge pas
                         const target = e.target as HTMLImageElement;

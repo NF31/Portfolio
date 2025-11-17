@@ -1,0 +1,25 @@
+fix: remplacement de toutes les balises <img> par <Image /> de Next.js
+
+Corrections apportees:
+
+1. Remplacement des balises <img> par <Image /> de Next.js:
+   - Ajout de l'import Image depuis next/image dans tous les fichiers
+   - Ajout des attributs width et height requis
+   - Ajout de unoptimized pour les images externes (Cloudinary)
+   - Conservation des handlers onError pour la gestion des erreurs
+
+2. Fichiers modifies (7 fichiers):
+   - app/(admin)/admin-dashboard/page.tsx
+   - app/(admin)/admin-images/components/ImageReplacer.tsx
+   - app/(admin)/admin-images/components/ImagesTable.tsx
+   - app/(admin)/admin-images/edit/[id]/page.tsx
+   - app/(admin)/admin-projects/components/ProjectsTable.tsx
+   - app/components/SkillCard.tsx
+   - app/components/SkillIcon.tsx
+
+3. Resultat:
+   - Plus d'erreurs @next/next/no-img-element
+   - Images optimisees par Next.js (sauf externes avec unoptimized)
+   - Build compile avec succes
+   - Meilleure performance et LCP (Largest Contentful Paint)
+
