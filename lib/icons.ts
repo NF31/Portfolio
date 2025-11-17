@@ -59,7 +59,15 @@ import {
   Github,
   Upload,
   Image as ImageIcon,
-  Code2
+  Code2,
+  RefreshCw,
+  Briefcase,
+  Target,
+  MessageSquare,
+  Settings,
+  MailOpen,
+  Reply,
+  Menu
 } from 'lucide-react';
 
 // Export des icônes les plus utilisées
@@ -128,6 +136,16 @@ export const Icons = {
   Globe,
   Github,
   ImageIcon,
+  
+  // Dashboard
+  RefreshCw,
+  Briefcase,
+  Target,
+  MessageSquare,
+  Settings,
+  MailOpen,
+  Reply,
+  Menu,
   
   // Thème
   Sun,

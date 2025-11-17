@@ -67,7 +67,7 @@ const LoginPage: React.FC = () => {
             Système de Maintenance
           </h1>
           <p className="text-blue-200 text-sm sm:text-base">
-            Accès sécurisé au portail d'administration
+            Accès sécurisé au portail d&apos;administration
           </p>
         </div>
 
@@ -162,7 +162,7 @@ const LoginPage: React.FC = () => {
               <div>
                 <p className="text-yellow-200 text-xs font-medium mb-1">Accès restreint</p>
                 <p className="text-yellow-300/80 text-xs">
-                  Cette page est réservée aux administrateurs autorisés. Toute tentative d'accès non autorisée sera enregistrée.
+                  Cette page est réservée aux administrateurs autorisés. Toute tentative d&apos;accès non autorisée sera enregistrée.
                 </p>
               </div>
             </div>

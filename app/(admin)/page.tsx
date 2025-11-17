@@ -32,7 +32,7 @@ const AdminDashboard = () => {
       title: 'Nouveau Projet',
       description: 'Ajouter un nouveau projet au portfolio',
       href: '/projects/add',
-      icon: Briefcase,
+      icon: Icons.Briefcase,
       color: 'from-blue-500 to-blue-600',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200'
@@ -41,7 +41,7 @@ const AdminDashboard = () => {
       title: 'Nouveau Service',
       description: 'Créer un nouveau service',
       href: '/services/add',
-      icon: Settings,
+      icon: Icons.Settings,
       color: 'from-green-500 to-green-600',
       bgColor: 'bg-green-50',
       borderColor: 'border-green-200'
@@ -67,9 +67,9 @@ const AdminDashboard = () => {
   ];
 
   const recentActivities = [
-    { action: 'Projet créé', item: 'Portfolio E-commerce', time: 'Il y a 2 heures', icon: Briefcase },
-    { action: 'Message reçu', item: 'Demande de devis', time: 'Il y a 4 heures', icon: MessageSquare },
-    { action: 'Service modifié', item: 'Développement Web', time: 'Il y a 1 jour', icon: Settings },
+    { action: 'Projet créé', item: 'Portfolio E-commerce', time: 'Il y a 2 heures', icon: Icons.Briefcase },
+    { action: 'Message reçu', item: 'Demande de devis', time: 'Il y a 4 heures', icon: Icons.MessageSquare },
+    { action: 'Service modifié', item: 'Développement Web', time: 'Il y a 1 jour', icon: Icons.Settings },
     { action: 'Article publié', item: 'Les tendances 2024', time: 'Il y a 2 jours', icon: FileText }
   ];
 
@@ -91,7 +91,7 @@ const AdminDashboard = () => {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Bienvenue dans l'administration
+              Bienvenue dans l&apos;administration
             </h1>
             <p className="text-gray-600">
               Gérez votre portfolio et vos contenus en toute simplicité
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
               disabled={isRefreshing}
               className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <RefreshCw className={`w-4 h-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <Icons.RefreshCw className={`w-4 h-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               {isRefreshing ? 'Actualisation...' : 'Actualiser'}
             </button>
             <div className="hidden md:block">
@@ -125,7 +125,7 @@ const AdminDashboard = () => {
               <p className="text-3xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">{stats.projects.total}</p>
             </div>
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-indigo-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <Briefcase className="w-6 h-6 text-blue-600 group-hover:text-white group-hover:animate-pulse" />
+              <Icons.Briefcase className="w-6 h-6 text-blue-600 group-hover:text-white group-hover:animate-pulse" />
             </div>
           </div>
           <div className="mt-4">
@@ -145,7 +145,7 @@ const AdminDashboard = () => {
               <p className="text-3xl font-bold text-gray-900 group-hover:text-green-700 transition-colors duration-300">{stats.messages.unread}</p>
             </div>
             <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-green-500 group-hover:to-emerald-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <MessageSquare className="w-6 h-6 text-green-600 group-hover:text-white group-hover:animate-pulse" />
+              <Icons.MessageSquare className="w-6 h-6 text-green-600 group-hover:text-white group-hover:animate-pulse" />
             </div>
           </div>
           <div className="mt-4">
@@ -165,7 +165,7 @@ const AdminDashboard = () => {
               <p className="text-3xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors duration-300">{stats.services.total}</p>
             </div>
             <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-violet-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <Settings className="w-6 h-6 text-purple-600 group-hover:text-white group-hover:animate-pulse" />
+              <Icons.Settings className="w-6 h-6 text-purple-600 group-hover:text-white group-hover:animate-pulse" />
             </div>
           </div>
           <div className="mt-4">

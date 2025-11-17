@@ -52,14 +52,14 @@ const AddSkillPage = () => {
         return (
           <>
             <a href="https://lucide.dev/icons" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">lucide.dev/icons</a>
-            <br />Ex: "Code", "Database", "Server"
+            <br />Ex: &quot;Code&quot;, &quot;Database&quot;, &quot;Server&quot;
           </>
         );
       case 'simple-icons':
         return (
           <>
             <a href="https://simpleicons.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">simpleicons.org</a>
-            <br />Ex: "laravel", "react", "nodejs", "mongodb"
+            <br />Ex: &quot;laravel&quot;, &quot;react&quot;, &quot;nodejs&quot;, &quot;mongodb&quot;
           </>
         );
       case 'custom-svg':
@@ -213,7 +213,7 @@ const AddSkillPage = () => {
           {/* Type d'icône */}
           <div>
             <label htmlFor="iconType" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Type d'icône *
+              Type d&apos;icône *
             </label>
             <select
               id="iconType"
@@ -225,7 +225,7 @@ const AddSkillPage = () => {
               <option value="lucide">Lucide (icônes générales)</option>
               <option value="simple-icons">Simple Icons (technologies)</option>
               <option value="custom-svg">SVG personnalisé</option>
-              <option value="url">URL d'image</option>
+              <option value="url">URL d&apos;image</option>
             </select>
           </div>
 
@@ -307,7 +307,7 @@ const AddSkillPage = () => {
           {/* Ordre */}
           <div>
             <label htmlFor="order" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Ordre d'affichage
+              Ordre d&apos;affichage
             </label>
             <input
               type="number"
@@ -342,7 +342,7 @@ const AddSkillPage = () => {
           {/* Aperçu de l'icône */}
           {formData.icon && (
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-4 sm:p-6 border border-blue-200 dark:border-blue-800">
-              <h3 className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Aperçu de l'icône</h3>
+              <h3 className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Aperçu de l&apos;icône</h3>
               <div className="flex items-center justify-center">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl flex items-center justify-center shadow-lg">
                   <SkillIcon 
@@ -354,7 +354,7 @@ const AddSkillPage = () => {
                 </div>
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">
-                L'icône sera affichée avec un fond dégradé bleu
+                L&apos;icône sera affichée avec un fond dégradé bleu
               </p>
             </div>
           )}
