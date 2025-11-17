@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Icons } from '@/lib/icons';
 
 interface Service {
   _id: string;
@@ -44,8 +45,7 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
   // Récupérer l'icône du service
   const getIconComponent = (iconName: string) => {
     try {
-      const Icons = require('lucide-react');
-      return Icons[iconName] as React.ComponentType<any>;
+      return (Icons as Record<string, React.ComponentType<{ className?: string }>>)[iconName] || null;
     } catch {
       return null;
     }

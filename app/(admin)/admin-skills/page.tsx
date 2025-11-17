@@ -88,6 +88,7 @@ const SkillsPage = () => {
   // Charger les compétences au montage et lors des changements de filtres
   useEffect(() => {
     fetchSkills();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, searchTerm, filterCategory, filterLevel]);
 
   // Fonction pour gérer la suppression

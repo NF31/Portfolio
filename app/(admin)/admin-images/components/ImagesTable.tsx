@@ -26,8 +26,7 @@ interface ImagesTableProps {
 const ImagesTable: React.FC<ImagesTableProps> = ({
   images,
   isLoading,
-  onDelete,
-  onEdit
+  onDelete
 }) => {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('fr-FR', {

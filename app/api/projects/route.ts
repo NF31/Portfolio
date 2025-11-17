@@ -45,33 +45,35 @@ export async function POST(request: NextRequest) {
 
     // Création du projet en base
     console.log('📝 Création du document Project...');
-    const projectData: any = {
+    const projectData: {
+      title: string;
+      description: string;
+      technologies: string[];
+      types: string | string[];
+      link?: string;
+      createdBy: mongoose.Types.ObjectId;
+      images: string[];
+    } = {
       title,
       description,
       technologies,
+      types: (types && types.length > 0) ? types : 'web', // Types multiples ou par défaut
       link: link || undefined,
       createdBy: tempUserId,
       images: [] // Les images seront ajoutées séparément
     };
-
-    // Gérer les types
-    if (types && types.length > 0) {
-      projectData.types = types; // Types multiples
-    } else {
-      projectData.types = 'web'; // Type par défaut
-    }
 
     console.log('📊 Données du projet:', projectData);
     
     const project = new Project(projectData);
 
     console.log('💾 Sauvegarde dans MongoDB...');
-    console.log('📍 Base de données actuelle:', mongoose.connection.db.databaseName);
+    console.log('📍 Base de données actuelle:', mongoose.connection.db?.databaseName);
     console.log('🎯 Base de données attendue: portfolio_db');
     
     const savedProject = await project.save();
     console.log('✅ Projet sauvegardé avec succès !');
-    console.log('📊 Base de données finale:', mongoose.connection.db.databaseName);
+    console.log('📊 Base de données finale:', mongoose.connection.db?.databaseName);
     console.log('📋 Collection:', 'projects');
     console.log('🆔 ID du projet:', savedProject._id);
     console.log('📄 Document complet:', savedProject);
@@ -96,12 +98,13 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Erreur lors de la création du projet:', error);
     
     // Gestion des erreurs de validation Mongoose
-    if (error.name === 'ValidationError') {
-      const errors = Object.values(error.errors).map((err: any) => err.message);
+    if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError' && 'errors' in error) {
+      const mongooseError = error as { errors: Record<string, { message: string }> };
+      const errors = Object.values(mongooseError.errors).map((err) => err.message);
       return NextResponse.json(
         { error: 'Erreur de validation', details: errors },
         { status: 400 }
@@ -121,7 +124,7 @@ export async function GET() {
     console.log('🔗 Connexion à MongoDB pour récupérer les projets...');
     await connectDB();
     console.log('✅ Connexion MongoDB réussie !');
-    console.log('📊 Base de données:', mongoose.connection.db.databaseName);
+    console.log('📊 Base de données:', mongoose.connection.db?.databaseName);
     
     console.log('🔍 Recherche des projets dans la collection "projects"...');
     const projects = await Project.find()

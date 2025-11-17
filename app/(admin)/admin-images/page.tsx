@@ -30,7 +30,7 @@ interface PaginationInfo {
 }
 
 const ImagesPage = () => {
-  const [images, setImages] = useState<Icons.Image[]>([]);
+  const [images, setImages] = useState<Image[]>([]);
   const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState<PaginationInfo>({
     current: 1,
@@ -49,7 +49,7 @@ const ImagesPage = () => {
   
   // États pour la popup de suppression
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [imageToDelete, setImageToDelete] = useState<Icons.Image | null>(null);
+  const [imageToDelete, setImageToDelete] = useState<Image | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const { refreshAfterAction } = useStatsActions();
 
@@ -88,6 +88,7 @@ const ImagesPage = () => {
   // Charger les images au montage et lors des changements de filtres
   useEffect(() => {
     fetchImages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, searchTerm, filterProject, filterDate, filterFormat]);
 
   // Fonction pour gérer la suppression

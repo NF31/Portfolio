@@ -60,42 +60,42 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
     {
       name: 'Dashboard',
       href: '/admin-dashboard',
-      icon: BarChart3,
+      icon: Icons.Target,
       description: 'Vue d\'ensemble'
       // Pas de badge pour le dashboard
     },
     {
       name: 'Projets',
       href: '/admin-projects',
-      icon: Briefcase,
+      icon: Icons.Briefcase,
       description: 'Gérer les projets',
       badge: stats.projects.total.toString()
     },
     {
       name: 'Services',
       href: '/admin-services',
-      icon: Settings,
+      icon: Icons.Settings,
       description: 'Services proposés',
       badge: stats.services.total.toString()
     },
     {
       name: 'Compétences',
       href: '/admin-skills',
-      icon: Target,
+      icon: Icons.Target,
       description: 'Compétences techniques',
       badge: stats.skills.total.toString()
     },
     {
       name: 'Blog',
       href: '/blog',
-      icon: FileText,
+      icon: Icons.Code,
       description: 'Articles de blog',
       badge: stats.blog.total.toString()
     },
     {
       name: 'Messages',
       href: '/admin-messages',
-      icon: MessageSquare,
+      icon: Icons.MessageSquare,
       description: 'Messages reçus',
       badge: stats.messages.total.toString(),
       unreadBadge: stats.messages.unread > 0 ? stats.messages.unread.toString() : undefined
@@ -103,7 +103,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ isOpen, onClose }) => {
     {
       name: 'Images',
       href: '/admin-images',
-      icon: ImageIcon,
+      icon: Icons.ImageIcon,
       description: 'Gestion des médias',
       badge: stats.images.total.toString()
     },
