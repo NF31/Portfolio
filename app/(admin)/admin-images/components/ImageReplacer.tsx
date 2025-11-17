@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 import { toast } from 'sonner';
 
@@ -129,10 +130,13 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
         <div className="space-y-3">
           <h4 className="text-sm font-medium text-gray-700">Aperçu de la nouvelle image :</h4>
           <div className="relative">
-            <img
+            <Image
               src={previewUrl}
               alt="Aperçu"
+              width={400}
+              height={192}
               className="w-full h-48 object-cover rounded-lg border"
+              unoptimized
             />
           </div>
           
