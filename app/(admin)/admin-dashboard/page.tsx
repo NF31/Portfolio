@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 
 import { useStats } from '../contexts/StatsContext';
@@ -442,11 +443,13 @@ const AdminDashboard = () => {
                 <div key={image._id} className="relative group">
                   <div className="aspect-square bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center overflow-hidden">
                     {image.url ? (
-                      <img 
+                      <Image 
                         src={image.url} 
                         alt={image.alt}
+                        width={200}
+                        height={200}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
+                        unoptimized
                       />
                     ) : (
                       <Icons.ImageIcon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
