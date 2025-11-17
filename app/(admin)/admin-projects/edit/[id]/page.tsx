@@ -249,7 +249,7 @@ const EditProjectPage = () => {
             </svg>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Projet non trouvé</h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 mb-4 sm:mb-6">Le projet que vous cherchez n'existe pas ou a été supprimé.</p>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 mb-4 sm:mb-6">Le projet que vous cherchez n&apos;existe pas ou a été supprimé.</p>
           <button
             onClick={() => router.push('/projects')}
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
@@ -319,8 +319,8 @@ const EditProjectPage = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
-                placeholder="Entrez le titre du projet" className="placeholder-gray-400 dark:placeholder-gray-500"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                placeholder="Entrez le titre du projet"
                 required
               />
             </div>
@@ -336,8 +336,8 @@ const EditProjectPage = () => {
                 value={formData.description}
                 onChange={handleInputChange}
                 rows={4}
-                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
-                placeholder="Décrivez votre projet en détail" className="placeholder-gray-400 dark:placeholder-gray-500"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                placeholder="Décrivez votre projet en détail"
                 required
               />
             </div>
@@ -432,13 +432,13 @@ const EditProjectPage = () => {
                   value={newTech}
                   onChange={(e) => setNewTech(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTechnology())}
-                  className="flex-1 px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
-                  placeholder="Ajouter une technologie" className="placeholder-gray-400 dark:placeholder-gray-500"
+                  className="flex-1 px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                  placeholder="Ajouter une technologie"
                 />
                 <button
                   type="button"
                   onClick={addTechnology}
-                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium px-4 sm:px-6 px-4 sm:px-6 px-4 sm:px-6"
+                  className="px-4 sm:px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
                 >
                   Ajouter
                 </button>
@@ -447,7 +447,7 @@ const EditProjectPage = () => {
                 {formData.technologies.map((tech, index) => (
                   <span
                     key={index}
-                    className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm"
+                    className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs sm:text-sm"
                   >
                     {tech}
                     <button
@@ -475,8 +475,8 @@ const EditProjectPage = () => {
                 name="link"
                 value={formData.link}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-500"
-                placeholder="https://exemple.com" className="placeholder-gray-400 dark:placeholder-gray-500"
+                className="w-full px-4 py-3 bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                placeholder="https://exemple.com"
               />
             </div>
 

@@ -109,7 +109,7 @@ const DeleteProjectPage = () => {
             </svg>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 mb-2">Projet non trouvé</h3>
-          <p className="text-gray-600 mb-6">Le projet que vous cherchez n'existe pas ou a été supprimé.</p>
+          <p className="text-gray-600 mb-6">Le projet que vous cherchez n&apos;existe pas ou a été supprimé.</p>
           <button
             onClick={() => router.push('/projects')}
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"

@@ -81,7 +81,7 @@ const ProjectsSection = () => {
             Mes Dernières Réalisations
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Découvrez une sélection de projets sur lesquels j'ai travaillé récemment
+            Découvrez une sélection de projets sur lesquels j&apos;ai travaillé récemment
           </p>
         </div>
 

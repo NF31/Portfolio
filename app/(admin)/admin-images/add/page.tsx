@@ -156,13 +156,13 @@ export default function AddImagePage() {
               <li>• Les images sont automatiquement optimisées par Cloudinary</li>
               <li>• Formats supportés : PNG, JPG, GIF, WebP</li>
               <li>• Taille maximale : 10MB</li>
-              <li>• L'image sera stockée dans le dossier "portfolio" sur Cloudinary</li>
+              <li>• L&apos;image sera stockée dans le dossier &quot;portfolio&quot; sur Cloudinary</li>
               <li>• Cette image sera associée au projet sélectionné</li>
             </ul>
           </div>
           
           {/* Bouton retour */}
-          <div className="mt-6 flex justify-end flex flex-col sm:flex-row justify-end gap-2 sm:gap-0">
+          <div className="mt-6 flex flex-col sm:flex-row justify-end gap-2 sm:gap-0">
           <button
               onClick={() => router.push('/admin-images')}
               className="px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:text-gray-200 transition-colors"
@@ -171,6 +171,7 @@ export default function AddImagePage() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

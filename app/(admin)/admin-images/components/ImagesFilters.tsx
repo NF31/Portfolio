@@ -117,7 +117,7 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
               className="w-full pl-10 pr-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               <option value="all">Toutes les périodes</option>
-              <option value="today">Aujourd'hui</option>
+              <option value="today">Aujourd&apos;hui</option>
               <option value="week">Cette semaine</option>
               <option value="month">Ce mois</option>
               <option value="year">Cette année</option>
@@ -132,7 +132,7 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <ImageIcon className="h-4 w-4 text-gray-400" />
+              <Icons.ImageIcon className="h-4 w-4 text-gray-400" />
             </div>
             <select
               id="format"
@@ -166,7 +166,7 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
         </button>
         {searchTerm && (
           <span className="px-3 py-1 text-xs sm:text-sm bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded-lg">
-            Recherche: "{searchTerm}"
+            Recherche: &quot;{searchTerm}&quot;
           </span>
         )}
         {filterProject !== 'all' && (

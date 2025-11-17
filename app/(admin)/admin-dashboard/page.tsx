@@ -133,7 +133,7 @@ const AdminDashboard = () => {
       title: 'Nouveau Projet',
       description: 'Ajouter un nouveau projet au portfolio',
       href: '/projects/add',
-      icon: Briefcase,
+      icon: Icons.Briefcase,
       color: 'from-blue-500 to-blue-600',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-200'
@@ -142,7 +142,7 @@ const AdminDashboard = () => {
       title: 'Nouvelle Compétence',
       description: 'Ajouter une compétence technique',
       href: '/skills/add',
-      icon: Target,
+      icon: Icons.Target,
       color: 'from-purple-500 to-purple-600',
       bgColor: 'bg-purple-50',
       borderColor: 'border-purple-200'
@@ -151,7 +151,7 @@ const AdminDashboard = () => {
       title: 'Nouvelle Image',
       description: 'Uploader une nouvelle image',
       href: '/images/add',
-      icon: ImageIcon,
+      icon: Icons.ImageIcon,
       color: 'from-green-500 to-green-600',
       bgColor: 'bg-green-50',
       borderColor: 'border-green-200'
@@ -160,7 +160,7 @@ const AdminDashboard = () => {
       title: 'Nouveau Service',
       description: 'Créer un nouveau service',
       href: '/services/add',
-      icon: Settings,
+      icon: Icons.Settings,
       color: 'from-orange-500 to-orange-600',
       bgColor: 'bg-orange-50',
       borderColor: 'border-orange-200'
@@ -169,16 +169,16 @@ const AdminDashboard = () => {
 
   // Fonction pour obtenir l'icône Lucide à partir du nom
   const getActivityIcon = (iconName: string) => {
-    const iconMap: { [key: string]: any } = {
-      'Briefcase': Briefcase,
-      'MessageSquare': MessageSquare,
-      'Settings': Settings,
-      'Target': Target,
-      'Image': ImageIcon,
+    const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
+      'Briefcase': Icons.Briefcase,
+      'MessageSquare': Icons.MessageSquare,
+      'Settings': Icons.Settings,
+      'Target': Icons.Target,
+      'Image': Icons.ImageIcon,
       'Icons.Rocket': Icons.Rocket,
-      'RefreshCw': RefreshCw
+      'RefreshCw': Icons.RefreshCw
     };
-    return iconMap[iconName] || Settings;
+    return iconMap[iconName] || Icons.Settings;
   };
 
   // Fonctions de pagination
@@ -231,7 +231,7 @@ const AdminDashboard = () => {
               disabled={isRefreshing}
               className="flex items-center px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <RefreshCw className={`w-3 h-3 sm:w-4 sm:h-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <Icons.RefreshCw className={`w-3 h-3 sm:w-4 sm:h-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
               {isRefreshing ? 'Actualisation...' : 'Actualiser'}
             </button>
             <div className="hidden sm:block">
@@ -254,7 +254,7 @@ const AdminDashboard = () => {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.projects.published} publiés</p>
             </div>
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-indigo-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400 group-hover:text-white group-hover:animate-pulse" />
+              <Icons.Briefcase className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400 group-hover:text-white group-hover:animate-pulse" />
             </div>
           </div>
           <div className="mt-3 sm:mt-4">
@@ -276,7 +276,7 @@ const AdminDashboard = () => {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.skills?.active || 0} actives</p>
             </div>
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-purple-500 group-hover:to-violet-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <Target className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600 dark:text-purple-400 group-hover:text-white group-hover:animate-pulse" />
+              <Icons.Target className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600 dark:text-purple-400 group-hover:text-white group-hover:animate-pulse" />
             </div>
           </div>
           <div className="mt-3 sm:mt-4">
@@ -298,7 +298,7 @@ const AdminDashboard = () => {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.images?.recent || 0} récentes</p>
             </div>
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-green-500 group-hover:to-emerald-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400 group-hover:text-white group-hover:animate-pulse" />
+              <Icons.ImageIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400 group-hover:text-white group-hover:animate-pulse" />
             </div>
           </div>
           <div className="mt-3 sm:mt-4">
@@ -320,7 +320,7 @@ const AdminDashboard = () => {
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stats.messages.unread} non lus</p>
             </div>
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 dark:bg-orange-900/30 rounded-xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-red-600 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
-              <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400 group-hover:text-white group-hover:animate-pulse" />
+              <Icons.MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400 group-hover:text-white group-hover:animate-pulse" />
             </div>
           </div>
           <div className="mt-3 sm:mt-4">
@@ -449,7 +449,7 @@ const AdminDashboard = () => {
                         loading="lazy"
                       />
                     ) : (
-                      <ImageIcon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
+                      <Icons.ImageIcon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                     )}
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-1.5 sm:p-2 rounded-b-lg">
@@ -476,7 +476,7 @@ const AdminDashboard = () => {
             disabled={loadingRecentData}
             className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium flex items-center gap-1 disabled:opacity-50"
           >
-            <RefreshCw className={`w-3 h-3 sm:w-4 sm:h-4 ${loadingRecentData ? 'animate-spin' : ''}`} />
+            <Icons.RefreshCw className={`w-3 h-3 sm:w-4 sm:h-4 ${loadingRecentData ? 'animate-spin' : ''}`} />
             Actualiser
           </button>
         </div>
@@ -533,7 +533,7 @@ const AdminDashboard = () => {
         ) : (
           <div className="text-center py-8">
             <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
-              <Settings className="w-8 h-8 text-gray-400 dark:text-gray-500" />
+              <Icons.Settings className="w-8 h-8 text-gray-400 dark:text-gray-500" />
             </div>
             <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mb-2">
               Aucune activité récente

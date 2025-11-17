@@ -117,7 +117,7 @@ const ServicesFilters: React.FC<ServicesFiltersProps> = ({
         </button>
         {searchTerm && (
           <span className="px-3 py-1 text-xs sm:text-sm bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 rounded-lg">
-            Recherche: "{searchTerm}"
+            Recherche: &quot;{searchTerm}&quot;
           </span>
         )}
         {filterCategory !== 'all' && (

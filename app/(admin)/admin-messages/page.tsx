@@ -102,9 +102,9 @@ export default function AdminMessagesPage() {
 
   const getStatusBadge = (status: string) => {
     const badges = {
-      unread: { icon: Mail, text: 'Non lu', color: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' },
-      read: { icon: MailOpen, text: 'Lu', color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' },
-      processed: { icon: CheckCircle2, text: 'Traité', color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' },
+      unread: { icon: Icons.Mail, text: 'Non lu', color: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' },
+      read: { icon: Icons.MailOpen, text: 'Lu', color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' },
+      processed: { icon: Icons.CheckCircle2, text: 'Traité', color: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' },
     };
     
     // Protection : utiliser 'unread' par défaut si le statut n'existe pas
@@ -181,7 +181,7 @@ export default function AdminMessagesPage() {
               <p className="text-xl sm:text-2xl font-bold text-yellow-600 dark:text-yellow-400 mt-1">{stats.read}</p>
             </div>
             <div className="bg-yellow-100 dark:bg-yellow-900/30 p-2 sm:p-3 rounded-lg">
-              <MailOpen className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-yellow-600 dark:text-yellow-400" />
+              <Icons.MailOpen className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-yellow-600 dark:text-yellow-400" />
             </div>
           </div>
         </div>
@@ -292,7 +292,7 @@ export default function AdminMessagesPage() {
                           className="p-1.5 sm:p-2 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 rounded-lg transition-colors disabled:opacity-50"
                           aria-label="Marquer comme lu"
                         >
-                          <MailOpen className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <Icons.MailOpen className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                       )}
                       {message.status !== 'processed' && (
@@ -310,7 +310,7 @@ export default function AdminMessagesPage() {
                         className="p-1.5 sm:p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
                         aria-label="Répondre par email"
                       >
-                        <Reply className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <Icons.Reply className="w-4 h-4 sm:w-5 sm:h-5" />
                       </a>
                       <button
                         onClick={() => deleteMessage(message._id)}

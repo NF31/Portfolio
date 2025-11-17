@@ -107,7 +107,7 @@ const ProjectsPage = () => {
             className="inline-flex items-center text-white/80 hover:text-white mb-12 group transition-all"
           >
             <Icons.ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Link>
           
           <div className="text-center max-w-4xl mx-auto">
@@ -115,14 +115,14 @@ const ProjectsPage = () => {
               Portfolio
             </h1>
             <p className="text-xl sm:text-2xl text-blue-100 leading-relaxed mb-10">
-              Découvrez mes dernières réalisations et projets sur lesquels j'ai travaillé
+              Découvrez mes dernières réalisations et projets sur lesquels j&apos;ai travaillé
             </p>
             
             <a
               href="#contact"
               className="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 font-semibold rounded-xl hover:shadow-2xl hover:shadow-white/30 transition-all duration-300 hover:scale-105 group"
             >
-              <span>Discuter d'un projet</span>
+              <span>Discuter d&apos;un projet</span>
               <Icons.ArrowLeft className="ml-2 w-5 h-5 rotate-180 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
