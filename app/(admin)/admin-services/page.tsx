@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { Icons } from '@/lib/icons';
 import { toast } from 'sonner';
 import ServicesTable from './components/ServicesTable';
@@ -62,7 +61,6 @@ const ServicesPage = () => {
   const [serviceToDelete, setServiceToDelete] = useState<Service | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   
-  const router = useRouter();
 
   // Fonction pour récupérer les services
   const fetchServices = async () => {
@@ -96,6 +94,7 @@ const ServicesPage = () => {
   // Charger les services au montage et lors des changements de filtres
   useEffect(() => {
     fetchServices();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, searchTerm, filterCategory, filterStatus]);
 
   // Fonction pour gérer la suppression

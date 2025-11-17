@@ -50,6 +50,7 @@ const EditProjectPage = () => {
       fetchProject();
       fetchProjectTypes();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectId]);
 
   const fetchProject = async () => {
@@ -220,9 +221,9 @@ const EditProjectPage = () => {
       
       // Redirection vers la liste des projets
       router.push('/admin-projects');
-    } catch (error: any) {
+    } catch (error) {
       console.error('Erreur lors de la modification:', error);
-      setError(error.message);
+      setError(error instanceof Error ? error.message : 'Une erreur est survenue');
     } finally {
       setIsSaving(false);
     }

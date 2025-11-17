@@ -29,3 +29,4 @@ export function generateSecurePassword(length: number = 12): string {
   
   return password;
 }
+

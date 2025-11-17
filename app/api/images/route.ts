@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     const formatFilter = searchParams.get('format');
 
     // Construction du filtre
-    const filter: any = {};
+    const filter: Record<string, unknown> = {};
     
     if (search) {
       filter.$or = [

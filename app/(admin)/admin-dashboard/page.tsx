@@ -39,7 +39,7 @@ interface RecentActivity {
   timestamp: string;
   icon: string;
   color: string;
-  details?: any;
+  details?: Record<string, unknown>;
 }
 
 interface PaginationInfo {
@@ -475,7 +475,7 @@ const AdminDashboard = () => {
         <div className="flex items-center justify-between mb-4 sm:mb-6">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Activités récentes</h2>
           <button
-            onClick={fetchRecentData}
+            onClick={() => fetchRecentData()}
             disabled={loadingRecentData}
             className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium flex items-center gap-1 disabled:opacity-50"
           >
@@ -508,17 +508,17 @@ const AdminDashboard = () => {
                     {/* Affichage des détails supplémentaires pour certains types */}
                     {activity.details && (
                       <div className="mt-1">
-                        {activity.type === 'image' && activity.details.projectTitle && (
+                        {activity.type === 'image' && 'projectTitle' in activity.details && typeof activity.details.projectTitle === 'string' && (
                           <p className="text-xs text-gray-500 dark:text-gray-500">
                             Projet: {activity.details.projectTitle}
                           </p>
                         )}
-                        {activity.type === 'message' && activity.details.from && (
+                        {activity.type === 'message' && 'from' in activity.details && typeof activity.details.from === 'string' && (
                           <p className="text-xs text-gray-500 dark:text-gray-500">
                             De: {activity.details.from}
                           </p>
                         )}
-                        {activity.type === 'project' && activity.details.isPublished !== undefined && (
+                        {activity.type === 'project' && 'isPublished' in activity.details && typeof activity.details.isPublished === 'boolean' && (
                           <p className="text-xs text-gray-500 dark:text-gray-500">
                             {activity.details.isPublished ? 'Publié' : 'Brouillon'}
                           </p>

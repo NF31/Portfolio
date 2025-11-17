@@ -187,7 +187,7 @@ const ServicesPage = () => {
         const uniqueCategories = Array.from(new Set(data.data.map((s: Service) => s.category)));
         setCategories(uniqueCategories as string[]);
       }
-    } catch (error) {
+    } catch {
       // Erreur silencieuse lors du chargement des services
     } finally {
       setLoading(false);
@@ -196,7 +196,7 @@ const ServicesPage = () => {
 
   const renderIcon = (iconName: string, iconType?: string) => {
     if (iconType === 'url') {
-      return <Icons.Image src={iconName} alt="" width={32} height={32} className="w-8 h-8" />;
+      return <Image src={iconName} alt="" width={32} height={32} className="w-8 h-8" unoptimized />;
     }
     
     const iconMap = Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>;
@@ -300,7 +300,7 @@ const ServicesPage = () => {
       } else {
         toast.error(data.error || 'Erreur lors de l\'envoi du message');
       }
-    } catch (error) {
+    } catch {
       toast.error('Erreur lors de l\'envoi du message. Veuillez réessayer.');
     } finally {
       setSending(false);

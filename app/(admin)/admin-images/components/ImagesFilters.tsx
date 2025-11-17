@@ -41,7 +41,7 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
       if (response.ok) {
         const data = await response.json();
         const projectsList = data.projects || data.data || [];
-        const normalizedProjects = projectsList.map((project: any) => ({
+        const normalizedProjects = projectsList.map((project: { _id?: string; id?: string; title: string }) => ({
           _id: project._id || project.id,
           title: project.title
         }));

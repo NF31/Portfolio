@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('search') || '';
 
     // Construction du filtre
-    const filter: any = {};
+    const filter: Record<string, unknown> = {};
 
     if (category && category !== 'all') {
       filter.category = category;
@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors de la récupération des compétences:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la récupération des compétences' },
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
       message: 'Compétence créée avec succès'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors de la création de la compétence:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la création de la compétence' },

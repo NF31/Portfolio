@@ -27,7 +27,18 @@ const EditImagePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
-  const [image, setImage] = useState<any>(null);
+  interface ImageData {
+    _id: string;
+    url: string;
+    alt: string;
+    description?: string;
+    projectId?: { _id: string; title?: string } | string;
+    createdAt?: string;
+    updatedAt?: string;
+    [key: string]: unknown;
+  }
+  
+  const [image, setImage] = useState<ImageData | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
 
   const [formData, setFormData] = useState<ImageFormData>({
@@ -41,6 +52,7 @@ const EditImagePage = () => {
     if (imageId) {
       fetchImageAndProjects();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageId]);
 
   const fetchImageAndProjects = async () => {
@@ -71,7 +83,7 @@ const EditImagePage = () => {
       if (projectsResponse.ok) {
         const projectsData = await projectsResponse.json();
         const projectsList = projectsData.projects || projectsData.data || [];
-        const normalizedProjects = projectsList.map((project: any) => ({
+        const normalizedProjects = projectsList.map((project: { _id?: string; id?: string; title: string }) => ({
           _id: project._id || project.id,
           title: project.title
         }));
@@ -208,8 +220,8 @@ const EditImagePage = () => {
             </div>
             <div className="space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               <p><strong>URL :</strong> <a href={image.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">{image.url}</a></p>
-              <p><strong>Ajoutée le :</strong> {new Date(image.createdAt).toLocaleDateString('fr-FR')}</p>
-              <p><strong>Projet actuel :</strong> {image.projectId?.title || 'Aucun projet'}</p>
+              <p><strong>Ajoutée le :</strong> {image.createdAt ? new Date(image.createdAt).toLocaleDateString('fr-FR') : 'Non disponible'}</p>
+              <p><strong>Projet actuel :</strong> {typeof image.projectId === 'object' && image.projectId !== null ? image.projectId.title || 'Aucun projet' : 'Aucun projet'}</p>
             </div>
 
             {/* Section de remplacement d&apos;image */}

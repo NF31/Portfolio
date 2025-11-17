@@ -6,12 +6,12 @@ import mongoose from 'mongoose';
 // PATCH - Mettre à jour le statut d'un message
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     // Vérifier si l'ID est valide
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -63,12 +63,12 @@ export async function PATCH(
 // DELETE - Supprimer un message
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
 
-    const { id } = params;
+    const { id } = await params;
 
     // Vérifier si l'ID est valide
     if (!mongoose.Types.ObjectId.isValid(id)) {
