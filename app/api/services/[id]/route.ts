@@ -5,19 +5,20 @@ import mongoose from 'mongoose';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const { id } = await params;
 
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { success: false, error: 'ID de service invalide' },
         { status: 400 }
       );
     }
 
-    const service = await Service.findById(params.id).lean();
+    const service = await Service.findById(id).lean();
 
     if (!service) {
       return NextResponse.json(
@@ -42,12 +43,13 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const { id } = await params;
 
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { success: false, error: 'ID de service invalide' },
         { status: 400 }
@@ -57,7 +59,7 @@ export async function PUT(
     const body = await request.json();
     
     // Vérifier que le service existe
-    const existingService = await Service.findById(params.id);
+    const existingService = await Service.findById(id);
     if (!existingService) {
       return NextResponse.json(
         { success: false, error: 'Service non trouvé' },
@@ -67,7 +69,7 @@ export async function PUT(
 
     // Mettre à jour le service
     const updatedService = await Service.findByIdAndUpdate(
-      params.id,
+      id,
       body,
       { new: true, runValidators: true }
     );
@@ -83,7 +85,8 @@ export async function PUT(
     
     // Gérer les erreurs de validation Mongoose
     if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError') {
-      const validationErrors = Object.values((error as any).errors).map((err: any) => (err as any).message);
+      const mongooseError = error as unknown as { errors: Record<string, { message: string }> };
+      const validationErrors = Object.values(mongooseError.errors).map((err) => err.message);
       return NextResponse.json(
         { 
           success: false, 
@@ -103,12 +106,13 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
+    const { id } = await params;
 
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { success: false, error: 'ID de service invalide' },
         { status: 400 }
@@ -116,7 +120,7 @@ export async function DELETE(
     }
 
     // Vérifier que le service existe
-    const existingService = await Service.findById(params.id);
+    const existingService = await Service.findById(id);
     if (!existingService) {
       return NextResponse.json(
         { success: false, error: 'Service non trouvé' },
@@ -125,7 +129,7 @@ export async function DELETE(
     }
 
     // Supprimer le service
-    await Service.findByIdAndDelete(params.id);
+    await Service.findByIdAndDelete(id);
 
     return NextResponse.json({
       success: true,

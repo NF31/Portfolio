@@ -45,7 +45,7 @@ const LoginPage: React.FC = () => {
       } else {
         setError(data.message || 'Identifiants incorrects');
       }
-    } catch (err) {
+    } catch {
       setError('Erreur de connexion');
     } finally {
       setIsLoading(false);

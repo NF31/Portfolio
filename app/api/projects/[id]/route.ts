@@ -8,14 +8,13 @@ import mongoose from 'mongoose';
 // GET /api/projects/[id] - Récupérer un projet spécifique
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     console.log('🔗 Connexion à MongoDB pour récupérer le projet...');
     await connectDB();
     console.log('✅ Connexion MongoDB réussie !');
-    
-    const { id } = params;
+    const { id } = await params;
     
     // Vérifier que l'ID est valide
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -66,14 +65,13 @@ export async function GET(
 // PUT /api/projects/[id] - Modifier un projet
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     console.log('🔗 Connexion à MongoDB pour modifier le projet...');
     await connectDB();
     console.log('✅ Connexion MongoDB réussie !');
-    
-    const { id } = params;
+    const { id } = await params;
     
     // Vérifier que l'ID est valide
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -113,7 +111,14 @@ export async function PUT(
     }
 
     // Préparer les données de mise à jour
-    const updateData: any = {
+    const updateData: {
+      title: string;
+      description: string;
+      technologies: string[];
+      link?: string;
+      isArchived: boolean;
+      types?: string | string[];
+    } = {
       title: title.trim(),
       description: description.trim(),
       technologies,
@@ -138,6 +143,13 @@ export async function PUT(
       }
     );
 
+    if (!updatedProject) {
+      return NextResponse.json(
+        { success: false, error: 'Projet non trouvé' },
+        { status: 404 }
+      );
+    }
+
     console.log('✅ Projet modifié avec succès !');
     console.log('📊 Projet mis à jour:', updatedProject);
 
@@ -161,12 +173,13 @@ export async function PUT(
       { status: 200 }
     );
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Erreur lors de la modification du projet:', error);
     
     // Gestion des erreurs de validation Mongoose
-    if (error.name === 'ValidationError') {
-      const errors = Object.values(error.errors).map((err: any) => err.message);
+    if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError' && 'errors' in error) {
+      const mongooseError = error as { errors: Record<string, { message: string }> };
+      const errors = Object.values(mongooseError.errors).map((err) => err.message);
       return NextResponse.json(
         { error: 'Erreur de validation', details: errors },
         { status: 400 }
@@ -183,14 +196,13 @@ export async function PUT(
 // DELETE /api/projects/[id] - Supprimer un projet
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     console.log('🔗 Connexion à MongoDB pour supprimer le projet...');
     await connectDB();
     console.log('✅ Connexion MongoDB réussie !');
-    
-    const { id } = params;
+    const { id } = await params;
     
     // Vérifier que l'ID est valide
     if (!mongoose.Types.ObjectId.isValid(id)) {

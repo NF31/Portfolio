@@ -54,7 +54,8 @@ const AddServicePage = () => {
   });
 
   // Liste des icônes disponibles (organisées par catégorie)
-  const availableIcons = [
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _availableIcons = [
     // Web & Développement
     'Globe', 'Monitor', 'Laptop', 'Code', 'Code2', 'Terminal', 'Browser',
     'Window', 'Layout', 'Layers', 'Grid', 'Box', 'Package',
@@ -397,7 +398,7 @@ const AddServicePage = () => {
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white">
                     {(() => {
-                      const IconComponent = (Icons as any)[formData.icon];
+                      const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[formData.icon];
                       return IconComponent ? <IconComponent className="w-5 h-5" /> : <Icons.Sparkles className="w-5 h-5" />;
                     })()}
                   </div>
@@ -419,7 +420,7 @@ const AddServicePage = () => {
                   <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">🌐 Web & Développement</h4>
                   <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
                     {['Globe', 'Monitor', 'Laptop', 'Code', 'Code2', 'Terminal', 'Browser', 'Window', 'Layout', 'Layers', 'Grid', 'Box'].map(iconName => {
-                      const IconComponent = (Icons as any)[iconName];
+                      const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[iconName];
                       return (
                         <button
                           key={iconName}
@@ -444,7 +445,7 @@ const AddServicePage = () => {
                   <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">📱 Mobile & Design</h4>
                   <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
                     {['Smartphone', 'Tablet', 'Palette', 'Brush', 'Paintbrush', 'Image', 'Camera', 'Video', 'Film', 'Mic', 'Headphones'].map(iconName => {
-                      const IconComponent = (Icons as any)[iconName];
+                      const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[iconName];
                       return (
                         <button
                           key={iconName}
@@ -469,7 +470,7 @@ const AddServicePage = () => {
                   <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">⚙️ Technologies & Outils</h4>
                   <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
                     {['Database', 'Server', 'Cloud', 'Shield', 'Lock', 'Key', 'Cpu', 'HardDrive', 'Wifi', 'Bluetooth', 'Zap', 'Bolt'].map(iconName => {
-                      const IconComponent = (Icons as any)[iconName];
+                      const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[iconName];
                       return (
                         <button
                           key={iconName}
@@ -494,7 +495,7 @@ const AddServicePage = () => {
                   <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">💼 Business & Services</h4>
                   <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2">
                     {['Briefcase', 'Target', 'TrendingUp', 'BarChart', 'PieChart', 'Users', 'User', 'UserPlus', 'Building', 'Building2', 'Rocket', 'Star'].map(iconName => {
-                      const IconComponent = (Icons as any)[iconName];
+                      const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[iconName];
                       return (
                         <button
                           key={iconName}

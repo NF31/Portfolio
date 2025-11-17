@@ -18,7 +18,7 @@ export async function GET() {
       images: recentImages
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Erreur lors de la récupération des images récentes:', error);
     
     return NextResponse.json(

@@ -74,7 +74,7 @@ const ServiceSchema = new Schema<IService>({
     trim: true,
     validate: {
       validator: function(v: string) {
-        return v && v.trim().length > 0;
+        return Boolean(v && v.trim().length > 0);
       },
       message: 'La catégorie doit être un string non vide'
     }

@@ -172,8 +172,6 @@ const ProjectsPage = () => {
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              totalItems={filteredProjects.length}
-              itemsPerPage={itemsPerPage}
               onPageChange={setCurrentPage}
             />
           </div>

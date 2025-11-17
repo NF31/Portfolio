@@ -182,7 +182,7 @@ const ProjectsPage = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
+              {filteredProjects.map((project) => (
                 <div
                   key={project._id}
                   className="group relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 dark:border-gray-700"

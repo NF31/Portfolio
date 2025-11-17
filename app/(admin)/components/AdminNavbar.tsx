@@ -57,14 +57,14 @@ const AdminNavbar = () => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   const navigation = [
-    { name: 'Dashboard', href: '/admin-dashboard', icon: BarChart3 },
-    { name: 'Projets', href: '/admin-projects', icon: Briefcase },
-    { name: 'Services', href: '/admin-services', icon: Settings },
-    { name: 'Compétences', href: '/admin-skills', icon: Target },
-  /* { name: 'Formation', href: '/admin-education', icon: GraduationCap },
-    { name: 'Blog', href: '/blog', icon: FileText },*/
-    { name: 'Messages', href: '/admin-messages', icon: MessageSquare },
-    { name: 'Images', href: '/admin-images', icon: ImageIcon },
+    { name: 'Dashboard', href: '/admin-dashboard', icon: Icons.Target },
+    { name: 'Projets', href: '/admin-projects', icon: Icons.Briefcase },
+    { name: 'Services', href: '/admin-services', icon: Icons.Settings },
+    { name: 'Compétences', href: '/admin-skills', icon: Icons.Target },
+  /* { name: 'Formation', href: '/admin-education', icon: Icons.GraduationCap },
+    { name: 'Blog', href: '/blog', icon: Icons.Code },*/
+    { name: 'Messages', href: '/admin-messages', icon: Icons.MessageSquare },
+    { name: 'Images', href: '/admin-images', icon: Icons.ImageIcon },
   ];
 
   const isActive = (href: string) => {

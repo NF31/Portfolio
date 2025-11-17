@@ -1,24 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Icons } from '@/lib/icons';
 
-import { useStats } from '../contexts/StatsContext';
-
-interface DashboardStats {
-  totalProjects: number;
-  publishedProjects: number;
-  totalMessages: number;
-  unreadMessages: number;
-  totalServices: number;
-  totalSkills: number;
-  recentProjects?: number;
-  archivedProjects?: number;
-}
+import { useStats } from './contexts/StatsContext';
 
 const AdminDashboard = () => {
-  const { stats, isLoading, refreshStats, lastUpdated } = useStats();
+  const { stats, isLoading, refreshStats } = useStats();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const handleRefresh = async () => {
@@ -50,7 +39,7 @@ const AdminDashboard = () => {
       title: 'Nouvelle Compétence',
       description: 'Ajouter une compétence',
       href: '/skills/add',
-      icon: TrendingUp,
+      icon: Icons.TrendingUp,
       color: 'from-purple-500 to-purple-600',
       bgColor: 'bg-purple-50',
       borderColor: 'border-purple-200'
@@ -59,7 +48,7 @@ const AdminDashboard = () => {
       title: 'Nouvel Article',
       description: 'Publier un article de blog',
       href: '/blog/add',
-      icon: FileText,
+      icon: Icons.FileText,
       color: 'from-orange-500 to-orange-600',
       bgColor: 'bg-orange-50',
       borderColor: 'border-orange-200'
@@ -70,7 +59,7 @@ const AdminDashboard = () => {
     { action: 'Projet créé', item: 'Portfolio E-commerce', time: 'Il y a 2 heures', icon: Icons.Briefcase },
     { action: 'Message reçu', item: 'Demande de devis', time: 'Il y a 4 heures', icon: Icons.MessageSquare },
     { action: 'Service modifié', item: 'Développement Web', time: 'Il y a 1 jour', icon: Icons.Settings },
-    { action: 'Article publié', item: 'Les tendances 2024', time: 'Il y a 2 jours', icon: FileText }
+    { action: 'Article publié', item: 'Les tendances 2024', time: 'Il y a 2 jours', icon: Icons.FileText }
   ];
 
   if (isLoading) {
