@@ -5,12 +5,11 @@ import { cloudinary } from '@/lib/cloudinary';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-
-    const imageId = params.id;
+    const { id: imageId } = await params;
     const image = await Image.findById(imageId).populate('projectId', 'title');
 
     if (!image) {
@@ -25,7 +24,7 @@ export async function GET(
       data: image
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors de la récupération de l\'image:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la récupération de l\'image' },
@@ -36,12 +35,11 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-
-    const imageId = params.id;
+    const { id: imageId } = await params;
     const body = await request.json();
     const { alt, description, projectId } = body;
 
@@ -98,7 +96,7 @@ export async function PUT(
       message: 'Image mise à jour avec succès'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors de la mise à jour de l\'image:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la mise à jour de l\'image' },
@@ -109,12 +107,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-
-    const imageId = params.id;
+    const { id: imageId } = await params;
     console.log('🗑️ Suppression de l\'image:', imageId);
 
     // Récupérer l'image depuis la base de données
@@ -146,7 +143,7 @@ export async function DELETE(
       message: 'Image supprimée avec succès'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors de la suppression de l\'image:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la suppression de l\'image' },

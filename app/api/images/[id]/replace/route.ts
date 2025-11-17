@@ -5,10 +5,11 @@ import Image from '@/models/Image';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    console.log('🔄 Remplacement d\'image:', params.id);
+    const { id } = await params;
+    console.log('🔄 Remplacement d\'image:', id);
 
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
@@ -23,7 +24,7 @@ export async function POST(
     await connectDB();
 
     // Récupérer l'image existante
-    const existingImage = await Image.findById(params.id);
+    const existingImage = await Image.findById(id);
     if (!existingImage) {
       return NextResponse.json({
         success: false,
@@ -90,7 +91,7 @@ export async function POST(
 
     // Mettre à jour l'image dans la base de données
     const updatedImage = await Image.findByIdAndUpdate(
-      params.id,
+      id,
       {
         url: cloudinaryResult.secure_url,
         publicId: cloudinaryResult.public_id,
@@ -110,7 +111,7 @@ export async function POST(
       message: 'Image remplacée avec succès'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors du remplacement de l\'image:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors du remplacement de l\'image' },

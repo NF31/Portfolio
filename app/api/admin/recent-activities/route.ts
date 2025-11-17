@@ -14,7 +14,7 @@ interface RecentActivity {
   timestamp: Date;
   icon: string;
   color: string;
-  details?: any;
+  details?: Record<string, unknown>;
 }
 
 export async function GET(request: NextRequest) {
@@ -27,7 +27,6 @@ export async function GET(request: NextRequest) {
     const offset = (page - 1) * limit;
 
     const activities: RecentActivity[] = [];
-    const now = new Date();
 
     // Récupérer les projets récents
     const recentProjects = await Project.find({}, 'title createdAt updatedAt isPublished')
@@ -44,7 +43,7 @@ export async function GET(request: NextRequest) {
         timestamp: project.createdAt,
         icon: 'Briefcase',
         color: 'text-blue-600',
-        details: { projectId: project._id, isPublished: project.isPublished }
+        details: { projectId: project._id, isArchived: project.isArchived || false }
       });
 
       // Projet modifié (si différent de la création)
@@ -52,12 +51,12 @@ export async function GET(request: NextRequest) {
         activities.push({
           id: `project-updated-${project._id}`,
           type: 'project',
-          action: project.isPublished ? 'Projet publié' : 'Projet modifié',
+          action: project.isArchived ? 'Projet archivé' : 'Projet modifié',
           item: project.title,
           timestamp: project.updatedAt,
           icon: 'Briefcase',
           color: 'text-blue-600',
-          details: { projectId: project._id, isPublished: project.isPublished }
+          details: { projectId: project._id, isArchived: project.isArchived || false }
         });
       }
     });

@@ -54,7 +54,7 @@ const ScrollToTop = () => {
       
       // Démarrer l'animation
       requestAnimationFrame(animateScroll);
-    } catch (error) {
+    } catch {
       // Fallback avec smooth scroll natif
       window.scrollTo({
         top: 0,

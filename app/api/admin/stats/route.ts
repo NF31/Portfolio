@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Project from '@/models/Project';
 import Service from '@/models/Service';
@@ -91,7 +91,7 @@ export async function GET() {
       stats
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Erreur lors de la récupération des statistiques:', error);
     
     return NextResponse.json(

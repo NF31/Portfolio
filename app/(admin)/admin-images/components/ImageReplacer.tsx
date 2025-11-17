@@ -5,13 +5,24 @@ import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 import { toast } from 'sonner';
 
+interface ImageData {
+  _id: string;
+  url: string;
+  alt: string;
+  description?: string;
+  projectId?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  [key: string]: unknown;
+}
+
 interface ImageReplacerProps {
   imageId: string;
   currentImageUrl: string;
-  onReplaceSuccess: (newImageData: any) => void;
+  onReplaceSuccess: (newImageData: ImageData) => void;
 }
 
-export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSuccess }: ImageReplacerProps) {
+export default function ImageReplacer({ imageId, onReplaceSuccess }: ImageReplacerProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -72,7 +83,7 @@ export default function ImageReplacer({ imageId, currentImageUrl, onReplaceSucce
       } else {
         toast.error(result.error || 'Erreur lors du remplacement', { id: 'replace' });
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Erreur lors du remplacement:', error);
       toast.error('Erreur lors du remplacement', { id: 'replace' });
     } finally {

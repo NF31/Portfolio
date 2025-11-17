@@ -17,7 +17,7 @@ export async function GET() {
       skills: recentSkills
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Erreur lors de la récupération des dernières compétences:', error);
     
     return NextResponse.json(

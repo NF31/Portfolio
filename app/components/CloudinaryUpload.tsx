@@ -3,8 +3,17 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
 
+interface UploadResult {
+  url: string;
+  publicId?: string;
+  width?: number;
+  height?: number;
+  format?: string;
+  [key: string]: unknown;
+}
+
 interface CloudinaryUploadProps {
-  onUploadSuccess: (result: any) => void;
+  onUploadSuccess: (result: UploadResult) => void;
   onUploadError?: (error: string) => void;
   projectId: string;
   projectTitle: string;
@@ -57,10 +66,11 @@ export default function CloudinaryUpload({ onUploadSuccess, onUploadError, proje
         toast.error(result.msg || 'Erreur lors de l&apos;upload', { id: 'upload' });
         onUploadError?.(result.msg || 'Erreur lors de l&apos;upload');
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('💥 Erreur lors de l&apos;upload:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Erreur inconnue';
       toast.error('Erreur lors de l&apos;upload', { id: 'upload' });
-      onUploadError?.(error.message);
+      onUploadError?.(errorMessage);
     } finally {
       setIsUploading(false);
     }

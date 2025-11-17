@@ -42,11 +42,11 @@ export default function AddImagePage() {
         // Utiliser data.projects car c'est ce que retourne votre API
         const projectsList = data.projects || data.data || [];
         console.log('📝 Liste des projets:', projectsList);
-        console.log('🏷️ Titres des projets:', projectsList.map((p: any) => p.title));
-        console.log('🆔 IDs des projets:', projectsList.map((p: any) => p._id || p.id));
+        console.log('🏷️ Titres des projets:', projectsList.map((p: { title: string; _id?: string; id?: string }) => p.title));
+        console.log('🆔 IDs des projets:', projectsList.map((p: { title: string; _id?: string; id?: string }) => p._id || p.id));
         
         // Normaliser les données pour s'assurer d'avoir _id et title
-        const normalizedProjects = projectsList.map((project: any) => ({
+        const normalizedProjects = projectsList.map((project: { _id?: string; id?: string; title: string }) => ({
           _id: project._id || project.id,
           title: project.title
         }));
@@ -64,8 +64,8 @@ export default function AddImagePage() {
     }
   };
 
-  const handleUploadSuccess = async (imageData: any) => {
-    console.log('Image uploadée avec succès:', imageData);
+  const handleUploadSuccess = async (result: { url: string; publicId?: string; width?: number; height?: number; format?: string; [key: string]: unknown }) => {
+    console.log('Image uploadée avec succès:', result);
     toast.success('Image ajoutée avec succès !');
     // Rafraîchir les statistiques
     await refreshAfterAction('ajout d\'image');
@@ -103,7 +103,7 @@ export default function AddImagePage() {
               value={selectedProjectId}
               onChange={(e) => {
                 const projectId = e.target.value;
-                const selectedProject = projects.find(p => (p._id || p.id) === projectId);
+                const selectedProject = projects.find(p => p._id === projectId);
                 console.log('🔄 Projet sélectionné ID:', projectId);
                 console.log('🏷️ Titre du projet:', selectedProject?.title);
                 setSelectedProjectId(projectId);
@@ -114,7 +114,7 @@ export default function AddImagePage() {
             >
               <option value="">Sélectionnez un projet</option>
               {projects.map((project) => (
-                <option key={project._id || project.id} value={project._id || project.id}>
+                <option key={project._id} value={project._id}>
                   {project.title}
                 </option>
               ))}

@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     const isActive = searchParams.get('isActive');
 
     // Construire le filtre
-    const filter: any = {};
+    const filter: Record<string, unknown> = {};
     
     if (category && category !== 'all') {
       filter.category = category;
@@ -84,12 +84,13 @@ export async function POST(request: NextRequest) {
       message: 'Service créé avec succès'
     }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Erreur lors de la création du service:', error);
     
     // Gérer les erreurs de validation Mongoose
-    if (error.name === 'ValidationError') {
-      const validationErrors = Object.values(error.errors).map((err: any) => err.message);
+    if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError' && 'errors' in error) {
+      const mongooseError = error as { errors: Record<string, { message: string }> };
+      const validationErrors = Object.values(mongooseError.errors).map((err) => err.message);
       return NextResponse.json(
         { 
           success: false, 

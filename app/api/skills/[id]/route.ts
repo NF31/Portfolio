@@ -4,12 +4,11 @@ import Skill from '@/models/Skill';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-
-    const skillId = params.id;
+    const { id: skillId } = await params;
     const skill = await Skill.findById(skillId);
 
     if (!skill) {
@@ -24,7 +23,7 @@ export async function GET(
       data: skill
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors de la récupération de la compétence:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la récupération de la compétence' },
@@ -35,12 +34,11 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-
-    const skillId = params.id;
+    const { id: skillId } = await params;
     const body = await request.json();
     const { name, description, icon, iconType, category, level, isActive, order } = body;
 
@@ -112,7 +110,7 @@ export async function PUT(
       message: 'Compétence mise à jour avec succès'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors de la mise à jour de la compétence:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la mise à jour de la compétence' },
@@ -123,12 +121,11 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-
-    const skillId = params.id;
+    const { id: skillId } = await params;
     console.log('🗑️ Suppression de la compétence:', skillId);
 
     // Récupérer la compétence depuis la base de données
@@ -151,7 +148,7 @@ export async function DELETE(
       message: 'Compétence supprimée avec succès'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ Erreur lors de la suppression de la compétence:', error);
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la suppression de la compétence' },

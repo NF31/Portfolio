@@ -67,7 +67,15 @@ import {
   Settings,
   MailOpen,
   Reply,
-  Menu
+  Menu,
+  TrendingUp,
+  FileText,
+  BarChart,
+  PieChart,
+  Users,
+  UserPlus,
+  Building,
+  Building2
 } from 'lucide-react';
 
 // Export des icônes les plus utilisées
@@ -146,6 +154,14 @@ export const Icons = {
   MailOpen,
   Reply,
   Menu,
+  TrendingUp,
+  FileText,
+  BarChart,
+  PieChart,
+  Users,
+  UserPlus,
+  Building,
+  Building2,
   
   // Thème
   Sun,
