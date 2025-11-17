@@ -25,7 +25,7 @@ export default function CloudinaryUpload({ onUploadSuccess, onUploadError, proje
 
     if (!projectId) {
       console.log('❌ Aucun projet sélectionné');
-      toast.error('Veuillez sélectionner un projet avant d\'uploader une image');
+      toast.error('Veuillez sélectionner un projet avant d&apos;uploader une image');
       return;
     }
 
@@ -54,12 +54,12 @@ export default function CloudinaryUpload({ onUploadSuccess, onUploadError, proje
         onUploadSuccess(result.data);
       } else {
         console.log('❌ Erreur dans la réponse:', result.msg, result.error);
-        toast.error(result.msg || 'Erreur lors de l\'upload', { id: 'upload' });
-        onUploadError?.(result.msg || 'Erreur lors de l\'upload');
+        toast.error(result.msg || 'Erreur lors de l&apos;upload', { id: 'upload' });
+        onUploadError?.(result.msg || 'Erreur lors de l&apos;upload');
       }
     } catch (error: any) {
-      console.error('💥 Erreur lors de l\'upload:', error);
-      toast.error('Erreur lors de l\'upload', { id: 'upload' });
+      console.error('💥 Erreur lors de l&apos;upload:', error);
+      toast.error('Erreur lors de l&apos;upload', { id: 'upload' });
       onUploadError?.(error.message);
     } finally {
       setIsUploading(false);
@@ -100,7 +100,7 @@ export default function CloudinaryUpload({ onUploadSuccess, onUploadError, proje
                 Cliquez pour ajouter une image
               </p>
               <p className="text-xs text-gray-400">
-                PNG, JPG, GIF jusqu'à 10MB
+                PNG, JPG, GIF jusqu&apos;à 10MB
               </p>
             </div>
           )}

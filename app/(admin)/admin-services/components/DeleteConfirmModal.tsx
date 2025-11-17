@@ -86,7 +86,7 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
         <div className="px-4 sm:px-6 py-3 sm:py-4">
           <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">
             Êtes-vous sûr de vouloir supprimer le service{' '}
-            <span className="font-semibold text-gray-900 dark:text-white">"{service.title}"</span> ?
+            <span className="font-semibold text-gray-900 dark:text-white">&quot;{service.title}&quot;</span> ?
           </p>
 
           {/* Informations détaillées du service */}

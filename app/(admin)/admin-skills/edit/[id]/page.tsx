@@ -180,7 +180,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
             <div>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Modifier la compétence</h1>
               <p className="text-gray-600 dark:text-gray-400 mt-1">
-                Modifiez les informations de "{skill?.name}"
+                Modifiez les informations de &quot;{skill?.name}&quot;
               </p>
             </div>
           </div>
@@ -292,7 +292,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
 
                 <div>
                   <label htmlFor="order" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Ordre d'affichage
+                    Ordre d&apos;affichage
                   </label>
                   <input
                     type="number"
@@ -325,7 +325,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
               
               <div className="mb-4">
                 <label htmlFor="iconType" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Type d'icône *
+                  Type d&apos;icône *
                 </label>
                 <select
                   id="iconType"
@@ -337,7 +337,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                   <option value="lucide">Lucide Icons</option>
                   <option value="simple-icons">Simple Icons</option>
                   <option value="custom-svg">SVG personnalisé</option>
-                  <option value="url">URL d'image</option>
+                  <option value="url">URL d&apos;image</option>
                 </select>
               </div>
 
@@ -401,7 +401,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
               {formData.iconType === 'url' && (
                 <div>
                   <label htmlFor="icon" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    URL de l'icône *
+                    URL de l&apos;icône *
                   </label>
                   <input
                     type="url"
@@ -409,8 +409,8 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
                     name="icon"
                     value={formData.icon}
                     onChange={handleInputChange}
-                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="https://example.com/icon.svg" className="placeholder-gray-400 dark:placeholder-gray-500"
+                    className="w-full min-w-0 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
+                    placeholder="https://example.com/icon.svg"
                   />
                 </div>
               )}
@@ -469,7 +469,7 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
               </div>
 
               <div className="text-sm text-gray-600 dark:text-gray-400 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">
-                <p><strong>Type d'icône :</strong> {formData.iconType}</p>
+                <p><strong>Type d&apos;icône :</strong> {formData.iconType}</p>
                 <p><strong>Ordre :</strong> {formData.order}</p>
               </div>
             </div>

@@ -142,7 +142,7 @@ const EditImagePage = () => {
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
           <Icons.Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-blue-600" />
-          <p className="text-gray-600 dark:text-gray-400">Chargement de l'image...</p>
+          <p className="text-gray-600 dark:text-gray-400">Chargement de l&apos;image...</p>
         </div>
       </div>
     );
@@ -155,7 +155,7 @@ const EditImagePage = () => {
           <Icons.X className="w-8 h-8 text-red-600" />
         </div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Image non trouvée</h1>
-        <p className="text-gray-600 dark:text-gray-400 mb-6 mb-4 sm:mb-6">L'image que vous cherchez à modifier n'existe pas.</p>
+        <p className="text-gray-600 dark:text-gray-400 mb-6 mb-4 sm:mb-6">L&apos;image que vous cherchez à modifier n&apos;existe pas.</p>
         <Link
           href="/admin-images"
           className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -170,7 +170,7 @@ const EditImagePage = () => {
   return (
     <div className="max-w-full sm:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 mb-6 dark:bg-gray-800 mb-4 sm:mb-6 p-4 sm:p-6">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-4 sm:mb-6 dark:bg-gray-800">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Link
@@ -180,7 +180,7 @@ const EditImagePage = () => {
               <Icons.ArrowLeft className="w-5 h-5 text-gray-600 dark:text-gray-400" />
             </Link>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Modifier l'image</h1>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Modifier l&apos;image</h1>
               <p className="text-gray-600 dark:text-gray-400">Modifiez les informations de cette image</p>
             </div>
           </div>
@@ -192,8 +192,8 @@ const EditImagePage = () => {
         <div className="lg:col-span-1">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800 p-4 sm:p-6">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-              <ImageIcon className="w-5 h-5 mr-2 text-blue-600" />
-              Aperçu de l'image
+              <Icons.ImageIcon className="w-5 h-5 mr-2 text-blue-600" />
+              Aperçu de l&apos;image
             </h3>
             <div className="aspect-square bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden mb-4 dark:bg-gray-700">
               <img
@@ -202,15 +202,15 @@ const EditImagePage = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">
+            <div className="space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
               <p><strong>URL :</strong> <a href={image.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">{image.url}</a></p>
               <p><strong>Ajoutée le :</strong> {new Date(image.createdAt).toLocaleDateString('fr-FR')}</p>
               <p><strong>Projet actuel :</strong> {image.projectId?.title || 'Aucun projet'}</p>
             </div>
 
-            {/* Section de remplacement d'image */}
+            {/* Section de remplacement d&apos;image */}
             <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">Remplacer l'image</h4>
+              <h4 className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white mb-3">Remplacer l&apos;image</h4>
               <ImageReplacer
                 imageId={image._id}
                 currentImageUrl={image.url}
@@ -233,14 +233,14 @@ const EditImagePage = () => {
         </div>
 
         {/* Formulaire */}
-        <div className="lg:col-span-2 col-span-1 sm:col-span-2 col-span-1 sm:col-span-2">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 dark:bg-gray-800 p-4 sm:p-6">
-            <form onSubmit={handleSubmit} className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-gray-900 p-4 sm:p-6 lg:p-8 p-4 sm:p-6 p-4 sm:p-6">
+        <div className="lg:col-span-2">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 dark:bg-gray-800">
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Erreurs */}
               {errors.length > 0 && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                   <h4 className="text-red-800 font-medium mb-2">Erreurs à corriger :</h4>
-                  <ul className="list-disc list-inside text-red-700 text-sm space-y-1 text-xs sm:text-sm text-xs sm:text-sm text-xs sm:text-sm">
+                  <ul className="list-disc list-inside text-red-700 text-xs sm:text-sm space-y-1">
                     {errors.map((error, index) => (
                       <li key={index}>{error}</li>
                     ))}
@@ -251,7 +251,7 @@ const EditImagePage = () => {
               {/* Description de l'image */}
               <div>
                 <label htmlFor="alt" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Description de l'image *
+                  Description de l&apos;image *
                 </label>
                 <input
                   type="text"
@@ -259,8 +259,8 @@ const EditImagePage = () => {
                   name="alt"
                   value={formData.alt}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Décrivez cette image..." className="placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-500"
+                  placeholder="Décrivez cette image..."
                   required
                 />
               </div>
@@ -276,8 +276,8 @@ const EditImagePage = () => {
                   value={formData.description}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Description plus détaillée de l'image..." className="placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 dark:placeholder-gray-500"
+                  placeholder="Description plus détaillée de l&apos;image..."
                 />
               </div>
 

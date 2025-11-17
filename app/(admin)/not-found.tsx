@@ -24,7 +24,7 @@ export default function AdminNotFound() {
         </h2>
         
         <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-          Cette section d'administration n'existe pas ou a été déplacée.
+          Cette section d&apos;administration n&apos;existe pas ou a été déplacée.
         </p>
 
         {/* Boutons d'action */}
