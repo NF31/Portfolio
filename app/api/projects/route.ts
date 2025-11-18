@@ -7,12 +7,9 @@ import mongoose from 'mongoose';
 // POST /api/projects - Créer un nouveau projet
 export async function POST(request: NextRequest) {
   try {
-    console.log('🔗 Connexion à MongoDB...');
     await connectDB();
-    console.log('✅ Connexion MongoDB réussie !');
     
     const body = await request.json();
-    console.log('📥 Données reçues:', body);
     
     // Validation des données requises
     const { title, description, technologies, types, link } = body;
@@ -41,10 +38,8 @@ export async function POST(request: NextRequest) {
     // TODO: Récupérer l'ID utilisateur depuis la session
     // Pour l'instant, on utilise un ObjectId temporaire
     const tempUserId = new mongoose.Types.ObjectId();
-    console.log('👤 ID utilisateur temporaire:', tempUserId);
 
     // Création du projet en base
-    console.log('📝 Création du document Project...');
     const projectData: {
       title: string;
       description: string;
@@ -62,25 +57,9 @@ export async function POST(request: NextRequest) {
       createdBy: tempUserId,
       images: [] // Les images seront ajoutées séparément
     };
-
-    console.log('📊 Données du projet:', projectData);
     
     const project = new Project(projectData);
-
-    console.log('💾 Sauvegarde dans MongoDB...');
-    console.log('📍 Base de données actuelle:', mongoose.connection.db?.databaseName);
-    console.log('🎯 Base de données attendue: portfolio_db');
-    
     const savedProject = await project.save();
-    console.log('✅ Projet sauvegardé avec succès !');
-    console.log('📊 Base de données finale:', mongoose.connection.db?.databaseName);
-    console.log('📋 Collection:', 'projects');
-    console.log('🆔 ID du projet:', savedProject._id);
-    console.log('📄 Document complet:', savedProject);
-    
-    // Vérification de la sauvegarde
-    const verification = await Project.findById(savedProject._id);
-    console.log('🔍 Vérification - Projet trouvé:', verification ? 'OUI' : 'NON');
 
     return NextResponse.json(
       { 
@@ -99,8 +78,6 @@ export async function POST(request: NextRequest) {
     );
 
   } catch (error) {
-    console.error('Erreur lors de la création du projet:', error);
-    
     // Gestion des erreurs de validation Mongoose
     if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError' && 'errors' in error) {
       const mongooseError = error as { errors: Record<string, { message: string }> };
@@ -119,19 +96,28 @@ export async function POST(request: NextRequest) {
 }
 
 // GET /api/projects - Récupérer tous les projets avec leurs images
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    console.log('🔗 Connexion à MongoDB pour récupérer les projets...');
     await connectDB();
-    console.log('✅ Connexion MongoDB réussie !');
-    console.log('📊 Base de données:', mongoose.connection.db?.databaseName);
     
-    console.log('🔍 Recherche des projets dans la collection "projects"...');
-    const projects = await Project.find()
-      .sort({ createdAt: -1 })
-      .lean();
+    const { searchParams } = new URL(request.url);
+    const limit = searchParams.get('limit');
+    const limitNum = limit ? parseInt(limit, 10) : undefined;
     
-    console.log(`📋 ${projects.length} projet(s) trouvé(s)`);
+    // Construire le filtre pour exclure les projets archivés
+    const filter: Record<string, unknown> = {
+      isArchived: { $ne: true }
+    };
+    
+    // Récupérer les projets (non archivés par défaut)
+    let query = Project.find(filter)
+      .sort({ createdAt: -1 });
+    
+    if (limitNum && limitNum > 0) {
+      query = query.limit(limitNum);
+    }
+    
+    const projects = await query.lean();
     
     // Récupérer les images pour chaque projet
     const projectsWithImages = await Promise.all(
@@ -155,8 +141,6 @@ export async function GET() {
         };
       })
     );
-    
-    console.log('🖼️ Projets avec images:', projectsWithImages);
 
     return NextResponse.json({ 
       success: true,
@@ -164,8 +148,7 @@ export async function GET() {
       projects: projectsWithImages // Pour compatibilité
     });
 
-  } catch (error) {
-    console.error('❌ Erreur lors de la récupération des projets:', error);
+  } catch {
     return NextResponse.json(
       { success: false, error: 'Erreur interne du serveur' },
       { status: 500 }

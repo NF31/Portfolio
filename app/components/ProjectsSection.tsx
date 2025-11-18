@@ -27,9 +27,13 @@ const ProjectsSection = () => {
   const fetchProjects = async () => {
     try {
       const response = await fetch('/api/projects?limit=6');
-      const data = await response.json();
       
-      console.log('📊 Projets récupérés (section):', data);
+      if (!response.ok) {
+        setProjects([]);
+        return;
+      }
+      
+      const data = await response.json();
       
       // L'API retourne { projects: [...] } ou { success: true, data: [...] }
       const projectsData = data.projects || data.data || [];
@@ -37,9 +41,12 @@ const ProjectsSection = () => {
       if (projectsData.length > 0) {
         // Limiter à 6 projets
         setProjects(projectsData.slice(0, 6));
+      } else {
+        setProjects([]);
       }
-    } catch (error) {
-      console.error('❌ Erreur lors du chargement des projets:', error);
+    } catch {
+      // Erreur silencieuse en production
+      setProjects([]);
     } finally {
       setLoading(false);
     }
@@ -86,8 +93,21 @@ const ProjectsSection = () => {
         </div>
 
         {/* Grille de projets - Design amélioré */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {projects.map((project, index) => (
+        {projects.length === 0 ? (
+          <div className="text-center py-20 mb-12">
+            <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-full mb-6">
+              <Icons.Sparkles className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              À venir
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+              De nouveaux projets seront bientôt disponibles. Revenez prochainement pour découvrir mes dernières réalisations.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {projects.map((project, index) => (
             <div
               key={project._id}
               className="group relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
@@ -219,18 +239,21 @@ const ProjectsSection = () => {
               <div className="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
 
         {/* Bouton Voir tous les projets */}
-        <div className="text-center">
-          <Link
-            href="/projets"
-            className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1"
-          >
-            <span>Voir tous les projets</span>
-            <Icons.ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </Link>
-        </div>
+        {projects.length > 0 && (
+          <div className="text-center">
+            <Link
+              href="/projets"
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1"
+            >
+              <span>Voir tous les projets</span>
+              <Icons.ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
+        )}
       </div>
 
       <style jsx>{`
