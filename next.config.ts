@@ -20,16 +20,17 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
-  webpack: (config, { isServer }) => {
-    // Optimisation du tree-shaking pour lucide-react
-    if (!isServer) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        'lucide-react': require.resolve('lucide-react/dist/esm/icons'),
-      };
-    }
-    return config;
-  },
+  // Configuration Webpack désactivée car Turbopack est utilisé
+  // webpack: (config, { isServer }) => {
+  //   // Optimisation du tree-shaking pour lucide-react
+  //   if (!isServer) {
+  //     config.resolve.alias = {
+  //       ...config.resolve.alias,
+  //       'lucide-react': require.resolve('lucide-react/dist/esm/icons'),
+  //     };
+  //   }
+  //   return config;
+  // },
 };
 
 export default nextConfig;
