@@ -100,13 +100,18 @@ export async function GET(request: NextRequest) {
   try {
     await connectDB();
     
+    // Récupérer les paramètres de requête
     const { searchParams } = new URL(request.url);
     const limit = searchParams.get('limit');
     const limitNum = limit ? parseInt(limit, 10) : undefined;
     
     // Construire le filtre pour exclure les projets archivés
+    // Utiliser $or pour gérer les cas où isArchived n'existe pas
     const filter: Record<string, unknown> = {
-      isArchived: { $ne: true }
+      $or: [
+        { isArchived: { $ne: true } },
+        { isArchived: { $exists: false } }
+      ]
     };
     
     // Récupérer les projets (non archivés par défaut)
@@ -122,23 +127,40 @@ export async function GET(request: NextRequest) {
     // Récupérer les images pour chaque projet
     const projectsWithImages = await Promise.all(
       projects.map(async (project) => {
-        const images = await Image.find({ projectId: project._id })
-          .select('url alt')
-          .lean();
-        
-        return {
-          _id: project._id,
-          id: project._id,
-          title: project.title,
-          description: project.description,
-          technologies: project.technologies,
-          types: project.types || 'web',
-          isArchived: project.isArchived || false,
-          link: project.link,
-          images: images.map(img => img.url), // Array d'URLs
-          createdAt: project.createdAt,
-          updatedAt: project.updatedAt,
-        };
+        try {
+          const images = await Image.find({ projectId: project._id })
+            .select('url alt')
+            .lean();
+          
+          return {
+            _id: project._id,
+            id: project._id,
+            title: project.title,
+            description: project.description,
+            technologies: project.technologies,
+            types: project.types || 'web',
+            isArchived: project.isArchived || false,
+            link: project.link,
+            images: images.map(img => img.url), // Array d'URLs
+            createdAt: project.createdAt,
+            updatedAt: project.updatedAt,
+          };
+        } catch {
+          // Si erreur lors de la récupération des images, retourner le projet sans images
+          return {
+            _id: project._id,
+            id: project._id,
+            title: project.title,
+            description: project.description,
+            technologies: project.technologies,
+            types: project.types || 'web',
+            isArchived: project.isArchived || false,
+            link: project.link,
+            images: [],
+            createdAt: project.createdAt,
+            updatedAt: project.updatedAt,
+          };
+        }
       })
     );
 
@@ -149,6 +171,7 @@ export async function GET(request: NextRequest) {
     });
 
   } catch {
+    // En production, ne pas exposer les détails de l'erreur
     return NextResponse.json(
       { success: false, error: 'Erreur interne du serveur' },
       { status: 500 }
