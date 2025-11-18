@@ -6,6 +6,9 @@ import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 import { toast } from 'sonner';
 
+// Force dynamic rendering since data is fetched client-side
+export const dynamic = 'force-dynamic';
+
 interface Service {
   _id: string;
   title: string;
