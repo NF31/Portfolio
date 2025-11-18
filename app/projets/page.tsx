@@ -45,8 +45,6 @@ const ProjectsPage = () => {
       const response = await fetch('/api/projects');
       const data = await response.json();
       
-      console.log('📊 Projets récupérés:', data);
-      
       // L'API retourne { projects: [...] } ou { success: true, data: [...] }
       const projectsData = data.projects || data.data || [];
       
@@ -62,12 +60,9 @@ const ProjectsPage = () => {
         });
         
         setAvailableTypes(Array.from(allTypes));
-        console.log('🏷️ Types disponibles:', Array.from(allTypes));
-      } else {
-        console.log('⚠️ Aucun projet trouvé');
       }
     } catch (error) {
-      console.error('❌ Erreur lors du chargement des projets:', error);
+      // Erreur silencieuse en production
     } finally {
       setLoading(false);
     }
