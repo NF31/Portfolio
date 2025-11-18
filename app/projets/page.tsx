@@ -61,7 +61,7 @@ const ProjectsPage = () => {
         
         setAvailableTypes(Array.from(allTypes));
       }
-    } catch (error) {
+    } catch {
       // Erreur silencieuse en production
     } finally {
       setLoading(false);
