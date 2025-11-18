@@ -5,6 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 
+// Force dynamic rendering since data is fetched client-side
+export const dynamic = 'force-dynamic';
+
 
 interface Project {
   _id: string;
