@@ -57,8 +57,7 @@ export async function GET(request: NextRequest) {
       }
     });
 
-  } catch (error) {
-    console.error('Erreur lors de la récupération des services:', error);
+  } catch {
     return NextResponse.json(
       { success: false, error: 'Erreur lors de la récupération des services' },
       { status: 500 }
@@ -85,8 +84,6 @@ export async function POST(request: NextRequest) {
     }, { status: 201 });
 
   } catch (error) {
-    console.error('Erreur lors de la création du service:', error);
-    
     // Gérer les erreurs de validation Mongoose
     if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError' && 'errors' in error) {
       const mongooseError = error as { errors: Record<string, { message: string }> };

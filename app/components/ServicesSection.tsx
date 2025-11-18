@@ -31,12 +31,21 @@ const ServicesSection = () => {
   const fetchServices = async () => {
     try {
       const response = await fetch('/api/services?limit=6&isActive=true');
+      
+      if (!response.ok) {
+        setServices([]);
+        return;
+      }
+      
       const data = await response.json();
       if (data.success) {
-        setServices(data.data);
+        setServices(data.data || []);
+      } else {
+        setServices([]);
       }
-    } catch (error) {
-      console.error('Erreur lors du chargement des services:', error);
+    } catch {
+      // Erreur silencieuse en production
+      setServices([]);
     } finally {
       setLoading(false);
     }
@@ -75,8 +84,21 @@ const ServicesSection = () => {
         </div>
 
         {/* Grille de services responsive */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
-          {services.map((service, index) => (
+        {services.length === 0 ? (
+          <div className="text-center py-20 mb-12">
+            <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-full mb-6">
+              <Icons.Sparkles className="w-12 h-12 text-blue-600 dark:text-blue-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+              À venir
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+              Mes services seront bientôt disponibles. Revenez prochainement pour découvrir ce que je peux vous proposer.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+            {services.map((service, index) => (
             <div
               key={service._id}
               className="group relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden"
@@ -187,18 +209,21 @@ const ServicesSection = () => {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
 
         {/* Bouton Voir tous les services */}
-        <div className="text-center">
-          <Link
-            href="/services"
-            className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1"
-          >
-            <span>Voir tous les services</span>
-            <Icons.ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-          </Link>
-        </div>
+        {services.length > 0 && (
+          <div className="text-center">
+            <Link
+              href="/services"
+              className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1"
+            >
+              <span>Voir tous les services</span>
+              <Icons.ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
+        )}
       </div>
 
       <style jsx>{`
