@@ -28,7 +28,7 @@ export default function AdminNotFound() {
         </p>
 
         {/* Boutons d'action */}
-        <div className="space-y-4">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link
             href="/admin-dashboard"
             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
@@ -37,9 +37,7 @@ export default function AdminNotFound() {
             Dashboard Admin
           </Link>
           
-          <div className="pt-2">
-            <BackButton />
-          </div>
+          <BackButton />
         </div>
 
         {/* Informations supplémentaires */}
