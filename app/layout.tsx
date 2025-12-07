@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import StructuredData from "./components/StructuredData";
 import CanonicalLink from "./components/CanonicalLink";
@@ -76,6 +78,8 @@ export default function RootLayout({
             richColors
             closeButton
           />
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
