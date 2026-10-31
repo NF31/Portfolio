@@ -14,15 +14,14 @@ Ce système sécurise l'accès à la partie administration du portfolio avec une
 
 ### ✅ **Authentification**
 - **Base de données** : Vérification des identifiants dans MongoDB
-- **Identifiants par défaut** :
-  - **Email** : `admin@portfolio.com`
-  - **Mot de passe** : `admin123`
-- **Session** : 24 heures de validité
-- **Cookies sécurisés** : HttpOnly, Secure, SameSite=Strict
+- **Compte admin** : créé directement en base (voir « Créer un Nouvel Admin »), aucun identifiant par défaut
+- **Session** : jeton signé HMAC-SHA256 (`lib/session.ts`), 24 heures de validité
+- **Cookie** : `admin_session`, HttpOnly, Secure, SameSite=Strict
 - **Hachage** : bcryptjs avec 12 rounds de sel
 
 ### ✅ **Protection des Routes**
-- **Middleware** : Protège automatiquement toutes les routes `/admin/*`
+- **Proxy** (`proxy.ts`) : vérifie la signature du jeton sur toutes les pages `/admin-*`
+- **API** : chaque route d'écriture, et les lectures réservées à l'admin (messages, images, statistiques), appelle `requireAdmin()` et renvoie 401 sans session valide
 - **Redirection** : Redirige vers la page de login si non authentifié
 - **Expiration** : Vérifie la validité de la session
 
@@ -34,7 +33,12 @@ Ce système sécurise l'accès à la partie administration du portfolio avec une
 
 ## 🛡️ **Sécurité**
 
-### **Cookies Sécurisés**
+### **Session signée**
+
+Le cookie contient `<données>.<signature>` : l'id de l'admin et la date d'expiration, signés
+avec `SESSION_SECRET` (32 caractères minimum, obligatoire). Sans ce secret, impossible de
+fabriquer ou de modifier un jeton valide. Si la variable manque, aucune session n'est acceptée.
+
 ```javascript
 // Configuration des cookies
 {
@@ -45,7 +49,7 @@ Ce système sécurise l'accès à la partie administration du portfolio avec une
 }
 ```
 
-### **Middleware de Protection**
+### **Proxy de Protection**
 - Vérifie l'authentification sur chaque requête admin
 - Redirige automatiquement si session invalide
 - Empêche l'accès non autorisé
@@ -63,7 +67,8 @@ app/system-maintenance-portal/
 ├── page.tsx                 # Page de login cachée
 └── layout.tsx              # Layout avec métadonnées sécurisées
 
-middleware.ts               # Protection des routes admin
+proxy.ts                    # Protection des pages admin
+lib/session.ts              # Création et vérification du jeton de session
 
 app/api/auth/
 ├── login/route.ts          # API de connexion avec BDD
@@ -98,7 +103,7 @@ app/(admin)/components/AdminNavbar.tsx  # Ajout du bouton de déconnexion
 
 ### **Connexion**
 1. Aller sur : `votre-domaine.com/system-maintenance-portal`
-2. Entrer les identifiants : `admin@portfolio.com` / `admin123`
+2. Entrer les identifiants du compte admin
 3. Être automatiquement redirigé vers `/admin`
 
 ### **Déconnexion**
@@ -113,7 +118,7 @@ app/(admin)/components/AdminNavbar.tsx  # Ajout du bouton de déconnexion
 ### **Changer le Mot de Passe**
 Utiliser le script fourni :
 ```bash
-node scripts/change-password.js admin@portfolio.com votreNouveauMotDePasse
+node scripts/change-password.js admin@exemple.com votreNouveauMotDePasse
 ```
 
 ### **Créer un Nouvel Admin**
@@ -121,7 +126,7 @@ Ajouter directement dans MongoDB ou créer un script personnalisé.
 
 ### **Changer l'URL de Login**
 1. Renommer le dossier `app/system-maintenance-portal/`
-2. Modifier l'URL dans `middleware.ts`
+2. Modifier l'URL dans `proxy.ts`
 3. Mettre à jour les redirections
 
 ### **Durée de Session**
@@ -144,7 +149,7 @@ node scripts/setup-admin.js
 ### **Gestion des Mots de Passe**
 ```bash
 # Changer le mot de passe d'un utilisateur
-node scripts/change-password.js admin@portfolio.com nouveauMotDePasse123
+node scripts/change-password.js admin@exemple.com nouveauMotDePasse123
 
 # Créer un nouvel utilisateur admin
 node scripts/create-admin-user.js

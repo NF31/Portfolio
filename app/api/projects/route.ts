@@ -3,9 +3,13 @@ import connectDB from '../../../lib/mongodb';
 import Project from '../../../models/Project';
 import Image from '../../../models/Image';
 import mongoose from 'mongoose';
+import { requireAdmin } from '@/lib/session';
 
 // POST /api/projects - Créer un nouveau projet
 export async function POST(request: NextRequest) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     await connectDB();
     

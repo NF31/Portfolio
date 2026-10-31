@@ -2,11 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cloudinary } from '@/lib/cloudinary';
 import connectDB from '@/lib/mongodb';
 import Image from '@/models/Image';
+import { requireAdmin } from '@/lib/session';
 
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     const { id } = await params;
     console.log('🔄 Remplacement d\'image:', id);
