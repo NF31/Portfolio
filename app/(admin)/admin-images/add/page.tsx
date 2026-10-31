@@ -19,10 +19,6 @@ export default function AddImagePage() {
   const [loading, setLoading] = useState(true);
   const { refreshAfterAction } = useStatsActions();
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
   const fetchProjects = async () => {
     try {
       console.log('🔍 Récupération des projets pour l\'ajout d\'image...');
@@ -63,6 +59,10 @@ export default function AddImagePage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   const handleUploadSuccess = async (result: { url: string; publicId?: string; width?: number; height?: number; format?: string; [key: string]: unknown }) => {
     console.log('Image uploadée avec succès:', result);

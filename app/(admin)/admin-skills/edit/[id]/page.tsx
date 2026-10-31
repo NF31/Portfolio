@@ -61,13 +61,6 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
     'cypress', 'storybook', 'nextjs', 'nuxtjs', 'gatsby', 'svelte'
   ];
 
-  useEffect(() => {
-    if (params.id) {
-      fetchSkill();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.id]);
-
   const fetchSkill = async () => {
     try {
       const response = await fetch(`/api/skills/${params.id}`);
@@ -97,6 +90,13 @@ export default function EditSkillPage({ params }: { params: { id: string } }) {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (params.id) {
+      fetchSkill();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

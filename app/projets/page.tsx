@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Icons } from '@/lib/icons';
@@ -21,26 +21,16 @@ interface Project {
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [availableTypes, setAvailableTypes] = useState<string[]>([]);
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  useEffect(() => {
-    if (activeFilter === 'all') {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(
-        projects.filter((p) => {
-          const types = Array.isArray(p.types) ? p.types : [p.types];
-          return types.includes(activeFilter);
-        })
-      );
-    }
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === 'all') return projects;
+    return projects.filter((p) => {
+      const types = Array.isArray(p.types) ? p.types : [p.types];
+      return types.includes(activeFilter);
+    });
   }, [activeFilter, projects]);
 
   const fetchProjects = async () => {
@@ -53,7 +43,6 @@ const ProjectsPage = () => {
       
       if (projectsData.length > 0) {
         setProjects(projectsData);
-        setFilteredProjects(projectsData);
         
         // Extraire les types uniques dynamiquement
         const allTypes = new Set<string>();
@@ -70,6 +59,10 @@ const ProjectsPage = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   const getProjectTypes = (types: string | string[]) => {
     return Array.isArray(types) ? types : [types];
