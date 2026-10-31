@@ -31,10 +31,6 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
 }) => {
   const [projects, setProjects] = useState<Project[]>([]);
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
   const fetchProjects = async () => {
     try {
       const response = await fetch('/api/projects');
@@ -51,6 +47,10 @@ const ImagesFilters: React.FC<ImagesFiltersProps> = ({
       console.error('Erreur lors du chargement des projets:', error);
     }
   };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-6 dark:bg-gray-800">

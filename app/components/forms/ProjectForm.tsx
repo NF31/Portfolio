@@ -37,10 +37,6 @@ const ProjectForm: React.FC<ProjectFormProps> = ({
   const [availableTypes, setAvailableTypes] = useState<string[]>([]);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
 
-  useEffect(() => {
-    fetchProjectTypes();
-  }, []);
-
   const fetchProjectTypes = async () => {
     try {
       const response = await fetch('/api/projects/types');
@@ -73,6 +69,10 @@ const ProjectForm: React.FC<ProjectFormProps> = ({
       setProjectTypes(defaultTypes);
     }
   };
+
+  useEffect(() => {
+    fetchProjectTypes();
+  }, []);
 
   const addNewType = () => {
     if (newType.trim() && !availableTypes.includes(newType.trim().toLowerCase())) {
