@@ -27,13 +27,6 @@ const DeleteProjectPage = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (projectId) {
-      fetchProject();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [projectId]);
-
   const fetchProject = async () => {
     try {
       setIsLoading(true);
@@ -52,6 +45,13 @@ const DeleteProjectPage = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (projectId) {
+      fetchProject();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [projectId]);
 
   const handleDelete = async () => {
     if (!project) return;

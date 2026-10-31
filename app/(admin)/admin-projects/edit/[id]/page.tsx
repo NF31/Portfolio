@@ -45,14 +45,6 @@ const EditProjectPage = () => {
   const [projectTypes, setProjectTypes] = useState<{ value: string; label: string }[]>([]);
   const [availableTypes, setAvailableTypes] = useState<string[]>([]);
 
-  useEffect(() => {
-    if (projectId) {
-      fetchProject();
-      fetchProjectTypes();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [projectId]);
-
   const fetchProject = async () => {
     try {
       setIsLoading(true);
@@ -114,6 +106,14 @@ const EditProjectPage = () => {
       setProjectTypes(defaultTypes);
     }
   };
+
+  useEffect(() => {
+    if (projectId) {
+      fetchProject();
+      fetchProjectTypes();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [projectId]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;

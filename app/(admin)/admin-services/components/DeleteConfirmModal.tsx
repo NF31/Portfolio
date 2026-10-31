@@ -42,16 +42,8 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
 }) => {
   if (!isOpen || !service) return null;
 
-  // Récupérer l'icône du service
-  const getIconComponent = (iconName: string) => {
-    try {
-      return (Icons as Record<string, React.ComponentType<{ className?: string }>>)[iconName] || null;
-    } catch {
-      return null;
-    }
-  };
-
-  const IconComponent = getIconComponent(service.icon);
+  // Icône de l'élément (null si le nom n'existe pas dans la bibliothèque)
+  const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[service.icon] ?? null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

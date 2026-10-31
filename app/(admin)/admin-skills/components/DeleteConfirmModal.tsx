@@ -33,16 +33,8 @@ const DeleteConfirmModal: React.FC<DeleteConfirmModalProps> = ({
 }) => {
   if (!isOpen || !skill) return null;
 
-  // Récupérer l'icône du skill
-  const getIconComponent = (iconName: string) => {
-    try {
-      return (Icons as Record<string, React.ComponentType<{ className?: string }>>)[iconName] || null;
-    } catch {
-      return null;
-    }
-  };
-
-  const IconComponent = getIconComponent(skill.icon);
+  // Icône de l'élément (null si le nom n'existe pas dans la bibliothèque)
+  const IconComponent = (Icons as Record<string, React.ComponentType<{ className?: string }>>)[skill.icon] ?? null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

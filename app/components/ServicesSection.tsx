@@ -24,10 +24,6 @@ const ServicesSection = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchServices();
-  }, []);
-
   const fetchServices = async () => {
     try {
       const response = await fetch('/api/services?limit=6&isActive=true');
@@ -50,6 +46,10 @@ const ServicesSection = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   const renderIcon = (iconName: string) => {
     const iconMap = Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>;
