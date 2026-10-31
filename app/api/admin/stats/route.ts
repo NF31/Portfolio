@@ -1,12 +1,16 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Project from '@/models/Project';
 import Service from '@/models/Service';
 import Skill from '@/models/Skill';
 import Image from '@/models/Image';
 import Message from '@/models/Message';
+import { requireAdmin } from '@/lib/session';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     await connectDB();
 

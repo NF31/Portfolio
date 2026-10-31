@@ -5,6 +5,7 @@ import Service from '@/models/Service';
 import Skill from '@/models/Skill';
 import Image from '@/models/Image';
 import Message from '@/models/Message';
+import { requireAdmin } from '@/lib/session';
 
 interface RecentActivity {
   id: string;
@@ -18,6 +19,9 @@ interface RecentActivity {
 }
 
 export async function GET(request: NextRequest) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     await connectDB();
 

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Skill from '@/models/Skill';
+import { requireAdmin } from '@/lib/session';
 
 export async function GET(request: NextRequest) {
   try {
@@ -62,6 +63,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     await connectDB();
 
