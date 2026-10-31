@@ -28,10 +28,6 @@ const ProjectsPage = () => {
   const [filterStatus, setFilterStatus] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
   const fetchProjects = async () => {
     try {
       const response = await fetch('/api/projects');
@@ -45,6 +41,10 @@ const ProjectsPage = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   // Filtrage des projets
   const filteredProjects = projects.filter(project => {

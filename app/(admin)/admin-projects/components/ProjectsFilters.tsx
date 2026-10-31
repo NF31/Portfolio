@@ -21,10 +21,6 @@ const ProjectsFilters: React.FC<ProjectsFiltersProps> = ({
 }) => {
   const [availableTypes, setAvailableTypes] = useState<string[]>([]);
 
-  useEffect(() => {
-    fetchProjectTypes();
-  }, []);
-
   const fetchProjectTypes = async () => {
     try {
       const response = await fetch('/api/projects/types');
@@ -38,6 +34,10 @@ const ProjectsFilters: React.FC<ProjectsFiltersProps> = ({
       setAvailableTypes(['web', 'mobile', 'fullstack', 'data', 'design', 'autre']);
     }
   };
+
+  useEffect(() => {
+    fetchProjectTypes();
+  }, []);
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-6 dark:bg-gray-800">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">

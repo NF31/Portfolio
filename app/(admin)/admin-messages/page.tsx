@@ -34,11 +34,6 @@ export default function AdminMessagesPage() {
   const [activeFilter, setActiveFilter] = useState<'all' | 'unread' | 'read' | 'processed'>('all');
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchMessages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeFilter]);
-
   const fetchMessages = async () => {
     try {
       setLoading(true);
@@ -59,6 +54,11 @@ export default function AdminMessagesPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchMessages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeFilter]);
 
   const updateStatus = async (id: string, newStatus: 'unread' | 'read' | 'processed') => {
     try {

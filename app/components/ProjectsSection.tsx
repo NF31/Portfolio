@@ -20,10 +20,6 @@ const ProjectsSection = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchProjects();
-  }, []);
-
   const fetchProjects = async () => {
     try {
       const response = await fetch('/api/projects?limit=6');
@@ -51,6 +47,10 @@ const ProjectsSection = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   const getProjectTypes = (types: string | string[]) => {
     if (Array.isArray(types)) {
