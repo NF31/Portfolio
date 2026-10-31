@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import User from '@/models/User';
 import { verifyPassword } from '@/lib/auth';
+import { SESSION_COOKIE, SESSION_MAX_AGE, createSessionToken } from '@/lib/session';
 
 export async function POST(request: NextRequest) {
   try {
@@ -61,28 +62,10 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
 
-    // Créer les cookies de session sécurisés
-    const sessionTime = Date.now().toString();
-    
-    response.cookies.set('admin_authenticated', 'true', {
+    // Cookie de session signé (voir lib/session.ts)
+    response.cookies.set(SESSION_COOKIE, await createSessionToken(user._id.toString()), {
       path: '/',
-      maxAge: 24 * 60 * 60, // 24 heures
-      secure: process.env.NODE_ENV === 'production',
-      httpOnly: true,
-      sameSite: 'strict'
-    });
-
-    response.cookies.set('admin_session_time', sessionTime, {
-      path: '/',
-      maxAge: 24 * 60 * 60, // 24 heures
-      secure: process.env.NODE_ENV === 'production',
-      httpOnly: true,
-      sameSite: 'strict'
-    });
-
-    response.cookies.set('admin_user_id', user._id.toString(), {
-      path: '/',
-      maxAge: 24 * 60 * 60, // 24 heures
+      maxAge: SESSION_MAX_AGE,
       secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
       sameSite: 'strict'

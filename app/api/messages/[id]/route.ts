@@ -2,12 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Message from '@/models/Message';
 import mongoose from 'mongoose';
+import { requireAdmin } from '@/lib/session';
 
 // PATCH - Mettre à jour le statut d'un message
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     await connectDB();
 
@@ -65,6 +69,9 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     await connectDB();
 

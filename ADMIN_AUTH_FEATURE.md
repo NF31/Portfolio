@@ -8,7 +8,7 @@ Système complet d'authentification pour sécuriser l'accès à l'espace adminis
 - URL de connexion cachée et non-obvious
 - Authentification via base de données MongoDB
 - Protection des routes par middleware
-- Gestion des sessions avec cookies sécurisés
+- Gestion des sessions avec un cookie signé (HMAC-SHA256)
 - Pages 404 personnalisées
 - Interface utilisateur intégrée dans la navbar
 
@@ -17,7 +17,8 @@ Système complet d'authentification pour sécuriser l'accès à l'espace adminis
 ### 🔑 **Authentification & Sécurité**
 - `app/system-maintenance-portal/page.tsx` - Page de connexion cachée
 - `app/system-maintenance-portal/layout.tsx` - Layout de la page de connexion
-- `middleware.ts` - Protection des routes admin
+- `proxy.ts` - Protection des pages admin
+- `lib/session.ts` - Création et vérification du jeton de session, `requireAdmin()` pour les routes API
 - `app/access-denied/page.tsx` - Page d'accès refusé
 - `app/access-denied/layout.tsx` - Layout de la page d'accès refusé
 
@@ -59,7 +60,7 @@ Système complet d'authentification pour sécuriser l'accès à l'espace adminis
 - URL de connexion cachée (`/system-maintenance-portal`)
 - Authentification par base de données MongoDB
 - Cookies HTTP-only sécurisés
-- Protection des routes par middleware Next.js
+- Protection des pages par le proxy Next.js et des routes API par `requireAdmin()`
 - Hachage des mots de passe avec bcryptjs
 - Sessions de 24h avec expiration automatique
 
@@ -79,10 +80,10 @@ Système complet d'authentification pour sécuriser l'accès à l'espace adminis
 
 1. **Connexion** : `/system-maintenance-portal` → Saisie des identifiants
 2. **Vérification** : API `/api/auth/login` → Validation en base de données
-3. **Sessions** : Cookies sécurisés créés
-4. **Protection** : Middleware vérifie les cookies sur chaque route admin
+3. **Session** : cookie `admin_session` signé avec `SESSION_SECRET`
+4. **Protection** : le proxy et les routes API vérifient la signature et l'expiration du jeton
 5. **Interface** : UserInfo affiché dans la navbar
-6. **Déconnexion** : Bouton de déconnexion → Suppression des cookies
+6. **Déconnexion** : Bouton de déconnexion → Suppression du cookie
 
 ## 🛡️ **Sécurité implémentée**
 
