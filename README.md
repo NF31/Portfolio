@@ -38,6 +38,7 @@ Le site tourne sur http://localhost:3000. Variables à définir dans `.env.local
 | `DB_URI` | Chaîne de connexion MongoDB |
 | `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` | Stockage des images |
 | `GMAIL_USER`, `GMAIL_APP_PASSWORD` | Envoi des notifications de contact |
+| `SESSION_SECRET` | Signature des sessions admin, 32 caractères minimum (`openssl rand -hex 32`) |
 
 Déploiement détaillé dans [`Environnement_Déploiement.md`](Environnement_Déploiement.md).
 
