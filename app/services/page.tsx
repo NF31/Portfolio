@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Icons } from '@/lib/icons';
@@ -33,7 +33,6 @@ type CategoryType = 'all' | string;
 
 const ServicesPage = () => {
   const [services, setServices] = useState<Service[]>([]);
-  const [filteredServices, setFilteredServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
   const [categories, setCategories] = useState<string[]>([]);
@@ -54,17 +53,10 @@ const ServicesPage = () => {
     message: ''
   });
 
-  useEffect(() => {
-    fetchServices();
-  }, []);
-
-  useEffect(() => {
-    if (activeCategory === 'all') {
-      setFilteredServices(services);
-    } else {
-      setFilteredServices(services.filter(s => s.category === activeCategory));
-    }
-  }, [activeCategory, services]);
+  const filteredServices = useMemo(
+    () => (activeCategory === 'all' ? services : services.filter(s => s.category === activeCategory)),
+    [activeCategory, services]
+  );
 
   // Déterminer si on doit utiliser le select (plus de 4 catégories)
   const shouldUseSelect = categories.length > 4;
@@ -184,7 +176,6 @@ const ServicesPage = () => {
       const data = await response.json();
       if (data.success) {
         setServices(data.data);
-        setFilteredServices(data.data);
         
         // Extraire les catégories uniques
         const uniqueCategories = Array.from(new Set(data.data.map((s: Service) => s.category)));
@@ -196,6 +187,10 @@ const ServicesPage = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   const renderIcon = (iconName: string, iconType?: string) => {
     if (iconType === 'url') {
