@@ -4,6 +4,7 @@ import Project from '../../../../models/Project';
 import Image from '../../../../models/Image';
 import { cloudinary } from '../../../../lib/cloudinary';
 import mongoose from 'mongoose';
+import { requireAdmin } from '@/lib/session';
 
 // GET /api/projects/[id] - Récupérer un projet spécifique
 export async function GET(
@@ -67,6 +68,9 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     console.log('🔗 Connexion à MongoDB pour modifier le projet...');
     await connectDB();
@@ -198,6 +202,9 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdmin(request);
+  if (unauthorized) return unauthorized;
+
   try {
     console.log('🔗 Connexion à MongoDB pour supprimer le projet...');
     await connectDB();
