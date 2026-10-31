@@ -2,8 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { cloudinary } from '@/lib/cloudinary';
 import connectDB from '@/lib/mongodb';
 import Image from '@/models/Image';
+import { requireAdmin } from '@/lib/session';
 
 export async function POST(req: NextRequest) {
+  const unauthorized = await requireAdmin(req);
+  if (unauthorized) return unauthorized;
+
   try {
     console.log('🚀 Début de l\'upload d\'image...');
     const formData = await req.formData();

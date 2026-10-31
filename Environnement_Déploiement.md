@@ -61,11 +61,11 @@ Créer un fichier `.env.local` à la racine du projet avec les variables suivant
 
 | Variable | Type | Description | Obligatoire |
 |----------|------|-------------|-------------|
-| MONGODB_URI | string | URL de connexion à la base MongoDB (local ou Atlas) | ✅ |
+| DB_URI | string | URL de connexion à la base MongoDB (local ou Atlas) | ✅ |
 | CLOUDINARY_CLOUD_NAME | string | Nom de votre cloud Cloudinary | ✅ |
 | CLOUDINARY_API_KEY | string | Clé API Cloudinary | ✅ |
 | CLOUDINARY_API_SECRET | string | Secret API Cloudinary | ✅ |
-| NEXTAUTH_SECRET | string | Clé secrète pour NextAuth (si utilisé) | ❌ |
+| SESSION_SECRET | string | Clé de signature des sessions admin, 32 caractères minimum (`openssl rand -hex 32`) | ✅ |
 | SMTP_HOST | string | Serveur SMTP pour envoi d’emails | ❌ |
 | SMTP_PORT | number | Port du serveur SMTP | ❌ |
 | SMTP_USER | string | Utilisateur SMTP | ❌ |
