@@ -86,10 +86,6 @@ const AddServicePage = () => {
   ];
 
   // Charger les catégories disponibles
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
   const fetchCategories = async () => {
     try {
       const response = await fetch('/api/services/categories');
@@ -101,6 +97,10 @@ const AddServicePage = () => {
       console.error('Erreur lors du chargement des catégories:', error);
     }
   };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   const addNewCategory = () => {
     if (newCategory.trim() && !availableCategories.includes(newCategory.trim().toLowerCase())) {

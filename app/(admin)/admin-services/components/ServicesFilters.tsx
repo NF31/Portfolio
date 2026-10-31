@@ -22,10 +22,6 @@ const ServicesFilters: React.FC<ServicesFiltersProps> = ({
 }) => {
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
   const fetchCategories = async () => {
     try {
       const response = await fetch('/api/services/categories');
@@ -37,6 +33,10 @@ const ServicesFilters: React.FC<ServicesFiltersProps> = ({
       console.error('Erreur lors du chargement des catégories:', error);
     }
   };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6 mb-6 dark:bg-gray-800">
       <div className="flex items-center space-x-3 sm:space-x-4 mb-4">

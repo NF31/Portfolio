@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Icons } from '@/lib/icons';
 
 interface UserData {
@@ -11,20 +11,15 @@ interface UserData {
 }
 
 const UserInfo: React.FC = () => {
-  const [userInfo, setUserInfo] = useState<UserData | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Si on est dans l'espace admin, c'est qu'on est connecté (middleware protège les routes)
-    // Affichons directement les infos utilisateur
-    setUserInfo({
-      id: 'authenticated',
-      name: 'NFDev21',
-      email: 'nfdev21@gmail.com',
-      role: 'admin'
-    });
-    setIsLoading(false);
-  }, []);
+  // Si on est dans l'espace admin, c'est qu'on est connecté (le proxy protège les routes) :
+  // les infos utilisateur sont affichées directement
+  const userInfo: UserData | null = {
+    id: 'authenticated',
+    name: 'NFDev21',
+    email: 'nfdev21@gmail.com',
+    role: 'admin'
+  };
+  const isLoading = false;
 
   if (isLoading) {
     return (

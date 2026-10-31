@@ -48,13 +48,6 @@ const EditImagePage = () => {
   });
 
   // Charger l'image et les projets
-  useEffect(() => {
-    if (imageId) {
-      fetchImageAndProjects();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [imageId]);
-
   const fetchImageAndProjects = async () => {
     try {
       setIsLoading(true);
@@ -96,6 +89,13 @@ const EditImagePage = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (imageId) {
+      fetchImageAndProjects();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageId]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
