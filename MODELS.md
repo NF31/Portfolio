@@ -1,6 +1,6 @@
-# 🏗️ Modèles - Portfolio NFDev21
+# Modèles - Portfolio NFDev21
 
-## 📋 Table des matières
+## Table des matières
 
 - [User](#1-user)
 - [Project](#2-project)
@@ -19,20 +19,20 @@
 
 | Attribut      | Type     | Obligatoire | Description |
 |---------------|---------|------------|-------------|
-| _id           | ObjectId| ✅         | Identifiant unique MongoDB |
-| name          | String  | ✅         | Nom complet de l'utilisateur |
-| email         | String  | ✅         | Adresse email (unique) |
-| password      | String  | ✅         | Mot de passe hashé |
-| role          | String  | ✅         | Rôle : 'user', 'admin', 'superadmin' |
-| avatar        | String  | ❌         | URL de l'avatar |
-| bio           | String  | ❌         | Biographie courte |
-| location      | String  | ❌         | Localisation géographique |
-| social_links  | Object  | ❌         | Liens réseaux sociaux |
-| skills        | Array   | ❌         | Compétences techniques |
-| experience    | Array   | ❌         | Expériences professionnelles |
-| education     | Array   | ❌         | Formations et diplômes |
-| createdAt     | Date    | ✅         | Date de création |
-| updatedAt     | Date    | ✅         | Date de modification |
+| _id           | ObjectId| Oui         | Identifiant unique MongoDB |
+| name          | String  | Oui         | Nom complet de l'utilisateur |
+| email         | String  | Oui         | Adresse email (unique) |
+| password      | String  | Oui         | Mot de passe hashé |
+| role          | String  | Oui         | Rôle : 'user', 'admin', 'superadmin' |
+| avatar        | String  | Non         | URL de l'avatar |
+| bio           | String  | Non         | Biographie courte |
+| location      | String  | Non         | Localisation géographique |
+| social_links  | Object  | Non         | Liens réseaux sociaux |
+| skills        | Array   | Non         | Compétences techniques |
+| experience    | Array   | Non         | Expériences professionnelles |
+| education     | Array   | Non         | Formations et diplômes |
+| createdAt     | Date    | Oui         | Date de création |
+| updatedAt     | Date    | Oui         | Date de modification |
 
 ---
 
@@ -43,16 +43,16 @@
 
 | Attribut      | Type     | Obligatoire | Description |
 |---------------|---------|------------|-------------|
-| _id           | ObjectId| ✅         | Identifiant unique MongoDB |
-| title         | String  | ✅         | Titre du projet |
-| description   | String  | ✅         | Description détaillée du projet |
-| images        | Array   | ❌         | Liste des URLs d'images (Cloudinary) |
-| technologies  | Array   | ✅         | Technologies utilisées (React, Next.js, MongoDB, etc.) |
-| link          | String  | ❌         | Lien vers projet en ligne ou GitHub |
-| type          | String  | ✅         | Type : web, mobile, fullstack, data, autre |
-| createdBy     | ObjectId| ✅         | Référence vers _id utilisateur (admin) |
-| createdAt     | Date    | ✅         | Date de création |
-| updatedAt     | Date    | ✅         | Date de modification |
+| _id           | ObjectId| Oui         | Identifiant unique MongoDB |
+| title         | String  | Oui         | Titre du projet |
+| description   | String  | Oui         | Description détaillée du projet |
+| images        | Array   | Non         | Liste des URLs d'images (Cloudinary) |
+| technologies  | Array   | Oui         | Technologies utilisées (React, Next.js, MongoDB, etc.) |
+| link          | String  | Non         | Lien vers projet en ligne ou GitHub |
+| type          | String  | Oui         | Type : web, mobile, fullstack, data, autre |
+| createdBy     | ObjectId| Oui         | Référence vers _id utilisateur (admin) |
+| createdAt     | Date    | Oui         | Date de création |
+| updatedAt     | Date    | Oui         | Date de modification |
 
 ---
 
@@ -63,12 +63,12 @@
 
 | Attribut      | Type     | Obligatoire | Description |
 |---------------|---------|------------|-------------|
-| _id           | ObjectId| ✅         | Identifiant unique MongoDB |
-| title         | String  | ✅         | Nom du service |
-| description   | String  | ✅         | Description du service |
-| icon          | String  | ❌         | URL ou nom d'icône associée |
-| createdAt     | Date    | ✅         | Date de création |
-| updatedAt     | Date    | ✅         | Date de modification |
+| _id           | ObjectId| Oui         | Identifiant unique MongoDB |
+| title         | String  | Oui         | Nom du service |
+| description   | String  | Oui         | Description du service |
+| icon          | String  | Non         | URL ou nom d'icône associée |
+| createdAt     | Date    | Oui         | Date de création |
+| updatedAt     | Date    | Oui         | Date de modification |
 
 ---
 
@@ -79,13 +79,13 @@
 
 | Attribut      | Type     | Obligatoire | Description |
 |---------------|---------|------------|-------------|
-| _id           | ObjectId| ✅         | Identifiant unique MongoDB |
-| title         | String  | ✅         | Titre de l'article |
-| content       | String  | ✅         | Contenu de l'article |
-| authorId      | ObjectId| ✅         | Référence vers _id utilisateur (admin) |
-| tags          | Array   | ❌         | Liste de tags pour filtrage |
-| createdAt     | Date    | ✅         | Date de création |
-| updatedAt     | Date    | ✅         | Date de modification |
+| _id           | ObjectId| Oui         | Identifiant unique MongoDB |
+| title         | String  | Oui         | Titre de l'article |
+| content       | String  | Oui         | Contenu de l'article |
+| authorId      | ObjectId| Oui         | Référence vers _id utilisateur (admin) |
+| tags          | Array   | Non         | Liste de tags pour filtrage |
+| createdAt     | Date    | Oui         | Date de création |
+| updatedAt     | Date    | Oui         | Date de modification |
 
 ---
 
@@ -96,14 +96,14 @@
 
 | Attribut      | Type     | Obligatoire | Description |
 |---------------|---------|------------|-------------|
-| _id           | ObjectId| ✅         | Identifiant unique MongoDB |
-| name          | String  | ✅         | Nom de la personne |
-| email         | String  | ✅         | Email de contact |
-| subject       | String  | ✅         | Sujet du message |
-| message       | String  | ✅         | Contenu du message |
-| status        | String  | ✅         | Statut : new, read, answered |
-| createdAt     | Date    | ✅         | Date de réception |
-| updatedAt     | Date    | ✅         | Date de dernière modification |
+| _id           | ObjectId| Oui         | Identifiant unique MongoDB |
+| name          | String  | Oui         | Nom de la personne |
+| email         | String  | Oui         | Email de contact |
+| subject       | String  | Oui         | Sujet du message |
+| message       | String  | Oui         | Contenu du message |
+| status        | String  | Oui         | Statut : new, read, answered |
+| createdAt     | Date    | Oui         | Date de réception |
+| updatedAt     | Date    | Oui         | Date de dernière modification |
 
 ---
 
@@ -114,12 +114,12 @@
 
 | Attribut      | Type     | Obligatoire | Description |
 |---------------|---------|------------|-------------|
-| _id           | ObjectId| ✅         | Identifiant unique MongoDB |
-| url           | String  | ✅         | URL de l'image |
-| alt           | String  | ❌         | Texte alternatif |
-| projectId     | ObjectId| ✅         | Référence vers _id projet associé |
-| createdAt     | Date    | ✅         | Date d'upload |
-| updatedAt     | Date    | ✅         | Date de modification |
+| _id           | ObjectId| Oui         | Identifiant unique MongoDB |
+| url           | String  | Oui         | URL de l'image |
+| alt           | String  | Non         | Texte alternatif |
+| projectId     | ObjectId| Oui         | Référence vers _id projet associé |
+| createdAt     | Date    | Oui         | Date d'upload |
+| updatedAt     | Date    | Oui         | Date de modification |
 
 ---
 
@@ -130,5 +130,5 @@
 
 | Attribut      | Type     | Obligatoire | Description |
 |---------------|---------|------------|-------------|
-| role          | String  | ✅         | Nom du rôle : superadmin, admin, editor |
-| permissions   | Array   | ✅         | Liste des permissions : createProject, editProject, deleteProject, etc. |
+| role          | String  | Oui         | Nom du rôle : superadmin, admin, editor |
+| permissions   | Array   | Oui         | Liste des permissions : createProject, editProject, deleteProject, etc. |

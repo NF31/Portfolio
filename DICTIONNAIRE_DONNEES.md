@@ -1,18 +1,18 @@
-# 📚 DICTIONNAIRE DES DONNÉES - Portfolio NFDev21
+# DICTIONNAIRE DES DONNÉES - Portfolio NFDev21
 
-## 📋 Table des matières
+## Table des matières
 
-- [🎯 Introduction](#-introduction)
-- [🗄️ Collections MongoDB](#-collections-mongodb)
-- [🔗 Relations entre entités](#-relations-entre-entités)
+- [Introduction](#introduction)
+- [Collections MongoDB](#collections-mongodb)
+- [Relations entre entités](#relations-entre-entités)
 
 ---
 
-## 🎯 Introduction
+## Introduction
 
 Ce dictionnaire des données documente l'architecture complète de la base de données MongoDB pour le portfolio NFDev21. Il définit toutes les collections, leurs attributs, types de données et relations principales.
 
-### 🛠️ Stack technique
+### Stack technique
 - Base de données : MongoDB 6.0+
 - ORM : Mongoose / Laravel MongoDB
 - Gestion des médias : Cloudinary
@@ -21,12 +21,12 @@ Ce dictionnaire des données documente l'architecture complète de la base de do
 
 ### Conventions
 - Type de données : String, Number, Boolean, Date, ObjectId, Array, Object
-- Obligatoire : ✅ / ❌
-- Index / Unique : 🔍 / 📍
+- Obligatoire : /
+- Index / Unique : /
 
 ---
 
-## 🗄️ Collections MongoDB
+## Collections MongoDB
 
 ### 1. USERS (Administrateurs / Éditeurs)
 
@@ -36,13 +36,13 @@ Description : Gestion des utilisateurs et administrateurs du portfolio.
 
 | Attribut    | Type     | Obligatoire | Index | Description |
 |------------|---------|------------|-------|-------------|
-| `_id`       | ObjectId| ✅        | 🔍    | Identifiant unique MongoDB |
-| `name`      | String  | ✅        | -     | Nom complet de l’utilisateur |
-| `email`     | String  | ✅        | 🔍📍  | Email de connexion (unique) |
-| `password`  | String  | ✅        | -     | Mot de passe hashé |
-| `role`      | String  | ✅        | 🔍    | Rôle de l’utilisateur (superadmin, admin, editor) |
-| `createdAt` | Date    | ✅        | 🔍    | Date de création du compte |
-| `updatedAt` | Date    | ✅        | -     | Date de dernière modification |
+| `_id`       | ObjectId| Oui        |     | Identifiant unique MongoDB |
+| `name`      | String  | Oui        | -     | Nom complet de l’utilisateur |
+| `email`     | String  | Oui        |   | Email de connexion (unique) |
+| `password`  | String  | Oui        | -     | Mot de passe hashé |
+| `role`      | String  | Oui        |     | Rôle de l’utilisateur (superadmin, admin, editor) |
+| `createdAt` | Date    | Oui        |     | Date de création du compte |
+| `updatedAt` | Date    | Oui        | -     | Date de dernière modification |
 
 ---
 
@@ -54,16 +54,16 @@ Description : Projets présentés dans le portfolio, avec type et technologies u
 
 | Attribut       | Type     | Obligatoire | Index | Description |
 |----------------|---------|------------|-------|-------------|
-| `_id`          | ObjectId| ✅        | 🔍    | Identifiant unique MongoDB |
-| `title`        | String  | ✅        | -     | Titre du projet |
-| `description`  | String  | ✅        | -     | Description détaillée du projet |
-| `images`       | Array   | ❌        | -     | Liste des URLs d’images sur Cloudinary |
-| `technologies` | Array   | ✅        | 🔍    | Technologies utilisées (React, Next.js, MongoDB, etc.) |
-| `link`         | String  | ❌        | -     | Lien vers le projet en ligne ou repo GitHub |
-| `type`         | String  | ✅        | 🔍    | Type de projet (web, mobile, fullstack, data, autre) |
-| `createdBy`    | ObjectId| ✅        | 🔍    | Référence vers _id de l’utilisateur ayant créé le projet |
-| `createdAt`    | Date    | ✅        | 🔍    | Date de création |
-| `updatedAt`    | Date    | ✅        | -     | Date de dernière modification |
+| `_id`          | ObjectId| Oui        |     | Identifiant unique MongoDB |
+| `title`        | String  | Oui        | -     | Titre du projet |
+| `description`  | String  | Oui        | -     | Description détaillée du projet |
+| `images`       | Array   | Non        | -     | Liste des URLs d’images sur Cloudinary |
+| `technologies` | Array   | Oui        |     | Technologies utilisées (React, Next.js, MongoDB, etc.) |
+| `link`         | String  | Non        | -     | Lien vers le projet en ligne ou repo GitHub |
+| `type`         | String  | Oui        |     | Type de projet (web, mobile, fullstack, data, autre) |
+| `createdBy`    | ObjectId| Oui        |     | Référence vers _id de l’utilisateur ayant créé le projet |
+| `createdAt`    | Date    | Oui        |     | Date de création |
+| `updatedAt`    | Date    | Oui        | -     | Date de dernière modification |
 
 ---
 
@@ -75,12 +75,12 @@ Description : Services mis en avant sur le portfolio.
 
 | Attribut      | Type     | Obligatoire | Index | Description |
 |---------------|---------|------------|-------|-------------|
-| `_id`         | ObjectId| ✅        | 🔍    | Identifiant unique MongoDB |
-| `title`       | String  | ✅        | -     | Nom du service |
-| `description` | String  | ✅        | -     | Description du service |
-| `icon`        | String  | ❌        | -     | URL ou nom d’icône associée |
-| `createdAt`   | Date    | ✅        | 🔍    | Date de création |
-| `updatedAt`   | Date    | ✅        | -     | Date de dernière modification |
+| `_id`         | ObjectId| Oui        |     | Identifiant unique MongoDB |
+| `title`       | String  | Oui        | -     | Nom du service |
+| `description` | String  | Oui        | -     | Description du service |
+| `icon`        | String  | Non        | -     | URL ou nom d’icône associée |
+| `createdAt`   | Date    | Oui        |     | Date de création |
+| `updatedAt`   | Date    | Oui        | -     | Date de dernière modification |
 
 ---
 
@@ -92,13 +92,13 @@ Description : Articles publiés sur le portfolio.
 
 | Attribut    | Type     | Obligatoire | Index | Description |
 |------------|---------|------------|-------|-------------|
-| `_id`       | ObjectId| ✅        | 🔍    | Identifiant unique MongoDB |
-| `title`     | String  | ✅        | -     | Titre de l’article |
-| `content`   | String  | ✅        | -     | Contenu de l’article |
-| `authorId`  | ObjectId| ✅        | 🔍    | Référence vers _id de l’utilisateur (admin) |
-| `tags`      | Array   | ❌        | -     | Liste de tags pour filtrage |
-| `createdAt` | Date    | ✅        | 🔍    | Date de création |
-| `updatedAt` | Date    | ✅        | -     | Date de dernière modification |
+| `_id`       | ObjectId| Oui        |     | Identifiant unique MongoDB |
+| `title`     | String  | Oui        | -     | Titre de l’article |
+| `content`   | String  | Oui        | -     | Contenu de l’article |
+| `authorId`  | ObjectId| Oui        |     | Référence vers _id de l’utilisateur (admin) |
+| `tags`      | Array   | Non        | -     | Liste de tags pour filtrage |
+| `createdAt` | Date    | Oui        |     | Date de création |
+| `updatedAt` | Date    | Oui        | -     | Date de dernière modification |
 
 ---
 
@@ -110,14 +110,14 @@ Description : Messages reçus via le formulaire de contact.
 
 | Attribut    | Type     | Obligatoire | Index | Description |
 |------------|---------|------------|-------|-------------|
-| `_id`       | ObjectId| ✅        | 🔍    | Identifiant unique MongoDB |
-| `name`      | String  | ✅        | -     | Nom de la personne ayant envoyé le message |
-| `email`     | String  | ✅        | 🔍📍  | Email de contact |
-| `subject`   | String  | ✅        | -     | Sujet du message |
-| `message`   | String  | ✅        | -     | Contenu du message |
-| `status`    | String  | ✅        | -     | Statut du message (new, read, answered) |
-| `createdAt` | Date    | ✅        | 🔍    | Date de réception |
-| `updatedAt` | Date    | ✅        | -     | Date de dernière modification |
+| `_id`       | ObjectId| Oui        |     | Identifiant unique MongoDB |
+| `name`      | String  | Oui        | -     | Nom de la personne ayant envoyé le message |
+| `email`     | String  | Oui        |   | Email de contact |
+| `subject`   | String  | Oui        | -     | Sujet du message |
+| `message`   | String  | Oui        | -     | Contenu du message |
+| `status`    | String  | Oui        | -     | Statut du message (new, read, answered) |
+| `createdAt` | Date    | Oui        |     | Date de réception |
+| `updatedAt` | Date    | Oui        | -     | Date de dernière modification |
 
 ---
 
@@ -129,12 +129,12 @@ Description : Images associées aux projets.
 
 | Attribut    | Type     | Obligatoire | Index | Description |
 |------------|---------|------------|-------|-------------|
-| `_id`       | ObjectId| ✅        | 🔍    | Identifiant unique MongoDB |
-| `url`       | String  | ✅        | -     | URL de l’image |
-| `alt`       | String  | ❌        | -     | Texte alternatif pour accessibilité |
-| `projectId` | ObjectId| ✅        | 🔍    | Référence vers _id du projet associé |
-| `createdAt` | Date    | ✅        | 🔍    | Date d’upload |
-| `updatedAt` | Date    | ✅        | -     | Date de dernière modification |
+| `_id`       | ObjectId| Oui        |     | Identifiant unique MongoDB |
+| `url`       | String  | Oui        | -     | URL de l’image |
+| `alt`       | String  | Non        | -     | Texte alternatif pour accessibilité |
+| `projectId` | ObjectId| Oui        |     | Référence vers _id du projet associé |
+| `createdAt` | Date    | Oui        |     | Date d’upload |
+| `updatedAt` | Date    | Oui        | -     | Date de dernière modification |
 
 ---
 
@@ -146,12 +146,12 @@ Description : Gestion des rôles et permissions des utilisateurs.
 
 | Attribut     | Type     | Obligatoire | Index | Description |
 |-------------|---------|------------|-------|-------------|
-| `role`      | String  | ✅        | 🔍    | Nom du rôle (superadmin, admin, editor) |
-| `permissions`| Array  | ✅        | -     | Liste des permissions accordées (createProject, editProject, deleteProject, etc.) |
+| `role`      | String  | Oui        |     | Nom du rôle (superadmin, admin, editor) |
+| `permissions`| Array  | Oui        | -     | Liste des permissions accordées (createProject, editProject, deleteProject, etc.) |
 
 ---
 
-## 🔗 Relations entre entités
+## Relations entre entités
 
 - USERS → PROJECTS : crée  
 - USERS → MESSAGES : reçoit  
