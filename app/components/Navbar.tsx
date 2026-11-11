@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icons } from '@/lib/icons';
+import { profil } from '@/lib/content';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Navbar = () => {
@@ -20,9 +21,9 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Accueil', href: '/#accueil' },
-    { name: 'Services', href: '/#services' },
-    // { name: 'Parcours', href: '#parcours' }, // Commenté temporairement
+    { name: 'À propos', href: '/#parcours' },
     { name: 'Projets', href: '/#projets' },
+    { name: 'Services', href: '/services' },
     { name: 'Contact', href: '/#contact' },
   ];
 
@@ -46,7 +47,7 @@ const Navbar = () => {
             </div>
             <div className="hidden sm:block">
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                NFDev21
+                {profil.nom}
               </span>
             </div>
           </Link>

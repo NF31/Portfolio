@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Icons } from '@/lib/icons';
 
 export const metadata = {
-  title: 'Politique de confidentialité - NFDev21',
-  description: 'Politique de confidentialité du portfolio NFDev21',
+  title: 'Politique de confidentialité - Jean Woto',
+  description: 'Politique de confidentialité du portfolio de Jean Woto',
 };
 
 export default function ConfidentialitePage() {

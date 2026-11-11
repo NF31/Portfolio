@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { Icons } from '@/lib/icons';
-import { SiGithub, SiSnapchat } from 'react-icons/si';
+import { SiGithub } from 'react-icons/si';
+import { profil } from '@/lib/content';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -113,10 +114,10 @@ export default function ContactSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            Travaillons ensemble
+            Contact
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Prêt à transformer vos idées en réalité ? Contactez-moi pour discuter de votre projet.
+            Une offre de stage ou d&apos;alternance, une question sur un projet ou une demande de prestation : je réponds à chaque message.
           </p>
         </div>
 
@@ -125,12 +126,11 @@ export default function ContactSection() {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-                Parlons de votre projet
+                Écrivez-moi
               </h3>
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                Je suis toujours intéressé par les projets ambitieux et innovants. Que vous ayez besoin 
-                d&apos;un site web, d&apos;une application ou d&apos;une solution sur mesure, n&apos;hésitez pas à me contacter 
-                pour discuter de vos besoins.
+                Recruteur, je peux vous envoyer mon CV et échanger sur votre offre de stage ou d&apos;alternance.
+                Entreprise ou particulier, je peux aussi réaliser votre site ou votre application en freelance.
               </p>
             </div>
 
@@ -187,31 +187,22 @@ export default function ContactSection() {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
               </div>
               <span className="text-sm font-medium text-green-800">
-                Disponible pour de nouveaux projets
+                Recherche un stage puis une alternance
               </span>
             </div>
 
             {/* Réseaux sociaux */}
             <div>
-              <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Suivez-moi</h4>
+              <h4 className="font-semibold text-gray-900 dark:text-gray-100 mb-4">Mon code sur GitHub</h4>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://github.com/nfdev21"
+                  href={profil.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center justify-center w-12 h-12 bg-gray-900 hover:bg-gray-800 rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg"
                   title="GitHub"
                 >
                   <SiGithub className="w-6 h-6 text-white" />
-                </a>
-                <a
-                  href="https://snapchat.com/add/nfdev21"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center w-12 h-12 bg-[#FFFC00] hover:bg-[#E6E600] rounded-xl transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                  title="Snapchat"
-                >
-                  <SiSnapchat className="w-6 h-6 text-black" />
                 </a>
               </div>
             </div>
@@ -325,7 +316,9 @@ export default function ContactSection() {
                   className="w-full px-4 py-3 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                 >
                   <option value="">Sélectionnez un sujet</option>
-                  <option value="Nouveau projet">Nouveau projet</option>
+                  <option value="Stage">Offre de stage</option>
+                  <option value="Alternance">Offre d&apos;alternance</option>
+                  <option value="Nouveau projet">Projet freelance</option>
                   <option value="Collaboration">Collaboration</option>
                   <option value="Devis">Demande de devis</option>
                   <option value="Question">Question technique</option>

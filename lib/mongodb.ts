@@ -34,6 +34,9 @@ async function connectDB() {
   if (!cached.promise) {
     const opts = {
       bufferCommands: false,
+      // Échouer vite si le cluster est en pause (30 s par défaut) : le formulaire de contact
+      // envoie alors l'e-mail sans attendre la base.
+      serverSelectionTimeoutMS: 5000,
     };
 
     cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {

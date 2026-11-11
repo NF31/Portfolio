@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Icons } from '@/lib/icons';
 
 export const metadata = {
-  title: 'Conditions d\'utilisation - NFDev21',
-  description: 'Conditions d\'utilisation du portfolio NFDev21',
+  title: 'Conditions d\'utilisation - Jean Woto',
+  description: 'Conditions d\'utilisation du portfolio de Jean Woto',
 };
 
 export default function ConditionsPage() {

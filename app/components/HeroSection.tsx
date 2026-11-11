@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icons } from '@/lib/icons';
+import { profil, recherche } from '@/lib/content';
 
 
 const HeroSection = () => {
@@ -10,10 +11,9 @@ const HeroSection = () => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const titles = [
-    'Développeur Fullstack',
-    'Spécialiste Laravel',
-    'Design & Performance',
-    'Solutions Sur Mesure'
+    'Développeur full-stack',
+    'Numérique et Management',
+    'Futur alternant MIAGE'
   ];
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const HeroSection = () => {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
               </span>
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Disponible pour de nouveaux projets
+                Recherche un stage ({recherche.stage.periode}) puis une alternance MIAGE
               </span>
             </div>
 
@@ -70,13 +70,13 @@ const HeroSection = () => {
                 </h1>
               </div>
               <h2 className="text-2xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-300">
-                Je transforme vos idées en solutions digitales
+                {profil.nom}, {profil.titre.charAt(0).toLowerCase() + profil.titre.slice(1)}
               </h2>
             </div>
 
             {/* Description */}
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl">
-              Je conçois des solutions web innovantes et performantes qui transforment vos idées en réalité digitale. Spécialisé dans le développement d&apos;applications web modernes et scalables.
+              {profil.accroche}
             </p>
 
             {/* Boutons CTA */}

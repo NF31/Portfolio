@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Icons } from '@/lib/icons';
 
 export const metadata = {
-  title: 'Conditions générales - NFDev21',
-  description: 'Conditions générales du portfolio NFDev21',
+  title: 'Conditions générales - Jean Woto',
+  description: 'Conditions générales du portfolio de Jean Woto',
 };
 
 export default function ConditionsGeneralesPage() {
@@ -30,7 +30,7 @@ export default function ConditionsGeneralesPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Informations légales</h2>
             <p className="text-gray-600 dark:text-gray-400">
-              <strong>Propriétaire du site :</strong> NFDev21<br />
+              <strong>Propriétaire du site :</strong> Jean Woto<br />
               <strong>Contact :</strong> nfdev21@gmail.com<br />
               <strong>Téléphone :</strong> 0781882130<br />
               <strong>Hébergeur :</strong> Vercel Inc. - <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">vercel.com</a>

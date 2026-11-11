@@ -2,10 +2,10 @@ export default function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "NFDev21",
-    "jobTitle": "Développeur Fullstack",
-    "description": "Développeur web fullstack spécialisé en Laravel, Next.js et React",
-    "url": "https://nfdev21.com",
+    "name": "Jean Woto",
+    "jobTitle": "Étudiant en double licence Numérique et Management, développeur web full-stack",
+    "description": "Étudiant à l'Université Toulouse Capitole et développeur freelance (NFdev). Recherche un stage de mai à août 2027 puis une alternance en Master MIAGE.",
+    "url": "https://www.nfdev.fr",
     "email": "nfdev21@gmail.com",
     "telephone": "+33781882130",
     "address": {
@@ -14,8 +14,7 @@ export default function StructuredData() {
       "addressCountry": "FR"
     },
     "sameAs": [
-      "https://github.com/nfdev21",
-      "https://snapchat.com/add/nfdev21"
+      "https://github.com/NF31"
     ],
     "knowsAbout": [
       "Laravel",
@@ -40,20 +39,20 @@ export default function StructuredData() {
   const websiteData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "NFDev21",
-    "url": "https://nfdev21.com",
-    "description": "Portfolio professionnel de NFDev21, développeur fullstack",
+    "name": "Jean Woto",
+    "url": "https://www.nfdev.fr",
+    "description": "Portfolio de Jean Woto, étudiant en double licence Numérique et Management et développeur web full-stack",
     "inLanguage": "fr-FR",
     "author": {
       "@type": "Person",
-      "name": "NFDev21"
+      "name": "Jean Woto"
     }
   };
 
   const professionalServiceData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "NFDev21 - Services de Développement Web",
+    "name": "Jean Woto - Services de Développement Web",
     "description": "Services de développement web fullstack : applications web, sites internet, APIs",
     "areaServed": {
       "@type": "Country",
