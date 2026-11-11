@@ -1,6 +1,6 @@
-# 🌐 Plan Environnement / Déploiement - Portfolio NFDev21
+# Plan Environnement / Déploiement - Portfolio NFDev21
 
-## 🎯 Vue d'ensemble
+## Vue d'ensemble
 Ce document décrit **l’architecture de l’environnement de développement et de production**, les variables d’environnement nécessaires, et le processus de déploiement du portfolio NFDev21 développé avec Next.js + TypeScript.
 
 ---
@@ -61,15 +61,15 @@ Créer un fichier `.env.local` à la racine du projet avec les variables suivant
 
 | Variable | Type | Description | Obligatoire |
 |----------|------|-------------|-------------|
-| DB_URI | string | URL de connexion à la base MongoDB (local ou Atlas) | ✅ |
-| CLOUDINARY_CLOUD_NAME | string | Nom de votre cloud Cloudinary | ✅ |
-| CLOUDINARY_API_KEY | string | Clé API Cloudinary | ✅ |
-| CLOUDINARY_API_SECRET | string | Secret API Cloudinary | ✅ |
-| SESSION_SECRET | string | Clé de signature des sessions admin, 32 caractères minimum (`openssl rand -hex 32`) | ✅ |
-| SMTP_HOST | string | Serveur SMTP pour envoi d’emails | ❌ |
-| SMTP_PORT | number | Port du serveur SMTP | ❌ |
-| SMTP_USER | string | Utilisateur SMTP | ❌ |
-| SMTP_PASS | string | Mot de passe SMTP | ❌ |
+| DB_URI | string | URL de connexion à la base MongoDB (local ou Atlas) | Oui |
+| CLOUDINARY_CLOUD_NAME | string | Nom de votre cloud Cloudinary | Oui |
+| CLOUDINARY_API_KEY | string | Clé API Cloudinary | Oui |
+| CLOUDINARY_API_SECRET | string | Secret API Cloudinary | Oui |
+| SESSION_SECRET | string | Clé de signature des sessions admin, 32 caractères minimum (`openssl rand -hex 32`) | Oui |
+| SMTP_HOST | string | Serveur SMTP pour envoi d’emails | Non |
+| SMTP_PORT | number | Port du serveur SMTP | Non |
+| SMTP_USER | string | Utilisateur SMTP | Non |
+| SMTP_PASS | string | Mot de passe SMTP | Non |
 
 > **Note** : `.env.local` ne doit jamais être poussé sur le dépôt Git.
 

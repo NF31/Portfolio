@@ -1,6 +1,6 @@
-# 🎨 Spécifications Front-end - Portfolio NFDev21
+# Spécifications Front-end - Portfolio NFDev21
 
-## 🎯 Vue d'ensemble
+## Vue d'ensemble
 Ce document décrit **toutes les pages, composants et interactions front-end** du portfolio développé avec Next.js + TypeScript.  
 Il détaille le comportement attendu côté utilisateur (visiteur) et côté admin.
 

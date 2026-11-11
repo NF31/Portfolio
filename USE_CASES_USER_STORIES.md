@@ -1,6 +1,6 @@
-# 📖 USE_CASES_USER_STORIES – Portfolio NFDev21
+# USE_CASES_USER_STORIES – Portfolio NFDev21
 
-## 🎯 Vue d'ensemble
+## Vue d'ensemble
 Ce document décrit **tous les cas d'utilisation (Use Cases) et user stories** pour le projet de portfolio développeur NFDev21.  
 Il couvre les fonctionnalités côté **Admin** (gestion des contenus) et côté **Visiteur** (consultation du portfolio).  
 Il inclut également des précisions sur les types de projets, validations de formulaires, et utilisation de Cloudinary pour les médias.
@@ -197,6 +197,6 @@ Il inclut également des précisions sur les types de projets, validations de fo
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 Ce document couvre **tous les cas d’utilisation et user stories** nécessaires pour un portfolio complet et moderne.  
 Il servira de base pour **la conception des modèles, le dictionnaire de données, l’architecture et le développement**.

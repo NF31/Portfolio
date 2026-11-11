@@ -1,6 +1,6 @@
-# 📖 WORKFLOWS – Portfolio NFDev21
+# WORKFLOWS – Portfolio NFDev21
 
-## 🎯 Vue d'ensemble
+## Vue d'ensemble
 
 Ce document décrit **tous les workflows** pour le projet portfolio développeur **NFDev21**.  
 Il couvre les fonctionnalités côté **Admin** (CRUD, gestion des contenus) et côté **Visiteur** (consultation des contenus).  
@@ -150,7 +150,7 @@ Chaque workflow indique :
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 
 Ce document décrit **tous les workflows étape par étape** pour le portfolio NFDev21.  
 Il servira de base pour :  
