@@ -1,4 +1,4 @@
-# 🚀 Guide d'optimisation des performances - Lucide React
+# Guide d'optimisation des performances - Lucide React
 
 ## Problème identifié
 Le projet utilise `lucide-react` dans **48 fichiers**, ce qui peut impacter les performances :
@@ -8,7 +8,7 @@ Le projet utilise `lucide-react` dans **48 fichiers**, ce qui peut impacter les 
 
 ## Solutions implémentées
 
-### 1. 📦 Fichier centralisé des icônes (`lib/icons.ts`)
+### 1. Fichier centralisé des icônes (`lib/icons.ts`)
 ```typescript
 import { Icons } from '@/lib/icons';
 
@@ -19,7 +19,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 <Icons.Mail className="w-6 h-6" />
 ```
 
-### 2. 🔧 Script d'optimisation automatique
+### 2. Script d'optimisation automatique
 ```bash
 # Optimiser tous les fichiers
 npm run optimize-icons
@@ -28,26 +28,26 @@ npm run optimize-icons
 npm run build-optimized
 ```
 
-### 3. ⚡ Configuration Next.js optimisée
+### 3. Configuration Next.js optimisée
 - `optimizePackageImports: ['lucide-react']`
 - Webpack alias pour le tree-shaking
 - Imports ESM optimisés
 
 ## Avantages
 
-### 📊 Performances
+### Performances
 - **Bundle size réduit** : ~15KB par fichier optimisé
 - **Tree-shaking amélioré** : Seules les icônes utilisées sont incluses
 - **Chargement plus rapide** : Moins d'imports répétitifs
 
-### 🛠️ Maintenance
+### Maintenance
 - **Centralisation** : Toutes les icônes dans un seul fichier
 - **Type safety** : Autocomplétion TypeScript
 - **Cohérence** : Même API partout
 
 ## Utilisation
 
-### Avant (❌ Non optimisé)
+### Avant (Non optimisé)
 ```typescript
 import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
 
@@ -61,7 +61,7 @@ function ContactForm() {
 }
 ```
 
-### Après (✅ Optimisé)
+### Après (Optimisé)
 ```typescript
 import { Icons } from '@/lib/icons';
 

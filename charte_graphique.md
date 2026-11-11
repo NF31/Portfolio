@@ -1,20 +1,20 @@
-# 🎨 Charte Graphique - Portfolio NFDev21
+# Charte Graphique - Portfolio NFDev21
 
-## 📋 Table des matières
+## Table des matières
 
-- [🎯 Introduction](#-introduction)
-- [🎨 Palette de couleurs](#-palette-de-couleurs)
-- [📝 Typographie](#-typographie)
-- [🔧 Composants](#-composants)
-- [📱 Responsive Design](#-responsive-design)
+- [Introduction](#introduction)
+- [Palette de couleurs](#palette-de-couleurs)
+- [Typographie](#typographie)
+- [Composants](#composants)
+- [Responsive Design](#responsive-design)
 
 ---
 
-## 🎯 Introduction
+## Introduction
 
 Cette charte graphique définit l'identité visuelle du portfolio NFDev21. Elle garantit une cohérence visuelle à travers tous les éléments de l'interface utilisateur.
 
-### 🎨 Principes directeurs
+### Principes directeurs
 - **Modernité** : Design contemporain avec des dégradés et effets glassmorphism
 - **Accessibilité** : Contraste élevé et lisibilité optimale
 - **Cohérence** : Utilisation systématique des couleurs et typographies définies
@@ -22,7 +22,7 @@ Cette charte graphique définit l'identité visuelle du portfolio NFDev21. Elle 
 
 ---
 
-## 🎨 Palette de couleurs
+## Palette de couleurs
 
 ### Couleurs principales
 
@@ -66,7 +66,7 @@ background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
 
 ---
 
-## 📝 Typographie
+## Typographie
 
 ### Police principale : Inter
 
@@ -96,7 +96,7 @@ font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
 ---
 
-## 🔧 Composants
+## Composants
 
 ### Boutons
 
@@ -190,7 +190,7 @@ font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
 ---
 
-## 📱 Responsive Design
+## Responsive Design
 
 ### Breakpoints
 
@@ -228,7 +228,7 @@ font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
 ---
 
-## 🎯 Utilisation
+## Utilisation
 
 ### Règles d'application
 
@@ -247,7 +247,7 @@ font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
 ---
 
-## 📝 Notes de version
+## Notes de version
 
 - **v1.0** : Création de la charte graphique initiale
 - **v1.1** : Ajout des dégradés et effets glassmorphism
