@@ -7,14 +7,14 @@ export const metadata: Metadata = {
   description: "Services de développement web fullstack : création d'applications Next.js/React, développement backend Laravel, design UI/UX. Découvrez mes services sur mesure adaptés à vos besoins.",
   keywords: ["services développement web", "Next.js", "React", "Laravel", "développement fullstack", "création site web", "application web", "UI/UX design"],
   openGraph: {
-    title: "Services de Développement Web | NFDev21",
+    title: "Services de Développement Web | Jean Woto",
     description: "Services de développement web fullstack : applications Next.js/React, backend Laravel, design UI/UX.",
-    url: "https://nfdev21.com/services",
+    url: "https://www.nfdev.fr/services",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Services de Développement Web | NFDev21",
+    title: "Services de Développement Web | Jean Woto",
     description: "Services de développement web fullstack : applications Next.js/React, backend Laravel, design UI/UX.",
   },
 };

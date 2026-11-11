@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Accès Refusé - Portfolio NFDev21',
+  title: 'Accès Refusé - Portfolio de Jean Woto',
   description: 'Accès non autorisé à la section administrative',
   robots: 'noindex, nofollow',
 };

@@ -64,10 +64,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     isDarkMode: theme === 'dark',
   };
 
-  // Éviter le flash de contenu non stylé
-  if (!mounted) {
-    return null;
-  }
+  // Pas de « return null » avant le montage : cela vidait tout le HTML rendu côté serveur
+  // (page blanche pour les moteurs de recherche). Le flash de thème est évité par le script
+  // THEME_INIT_SCRIPT, exécuté dans <head> avant l'affichage.
 
   return (
     <ThemeContext.Provider value={value}>
@@ -76,3 +75,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   );
 };
 
+
+/**
+ * Applique le thème sauvegardé (ou celui du système) avant le premier affichage,
+ * pour éviter un flash clair -> sombre. Injecté dans le <head> de app/layout.tsx.
+ */
+export const THEME_INIT_SCRIPT = `try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}`;
