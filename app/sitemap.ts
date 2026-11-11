@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://nfdev21.com'; // Remplacez par votre domaine
+  const baseUrl = 'https://www.nfdev.fr';
 
   return [
     {

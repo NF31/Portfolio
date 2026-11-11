@@ -34,9 +34,6 @@ function sanitizeInput(input: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    // Connexion à la base de données
-    await connectDB();
-
     // Rate limiting basique
     const ip = request.headers.get('x-forwarded-for') || 'unknown';
     if (!checkRateLimit(ip)) {
@@ -163,18 +160,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 1️⃣ SAUVEGARDER LE MESSAGE EN BDD (prioritaire)
-    const newMessage = await Message.create({
-      name,
-      email,
-      phone,
-      message,
-      subject: subject || undefined,
-      budget: budget || undefined,
-      status: 'unread',
-      ip,
-      emailSent: false,
-    });
+    // 1. Enregistrer le message en base. Si MongoDB est indisponible (cluster Atlas gratuit mis
+    // en pause après une longue inactivité), on ne bloque pas : l'e-mail ci-dessous suffit pour
+    // ne pas perdre le message.
+    let savedMessageId: unknown = null;
+    try {
+      await connectDB();
+      const newMessage = await Message.create({
+        name,
+        email,
+        phone,
+        message,
+        subject: subject || undefined,
+        budget: budget || undefined,
+        status: 'unread',
+        ip,
+        emailSent: false,
+      });
+      savedMessageId = newMessage._id;
+    } catch (dbError) {
+      console.error('Base de données indisponible, message non enregistré :', dbError);
+    }
 
 
     // 2️⃣ ENVOYER L'EMAIL (secondaire)
@@ -306,20 +312,35 @@ ${message}
       await transporter.sendMail(mailOptions);
       emailSuccess = true;
 
-      // Mettre à jour le message en BDD
-      await Message.findByIdAndUpdate(newMessage._id, {
-        emailSent: true,
-        emailSentAt: new Date(),
-      });
+      // Mettre à jour le message en base (si il a pu y être enregistré)
+      if (savedMessageId) {
+        try {
+          await Message.findByIdAndUpdate(savedMessageId, {
+            emailSent: true,
+            emailSentAt: new Date(),
+          });
+        } catch (dbError) {
+          console.error('Mise à jour du message impossible :', dbError);
+        }
+      }
 
 
     } catch (emailError) {
       console.error('⚠️ Erreur lors de l\'envoi de l\'email:', emailError);
-      // L'email a échoué mais le message est en BDD
       emailSuccess = false;
     }
 
-    // ✅ TOUJOURS RETOURNER UN SUCCÈS (message en BDD)
+    // Ni en base ni par e-mail : le message serait perdu, on le dit clairement.
+    if (!savedMessageId && !emailSuccess) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Le message n'a pas pu être envoyé. Écrivez-moi directement à nfdev21@gmail.com.",
+        },
+        { status: 503 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
       message: emailSuccess 

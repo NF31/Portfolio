@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ThemeProvider } from "./contexts/ThemeContext";
+import { ThemeProvider, THEME_INIT_SCRIPT } from "./contexts/ThemeContext";
 import StructuredData from "./components/StructuredData";
 import CanonicalLink from "./components/CanonicalLink";
 import ScrollToTop from "./components/ScrollToTop";
@@ -18,14 +18,14 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "NFDev21 - Développeur Fullstack Laravel & Next.js | Portfolio",
-    template: "%s | NFDev21"
+    default: "Jean Woto - Étudiant Numérique et Management, développeur full-stack",
+    template: "%s | Jean Woto"
   },
-  description: "Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Toulouse, disponible en France.",
-  keywords: ["développeur fullstack", "Laravel", "Next.js", "React", "développeur web", "Toulouse", "France", "portfolio", "TypeScript", "MongoDB", "développement web", "création site web"],
-  authors: [{ name: "NFDev21" }],
-  creator: "NFDev21",
-  publisher: "NFDev21",
+  description: "Jean Woto, étudiant en double licence Numérique et Management à Toulouse Capitole et développeur web full-stack. Recherche un stage de mai à août 2027 puis une alternance en Master MIAGE.",
+  keywords: ["stage", "alternance", "MIAGE", "Numérique et Management", "développeur fullstack", "Laravel", "Next.js", "React", "développeur web", "Toulouse", "France", "portfolio", "TypeScript", "MongoDB", "développement web", "création site web"],
+  authors: [{ name: "Jean Woto" }],
+  creator: "Jean Woto",
+  publisher: "Jean Woto",
   formatDetection: {
     email: false,
     address: false,
@@ -42,13 +42,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: "votre-code-google-search-console",
-  },
   openGraph: {
-    title: "NFDev21 - Développeur Fullstack Laravel & Next.js",
-    description: "Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes et applications performantes.",
-    url: "https://nfdev21.com",
+    title: "Jean Woto - Étudiant Numérique et Management, développeur full-stack",
+    description: "Jean Woto, étudiant en double licence Numérique et Management à Toulouse Capitole et développeur web full-stack. Recherche un stage de mai à août 2027 puis une alternance en Master MIAGE.",
+    url: "https://www.nfdev.fr",
     type: "website",
   },
 };
@@ -61,7 +58,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <meta name="description" content="Développeur web fullstack spécialisé en Laravel, Next.js et React. Création de sites web modernes, applications web performantes et solutions digitales sur mesure. Basé à Toulouse, disponible en France." />
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <meta name="description" content="Jean Woto, étudiant en double licence Numérique et Management à Toulouse Capitole et développeur web full-stack. Recherche un stage de mai à août 2027 puis une alternance en Master MIAGE." />
         <StructuredData />
         <CanonicalLink />
       </head>

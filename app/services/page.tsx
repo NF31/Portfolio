@@ -6,8 +6,22 @@ import Image from 'next/image';
 import { Icons } from '@/lib/icons';
 import { toast } from 'sonner';
 
-// Force dynamic rendering since data is fetched client-side
-export const dynamic = 'force-dynamic';
+import { services as servicesContenu } from '@/lib/content';
+
+// Prestations écrites dans lib/content.ts (rendu côté serveur, jamais vide), adaptées au
+// format attendu par cette page.
+const SERVICES = servicesContenu.map((s) => ({
+  _id: s.titre,
+  title: s.titre,
+  shortDescription: s.resume,
+  description: s.description,
+  icon: s.icone,
+  category: 'prestations',
+  features: [] as string[],
+  technologies: s.technologies,
+  isActive: true,
+  isFeatured: false,
+}));
 
 interface Service {
   _id: string;
@@ -32,10 +46,10 @@ interface Service {
 type CategoryType = 'all' | string;
 
 const ServicesPage = () => {
-  const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(true);
+  const services: Service[] = SERVICES;
+  const loading = false;
   const [activeCategory, setActiveCategory] = useState<CategoryType>('all');
-  const [categories, setCategories] = useState<string[]>([]);
+  const categories: string[] = [];
   const [showCategorySelect, setShowCategorySelect] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -169,28 +183,6 @@ const ServicesPage = () => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [showCategorySelect]);
-
-  const fetchServices = async () => {
-    try {
-      const response = await fetch('/api/services?isActive=true');
-      const data = await response.json();
-      if (data.success) {
-        setServices(data.data);
-        
-        // Extraire les catégories uniques
-        const uniqueCategories = Array.from(new Set(data.data.map((s: Service) => s.category)));
-        setCategories(uniqueCategories as string[]);
-      }
-    } catch {
-      // Erreur silencieuse lors du chargement des services
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchServices();
-  }, []);
 
   const renderIcon = (iconName: string, iconType?: string) => {
     if (iconType === 'url') {

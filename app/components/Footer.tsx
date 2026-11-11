@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { Icons } from '@/lib/icons';
-import { SiGithub, SiSnapchat } from 'react-icons/si';
+import { profil } from '@/lib/content';
+import { SiGithub } from 'react-icons/si';
 
 
 export default function Footer() {
@@ -19,7 +20,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
                 <span className="text-white font-bold text-lg">NF</span>
               </div>
-              <span className="text-xl font-bold text-gray-900 dark:text-white">NFDev21</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">{profil.nom}</span>
             </Link>
             <div className="flex flex-wrap gap-2 mt-3">
               <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-full">
@@ -39,7 +40,7 @@ export default function Footer() {
             {/* Réseaux sociaux */}
             <div className="flex items-center gap-3 mt-6">
               <a
-                href="https://github.com/nfdev21"
+                href={profil.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-gray-900 dark:hover:border-gray-600 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 group"
@@ -47,16 +48,6 @@ export default function Footer() {
                 aria-label="GitHub"
               >
                 <SiGithub className="w-4 h-4 text-gray-700 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors" />
-              </a>
-              <a
-                href="https://snapchat.com/add/nfdev21"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-[#FFFC00] dark:hover:border-[#FFFC00] rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-105 group"
-                title="Snapchat"
-                aria-label="Snapchat"
-              >
-                <SiSnapchat className="w-4 h-4 text-gray-700 dark:text-gray-400 group-hover:text-[#FFFC00] transition-colors" />
               </a>
             </div>
           </div>
@@ -100,7 +91,7 @@ export default function Footer() {
               <li>
                 <a href="tel:+33781882130" className="flex items-center text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group">
                   <Icons.Phone className="w-4 h-4 mr-2 text-green-500 dark:text-green-400 group-hover:scale-110 transition-transform" />
-                  0781882130
+                  {profil.telephoneAffiche}
                 </a>
               </li>
               <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
@@ -114,7 +105,7 @@ export default function Footer() {
         {/* Séparateur */}
         <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
           <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-            © {currentYear} <span className="font-semibold text-gray-900 dark:text-white">NFDev21</span>. Tous droits réservés.
+            © {currentYear} <span className="font-semibold text-gray-900 dark:text-white">{profil.nom}</span>. Tous droits réservés.
           </p>
         </div>
       </div>
