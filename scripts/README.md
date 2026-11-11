@@ -1,8 +1,8 @@
-# 📚 Scripts d'administration
+# Scripts d'administration
 
 Ce dossier contient les scripts utilitaires pour la gestion du système d'administration.
 
-## 🚀 Scripts disponibles
+## Scripts disponibles
 
 ### `change-password.js`
 Script pour changer le mot de passe d'un utilisateur existant.
@@ -29,7 +29,7 @@ Ce script :
 - Corrige les containers responsive
 - Nettoie les inputs et textareas
 
-## 🔧 Prérequis
+## Prérequis
 
 1. **Variables d'environnement** : Assurez-vous que votre fichier `.env` contient :
    ```
@@ -41,13 +41,13 @@ Ce script :
    - `bcryptjs` - Pour le hachage des mots de passe
    - `dotenv` - Pour charger les variables d'environnement
 
-## 🛡️ Sécurité
+## Sécurité
 
 - Les mots de passe sont automatiquement hachés avec bcrypt
 - Les scripts utilisent des variables d'environnement pour la configuration
 - Aucun mot de passe ou données sensibles ne sont stockés dans les scripts
 
-## 📝 Notes
+## Notes
 
 - Tous les scripts se connectent automatiquement à MongoDB
 - Les mots de passe sont sécurisés avec bcrypt

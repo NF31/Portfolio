@@ -1,37 +1,37 @@
-# 🔒 Système de Sécurité Admin
+# Système de Sécurité Admin
 
-## 📋 **Vue d'ensemble**
+## **Vue d'ensemble**
 
 Ce système sécurise l'accès à la partie administration du portfolio avec une authentification robuste et une URL cachée.
 
-## 🎯 **Fonctionnalités**
+## **Fonctionnalités**
 
-### ✅ **URL Cachée**
+### **URL Cachée**
 - **URL de login** : `/system-maintenance-portal`
 - **Avantage** : URL non-obvious qui ne révèle pas qu'il s'agit d'un login admin
 - **Sécurité** : Empêche les attaques par force brute sur des URLs classiques comme `/admin/login`
 - **Redirection** : Après connexion, redirection directe vers `/admin-dashboard`
 
-### ✅ **Authentification**
+### **Authentification**
 - **Base de données** : Vérification des identifiants dans MongoDB
 - **Compte admin** : créé directement en base (voir « Créer un Nouvel Admin »), aucun identifiant par défaut
 - **Session** : jeton signé HMAC-SHA256 (`lib/session.ts`), 24 heures de validité
 - **Cookie** : `admin_session`, HttpOnly, Secure, SameSite=Strict
 - **Hachage** : bcryptjs avec 12 rounds de sel
 
-### ✅ **Protection des Routes**
+### **Protection des Routes**
 - **Proxy** (`proxy.ts`) : vérifie la signature du jeton sur toutes les pages `/admin-*`
 - **API** : chaque route d'écriture, et les lectures réservées à l'admin (messages, images, statistiques), appelle `requireAdmin()` et renvoie 401 sans session valide
 - **Redirection** : Redirige vers la page de login si non authentifié
 - **Expiration** : Vérifie la validité de la session
 
-### ✅ **Interface Utilisateur**
+### **Interface Utilisateur**
 - **Design moderne** : Page de login avec design professionnel
 - **Responsive** : Adapté à tous les appareils
 - **Mode sombre** : Intégré au thème du site
 - **Feedback** : Messages d'erreur clairs
 
-## 🛡️ **Sécurité**
+## **Sécurité**
 
 ### **Session signée**
 
@@ -59,7 +59,7 @@ fabriquer ou de modifier un jeton valide. Si la variable manque, aucune session 
 - Validation côté serveur
 - Gestion des erreurs appropriée
 
-## 📁 **Fichiers Créés/Modifiés**
+## **Fichiers Créés/Modifiés**
 
 ### **Nouveaux Fichiers**
 ```
@@ -94,7 +94,7 @@ scripts/
 app/(admin)/components/AdminNavbar.tsx  # Ajout du bouton de déconnexion
 ```
 
-## 🚀 **Utilisation**
+## **Utilisation**
 
 ### **Configuration Initiale**
 1. Installer les dépendances : `npm install bcryptjs @types/bcryptjs`
@@ -113,7 +113,7 @@ app/(admin)/components/AdminNavbar.tsx  # Ajout du bouton de déconnexion
 ### **Accès Direct**
 - Toute tentative d'accès à `/admin/*` sans authentification redirige vers la page de login
 
-## ⚙️ **Configuration**
+## **Configuration**
 
 ### **Changer le Mot de Passe**
 Utiliser le script fourni :
@@ -135,7 +135,7 @@ Modifier dans `app/api/auth/login/route.ts` :
 maxAge: 24 * 60 * 60, // Changer la durée en secondes
 ```
 
-## 🛠️ **Scripts Utilitaires**
+## **Scripts Utilitaires**
 
 ### **Configuration Initiale**
 ```bash
@@ -160,7 +160,7 @@ node scripts/create-admin-user.js
 - `create-admin-user.js` : Création simple d'un utilisateur admin
 - `change-password.js` : Changement de mot de passe sécurisé
 
-## 🔧 **Recommandations de Sécurité**
+## **Recommandations de Sécurité**
 
 1. **Changer le mot de passe par défaut immédiatement**
 2. **Utiliser HTTPS en production**
@@ -169,7 +169,7 @@ node scripts/create-admin-user.js
 5. **Limiter les tentatives de connexion (rate limiting)**
 6. **Sauvegarder régulièrement la base de données**
 
-## 📝 **Notes**
+## **Notes**
 
 - Le système est actuellement en mode développement
 - Les cookies sont configurés différemment selon l'environnement (dev/prod)

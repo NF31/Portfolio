@@ -70,11 +70,11 @@ track('button_click', { button_name: 'Contact' });
 
 ## Avantages
 
-- ✅ **Automatique** : Aucune configuration supplémentaire nécessaire
-- ✅ **Performant** : Impact minimal sur les performances du site
-- ✅ **Sécurisé** : Données hébergées par Vercel
-- ✅ **Conforme RGPD** : Respect de la vie privée des utilisateurs
-- ✅ **Intégré** : Fonctionne nativement avec les déploiements Vercel
+- **Automatique** : Aucune configuration supplémentaire nécessaire
+- **Performant** : Impact minimal sur les performances du site
+- **Sécurisé** : Données hébergées par Vercel
+- **Conforme RGPD** : Respect de la vie privée des utilisateurs
+- **Intégré** : Fonctionne nativement avec les déploiements Vercel
 
 ## Notes importantes
 

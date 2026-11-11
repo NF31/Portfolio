@@ -1,12 +1,12 @@
-# 🏗️ Architecture des fichiers - Portfolio NFDev21 (Version complète)
+# Architecture des fichiers - Portfolio NFDev21 (Version complète)
 
-## 🎯 Vue d'ensemble
+## Vue d'ensemble
 Ce document décrit l'organisation complète des fichiers et dossiers du projet **portfolio** développé avec **Next.js + TypeScript**.  
 Chaque fichier est identifié par son rôle et sa relation avec les autres composants pour faciliter le développement, la maintenance et l’évolution future.
 
 ---
 
-## 📁 Racine du projet
+## Racine du projet
 
 | Fichier / Dossier | Type | Description |
 |------------------|------|-------------|
@@ -30,7 +30,7 @@ Chaque fichier est identifié par son rôle et sa relation avec les autres compo
 
 ---
 
-## 📁 Dossier `src/`
+## Dossier `src/`
 
 ### Pages
 
@@ -125,7 +125,7 @@ Chaque fichier est identifié par son rôle et sa relation avec les autres compo
 
 ---
 
-## 🎯 Résumé
+## Résumé
 
 Cette architecture couvre **tous les fichiers nécessaires** pour :
 
