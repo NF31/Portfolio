@@ -83,9 +83,9 @@ export const competences: Competences[] = [
 
 export const parcours = [
   {
-    periode: '2024 - 2027',
+    periode: '2025 - 2027',
     titre: 'Double licence Numérique et Management',
-    lieu: 'Université Toulouse Capitole (MIASHS + Gestion)',
+    lieu: 'Université Toulouse Capitole (MIASHS + Gestion), entrée en L2',
   },
   {
     periode: 'En parallèle',
